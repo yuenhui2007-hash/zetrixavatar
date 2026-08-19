@@ -559,6 +559,19 @@
       ]);
     });
   </script>
+<script id="course-engine-cache-bust">
+    (function(){
+      var check = function(){
+        var content = document.getElementById("segment-content");
+        if (content && content.innerHTML.trim() === "") {
+          localStorage.clear();
+          location.reload(true);
+        }
+      };
+      setTimeout(check, 500);
+      setTimeout(check, 1500);
+    })();
+  </script>
 </body>
 </html>
 <!-- force deploy 1787129228 -->
