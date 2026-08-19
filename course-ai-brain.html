@@ -141,11 +141,14 @@
           <h3>Deep Dive: The Archive Rule</h3>
           <p>Archive is not a trash can. It is a reference library. The key difference: Archived documents are excluded from <em>active</em> retrieval but remain searchable when explicitly requested. This keeps your Avatar's "working memory" lean and fast.</p>
           <p><strong>Pro Tip:</strong> Review your folder structure every 90 days. What made sense in January may be obsolete by April.</p>`,
-          interaction: {
-            type: 'textarea',
-            prompt: 'Apply PARA to your own life. List 2 current Projects (with deadlines), 3 ongoing Areas, 2 Resources you reference often, and 1 thing you should Archive today.',
-            placeholder: 'Projects: 1) Launch website (Aug 30), 2) Client rebrand (Sep 15). Areas: Health, Finance, Marketing...'
-          }
+          quiz: [
+            { q: "What does the 'P' in PARA stand for?", options: ["Processes", "Projects", "Programs", "Protocols"], correct: 1, explanation: "PARA stands for Projects, Areas, Resources, Archive. Projects are folders with a deadline and outcome." },
+            { q: "Which PARA category is for ongoing responsibilities WITHOUT a deadline?", options: ["Projects", "Archive", "Areas", "Resources"], correct: 2, explanation: "Areas are ongoing responsibilities without a deadline — e.g., Health, Finance, Team Management." },
+            { q: "What is the key difference between Archive and Trash?", options: ["Archive deletes files permanently", "Archive is excluded from active retrieval but remains searchable", "Archive is only for images", "Trash is searchable but Archive is not"], correct: 1, explanation: "Archived documents are excluded from active retrieval but remain searchable when explicitly requested. Trash is deleted permanently." },
+            { q: "How often should you review your folder structure?", options: ["Every 30 days", "Every 60 days", "Every 90 days", "Once a year"], correct: 2, explanation: "Pro Tip: Review your folder structure every 90 days. What made sense in January may be obsolete by April." },
+            { q: "Where would you file 'UX Design Patterns' in PARA?", options: ["Projects", "Areas", "Resources", "Archive"], correct: 2, explanation: "Resources are reference materials you might need someday — e.g., UX Design Patterns, Tax Law 2026." },
+            { q: "Maria had 400 files in one folder. After applying PARA, how many completed projects moved to Archive?", options: ["50", "100", "200+", "All 400"], correct: 2, explanation: "Maria moved 200+ completed projects to Archive, keeping active folders lean." }
+          ]
         },
         {
           title: "Daily Updates & Memory Refresh",
