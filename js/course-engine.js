@@ -182,6 +182,7 @@
 
       container.innerHTML = html;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.initDragDropSort();
     },
 
     flipCard(i) {
@@ -320,6 +321,40 @@
       this.currentSegment = idx;
       this.renderSegment(idx);
       this.renderSidebar();
+    },
+
+    initDragDropSort() {
+      const docs = document.querySelectorAll('#sort-docs .sort-doc');
+      const folders = document.querySelectorAll('#sort-docs .sort-folder');
+      const result = document.getElementById('sort-docs-result');
+      if (!docs.length || !folders.length) return;
+      let selectedDoc = null, correct = 0, total = docs.length;
+      docs.forEach(d => {
+        d.addEventListener('click', function() {
+          docs.forEach(x => x.style.background = '');
+          selectedDoc = this;
+          this.style.background = '#e0f0ff';
+        });
+      });
+      folders.forEach(f => {
+        f.addEventListener('click', function() {
+          if (!selectedDoc) return;
+          if (selectedDoc.dataset.folder === this.dataset.folder) {
+            this.style.background = '#d4edda';
+            selectedDoc.style.background = '#d4edda';
+            this.style.pointerEvents = 'none';
+            selectedDoc.style.pointerEvents = 'none';
+            correct++;
+          } else {
+            this.style.background = '#f8d7da';
+            setTimeout(() => this.style.background = '', 800);
+          }
+          selectedDoc = null;
+          if (correct === total && result) {
+            result.textContent = '✅ Excellent! All documents sorted correctly.';
+          }
+        });
+      });
     }
   };
 })();
