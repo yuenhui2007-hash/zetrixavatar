@@ -169,7 +169,7 @@
         if (idx < this.totalSegments - 1) {
           html += `<button class="btn btn-primary" onclick="CourseEngine.goTo(${idx+1})">Next →</button>`;
         } else {
-          html += '<a href="academy.html" class="btn btn-primary">Finish Course →</a>';
+          html += '<a href="index.html" class="btn btn-primary">Finish Course →</a>';
         }
       } else {
         if (idx < this.totalSegments - 1) {
