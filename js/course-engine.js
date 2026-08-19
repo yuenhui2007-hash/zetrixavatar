@@ -216,7 +216,8 @@
       const passThreshold = seg.passThreshold || 70;
 
       if (pct >= passThreshold) {
-        resultDiv.innerHTML = `<span style="color:#065f46">✅ Passed! ${score}/${seg.quiz.length} (${Math.round(pct)}%)</span>`;
+        const feedback = this.buildFeedback(score, seg.quiz.length, seg.title);
+        resultDiv.innerHTML = feedback;
         this.segmentStates[segIdx].quizPassed = true;
         this.segmentStates[segIdx].completed = true;
         this.segmentStates[segIdx].quizBestScore = Math.max(this.segmentStates[segIdx].quizBestScore, score);
@@ -224,10 +225,11 @@
           this.segmentStates[segIdx + 1].unlocked = true;
         }
         this.saveProgress();
+        const delay = 2500;
         if (segIdx < this.totalSegments - 1) {
-          setTimeout(() => this.goTo(segIdx + 1), 1200);
+          setTimeout(() => this.goTo(segIdx + 1), delay);
         } else {
-          setTimeout(() => this.renderSegment(segIdx), 1200);
+          setTimeout(() => this.renderSegment(segIdx), delay);
         }
       } else {
         resultDiv.innerHTML = `<span style="color:#991b1b">❌ Failed. ${score}/${seg.quiz.length} (${Math.round(pct)}%). Need ${passThreshold}% to pass. Try again!</span>`;
@@ -275,6 +277,29 @@
           setTimeout(() => this.renderSegment(segIdx), 1200);
         }
       }
+    },
+
+    buildFeedback(score, total, title) {
+      const pct = Math.round((score / total) * 100);
+      let msg = '';
+      if (pct === 100) {
+        msg = `Perfect score! You absolutely nailed <strong>${title}</strong>. The Zetrix Avatar is impressed — you're building a rock-solid foundation for your one-person company.`;
+      } else if (pct >= 80) {
+        msg = `Great work on <strong>${title}</strong>! You scored <strong>${score}/${total}</strong>. A couple of gaps to tighten up, but you're clearly getting the hang of this. The Avatar sees strong progress.`;
+      } else {
+        msg = `You passed <strong>${title}</strong> with <strong>${score}/${total}</strong>. The Zetrix Avatar suggests revisiting the key concepts — small tweaks now will save hours later.`;
+      }
+      return `
+        <div style="background:linear-gradient(135deg,#dcfce7 0%,#d1fae5 100%);border:1px solid #86efac;border-radius:16px;padding:20px;margin-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:1.5rem;">🤖</span>
+            <strong style="color:#065f46;font-size:1.05rem;">Zetrix Avatar Feedback</strong>
+          </div>
+          <p style="color:#065f46;margin:0;line-height:1.6;">${msg}</p>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #86efac;">
+            <small style="color:#15803d;">✅ Quiz Passed — moving you to the next segment...</small>
+          </div>
+        </div>`;
     },
 
     markSegmentComplete(segIdx) {
