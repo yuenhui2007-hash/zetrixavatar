@@ -139,7 +139,7 @@
           html += `<div class="interaction-completed"><h4>✅ Completed</h4><p>${seg.interaction.completedText || 'You can proceed to the next segment.'}</p></div>`;
         } else {
           html += `<div class="interaction-section"><h4>✏️ ${seg.interaction.title || 'Activity'}</h4>`;
-          html += `<p>${seg.interaction.instruction}</p>`;
+          html += `<p>${seg.interaction.instruction || seg.interaction.prompt || 'Complete the activity below to proceed.'}</p>`;
           if (seg.interaction.type === 'textarea') {
             html += `<textarea id="interaction-input" rows="4" style="width:100%;padding:12px;border-radius:8px;border:1px solid #e2e8f0;margin-top:8px;" placeholder="${seg.interaction.placeholder || 'Type your answer here...'}"></textarea>`;
           } else if (seg.interaction.type === 'checkbox') {
