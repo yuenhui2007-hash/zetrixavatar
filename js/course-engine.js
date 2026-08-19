@@ -224,7 +224,11 @@
           this.segmentStates[segIdx + 1].unlocked = true;
         }
         this.saveProgress();
-        setTimeout(() => this.renderSegment(segIdx), 1200);
+        if (segIdx < this.totalSegments - 1) {
+          setTimeout(() => this.goTo(segIdx + 1), 1200);
+        } else {
+          setTimeout(() => this.renderSegment(segIdx), 1200);
+        }
       } else {
         resultDiv.innerHTML = `<span style="color:#991b1b">❌ Failed. ${score}/${seg.quiz.length} (${Math.round(pct)}%). Need ${passThreshold}% to pass. Try again!</span>`;
         this.segmentStates[segIdx].quizBestScore = Math.max(this.segmentStates[segIdx].quizBestScore, score);
@@ -265,7 +269,11 @@
           this.segmentStates[segIdx + 1].unlocked = true;
         }
         this.saveProgress();
-        setTimeout(() => this.renderSegment(segIdx), 1200);
+        if (segIdx < this.totalSegments - 1) {
+          setTimeout(() => this.goTo(segIdx + 1), 1200);
+        } else {
+          setTimeout(() => this.renderSegment(segIdx), 1200);
+        }
       }
     },
 
@@ -273,9 +281,14 @@
       this.segmentStates[segIdx].completed = true;
       if (segIdx < this.totalSegments - 1) {
         this.segmentStates[segIdx + 1].unlocked = true;
+        this.currentSegment = segIdx + 1;
       }
       this.saveProgress();
-      this.renderSegment(segIdx);
+      if (segIdx < this.totalSegments - 1) {
+        this.renderSegment(segIdx + 1);
+      } else {
+        this.renderSegment(segIdx);
+      }
     },
 
     goTo(idx) {
