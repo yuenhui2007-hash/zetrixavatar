@@ -1,6 +1,7 @@
 /**
  * Course Engine — Interactive Segmented Learning
  * Handles segments, quizzes, flashcards, progress tracking
+ * v6 — Pass threshold: 80%
  */
 (function() {
   'use strict';
