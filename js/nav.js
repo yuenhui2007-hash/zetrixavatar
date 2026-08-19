@@ -11,6 +11,7 @@
         '<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>' +
         '<ul class="nav-menu" id="navMenu">' +
           '<li><a href="' + prefix + 'index.html" class="nav-link">AI Academy</a></li>' +
+          '<li><a href="' + prefix + 'tutor.html" class="nav-link">AI Tutor</a></li>' +
         '</ul>' +
       '</div>';
 
