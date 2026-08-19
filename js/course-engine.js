@@ -120,7 +120,7 @@
             <p>You can proceed to the next segment.</p>
           </div>`;
         } else {
-          html += '<div class="quiz-section"><h4>📝 Quiz</h4><p>Score at least 70% to unlock the next segment.</p>';
+          html += '<div class="quiz-section"><h4>📝 Quiz</h4><p>Score at least 80% to unlock the next segment.</p>';
           seg.quiz.forEach((q, i) => {
             html += `<div class="quiz-q" id="qq-${i}"><p><strong>Q${i+1}:</strong> ${q.q}</p>`;
             q.options.forEach((opt, j) => {
