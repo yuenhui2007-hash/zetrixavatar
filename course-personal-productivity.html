@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Productivity — Zetrix AI Academy</title>
+  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/course-engine.css?v=2">
+  <script src="js/nav.js?v=6" defer></script>
+  <script src="js/course-engine.js?v=2" defer></script>
+  <script src="js/theme.js?v=5" defer></script>
+</head>
+<body>
+  <div class="course-layout">
+    <aside class="course-sidebar">
+      <h3>Personal Productivity</h3>
+      <div class="progress-wrap">
+        <div class="progress-track"><div id="overall-progress" class="progress-fill" style="width:0%"></div></div>
+        <div id="overall-progress-text" class="progress-text">0/10 segments</div>
+      </div>
+      <nav id="segment-nav"></nav>
+    </aside>
+    <main class="course-main" id="segment-content"></main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      CourseEngine.init('personal-productivity', [
+        {
+          title: "Your AI Personal Assistant",
+          content: `<h3>Building a Productivity Partner</h3>
+          <p>Your Avatar can be the most reliable assistant you have ever had—available 24/7, never forgets, and adapts to your style. This segment shows you how to configure it for maximum personal productivity.</p>
+          <h3>Core Productivity Functions</h3>
+          <ol>
+            <li><strong>Task Management:</strong> The Avatar captures tasks from voice, email, or chat and organises them by priority and deadline.</li>
+            <li><strong>Calendar Intelligence:</strong> It reviews your calendar, suggests optimal meeting times, blocks focus time, and flags conflicts.</li>
+            <li><strong>Information Retrieval:</strong> Instead of searching through files, ask the Avatar. It searches your PKM, emails, and notes instantly.</li>
+            <li><strong>Decision Support:</strong> Present a dilemma and the Avatar weighs pros and cons based on your values and past decisions.</li>
+            <li><strong>Habit Tracking:</strong> It checks in on your daily habits and celebrates streaks.</li>
+          </ol>
+          <h3>Case Study: The Executive Who Got 15 Hours Back</h3>
+          <p>Richard, a Fortune 500 VP, was drowning in administrative tasks. After configuring his Avatar as a productivity partner:</p>
+          <ul>
+            <li><strong>Morning Briefing:</strong> Avatar summarises overnight emails, flags 3 priorities, and previews meetings.</li>
+            <li><strong>Task Capture:</strong> Voice-memo ideas while commuting. Avatar transcribes, categorises, and schedules.</li>
+            <li><strong>Calendar Defence:</strong> Avatar blocks 2-hour focus sessions and auto-declines meetings during those blocks.</li>
+            <li><strong>Decision Prep:</strong> Before big decisions, Avatar surfaces relevant PKM documents and past similar choices.</li>
+          </ul>
+          <p>Result: 15 hours weekly reclaimed from admin. Spent on strategy and family.</p>
+          <h3>Framework: The 5-Minute Morning Setup</h3>
+          <p>Start every day with this ritual:</p>
+          <ol>
+            <li><strong>00:00–01:00:</strong> Review Avatar's morning briefing (meetings, priorities, weather).</li>
+            <li><strong>01:00–02:00:</strong> Voice-capture 3 tasks for the day.</li>
+            <li><strong>02:00–03:00:</strong> Confirm or reschedule meetings the Avatar flagged as conflicts.</li>
+            <li><strong>03:00–04:00:</strong> Review yesterday's incomplete tasks. Roll forward or delegate.</li>
+            <li><strong>04:00–05:00:</strong> Set one "deep work" block. Avatar defends it.</li>
+          </ol>
+          <h3>Step-by-Step: Daily Assistant Setup</h3>
+          <ol>
+            <li>Define your <strong>productivity philosophy</strong> in the Identity Model. Are you a GTD person? A time-blocker? A deep-work devotee?</li>
+            <li>Create a <strong>Daily Briefing</strong> workflow. Trigger: 07:00 daily. Output: today's meetings, top 3 priorities, pending tasks, and a weather check.</li>
+            <li>Set up a <strong>Capture Shortcut</strong>. On mobile, configure a widget: tap → voice memo → Avatar transcribes and files it.</li>
+            <li>Enable <strong>Focus Mode</strong>. Tell the Avatar: "I am focusing for 90 minutes." It silences non-urgent notifications and updates your status.</li>
+            <li>Create an <strong>End-of-Day Ritual</strong>. Trigger: 18:00. Output: what you accomplished, what rolls over, and tomorrow's preview.</li>
+          </ol>
+          <p><strong>Example Morning Briefing:</strong> "Good morning. You have 4 meetings today. The most important is the 10:00 product review. Your top priority is finishing the Q3 report. You have 2 hours of blocked focus time at 14:00. Weather: sunny, 22°C."</p>`,
+          quiz: [
+            { q: "What should you define first in your productivity profile?", options: ["Your email password", "Your productivity philosophy", "Your favourite colour", "Your bank details"], correct: 1 },
+            { q: "How many hours did Richard reclaim weekly?", options: ["5", "10", "15", "20"], correct: 2 },
+            { q: "What time should the Daily Briefing trigger?", options: ["06:00", "07:00", "08:00", "09:00"], correct: 1 },
+            { q: "What does Focus Mode do?", options: ["Plays music", "Silences non-urgent notifications", "Deletes emails", "Orders coffee"], correct: 1 }
+          ],
+          passThreshold: 80
+        },
+        {
+          title: "Travel Planning with AI",
+          content: `<h3>Effortless Itineraries</h3>
+          <p>Travel planning is research-heavy and decision-dense. Your Avatar handles the legwork so you enjoy the journey.</p>
+          <h3>Step-by-Step: Planning a Trip</h3>
+          <ol>
+            <li>Tell the Avatar your destination, dates, budget, and travel style (adventure, relaxation, culinary, cultural).</li>
+            <li>The Avatar researches:
+              <ul>
+                <li>Best flights with price alerts and layover optimisation.</li>
+                <li>Neighbourhoods to stay in, with safety and convenience scores.</li>
+                <li>Top-rated restaurants matching your dietary preferences.</li>
+                <li>Must-see attractions and hidden gems.</li>
+                <li>Local customs, visa requirements, and currency tips.</li>
+              </ul>
+            </li>
+            <li>It drafts a <strong>day-by-day itinerary</strong> with time estimates, walking distances, and backup options for rain.</li>
+            <li>You review and edit. Add personal priorities: "I want to visit this specific museum."</li>
+            <li>The Avatar converts the final itinerary to a shared calendar with reminders and reservation details.</li>
+            <li>It creates a <strong>travel PKM folder</strong> with all bookings, confirmations, and emergency contacts.</li>
+          </ol>
+          <h3>Case Study: The Family Holiday Without the Headache</h3>
+          <p>The Chen family (2 adults, 3 kids ages 6–12) planned a 10-day Japan trip. Normally, this meant 40+ hours of research and spreadsheet juggling. With their Avatar:</p>
+          <ul>
+            <li><strong>Flights:</strong> Avatar found the best routing with minimal layovers for kids.</li>
+            <li><strong>Hotels:</strong> Selected family-friendly neighbourhoods near transit and parks.</li>
+            <li><strong>Restaurants:</strong> Filtered for kids' menus, high chairs, and English support.</li>
+            <li><strong>Itinerary:</strong> Built in rest periods every 3 hours. Added rainy-day alternatives (museums, indoor play centres).</li>
+            <li><strong>Budget:</strong> Tracked daily spending vs. plan. Flagged when they were 15% over on day 3.</li>
+          </ul>
+          <p>Planning time: 4 hours instead of 40. Stress level: minimal. Kids' rating: "Best holiday ever."</p>
+          <h3>Advanced Features</h3>
+          <ul>
+            <li><strong>Real-time updates:</strong> Flight delays, gate changes, and traffic alerts pushed to your phone.</li>
+            <li><strong>Expense tracking:</strong> Forward receipts to the Avatar. It categorises and tallies spending vs. budget.</li>
+            <li><strong>Language assist:</strong> Pre-load common phrases. Use voice mode for on-the-spot translation.</li>
+            <li><strong>Post-trip:</strong> The Avatar generates a photo caption suggestions list and a "best of" summary for sharing.</li>
+          </ul>
+          <h3>Framework: The TRAVEL Checklist</h3>
+          <p>Before any trip, ensure your Avatar has:</p>
+          <ul>
+            <li><strong>T – Tickets:</strong> Flights, trains, event bookings.</li>
+            <li><strong>R – Reservations:</strong> Hotels, restaurants, tours.</li>
+            <li><strong>A – Alerts:</strong> Real-time notifications enabled.</li>
+            <li><strong>V – Visa & Documents:</strong> Passport copies, visa confirmations, insurance.</li>
+            <li><strong>E – Expense Budget:</strong> Daily limits and categories.</li>
+            <li><strong>L – Local Info:</strong> Emergency numbers, embassy contacts, nearest hospital.</li>
+          </ul>`,
+          interaction: {
+            type: 'textarea',
+            prompt: 'Plan a 3-day weekend trip using the TRAVEL framework. Choose any destination. List what your Avatar would research and organise for each letter (T-R-A-V-E-L).',
+            placeholder: 'Destination: Barcelona. T: Round-trip flights. R: Boutique hotel in Gothic Quarter. A: Gate change alerts. V: Passport copy in PKM...'
+          }
+        },
+        {
+          title: "Health & Wellness Tracking",
+          content: `<h3>Your AI Health Coach</h3>
+          <p>Health is the foundation of productivity. Your Avatar helps you track, analyse, and improve your wellbeing.</p>
+          <h3>Step-by-Step: Setting Up Health Tracking</h3>
+          <ol>
+            <li>Connect wearable data (Apple Health, Fitbit, Garmin, or Oura) via the Integrations panel.</li>
+            <li>Define your <strong>health goals</strong> in the Identity Model:
+              <ul>
+                <li>Sleep: 7.5 hours, 85+ sleep score.</li>
+                <li>Movement: 10,000 steps or 30 min exercise daily.</li>
+                <li>Nutrition: protein target, water intake, fasting window.</li>
+                <li>Mental: 10 min meditation, 1 gratitude note.</li>
+              </ul>
+            </li>
+            <li>Create a <strong>Morning Health Brief</strong>. Output: last night's sleep score, today's step target, and a wellness tip.</li>
+            <li>Set up <strong>weekly reviews</strong>. The Avatar analyses trends: "Your sleep dropped 12% on weekdays. Consider a 22:30 wind-down alarm."</li>
+            <li>Enable <strong>habit nudges</strong>. Gentle reminders based on your patterns, not rigid schedules. Example: "You usually meditate after lunch. Ready?"</li>
+          </ol>
+          <h3>Case Study: The Founder Who Fixed His Burnout</h3>
+          <p>Kai, a startup founder, worked 80-hour weeks and slept 5 hours nightly. His Avatar's data told a stark story:</p>
+          <ul>
+            <li><strong>Sleep:</strong> Averaging 4.8 hours. HRV (heart rate variability) in the bottom 10%.</li>
+            <li><strong>Movement:</strong> Under 3,000 steps daily.</li>
+            <li><strong>Focus:</strong> Deep work sessions dropped from 4/day to 1/day.</li>
+          </ul>
+          <p>The Avatar proposed a 30-day recovery plan:</p>
+          <ol>
+            <li>Week 1: 6.5 hours sleep target. No work after 21:00.</li>
+            <li>Week 2: Add 20-minute morning walks.</li>
+            <li>Week 3: 10-minute meditation before bed.</li>
+            <li>Week 4: Reassess. If sleep score >80, add one extra deep work block.</li>
+          </ol>
+          <p>Result: Sleep score from 62 to 84. Focus sessions: back to 3/day. Revenue: still growing (he was more effective in fewer hours).</p>
+          <h3>Privacy First</h3>
+          <ul>
+            <li>All health data is encrypted and stored locally by default.</li>
+            <li>You control which agents can access health data.</li>
+            <li>Export or delete health data anytime from Settings.</li>
+          </ul>
+          <h3>Framework: The Wellness Wheel</h3>
+          <p>Rate yourself 1–10 on each spoke. Any score below 5 = priority intervention:</p>
+          <ul>
+            <li><strong>Sleep</strong></li>
+            <li><strong>Movement</strong></li>
+            <li><strong>Nutrition</strong></li>
+            <li><strong>Mental Health</strong></li>
+            <li><strong>Social Connection</strong></li>
+            <li><strong>Purpose & Meaning</strong></li>
+          </ul>
+          <p><strong>Pro Tip:</strong> Sync health data with your calendar. If sleep score was &lt;70, the Avatar suggests lighter meetings and a 20-min nap block.</p>`,
+          quiz: [
+            { q: "Which wearable can you NOT connect to Zetrix?", options: ["Apple Health", "Fitbit", "Garmin", "PlayStation"], correct: 3 },
+            { q: "What is the recommended sleep target?", options: ["5 hours", "6 hours", "7.5 hours", "9 hours"], correct: 2 },
+            { q: "What does HRV stand for?", options: ["High Resting Volume", "Heart Rate Variability", "Health Recovery Value", "Hydration Reference Volume"], correct: 1 },
+            { q: "How is health data stored by default?", options: ["On public cloud", "Encrypted and local", "Shared with advertisers", "Unencrypted"], correct: 1 }
+          ],
+          passThreshold: 80
+        },
+        {
+          title: "Learning Acceleration",
+          content: `<h3>Learn Faster, Remember Longer</h3>
+          <p>Your Avatar is the ultimate study partner. It creates personalised learning plans, tests your recall, and connects new knowledge to what you already know.</p>
+          <h3>Step-by-Step: Creating a Learning Plan</h3>
+          <ol>
+            <li>Define the skill or subject. Example: "I want to learn Python for data analysis."</li>
+            <li>The Avatar assesses your current level with a short diagnostic quiz.</li>
+            <li>It generates a <strong>curriculum</strong>:
+              <ul>
+                <li>Week 1–2: Foundations (variables, loops, functions).</li>
+                <li>Week 3–4: Data structures (lists, dictionaries, pandas).</li>
+                <li>Week 5–6: Projects (clean a dataset, build a dashboard).</li>
+                <li>Week 7–8: Advanced (APIs, automation, deployment).</li>
+              </ul>
+            </li>
+            <li>Each week includes: reading list, video recommendations, practice exercises, and a project brief.</li>
+            <li>The Avatar schedules <strong>spaced repetition reviews</strong>. It quizzes you on last week's material before introducing new content.</li>
+            <li>Upload your notes to PKM. The Avatar links related concepts and surfaces them during review.</li>
+          </ol>
+          <h3>Case Study: The Career Changer</h3>
+          <p>Amara, a teacher, wanted to transition to UX design. Her Avatar built a 6-month learning plan:</p>
+          <ul>
+            <li><strong>Month 1–2:</strong> Foundations via Coursera + Avatar-generated flashcards.</li>
+            <li><strong>Month 3:</strong> Built 3 portfolio projects with Avatar feedback.</li>
+            <li><strong>Month 4:</strong> Avatar drafted LinkedIn posts documenting her journey. Grew network by 2,000.</li>
+            <li><strong>Month 5:</strong> Mock interviews with Avatar playing the hiring manager.</li>
+            <li><strong>Month 6:</strong> Landed first UX role at a fintech startup.</li>
+          </ul>
+          <p>Total cost: £200 (courses). Time: 15 hours/week. Result: New career.</p>
+          <h3>Learning Techniques Built In</h3>
+          <ul>
+            <li><strong>Feynman Technique:</strong> Explain a concept in simple terms. The Avatar judges clarity and asks follow-up questions.</li>
+            <li><strong>Cornell Notes:</strong> The Avatar formats your notes into cue columns and summary sections.</li>
+            <li><strong>Active Recall:</strong> Flashcards generated automatically from your highlights.</li>
+            <li><strong>Interleaving:</strong> Mix topics in review sessions to strengthen neural connections.</li>
+          </ul>
+          <h3>Framework: The Learning Sprint</h3>
+          <p>Structure learning in 4-week sprints:</p>
+          <ul>
+            <li><strong>Week 1:</strong> Intake. Consume material. Take notes. No pressure to remember everything.</li>
+            <li><strong>Week 2:</strong> Process. Summarise. Create flashcards. Teach the Avatar what you learned.</li>
+            <li><strong>Week 3:</strong> Apply. Build a project. Solve real problems.</li>
+            <li><strong>Week 4:</strong> Review. Spaced repetition. Identify gaps. Plan next sprint.</li>
+          </ul>`,
+          interaction: {
+            type: 'textarea',
+            prompt: 'Design a 4-week Learning Sprint for a skill YOU want to acquire. Use the framework: Week 1 (Intake), Week 2 (Process), Week 3 (Apply), Week 4 (Review). List specific resources, actions, and how your Avatar would support each week.',
+            placeholder: 'Skill: Public speaking. Week 1: Watch 3 TED talks, read "Talk Like TED." Avatar summarises key techniques...'
+          }
+        },
+        {
+          title: "Personal Finance Management",
+          content: `<h3>AI-Powered Financial Intelligence</h3>
+          <p>Money is a system. Your Avatar helps you understand, optimise, and grow yours.</p>
+          <h3>Step-by-Step: Setting Up Finance Tracking</h3>
+          <ol>
+            <li>Connect bank accounts and credit cards via secure open banking APIs (Plaid, TrueLayer, or Yodlee).</li>
+            <li>The Avatar categorises transactions automatically: income, fixed expenses, variable expenses, savings, and investments.</li>
+            <li>Define your <strong>financial goals</strong>:
+              <ul>
+                <li>Emergency fund: 6 months of expenses.</li>
+                <li>Short-term savings: holiday, car, home improvement.</li>
+                <li>Long-term investments: pension, index funds, property.</li>
+              </ul>
+            </li>
+            <li>Create a <strong>Monthly Finance Brief</strong>. Output: total spent, savings rate, budget variance, and top 3 spending categories.</li>
+            <li>Set up <strong>anomaly alerts</strong>. The Avatar flags unusual transactions, subscription price hikes, and missed payments.</li>
+            <li>Enable <strong>investment tracking</strong>. The Avatar summarises portfolio performance, rebalancing suggestions, and tax-loss harvesting opportunities.</li>
+          </ol>
+          <h3>Case Study: The Freelancer Who Bought a House</h3>
+          <p>Sam, a freelance graphic designer, had irregular income and no savings discipline. His Avatar changed everything:</p>
+          <ul>
+            <li><strong>Income smoothing:</strong> Avatar analysed 24 months of income and suggested a "base salary" budget (50th percentile month).</li>
+            <li><strong>Tax preparation:</strong> Avatar auto-categorised deductible expenses. Tax filing time: from 8 hours to 45 minutes.</li>
+            <li><strong>Savings automation:</strong> On high-income months, Avatar suggested transferring 40% to a "house fund."</li>
+            <li><strong>Spending alerts:</strong> Flagged when dining out exceeded £300/month 3 months in a row.</li>
+          </ul>
+          <p>3 years later: Sam bought his first home with a 20% deposit. "I never could have saved consistently without the nudges," he says.</p>
+          <h3>Advanced: Scenario Planning</h3>
+          <p>Ask the Avatar: "What if I save an extra £500/month?" It projects timelines, compound growth, and trade-offs. Use this for major decisions: buying a house, changing jobs, or starting a business.</p>
+          <h3>Framework: The 50/30/20 Rule (Avatar-Enhanced)</h3>
+          <p>The classic budget rule, but with Avatar intelligence:</p>
+          <ul>
+            <li><strong>50% Needs:</strong> Rent, utilities, groceries. Avatar finds cheaper alternatives for recurring bills.</li>
+            <li><strong>30% Wants:</strong> Dining, entertainment, hobbies. Avatar alerts when you're overspending in any category.</li>
+            <li><strong>20% Savings:</strong> Emergency fund, investments, debt payoff. Avatar optimises allocation based on interest rates and goals.</li>
+          </ul>
+          <p>Your Avatar adjusts these percentages based on your income volatility, life stage, and goals.</p>`,
+          quiz: [
+            { q: "Which API connects bank accounts securely?", options: ["Twitter API", "Plaid", "GitHub API", "Slack API"], correct: 1 },
+            { q: "How many months of expenses should an emergency fund cover?", options: ["1", "3", "6", "12"], correct: 2 },
+            { q: "What does the Avatar do on high-income months for freelancers?", options: ["Suggests spending more", "Suggests transferring extra to savings", "Ignores income changes", "Cancels subscriptions"], correct: 1 },
+            { q: "In the 50/30/20 rule, what does the 20% cover?", options: ["Needs", "Wants", "Savings", "Taxes"], correct: 2 }
+          ],
+          passThreshold: 80
+        },
+        {
+          title: "Family Office & Household Ops",
+          content: `<h3>Running Your Household Like a Business</h3>
+          <p>A family has projects, budgets, schedules, and stakeholders. Your Avatar becomes the family COO.</p>
+          <h3>Step-by-Step: Household Command Centre</h3>
+          <ol>
+            <li>Create a <strong>Family PKM</strong> with folders: Calendar, Budget, Meals, Medical, School, Home Maintenance, and Travel.</li>
+            <li>Set up a <strong>Shared Calendar Agent</strong>:
+              <ul>
+                <li>Syncs all family members' calendars.</li>
+                <li>Flags conflicts (e.g., both parents have meetings at school pickup time).</li>
+                <li>Suggests optimal times for family events.</li>
+              </ul>
+            </li>
+            <li>Create a <strong>Meal Planning Agent</strong>:
+              <ul>
+                <li>Inputs: dietary restrictions, budget, preferred cuisine, and what's in the fridge.</li>
+                <li>Output: weekly meal plan + shopping list.</li>
+                <li>Integrates with grocery delivery apps for one-click ordering.</li>
+              </ul>
+            </li>
+            <li>Set up <strong>Home Maintenance Reminders</strong>:
+              <ul>
+                <li>Filter changes, boiler service, gutter cleaning, car MOT.</li>
+                <li>Auto-books appointments if you connect service providers.</li>
+              </ul>
+            </li>
+            <li>Create a <strong>Family Dashboard</strong>. Displayed on a kitchen tablet or TV: today's schedule, weather, reminders, and a rotating photo gallery.</li>
+          </ol>
+          <h3>Case Study: The Busy Family of Five</h3>
+          <p>The Hendersons—two working parents, three kids (ages 4, 8, 12)—were constantly overwhelmed. After setting up their Household Command Centre:</p>
+          <ul>
+            <li><strong>Calendar conflicts:</strong> Down 80%. The Avatar suggests alternative pickup arrangements before conflicts happen.</li>
+            <li><strong>Meal planning:</strong> Saves 3 hours/week. Grocery bill down 15% (less waste, better planning).</li>
+            <li><strong>School admin:</strong> Avatar tracks permission slips, project deadlines, and parent-teacher meetings.</li>
+            <li><strong>Home maintenance:</strong> No more missed boiler services or expired car MOTs.</li>
+          </ul>
+          <p>"It feels like we hired a family assistant," says Sarah Henderson. "But it costs less than Netflix."</p>
+          <h3>Framework: The Family Meeting Ritual</h3>
+          <p>Every Sunday evening, spend 15 minutes with your Avatar:</p>
+          <ol>
+            <li>Review the week's calendar. Flag conflicts.</li>
+            <li>Review the meal plan. Adjust for schedule changes.</li>
+            <li>Check the budget. Discuss any big expenses coming up.</li>
+            <li>Assign chores for the week. Avatar tracks completion.</li>
+            <li>Celebrate wins from the past week.</li>
+          </ol>
+          <p><strong>Pro Tip:</strong> Give children their own Avatar profiles (limited scope). They can ask homework questions, check chore lists, and log reading time.</p>`,
+          interaction: {
+            type: 'checkbox',
+            prompt: 'Which of the following are components of the Household Command Centre? Select all that apply.',
+            options: ['Family PKM with organised folders', 'Shared Calendar Agent', 'Meal Planning Agent', 'Home Maintenance Reminders', 'Family Dashboard', 'Stock Trading Bot'],
+            correct: [0, 1, 2, 3, 4]
+          }
+        },
+        {
+          title: "Goal Setting & OKRs",
+          content: `<h3>Turning Dreams into Plans</h3>
+          <p>Goals without systems are wishes. Your Avatar helps you set, track, and achieve meaningful objectives.</p>
+          <h3>The OKR Method</h3>
+          <ol>
+            <li><strong>Objective:</strong> A qualitative, inspirational goal. Example: "Become the healthiest version of myself."</li>
+            <li><strong>Key Results:</strong> 2–4 measurable outcomes. Example: "Run a 5K in under 25 minutes," "Sleep 7.5 hours average," "Meditate 5 days/week."</li>
+            <li><strong>Initiatives:</strong> The specific actions you take. Example: "Join a running club," "Set a 22:00 screen curfew."</li>
+          </ol>
+          <h3>Case Study: The OKR That Changed Everything</h3>
+          <p>Jamie, a product manager, set a vague New Year's resolution: "Get fit." By March, nothing had changed. After switching to OKRs with Avatar tracking:</p>
+          <ul>
+            <li><strong>Objective:</strong> "Become the healthiest version of myself."</li>
+            <li><strong>KR1:</strong> Run 5K in under 25 minutes by June 30. (Baseline: 35 minutes)</li>
+            <li><strong>KR2:</strong> Sleep 7.5 hours average. (Baseline: 5.8 hours)</li>
+            <li><strong>KR3:</strong> Meditate 5 days/week. (Baseline: 0 days)</li>
+          </ul>
+          <p>The Avatar checked in weekly, adjusted running plans based on progress, and sent bedtime reminders. By June: 5K in 24:12, sleep average 7.6 hours, meditation streak: 87 days.</p>
+          <h3>Step-by-Step: Quarterly OKR Planning</h3>
+          <ol>
+            <li>Reflect on last quarter. Ask the Avatar: "What did I achieve? What blocked me? What patterns do you see?"</li>
+            <li>Brainstorm 3–5 objectives for next quarter. Be ambitious but realistic.</li>
+            <li>For each objective, define 3 key results with numbers and deadlines.</li>
+            <li>Upload your OKRs to PKM. The Avatar links them to daily tasks and habits.</li>
+            <li>Set <strong>weekly check-ins</strong>. Every Sunday, the Avatar asks: "What progress did you make on each KR? What is the confidence score (0–10)?"</li>
+            <li>At mid-quarter, review and adjust. If a KR is off track, the Avatar suggests pivot strategies.</li>
+            <li>End-of-quarter: Full retrospective. Celebrate wins. Document lessons. Set next quarter's OKRs.</li>
+          </ol>
+          <h3>Life Areas to Set OKRs</h3>
+          <ul>
+            <li>Career &amp; Business</li>
+            <li>Health &amp; Fitness</li>
+            <li>Relationships &amp; Family</li>
+            <li>Learning &amp; Skills</li>
+            <li>Financial &amp; Wealth</li>
+            <li>Creativity &amp; Hobbies</li>
+            <li>Community &amp; Impact</li>
+          </ul>
+          <h3>Framework: The Confidence Score</h3>
+          <p>Every week, rate your confidence (0–10) that each Key Result will be achieved:</p>
+          <ul>
+            <li><strong>10:</strong> Guaranteed. No action needed.</li>
+            <li><strong>7–9:</strong> On track. Maintain current pace.</li>
+            <li><strong>4–6:</strong> At risk. Avatar suggests interventions.</li>
+            <li><strong>0–3:</strong> Off track. Consider pivoting or reducing scope.</li>
+          </ul>`,
+          flashcards: [
+            { q: "What does OKR stand for?", a: "Objectives and Key Results." },
+            { q: "How many Key Results should each Objective have?", a: "2–4 measurable outcomes." },
+            { q: "How often should you do weekly check-ins?", a: "Every Sunday." },
+            { q: "What does a confidence score of 4–6 mean?", a: "At risk. The Avatar suggests interventions." },
+            { q: "How many life areas are listed for OKRs?", a: "Seven." },
+            { q: "When should you review and adjust OKRs mid-quarter?", a: "At mid-quarter, if a KR is off track." }
+          ]
+        },
+        {
+          title: "Relationship Management",
+          content: `<h3>Staying Close to the People That Matter</h3>
+          <p>Relationships require intention. Your Avatar helps you remember birthdays, follow up on conversations, and deepen connections.</p>
+          <h3>Step-by-Step: Building a Relationship System</h3>
+          <ol>
+            <li>Create a <strong>People PKM</strong> folder. One note per important person.</li>
+            <li>For each person, capture:
+              <ul>
+                <li>Basics: birthday, family members, job, interests.</li>
+                <li>Last interaction: date, topic, next planned touchpoint.</li>
+                <li>Preferences: gift ideas, communication style, important dates.</li>
+                <li>Shared history: trips, projects, inside jokes.</li>
+              </ul>
+            </li>
+            <li>Set up <strong>reminders</strong>:
+              <ul>
+                <li>Birthday alerts 1 week before.</li>
+                <li>"You have not talked to [Name] in 30 days" nudges.</li>
+                <li>Post-event follow-ups: "Send thank-you note to Sarah for dinner."</li>
+              </ul>
+            </li>
+            <li>Use the Avatar for <strong>conversation prep</strong>. Before a call, ask: "What did we last discuss? What should I ask about?"</li>
+            <li>Enable <strong>gratitude logging</strong>. Each evening, note one thing you appreciate about someone. The Avatar compiles these into a monthly "gratitude letter."</li>
+          </ol>
+          <h3>Case Study: The Networker Who Landed the Dream Job</h3>
+          <p>Oliver, a marketing director, wanted to move to a CMO role. His Avatar helped him nurture 50 key relationships:</p>
+          <ul>
+            <li><strong>Weekly nudges:</strong> "You haven't spoken to Emma (CMO at TargetCo) in 45 days. Draft a check-in message?"</li>
+            <li><strong>Conversation prep:</strong> Before every coffee chat, Avatar surfaced last discussion topics and recent company news.</li>
+            <li><strong>Gratitude letters:</strong> Monthly personalised notes to mentors and allies.</li>
+          </ul>
+          <p>When a CMO role opened, 3 of his nurtured contacts recommended him. He got the job.</p>
+          <h3>Networking at Scale</h3>
+          <ul>
+            <li>Import your LinkedIn connections. The Avatar tags them by industry, location, and relationship strength.</li>
+            <li>Set a <strong>networking goal</strong>: "Reach out to 2 weak ties per week." The Avatar suggests who and drafts a personalised message.</li>
+            <li>After events, upload business cards or notes. The Avatar creates profiles and schedules follow-ups.</li>
+          </ul>
+          <h3>Framework: The Relationship Health Score</h3>
+          <p>Rate each important relationship quarterly:</p>
+          <ul>
+            <li><strong>Frequency:</strong> How often do you interact? (1–10)</li>
+            <li><strong>Depth:</strong> How meaningful are the conversations? (1–10)</li>
+            <li><strong>Reciprocity:</strong> Is it balanced give-and-take? (1–10)</li>
+            <li><strong>Trust:</strong> Would you share a vulnerability? (1–10)</li>
+          </ul>
+          <p>Any relationship scoring below 20/40 = needs attention.</p>`,
+          quiz: [
+            { q: "How far in advance should birthday alerts trigger?", options: ["1 day", "1 week", "1 month", "Same day"], correct: 1 },
+            { q: "What does gratitude logging compile into?", options: ["A todo list", "A monthly gratitude letter", "An invoice", "A calendar"], correct: 1 },
+            { q: "What is the recommended networking goal?", options: ["1 weak tie per month", "2 weak ties per week", "10 people per day", "Only strong ties"], correct: 1 },
+            { q: "What score indicates a relationship needs attention?", options: ["Below 40/40", "Below 30/40", "Below 20/40", "Below 10/40"], correct: 2 }
+          ],
+          passThreshold: 80
+        },
+        {
+          title: "Focus & Deep Work",
+          content: `<h3>Protecting Your Most Valuable Asset: Attention</h3>
+          <p>In a world of distraction, deep work is a superpower. Your Avatar defends your focus like a digital bodyguard.</p>
+          <h3>Step-by-Step: Deep Work System</h3>
+          <ol>
+            <li>Define your <strong>deep work hours</strong>. When are you naturally most focused? Block 2–4 hours daily.</li>
+            <li>Create a <strong>Focus Ritual</strong>:
+              <ul>
+                <li>Tell the Avatar: "I am entering deep work."</li>
+                <li>It enables Do Not Disturb across devices.</li>
+                <li>It updates your Slack status: "Deep work until 12:00. Urgent only."</li>
+                <li>It plays focus music or white noise if you prefer.</li>
+              </ul>
+            </li>
+            <li>Set a <strong>single objective</strong> for the session. Example: "Draft the Q3 strategy document." The Avatar blocks all unrelated suggestions.</li>
+            <li>Use the <strong>Pomodoro Agent</strong>: 25 min work → 5 min break. After 4 cycles, a 15-min break. The Avatar tracks cycles and nudges you to rest.</li>
+            <li>At session end, the Avatar asks: "What did you accomplish? What blockers remain?" It logs the answer for trend analysis.</li>
+          </ol>
+          <h3>Case Study: The Author Who Wrote a Book in 90 Days</h3>
+          <p>Dr. Patel, a professor writing her third book, struggled with fragmented attention. Her Avatar system:</p>
+          <ul>
+            <li><strong>Deep work blocks:</strong> 6:00–9:00 AM daily. Avatar enabled DND on all devices.</li>
+            <li><strong>Pomodoro tracking:</strong> Target 6 cycles (3 hours) minimum. Avatar celebrated streaks.</li>
+            <li><strong>Distraction audit:</strong> Weekly report of interruptions. She discovered Slack was her #1 killer.</li>
+            <li><strong>Accountability:</strong> Avatar posted daily word count to a private channel.</li>
+          </ul>
+          <p>Result: First draft completed in 87 days. Previous books took 8+ months.</p>
+          <h3>Attention Diet</h3>
+          <ul>
+            <li><strong>Notification audit:</strong> The Avatar lists all apps that pinged you this week. Suggest which to mute.</li>
+            <li><strong>Screen time review:</strong> Weekly summary of productive vs. distracting app usage.</li>
+            <li><strong>Context switching tracker:</strong> How often did you jump between tasks? The Avatar suggests batching strategies.</li>
+          </ul>
+          <h3>Framework: The Deep Work Score</h3>
+          <p>Rate each workday evening:</p>
+          <ul>
+            <li><strong>Duration:</strong> How many deep work hours? (Target: 3+)</li>
+            <li><strong>Quality:</strong> How focused were you? (1–10)</li>
+            <li><strong>Output:</strong> What did you produce?</li>
+            <li><strong>Distractions:</strong> How many interruptions? (Target: 0)</li>
+          </ul>
+          <p>Review weekly trends. Adjust your environment and schedule accordingly.</p>
+          <p><strong>Key Insight:</strong> Focus is not about willpower. It is about designing an environment where distraction is harder than work.</p>`,
+          interaction: {
+            type: 'textarea',
+            prompt: 'Design your ideal Focus Ritual. What time will you do deep work? What will your Avatar do when you say "I am entering deep work"? What is your single objective for tomorrow\'s first deep work session?',
+            placeholder: 'Time: 6:00–9:00 AM. Avatar actions: Enable DND, update Slack status, play brown noise. Tomorrow\'s objective: Draft project proposal executive summary.'
+          }
+        },
+        {
+          title: "30-Day Productivity Challenge",
+          content: `<h3>Transform Your Daily Operating System</h3>
+          <p>This challenge installs high-performance habits that compound over time. One month to a new you.</p>
+          <h3>Week 1: Capture & Clarify</h3>
+          <ol>
+            <li><strong>Day 1:</strong> Set up your Avatar's productivity profile. Define your philosophy and priorities.</li>
+            <li><strong>Day 2:</strong> Install capture tools: voice widget, browser extension, email forwarding.</li>
+            <li><strong>Day 3:</strong> Dump everything in your head into the Avatar. Tasks, ideas, worries, goals. Get to inbox zero in your brain.</li>
+            <li><strong>Day 4:</strong> Organise into projects and contexts. Use the PARA method.</li>
+            <li><strong>Day 5:</strong> Schedule your first week of deep work blocks. Protect them fiercely.</li>
+            <li><strong>Day 6:</strong> Set up morning and evening briefings.</li>
+            <li><strong>Day 7:</strong> Review the week. What felt easier? What still clunky?</li>
+          </ol>
+          <h3>Week 2: Execute & Optimise</h3>
+          <ol>
+            <li><strong>Day 8–10:</strong> Use the Pomodoro Agent daily. Track focus score.</li>
+            <li><strong>Day 11–12:</strong> Automate one recurring task (email triage, meeting prep, or report drafting).</li>
+            <li><strong>Day 13–14:</strong> Set your first quarterly OKR. Break it into weekly milestones.</li>
+          </ol>
+          <h3>Week 3: Integrate & Scale</h3>
+          <ol>
+            <li><strong>Day 15–17:</strong> Connect health and finance tracking. Review your first weekly dashboards.</li>
+            <li><strong>Day 18–19:</strong> Build your relationship system. Add 10 important people.</li>
+            <li><strong>Day 20–21:</strong> Plan a trip or major purchase using Avatar research. Experience the time savings.</li>
+          </ol>
+          <h3>Week 4: Reflect & Cement</h3>
+          <ol>
+            <li><strong>Day 22–24:</strong> Review all dashboards. Where did you improve? Where do you need more discipline?</li>
+            <li><strong>Day 25–27:</strong> Refine your Identity Model based on real usage. Add new values and boundaries.</li>
+            <li><strong>Day 28–29:</strong> Teach a family member or colleague to use one Avatar feature.</li>
+            <li><strong>Day 30:</strong> Write a letter to your future self. What did you learn? What will you maintain? Seal it with the Avatar to reopen in 90 days.</li>
+          </ol>
+          <h3>Success Metrics</h3>
+          <ul>
+            <li><strong>Deep work hours:</strong> Target 15+ per week by Day 30.</li>
+            <li><strong>Tasks captured:</strong> Target 100% capture rate (nothing stays in your head).</li>
+            <li><strong>Automations active:</strong> Target 3+ recurring tasks automated.</li>
+            <li><strong>OKR progress:</strong> Target 25%+ on your first quarterly OKR.</li>
+            <li><strong>Stress level:</strong> Self-rated 1–10. Aim for reduction.</li>
+          </ul>
+          <p><strong>Final Thought:</strong> Productivity is not doing more. It is doing what matters, consistently, with less friction.</p>`,
+          quiz: [
+            { q: "What should you define first in your productivity profile?", options: ["Your email password", "Your productivity philosophy", "Your favourite colour", "Your bank details"], correct: 1 },
+            { q: "What does the Pomodoro Agent track?", options: ["Sleep cycles", "Focus work cycles", "Meal times", "Email count"], correct: 1 },
+            { q: "How many key results should each objective have?", options: ["1", "2–4", "5–7", "10+"], correct: 1 },
+            { q: "What is the purpose of a gratitude log?", options: ["Track expenses", "Deepen relationships", "Plan meals", "Schedule meetings"], correct: 1 },
+            { q: "When should you review and adjust OKRs?", options: ["Daily", "Weekly", "Mid-quarter", "Only at year-end"], correct: 2 },
+            { q: "What is the target deep work hours per week by Day 30?", options: ["5+", "10+", "15+", "20+"], correct: 2 }
+          ],
+          passThreshold: 80
+        }
+      ]);
+    });
+  </script>
+</body>
+</html>
