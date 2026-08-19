@@ -26,9 +26,13 @@
     loadProgress() {
       const saved = localStorage.getItem(this.storageKey);
       if (saved) {
-        const data = JSON.parse(saved);
-        this.currentSegment = data.currentSegment || 0;
-        this.segmentStates = data.segmentStates || this.makeEmptyStates();
+        try {
+          const data = JSON.parse(saved);
+          this.currentSegment = Math.min(data.currentSegment || 0, this.totalSegments - 1);
+          this.segmentStates = data.segmentStates || this.makeEmptyStates();
+        } catch (e) {
+          this.segmentStates = this.makeEmptyStates();
+        }
       } else {
         this.segmentStates = this.makeEmptyStates();
       }
@@ -91,7 +95,9 @@
     renderSegment(idx) {
       const container = document.getElementById('segment-content');
       if (!container) return;
+      if (idx < 0 || idx >= this.totalSegments) { idx = 0; this.currentSegment = 0; }
       const seg = this.segments[idx];
+      if (!seg) return;
       const state = this.segmentStates[idx];
 
       let html = `<div class="segment-header"><span class="seg-num">Segment ${idx+1} of ${this.totalSegments}</span><h2>${seg.title}</h2></div>`;
