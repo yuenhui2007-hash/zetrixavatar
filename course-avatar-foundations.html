@@ -12,6 +12,19 @@
   <script src="js/nav.js?v=6" defer></script>
   <script src="js/course-engine.js?v=7" defer></script>
   <script src="js/theme.js?v=5" defer></script>
+  <script>
+    // Cache-bust: if the loaded engine is missing key methods, force reload
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        if (!window.CourseEngine || typeof CourseEngine.buildFeedback !== 'function') {
+          var s = document.createElement('script');
+          s.src = 'js/course-engine.js?v=' + Date.now();
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+      }, 100);
+    });
+  </script>
 </head>
 <body>
   <div class="course-layout">
