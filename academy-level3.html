@@ -237,6 +237,7 @@ if (!Academy.isLevelUnlocked(3)) {
 } else {
   Academy.initQuiz('quizForm', ['b','b','b','b','b'], 80, function(score) {
     Academy.markLevelCompleted(3, score);
+  setTimeout(function() { window.location.href = "academy-level4.html"; }, 2000);
     document.getElementById('nextLevelBtn').style.opacity = '1';
     document.getElementById('nextLevelBtn').style.pointerEvents = 'auto';
   });

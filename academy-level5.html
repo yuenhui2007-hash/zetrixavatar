@@ -294,6 +294,7 @@ if (!Academy.isLevelUnlocked(5)) {
   Academy.initQuiz('quizForm-exec', ['b','b','b'], 70, function(score){});
   Academy.initQuiz('quizForm', ['b','b','b','b','b','b','a','b','b','a'], 80, function(score) {
     Academy.markLevelCompleted(5, score);
+  setTimeout(function() { window.location.href = "academy-level6.html"; }, 2000);
     document.getElementById('nextLevelBtn').style.opacity = '1';
     document.getElementById('nextLevelBtn').style.pointerEvents = 'auto';
   });
