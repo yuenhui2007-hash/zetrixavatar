@@ -130,6 +130,12 @@
   const texts = el.dataset.texts ? JSON.parse(el.dataset.texts) : ['Master AI Across Every Domain'];
   let textIndex = 0, charIndex = 0, isDeleting = false;
 
+  // Ensure container shows full text
+  el.style.display = 'inline-block';
+  el.style.whiteSpace = 'nowrap';
+  el.style.overflow = 'visible';
+  el.parentElement.style.overflow = 'visible';
+
   function type() {
     const current = texts[textIndex];
     if (isDeleting) {
@@ -140,12 +146,12 @@
 
     let speed = isDeleting ? 40 : 80;
     if (!isDeleting && charIndex === current.length) {
-      speed = 2000;
+      speed = 2500;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       textIndex = (textIndex + 1) % texts.length;
-      speed = 500;
+      speed = 600;
     }
     setTimeout(type, speed);
   }
