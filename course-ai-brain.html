@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/styles.css?v=10">
   <link rel="stylesheet" href="css/course-engine.css?v=2">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=7" defer></script>
+  <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
 </head>
 <body>
@@ -506,19 +506,6 @@
         }
       ]);
     });
-  </script>
-<script id="course-engine-cache-bust">
-    (function(){
-      var check = function(){
-        var content = document.getElementById("segment-content");
-        if (content && content.innerHTML.trim() === "") {
-          localStorage.clear();
-          location.reload(true);
-        }
-      };
-      setTimeout(check, 500);
-      setTimeout(check, 1500);
-    })();
   </script>
 </body>
 </html>
