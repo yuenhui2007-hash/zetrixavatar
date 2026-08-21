@@ -345,5 +345,24 @@
       else if (user.email) document.getElementById('cert-recipient').textContent = user.email.split('@')[0];
     } catch(e) {}
   </script>
+<script>
+(function(){
+  // Force light mode on course pages — overrides theme.js
+  var html = document.documentElement;
+  html.setAttribute('data-theme', 'light');
+  html.classList.remove('dark');
+  // Inject highest-specificity style to ensure readable text
+  var style = document.createElement('style');
+  style.textContent = 'html[data-theme="light"] .segment-body,html[data-theme="light"] .segment-body p,html[data-theme="light"] .segment-body li,html[data-theme="light"] .segment-body h2,html[data-theme="light"] .segment-body h3,html[data-theme="light"] .segment-body h4,html[data-theme="light"] .segment-body strong,html[data-theme="light"] .segment-body em,html[data-theme="light"] .segment-header h2,html[data-theme="light"] .seg-num{color:#000!important;-webkit-text-fill-color:#000!important}html[data-theme="light"] .course-main{background:#fff!important}';
+  document.head.appendChild(style);
+  // Also watch for dynamically injected content
+  var observer = new MutationObserver(function(){
+    var els = document.querySelectorAll('.segment-body, .segment-body *, .segment-header h2');
+    els.forEach(function(el){ el.style.color = ''; el.style.webkitTextFillColor = ''; });
+  });
+  var sc = document.getElementById('segment-content');
+  if(sc) observer.observe(sc, {childList:true, subtree:true});
+})();
+</script>
 </body>
 </html>
