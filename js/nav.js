@@ -7,7 +7,7 @@
 
     var navHTML =
       '<div class="container nav-container">' +
-        '<a href="' + prefix + 'index.html" class="logo"><span class="logo-icon">🎓</span><span class="logo-text">Zetrix</span></a>' +
+        '<a href="' + prefix + 'index.html" class="logo"><img src="' + prefix + 'assets/logo-zetrix-new.jpg" alt="Zetrix" style="height:32px;vertical-align:middle;margin-right:8px;border-radius:4px;"></a>' +
         '<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>' +
         '<ul class="nav-menu" id="navMenu">' +
           '<li><a href="' + prefix + 'index.html" class="nav-link">AI Academy</a></li>' +
