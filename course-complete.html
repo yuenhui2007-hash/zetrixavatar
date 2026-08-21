@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Course Complete — Zetrix AI Academy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=10">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; }
 
+    /* ===== SCREEN VIEW ===== */
     .complete-page {
       min-height: 100vh;
       display: flex;
@@ -21,37 +19,9 @@
       color: white;
       text-align: center;
       padding: 40px 24px;
-      position: relative;
-      overflow: hidden;
     }
-    .complete-page::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      animation: floatBg 20s linear infinite;
-    }
-    @keyframes floatBg {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-60px); }
-    }
-    .complete-content {
-      position: relative;
-      z-index: 1;
-      max-width: 640px;
-      width: 100%;
-    }
-    .complete-badge {
-      font-size: 5rem;
-      margin-bottom: 24px;
-      animation: bounceIn 0.6s ease-out;
-    }
-    @keyframes bounceIn {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.05); }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); opacity: 1; }
-    }
+    .complete-content { max-width: 640px; width: 100%; }
+    .complete-badge { font-size: 5rem; margin-bottom: 24px; }
     .complete-title {
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
@@ -60,94 +30,59 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .complete-subtitle {
-      font-size: 1.15rem;
-      opacity: 0.85;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-    .complete-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .complete-stat { text-align: center; }
+    .complete-subtitle { font-size: 1.15rem; opacity: 0.85; margin-bottom: 32px; }
+    .complete-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; }
     .complete-stat-number { display: block; font-size: 2rem; font-weight: 800; color: #a5b4fc; }
     .complete-stat-label { font-size: 0.85rem; opacity: 0.7; }
-    .complete-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-    .complete-actions .btn {
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      border: none;
+    .complete-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn {
+      padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; cursor: pointer; border: none;
     }
     .btn-white { background: white; color: #3730a3; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
     .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; background: transparent; }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); }
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #a5b4fc;
-      animation: confetti-fall 3s linear infinite;
-      border-radius: 2px;
-    }
-    @keyframes confetti-fall {
-      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-    }
 
     /* ===== CERTIFICATE ===== */
-    .certificate-wrap {
-      margin: 0 auto;
-      max-width: 800px;
-    }
+    .certificate-wrap { margin: 0 auto; max-width: 850px; }
     .certificate-card {
-      background: #fff;
-      border-radius: 4px;
-      padding: 60px 50px;
-      color: #1e1b4b;
-      text-align: center;
+      background: linear-gradient(135deg, #fff 0%, #f8f6ff 50%, #fff 100%);
+      border-radius: 8px;
+      padding: 8px;
       position: relative;
       box-shadow: 0 25px 80px rgba(0,0,0,0.35);
     }
-    .certificate-card::before {
+    .certificate-inner {
+      border: 3px solid #6366f1;
+      border-radius: 6px;
+      padding: 50px 40px;
+      position: relative;
+      background: white;
+    }
+    .certificate-inner::before {
       content: '';
       position: absolute;
-      inset: 12px;
-      border: 2px solid #c7b299;
-      border-radius: 2px;
+      inset: 6px;
+      border: 1px solid #a5b4fc;
+      border-radius: 3px;
       pointer-events: none;
     }
-    .certificate-card::after {
-      content: '';
+    .corner {
       position: absolute;
-      inset: 18px;
-      border: 1px solid #e8dcc8;
-      border-radius: 1px;
-      pointer-events: none;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #6366f1;
+      z-index: 2;
     }
+    .corner-tl { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+    .corner-tr { top: -3px; right: -3px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: -3px; left: -3px; border-right: none; border-top: none; }
+    .corner-br { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+
     .cert-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 40px;
+      align-items: center;
+      margin-bottom: 30px;
       position: relative;
       z-index: 1;
     }
@@ -160,86 +95,81 @@
       color: #3730a3;
     }
     .cert-logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 40px; height: 40px;
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.3rem;
     }
-    .cert-stamp {
-      width: 90px;
-      height: 90px;
-      border: 3px solid #6366f1;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6366f1;
-      font-size: 0.7rem;
+    .cert-badge {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #1e1b4b;
+      font-size: 0.65rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      transform: rotate(-12deg);
-      opacity: 0.9;
+      padding: 8px 16px;
+      border-radius: 50px;
+      letter-spacing: 1.5px;
     }
+
     .cert-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: #1e1b4b;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       position: relative;
       z-index: 1;
     }
     .cert-label {
       font-size: 1rem;
       color: #64748b;
-      margin: 10px 0;
+      margin: 8px 0;
       position: relative;
       z-index: 1;
     }
     .cert-recipient {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: #1e1b4b;
-      margin: 16px 0;
+      color: #3730a3;
+      margin: 12px 0;
       padding: 8px 24px;
-      border-bottom: 2px solid #c7b299;
+      border-bottom: 3px solid #6366f1;
       display: inline-block;
-      min-width: 280px;
+      min-width: 300px;
       outline: none;
       position: relative;
       z-index: 1;
+      background: transparent;
     }
     .cert-recipient:focus {
-      border-bottom-color: #6366f1;
-      background: rgba(99,102,241,0.05);
+      background: rgba(99,102,241,0.08);
       border-radius: 4px 4px 0 0;
     }
+    .cert-recipient:empty::before {
+      content: 'Enter Your Name';
+      color: #a5b4fc;
+    }
     .cert-course {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #3730a3;
-      margin: 16px 0 8px;
+      color: #6366f1;
+      margin: 12px 0 6px;
       position: relative;
       z-index: 1;
     }
     .cert-details {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #64748b;
-      margin-top: 12px;
+      margin-top: 10px;
       position: relative;
       z-index: 1;
     }
     .cert-divider {
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #c7b299, #6366f1);
-      margin: 32px auto;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #6366f1, #a5b4fc, #6366f1);
+      margin: 28px auto;
       border-radius: 2px;
       position: relative;
       z-index: 1;
@@ -248,137 +178,135 @@
       display: flex;
       justify-content: space-around;
       align-items: flex-end;
-      margin-top: 48px;
-      padding-top: 24px;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
       position: relative;
       z-index: 1;
     }
-    .cert-sig {
-      text-align: center;
-      flex: 1;
-    }
+    .cert-sig { text-align: center; flex: 1; }
     .cert-sig-line {
-      width: 140px;
-      height: 1px;
-      background: #1e1b4b;
+      width: 130px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #1e1b4b, transparent);
       margin: 0 auto 10px;
     }
-    .cert-sig p {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1e1b4b;
-      margin: 0;
-    }
-    .cert-sig small {
-      font-size: 0.75rem;
-      color: #64748b;
-    }
+    .cert-sig p { font-size: 1rem; font-weight: 700; color: #1e1b4b; margin: 0; }
+    .cert-sig small { font-size: 0.75rem; color: #64748b; }
     .cert-seal {
-      width: 70px;
-      height: 70px;
+      width: 60px; height: 60px;
       background: linear-gradient(135deg, #fbbf24, #f59e0b);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 4px 12px rgba(251,191,36,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 15px rgba(251,191,36,0.4);
       flex-shrink: 0;
     }
+    .cert-date-section { text-align: center; flex: 1; }
+    .cert-date-section p { font-size: 0.95rem; font-weight: 600; color: #1e1b4b; margin: 0; }
+    .cert-date-section small { font-size: 0.75rem; color: #64748b; }
 
     @media (max-width: 640px) {
-      .certificate-card { padding: 40px 24px; }
-      .cert-title { font-size: 1.8rem; }
-      .cert-recipient { font-size: 1.8rem; min-width: 200px; }
-      .cert-footer { flex-wrap: wrap; gap: 24px; }
-      .cert-seal { order: -1; margin: 0 auto 16px; }
+      .certificate-inner { padding: 35px 20px; }
+      .cert-title { font-size: 1.7rem; }
+      .cert-recipient { font-size: 1.7rem; min-width: 220px; }
+      .cert-footer { flex-wrap: wrap; gap: 20px; }
+      .cert-seal { order: -1; margin: 0 auto 10px; }
     }
 
-    /* ===== PRINT STYLES ===== */
+    /* ===== PRINT: ONLY CERTIFICATE ===== */
     @media print {
       @page { margin: 0; size: auto; }
-      body { background: white; }
-      .complete-actions, .complete-badge, .complete-stats, .complete-title, .complete-subtitle, .confetti { display: none !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      html, body { background: white !important; height: 100%; }
+      .complete-badge, .complete-title, .complete-subtitle, .complete-stats, .complete-actions { display: none !important; }
       .complete-page {
-        background: white !important;
-        padding: 0 !important;
-        min-height: auto !important;
+        background: white !important; padding: 0 !important;
+        min-height: 100vh !important; display: flex !important;
+        align-items: center !important; justify-content: center !important;
       }
-      .complete-content { max-width: none !important; }
+      .complete-content { max-width: none !important; margin: 0 !important; width: 100% !important; padding: 20px !important; }
       .certificate-wrap { max-width: none !important; margin: 0 !important; }
       .certificate-card {
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        padding: 60px 50px !important;
-        page-break-inside: avoid;
+        box-shadow: none !important; border-radius: 0 !important;
+        padding: 0 !important; background: white !important;
       }
-      .certificate-card::before { inset: 16px !important; border-color: #c7b299 !important; }
-      .certificate-card::after { inset: 22px !important; border-color: #e8dcc8 !important; }
-      .cert-recipient { border-bottom-color: #c7b299 !important; }
+      .certificate-inner {
+        border: 3px solid #6366f1 !important; padding: 60px 50px !important;
+        page-break-inside: avoid; background: white !important;
+      }
+      .cert-recipient { color: #3730a3 !important; border-bottom-color: #6366f1 !important; }
     }
   </style>
 </head>
 <body>
-  <div class="complete-page" id="confetti-container">
+  <div class="complete-page">
     <div class="complete-content">
       <div class="complete-badge">🏆</div>
       <h1 class="complete-title">Congratulations!</h1>
-      <p class="complete-subtitle">You have successfully completed the <strong id="course-name">Avatar Foundations</strong> course. Your dedication to mastering AI is inspiring.</p>
+      <p class="complete-subtitle">You have successfully completed the <strong id="course-name">Avatar Foundations</strong> course.</p>
 
       <div class="complete-stats">
         <div class="complete-stat">
           <span class="complete-stat-number" id="stat-segments">10</span>
-          <span class="complete-stat-label">Segments Completed</span>
+          <span class="complete-stat-label">Segments</span>
         </div>
         <div class="complete-stat">
           <span class="complete-stat-number" id="stat-quizzes">3</span>
-          <span class="complete-stat-label">Quizzes Passed</span>
-        </div>
-        <div class="complete-stat">
-          <span class="complete-stat-number">100%</span>
-          <span class="complete-stat-label">Completion</span>
+          <span class="complete-stat-label">Quizzes</span>
         </div>
       </div>
 
       <div class="complete-actions">
-        <a href="index.html" class="btn btn-white">← Back to Academy</a>
+        <a href="index.html" class="btn btn-white">← Back</a>
         <button class="btn btn-outline" onclick="window.print()">🖨️ Print Certificate</button>
       </div>
 
-      <!-- CERTIFICATE -->
       <div class="certificate-wrap">
         <div class="certificate-card">
-          <div class="cert-header">
-            <div class="cert-logo">
-              <div class="cert-logo-icon">🤖</div>
-              <span>Zetrix AI Academy</span>
+          <div class="certificate-inner">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <div class="cert-header">
+              <div class="cert-logo">
+                <div class="cert-logo-icon">🤖</div>
+                <span>Zetrix AI Academy</span>
+              </div>
+              <div class="cert-badge">CERTIFIED</div>
             </div>
-            <div class="cert-stamp">CERTIFIED</div>
-          </div>
 
-          <div class="cert-title">Certificate of Completion</div>
+            <div class="cert-title">Certificate of Completion</div>
 
-          <p class="cert-label">This certifies that</p>
-          <p class="cert-recipient" id="cert-recipient" contenteditable="true" spellcheck="false">Enter Your Name</p>
-          <p class="cert-label">has successfully completed</p>
-          <p class="cert-course" id="cert-course">Avatar Foundations</p>
-          <p class="cert-details">
-            <span id="cert-segments">10</span> segments · <span id="cert-quizzes">3</span> quizzes passed · 100% completion
-          </p>
+            <p class="cert-label">This certifies that</p>
+            <p class="cert-recipient" id="cert-recipient" contenteditable="true" spellcheck="false">Enter Your Name</p>
+            <p class="cert-label">has successfully completed</p>
+            <p class="cert-course" id="cert-course">Avatar Foundations</p>
+            <p class="cert-details">
+              <span id="cert-segments">10</span> segments · <span id="cert-quizzes">3</span> quizzes passed · 100% completion
+            </p>
 
-          <div class="cert-divider"></div>
+            <div class="cert-divider"></div>
 
-          <div class="cert-footer">
-            <div class="cert-sig">
-              <div class="cert-sig-line"></div>
-              <p>Joshua</p>
-              <small>Founder, Zetrix AI Academy</small>
-            </div>
-            <div class="cert-seal">🏆</div>
-            <div class="cert-sig">
-              <div class="cert-sig-line"></div>
-              <p>Yuen Hui</p>
-              <small>Founder, Zetrix AI Academy</small>
+            <div class="cert-footer">
+              <div class="cert-sig">
+                <div class="cert-sig-line"></div>
+                <p>Joshua</p>
+                <small>Founder</small>
+              </div>
+              <div class="cert-date-section">
+                <div class="cert-sig-line"></div>
+                <p id="cert-date">21 August 2026</p>
+                <small>Date</small>
+              </div>
+              <div class="cert-seal">🏆</div>
+              <div class="cert-sig">
+                <div class="cert-sig-line"></div>
+                <p>Yuen Hui</p>
+                <small>Founder</small>
+              </div>
             </div>
           </div>
         </div>
@@ -399,33 +327,13 @@
     document.getElementById('cert-course').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     document.getElementById('cert-segments').textContent = segments;
     document.getElementById('cert-quizzes').textContent = quizzes;
-
-    const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('cert-date').textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
     try {
       const user = JSON.parse(localStorage.getItem('auth_user') || '{}');
-      if (user.name) {
-        document.getElementById('cert-recipient').textContent = user.name;
-      } else if (user.email) {
-        document.getElementById('cert-recipient').textContent = user.email.split('@')[0];
-      }
+      if (user.name) document.getElementById('cert-recipient').textContent = user.name;
+      else if (user.email) document.getElementById('cert-recipient').textContent = user.email.split('@')[0];
     } catch(e) {}
-
-    // Confetti
-    const container = document.getElementById('confetti-container');
-    const colors = ['#a5b4fc', '#818cf8', '#6366f1', '#34d399', '#fbbf24', '#f472b6'];
-    for (let i = 0; i < 40; i++) {
-      const c = document.createElement('div');
-      c.className = 'confetti';
-      c.style.left = Math.random() * 100 + '%';
-      c.style.animationDelay = Math.random() * 3 + 's';
-      c.style.animationDuration = (2 + Math.random() * 3) + 's';
-      c.style.background = colors[Math.floor(Math.random() * colors.length)];
-      c.style.width = (6 + Math.random() * 8) + 'px';
-      c.style.height = (6 + Math.random() * 8) + 'px';
-      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-      container.appendChild(c);
-    }
   </script>
 </body>
 </html>
