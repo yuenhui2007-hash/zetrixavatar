@@ -21,7 +21,10 @@
   }
   .tutor-page { padding: 100px 0 40px; background: var(--light); min-height: 100vh; }
   .tutor-container { max-width: 860px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; height: calc(100vh - 140px); }
-  .tutor-header { padding: 22px 28px; background: linear-gradient(135deg, #0f172a 0%, #3730a3 60%, #6366f1 100%); color: white; display: flex; align-items: center; gap: 14px; }
+  .tutor-header { padding: 22px 28px; background: linear-gradient(135deg, #0f172a 0%, #3730a3 60%, #6366f1 100%); color: white; display: flex; align-items: center; gap: 14px; position: relative; }
+  .extend-btn { margin-left: auto; background: rgba(255,255,255,0.15); border: none; color: white; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+  .extend-btn:hover { background: rgba(255,255,255,0.25); }
+  .tutor-container.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; max-width: 100vw; border-radius: 0; z-index: 9999; }
   .tutor-avatar { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
   .tutor-header h1 { font-size: 1.2rem; margin: 0; font-weight: 700; }
   .tutor-header p { font-size: 0.82rem; opacity: 0.85; margin: 3px 0 0; }
@@ -88,6 +91,7 @@
           <h1>Zetrix AI Academy Tutor</h1>
           <p>Your personal AI learning assistant for Zetrix Avatar, Zetrix Claw, and AI mastery.</p>
         </div>
+        <button class="extend-btn" id="extendBtn" title="Expand to fullscreen">⛶ Extend</button>
       </div>
 
       <div class="xp-bar" id="xpBar">
@@ -145,5 +149,13 @@
 <script src="js/tutor-zetrix.js"></script>
 <script src="js/mascot.js"></script>
 <script src="js/pwa.js"></script>
+<script>
+  const extendBtn = document.getElementById('extendBtn');
+  const tutorContainer = document.querySelector('.tutor-container');
+  extendBtn.addEventListener('click', () => {
+    tutorContainer.classList.toggle('fullscreen');
+    extendBtn.textContent = tutorContainer.classList.contains('fullscreen') ? '⛶ Shrink' : '⛶ Extend';
+  });
+</script>
 </body>
 </html>
