@@ -176,7 +176,7 @@
         if (idx < this.totalSegments - 1) {
           html += `<button class="btn btn-primary" onclick="CourseEngine.goTo(${idx+1})">Next →</button>`;
         } else {
-          html += '<a href="index.html" class="btn btn-primary">Finish Course →</a>';
+          html += `<a href="course-complete.html?course=${encodeURIComponent(this.courseId)}&segments=${this.totalSegments}&quizzes=${this.countQuizzes()}" class="btn btn-primary">Finish Course →</a>`;
         }
       } else {
         if (idx < this.totalSegments - 1) {
@@ -329,6 +329,10 @@
       this.currentSegment = idx;
       this.renderSegment(idx);
       this.renderSidebar();
+    },
+
+    countQuizzes() {
+      return this.segments.filter(s => s.quiz && s.quiz.length > 0).length;
     },
 
     initMatchOS() {

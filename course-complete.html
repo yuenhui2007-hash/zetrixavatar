@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Course Complete — Zetrix AI Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=10">
+  <style>
+    .complete-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #3730a3 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .complete-page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      animation: floatBg 20s linear infinite;
+    }
+    @keyframes floatBg {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-60px); }
+    }
+    .complete-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+    .complete-badge {
+      font-size: 5rem;
+      margin-bottom: 24px;
+      animation: bounceIn 0.6s ease-out;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .complete-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, #fff, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .complete-subtitle {
+      font-size: 1.15rem;
+      opacity: 0.85;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .complete-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .complete-stat {
+      text-align: center;
+    }
+    .complete-stat-number {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #a5b4fc;
+    }
+    .complete-stat-label {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .complete-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .complete-actions .btn {
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-white {
+      background: white;
+      color: #3730a3;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #a5b4fc;
+      animation: confetti-fall 3s linear infinite;
+      border-radius: 2px;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="complete-page" id="confetti-container">
+    <div class="complete-content">
+      <div class="complete-badge">🏆</div>
+      <h1 class="complete-title">Congratulations!</h1>
+      <p class="complete-subtitle">You have successfully completed the <strong id="course-name">Avatar Foundations</strong> course. Your dedication to mastering AI is inspiring.</p>
+
+      <div class="complete-stats">
+        <div class="complete-stat">
+          <span class="complete-stat-number" id="stat-segments">10</span>
+          <span class="complete-stat-label">Segments Completed</span>
+        </div>
+        <div class="complete-stat">
+          <span class="complete-stat-number" id="stat-quizzes">3</span>
+          <span class="complete-stat-label">Quizzes Passed</span>
+        </div>
+        <div class="complete-stat">
+          <span class="complete-stat-number">100%</span>
+          <span class="complete-stat-label">Completion</span>
+        </div>
+      </div>
+
+      <div class="complete-actions">
+        <a href="index.html" class="btn btn-white">← Back to Academy</a>
+        <a href="#" class="btn btn-outline" onclick="window.print(); return false;">🖨️ Print Certificate</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Parse URL params for course info
+    const params = new URLSearchParams(location.search);
+    const courseName = params.get('course') || 'Avatar Foundations';
+    const segments = params.get('segments') || '10';
+    const quizzes = params.get('quizzes') || '3';
+    document.getElementById('course-name').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById('stat-segments').textContent = segments;
+    document.getElementById('stat-quizzes').textContent = quizzes;
+
+    // Confetti
+    const container = document.getElementById('confetti-container');
+    const colors = ['#a5b4fc', '#818cf8', '#6366f1', '#34d399', '#fbbf24', '#f472b6'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.animationDelay = Math.random() * 3 + 's';
+      c.style.animationDuration = (2 + Math.random() * 3) + 's';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      container.appendChild(c);
+    }
+  </script>
+</body>
+</html>
