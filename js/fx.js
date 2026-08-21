@@ -133,9 +133,6 @@
 
   setInterval(() => {
     words[idx].classList.remove('active');
-    words[idx].classList.add('exit');
-    setTimeout(() => words[idx].classList.remove('exit'), 500);
-
     idx = (idx + 1) % words.length;
     words[idx].classList.add('active');
   }, 3000);
