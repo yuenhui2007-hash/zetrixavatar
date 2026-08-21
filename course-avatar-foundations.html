@@ -36,6 +36,12 @@
 </style>
 </head>
 <body>
+<script>
+  // FORCE LIGHT MODE — course pages always readable
+  document.documentElement.setAttribute("data-theme", "light");
+  document.documentElement.classList.remove("dark");
+  localStorage.setItem("theme", "light");
+</script>
   <div class="course-layout">
     <aside class="course-sidebar">
       <h3>Avatar Foundations</h3>
