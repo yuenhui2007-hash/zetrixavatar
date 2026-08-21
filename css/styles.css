@@ -429,6 +429,21 @@ img { max-width: 100%; display: block; }
     .notes-container { padding: 24px; }
 }
 
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+    background: rgba(99,102,241,0.1);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background .2s;
+    margin-left: 8px;
+}
+.theme-toggle:hover {
+    background: rgba(99,102,241,0.2);
+}
+
 /* ===== Mobile-First Enhancements ===== */
 
 /* Touch feedback */

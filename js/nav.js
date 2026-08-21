@@ -14,15 +14,17 @@
           '<li class="nav-dropdown">' +
             '<a href="#" class="nav-link nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle(\'open\');">Courses ▾</a>' +
             '<ul class="nav-dropdown-menu">' +
+              '<li style="padding:6px 14px 4px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#94a3b8;">Academy Courses</li>' +
               '<li><a href="' + prefix + 'course-ai-brain.html">AI Brain</a></li>' +
               '<li><a href="' + prefix + 'course-avatar-foundations.html">Avatar Foundations</a></li>' +
-              '<li><a href="' + prefix + 'course-sales-marketing.html">Sales & Marketing</a></li>' +
-              '<li><a href="' + prefix + 'course-business-automation.html">Business Automation</a></li>' +
               '<li><a href="' + prefix + 'course-ai-coding.html">AI Coding</a></li>' +
+              '<li><a href="' + prefix + 'course-sales-marketing.html">Sales & Marketing</a></li>' +
+              '<li><a href="' + prefix + 'course-personal-productivity.html">Personal Productivity</a></li>' +
+              '<li><a href="' + prefix + 'course-one-person-company.html">One-Person Company</a></li>' +
+              '<li style="padding:10px 14px 4px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#94a3b8;border-top:1px solid #e2e8f0;margin-top:4px;">Department Training</li>' +
+              '<li><a href="' + prefix + 'course-business-automation.html">Business Automation</a></li>' +
               '<li><a href="' + prefix + 'course-solution-architecture.html">Solution Architecture</a></li>' +
               '<li><a href="' + prefix + 'course-enterprise-deployment.html">Enterprise Deployment</a></li>' +
-              '<li><a href="' + prefix + 'course-one-person-company.html">One-Person Company</a></li>' +
-              '<li><a href="' + prefix + 'course-personal-productivity.html">Personal Productivity</a></li>' +
             '</ul>' +
           '</li>' +
           '<li><a href="' + prefix + 'tutor.html" class="nav-link">AI Tutor</a></li>' +
