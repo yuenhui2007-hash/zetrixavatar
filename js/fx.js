@@ -123,21 +123,6 @@
   counters.forEach(c => observer.observe(c));
 })();
 
-// ===== 3. PHRASE ROTATE EFFECT =====
-(function() {
-  const container = document.getElementById('phraseRotate');
-  if (!container) return;
-  const phrases = container.querySelectorAll('.hero-phrase');
-  if (!phrases.length) return;
-  let idx = 0;
-
-  setInterval(() => {
-    phrases[idx].classList.remove('active');
-    idx = (idx + 1) % phrases.length;
-    phrases[idx].classList.add('active');
-  }, 4000);
-})();
-
 // ===== 4. 3D TILT CARDS =====
 (function() {
   const cards = document.querySelectorAll('.tilt-3d');
