@@ -50,7 +50,7 @@
     var prefix = getPrefix();
     resultsDropdown.innerHTML = matches.map(function(m) {
       var href = prefix + 'subject.html?id=' + encodeURIComponent(m.subject);
-      return '<a href="' + href + '" style="display:block;padding:8px 16px;color:#e2e8f0;text-decoration:none;font-size:0.85rem;border-bottom:1px solid #334155;" onmouseover="this.style.background=\'#334155\'" onmouseout="this.style.background=\'transparent\'">' +
+      return '<a href="' + href + '" style="display:block;padding:8px 16px;color:#f0f0f0;text-decoration:none;font-size:0.85rem;border-bottom:1px solid #333333;" onmouseover="this.style.background=\'#333333\'" onmouseout="this.style.background=\'transparent\'">' +
         '<div style="font-weight:600;">' + (m.icon ? m.icon + ' ' : '') + m.title + '</div>' +
         '<div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">' + m.subjectName + ' · ' + m.code + '</div>' +
       '</a>';

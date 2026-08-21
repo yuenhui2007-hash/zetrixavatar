@@ -152,7 +152,7 @@
 }
 .subject-card:hover, .feature-card:hover, .dashboard-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25), 0 8px 16px -8px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px -10px rgba(255, 162, 0, 0.25), 0 8px 16px -8px rgba(0,0,0,0.1);
 }
 .subject-card:hover::before, .feature-card:hover::before, .dashboard-card:hover::before {
     opacity: 1;
@@ -178,7 +178,7 @@
     background: rgba(15, 23, 42, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(255, 162, 0, 0.15);
 }
 
 /* ===== Magnetic Button ===== */
@@ -255,13 +255,13 @@
 
 /* ===== Gradient Text ===== */
 .gradient-text {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+    background: linear-gradient(135deg, #FFA200 0%, #FFA200 50%, #a78bfa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .gradient-text-animated {
-    background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa, #6366f1);
+    background: linear-gradient(90deg, #FFA200, #FFA200, #a78bfa, #FFA200);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -304,7 +304,7 @@
     position: absolute;
     inset: -2px;
     border-radius: calc(var(--radius-xl) + 2px);
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa, #6366f1);
+    background: linear-gradient(135deg, #FFA200, #FFA200, #a78bfa, #FFA200);
     background-size: 300% 300%;
     animation: gradientRotate 4s ease infinite;
     z-index: -1;
@@ -345,7 +345,7 @@
 
 /* ===== Image Placeholder with Pattern ===== */
 .img-placeholder {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
     border-radius: var(--radius-lg);
     display: flex; align-items: center; justify-content: center;
     min-height: 200px;
@@ -428,13 +428,13 @@
 
 /* ===== Section Background Variants ===== */
 .bg-gradient-purple {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    background: linear-gradient(135deg, #000000 0%, #1e1b4b 50%, #000000 100%);
 }
 .bg-gradient-blue {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    background: linear-gradient(135deg, #000000 0%, #000000 50%, #000000 100%);
 }
 .bg-dots {
-    background-color: #0f172a;
+    background-color: #000000;
     background-image: radial-gradient(rgba(99,102,241,0.15) 1px, transparent 1px);
     background-size: 30px 30px;
 }

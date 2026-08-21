@@ -1177,13 +1177,13 @@ const Avatar = {
     const wrap = document.createElement('div');
     wrap.id = 'avatarWrap';
     wrap.innerHTML = `
-      <div id="avBubble" style="display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:10px;background:#1e293b;color:#fff;padding:8px 14px;border-radius:10px;font-size:0.8rem;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+      <div id="avBubble" style="display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:10px;background:#1a1a1a;color:#fff;padding:8px 14px;border-radius:10px;font-size:0.8rem;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
         <span id="avText">Hello!</span>
-        <div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid #1e293b;"></div>
+        <div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid #1a1a1a;"></div>
       </div>
-      <div id="avFace" style="width:64px;height:64px;background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 6px 20px rgba(99,102,241,0.4);cursor:pointer;transition:transform 0.2s;position:relative;">
+      <div id="avFace" style="width:64px;height:64px;background:linear-gradient(135deg,#FFA200 0%,#FFA200 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 6px 20px rgba(99,102,241,0.4);cursor:pointer;transition:transform 0.2s;position:relative;">
         🤖
-        <div id="avMouth" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:16px;height:6px;background:#1e293b;border-radius:0 0 16px 16px;transition:height 0.1s;"></div>
+        <div id="avMouth" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:16px;height:6px;background:#1a1a1a;border-radius:0 0 16px 16px;transition:height 0.1s;"></div>
       </div>
       <button id="avMute" style="position:absolute;top:-2px;right:-2px;width:22px;height:22px;border-radius:50%;background:#fff;border:none;box-shadow:0 1px 4px rgba(0,0,0,0.2);cursor:pointer;font-size:0.65rem;display:flex;align-items:center;justify-content:center;">🔊</button>
     `;
