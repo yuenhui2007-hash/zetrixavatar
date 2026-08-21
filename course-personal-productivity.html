@@ -411,23 +411,77 @@
             <li>End-of-quarter: Full retrospective. Celebrate wins. Document lessons. Set next quarter's OKRs.</li>
           </ol>
           <h3>Life Areas to Set OKRs</h3>
-          <ul>
-            <li>Career &amp; Business</li>
-            <li>Health &amp; Fitness</li>
-            <li>Relationships &amp; Family</li>
-            <li>Learning &amp; Skills</li>
-            <li>Financial &amp; Wealth</li>
-            <li>Creativity &amp; Hobbies</li>
-            <li>Community &amp; Impact</li>
-          </ul>
+          <p>Rate each area 1–10 to identify where to focus your next OKR cycle:</p>
+          <div class="okr-wheel" id="okrWheel">
+            <div class="wellness-item"><span class="wellness-label">Career &amp; Business</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Health &amp; Fitness</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Relationships &amp; Family</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Learning &amp; Skills</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Financial &amp; Wealth</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Creativity &amp; Hobbies</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Community &amp; Impact</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateOkr(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-total">Total: <span id="okrTotal">35</span> / 70 &nbsp;|&nbsp; Average: <span id="okrAvg">5.0</span> &nbsp;|&nbsp; Lowest: <span id="okrLowest" style="color:#dc2626">Career &amp; Business (5)</span></div>
+          </div>
+          <script>
+            function updateOkr(slider) {
+              const scoreEl = slider.nextElementSibling;
+              const val = parseInt(slider.value);
+              scoreEl.textContent = val;
+              scoreEl.className = 'wellness-score ' + (val < 5 ? 'low' : val < 8 ? 'mid' : 'high');
+              const items = document.querySelectorAll('#okrWheel .wellness-item');
+              let total = 0, lowestVal = 10, lowestName = '';
+              items.forEach(item => {
+                const s = item.querySelector('.wellness-slider');
+                const v = parseInt(s.value);
+                total += v;
+                if (v < lowestVal) { lowestVal = v; lowestName = item.querySelector('.wellness-label').textContent; }
+              });
+              document.getElementById('okrTotal').textContent = total;
+              document.getElementById('okrAvg').textContent = (total / 7).toFixed(1);
+              document.getElementById('okrLowest').textContent = lowestName + ' (' + lowestVal + ')';
+            }
+          </script>
+
           <h3>Framework: The Confidence Score</h3>
-          <p>Every week, rate your confidence (0–10) that each Key Result will be achieved:</p>
-          <ul>
-            <li><strong>10:</strong> Guaranteed. No action needed.</li>
-            <li><strong>7–9:</strong> On track. Maintain current pace.</li>
-            <li><strong>4–6:</strong> At risk. Avatar suggests interventions.</li>
-            <li><strong>0–3:</strong> Off track. Consider pivoting or reducing scope.</li>
-          </ul>`,
+          <p>Set your weekly confidence for a Key Result and see what it means:</p>
+          <style>
+            .confidence-tracker { max-width: 520px; margin: 16px 0; padding: 16px; background: #f8fafc; border-radius: 10px; }
+            .confidence-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; flex-wrap: wrap; }
+            .confidence-label { font-weight: 600; min-width: 120px; }
+            .confidence-slider { flex: 1; min-width: 140px; -webkit-appearance: none; appearance: none; height: 8px; border-radius: 4px; background: #e2e8f0; outline: none; }
+            .confidence-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #6366f1; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+            .confidence-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #6366f1; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+            .confidence-badge { padding: 4px 12px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
+            .confidence-badge.green { background: #dcfce7; color: #15803d; }
+            .confidence-badge.yellow { background: #fef9c3; color: #a16207; }
+            .confidence-badge.orange { background: #ffedd5; color: #c2410c; }
+            .confidence-badge.red { background: #fee2e2; color: #b91c1c; }
+            .confidence-meaning { font-size: 0.9rem; color: #475569; margin-top: 6px; flex-basis: 100%; }
+            @media (max-width: 480px) { .confidence-label { width: 100%; } }
+          </style>
+          <div class="confidence-tracker" id="confidenceTracker">
+            <div class="confidence-row">
+              <span class="confidence-label">Confidence Score</span>
+              <input type="range" class="confidence-slider" min="0" max="10" value="7" oninput="updateConfidence(this)">
+              <span class="confidence-badge green" id="confBadge">7 — On Track</span>
+              <div class="confidence-meaning" id="confMeaning">Maintain current pace. No action needed.</div>
+            </div>
+          </div>
+          <script>
+            function updateConfidence(slider) {
+              const val = parseInt(slider.value);
+              const badge = document.getElementById('confBadge');
+              const meaning = document.getElementById('confMeaning');
+              let text = '', cls = '', desc = '';
+              if (val === 10) { text = '10 — Guaranteed'; cls = 'green'; desc = 'No action needed. Keep doing what you're doing.'; }
+              else if (val >= 7) { text = val + ' — On Track'; cls = 'green'; desc = 'Maintain current pace. No action needed.'; }
+              else if (val >= 4) { text = val + ' — At Risk'; cls = 'orange'; desc = 'Avatar suggests interventions. Review your approach.'; }
+              else { text = val + ' — Off Track'; cls = 'red'; desc = 'Consider pivoting or reducing scope.'; }
+              badge.textContent = text;
+              badge.className = 'confidence-badge ' + cls;
+              meaning.textContent = desc;
+            }
+          </script>`,
           flashcards: [
             { q: "What does OKR stand for?", a: "Objectives and Key Results." },
             { q: "How many Key Results should each Objective have?", a: "2–4 measurable outcomes." },
