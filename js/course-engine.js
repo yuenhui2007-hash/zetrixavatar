@@ -339,23 +339,30 @@
       let selected = null, correct = 0, total = items.length;
       items.forEach(it => {
         it.addEventListener('click', function() {
-          items.forEach(x => x.style.background = '');
+          if (this.style.pointerEvents === 'none') return;
+          items.forEach(x => { if (x.style.pointerEvents !== 'none') x.style.background = ''; });
           selected = this;
           this.style.background = '#e0f0ff';
         });
       });
       targets.forEach(tg => {
         tg.addEventListener('click', function() {
-          if (!selected) return;
+          if (!selected || this.style.pointerEvents === 'none') return;
           if (selected.dataset.key === this.dataset.key) {
             this.style.background = '#d4edda';
             selected.style.background = '#d4edda';
             this.style.pointerEvents = 'none';
             selected.style.pointerEvents = 'none';
+            this.style.textDecoration = 'line-through';
+            selected.style.textDecoration = 'line-through';
+            this.style.opacity = '0.6';
+            selected.style.opacity = '0.6';
+            this.insertBefore(document.createTextNode('✓ '), this.firstChild);
+            selected.insertBefore(document.createTextNode('✓ '), selected.firstChild);
             correct++;
           } else {
             this.style.background = '#f8d7da';
-            setTimeout(() => this.style.background = '', 800);
+            setTimeout(() => { if (this.style.pointerEvents !== 'none') this.style.background = ''; }, 800);
           }
           selected = null;
           if (correct === total && result) {
@@ -373,23 +380,30 @@
       let selectedDoc = null, correct = 0, total = docs.length;
       docs.forEach(d => {
         d.addEventListener('click', function() {
-          docs.forEach(x => x.style.background = '');
+          if (this.style.pointerEvents === 'none') return;
+          docs.forEach(x => { if (x.style.pointerEvents !== 'none') x.style.background = ''; });
           selectedDoc = this;
           this.style.background = '#e0f0ff';
         });
       });
       folders.forEach(f => {
         f.addEventListener('click', function() {
-          if (!selectedDoc) return;
+          if (!selectedDoc || this.style.pointerEvents === 'none') return;
           if (selectedDoc.dataset.folder === this.dataset.folder) {
             this.style.background = '#d4edda';
             selectedDoc.style.background = '#d4edda';
             this.style.pointerEvents = 'none';
             selectedDoc.style.pointerEvents = 'none';
+            this.style.textDecoration = 'line-through';
+            selectedDoc.style.textDecoration = 'line-through';
+            this.style.opacity = '0.6';
+            selectedDoc.style.opacity = '0.6';
+            this.insertBefore(document.createTextNode('✓ '), this.firstChild);
+            selectedDoc.insertBefore(document.createTextNode('✓ '), selectedDoc.firstChild);
             correct++;
           } else {
             this.style.background = '#f8d7da';
-            setTimeout(() => this.style.background = '', 800);
+            setTimeout(() => { if (this.style.pointerEvents !== 'none') this.style.background = ''; }, 800);
           }
           selectedDoc = null;
           if (correct === total && result) {
