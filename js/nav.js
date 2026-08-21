@@ -11,6 +11,20 @@
         '<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>' +
         '<ul class="nav-menu" id="navMenu">' +
           '<li><a href="' + prefix + 'index.html" class="nav-link">AI Academy</a></li>' +
+          '<li class="nav-dropdown">' +
+            '<a href="#" class="nav-link nav-dropdown-toggle" onclick="event.preventDefault();this.parentElement.classList.toggle(\'open\');">Courses ▾</a>' +
+            '<ul class="nav-dropdown-menu">' +
+              '<li><a href="' + prefix + 'course-ai-brain.html">AI Brain</a></li>' +
+              '<li><a href="' + prefix + 'course-avatar-foundations.html">Avatar Foundations</a></li>' +
+              '<li><a href="' + prefix + 'course-sales-marketing.html">Sales & Marketing</a></li>' +
+              '<li><a href="' + prefix + 'course-business-automation.html">Business Automation</a></li>' +
+              '<li><a href="' + prefix + 'course-ai-coding.html">AI Coding</a></li>' +
+              '<li><a href="' + prefix + 'course-solution-architecture.html">Solution Architecture</a></li>' +
+              '<li><a href="' + prefix + 'course-enterprise-deployment.html">Enterprise Deployment</a></li>' +
+              '<li><a href="' + prefix + 'course-one-person-company.html">One-Person Company</a></li>' +
+              '<li><a href="' + prefix + 'course-personal-productivity.html">Personal Productivity</a></li>' +
+            '</ul>' +
+          '</li>' +
           '<li><a href="' + prefix + 'tutor.html" class="nav-link">AI Tutor</a></li>' +
         '</ul>' +
       '</div>';
