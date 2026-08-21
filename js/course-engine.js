@@ -189,6 +189,7 @@
 
       container.innerHTML = html;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.initMatchOS();
       this.initDragDropSort();
     },
 
@@ -328,6 +329,40 @@
       this.currentSegment = idx;
       this.renderSegment(idx);
       this.renderSidebar();
+    },
+
+    initMatchOS() {
+      const items = document.querySelectorAll('#match-os .match-item');
+      const targets = document.querySelectorAll('#match-os .match-target');
+      const result = document.getElementById('match-os-result');
+      if (!items.length || !targets.length) return;
+      let selected = null, correct = 0, total = items.length;
+      items.forEach(it => {
+        it.addEventListener('click', function() {
+          items.forEach(x => x.style.background = '');
+          selected = this;
+          this.style.background = '#e0f0ff';
+        });
+      });
+      targets.forEach(tg => {
+        tg.addEventListener('click', function() {
+          if (!selected) return;
+          if (selected.dataset.key === this.dataset.key) {
+            this.style.background = '#d4edda';
+            selected.style.background = '#d4edda';
+            this.style.pointerEvents = 'none';
+            selected.style.pointerEvents = 'none';
+            correct++;
+          } else {
+            this.style.background = '#f8d7da';
+            setTimeout(() => this.style.background = '', 800);
+          }
+          selected = null;
+          if (correct === total && result) {
+            result.textContent = '✅ Perfect! You matched all components correctly.';
+          }
+        });
+      });
     },
 
     initDragDropSort() {
