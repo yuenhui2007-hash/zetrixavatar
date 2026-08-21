@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -185,14 +185,7 @@
             <li><strong>G – Generate fix:</strong> Apply the smallest possible patch.</li>
           </ul>
           <p><strong>Golden Rule:</strong> Never blindly apply AI-suggested fixes. Always understand the root cause before patching.</p>`,
-          quiz: [
-            { q: "What should you always do before applying an AI-suggested fix?", options: ["Deploy immediately", "Understand the root cause", "Delete the old code", "Restart the server"], correct: 1 },
-            { q: "What does the 'B' in DEBUG stand for?", options: ["Build hypotheses", "Break things", "Backup code", "Buy coffee"], correct: 0 },
-            { q: "Which technique compares code changes to find bugs?", options: ["Log analysis", "Diff debugging", "Replay debugging", "Performance profiling"], correct: 1 },
-            { q: "How long did the ShopFast outage last?", options: ["2 minutes", "12 minutes", "1 hour", "4 hours"], correct: 1 }
-          ,
-            { q: "How does AI help with debugging?", options: ["By deleting buggy code", "By suggesting fixes and explaining errors", "By ignoring warnings", "By changing the programming language"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "List", "right": "Ordered, mutable collection"}, {"left": "Dictionary", "right": "Key-value pairs mapping"}, {"left": "Tuple", "right": "Ordered, immutable collection"}, {"left": "Set", "right": "Unordered unique elements"}]}
         },
         {
           title: "AI Code Review",
@@ -448,14 +441,7 @@
             <li><strong>Level 4 – Optimised:</strong> Security is part of design. Threat modelling for every feature.</li>
           </ul>
           <p><strong>Pro Tip:</strong> Keep a "security runbook" in your PKM. When the Avatar flags an issue, the runbook tells your team exactly how to respond.</p>`,
-          quiz: [
-            { q: "Which vulnerability involves untrusted data in unserialize()?", options: ["SQL Injection", "XSS", "Insecure Deserialization", "CSRF"], correct: 2 },
-            { q: "How often should you schedule a security audit?", options: ["Daily", "Weekly", "Monthly", "Yearly"], correct: 2 },
-            { q: "What must be resolved before merging a PR?", options: ["Low issues", "Medium issues", "Critical and High issues", "All issues"], correct: 2 },
-            { q: "What is the highest level of the Security Maturity Model?", options: ["Reactive", "Defined", "Proactive", "Optimised"], correct: 3 }
-          ,
-            { q: "What is a fundamental security best practice?", options: ["Use simple passwords", "Never validate user input", "Implement authentication and authorisation", "Share API keys publicly"], correct: 2 }],
-          passThreshold: 80
+          assessment: {"type": "fillblank", "instruction": "Complete the Python function concepts.", "text": "A function in Python is defined using the {blank} keyword. The {blank} statement returns a value. {blank} arguments have default values.", "answers": [["def"], ["return"], ["Keyword", "keyword"]]}
         },
         {
           title: "30-Day Coding Challenge",

@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -249,14 +249,7 @@
             <li>Document <strong>failure modes</strong>. When the agent gets it wrong, save the input and expected output in a "Agent QA" PKM folder. Feed these back into prompt refinement.</li>
             <li>Version your agents. Name them "Report-Agent-v1.2" so you can roll back if a change breaks performance.</li>
           </ul>`,
-          quiz: [
-            { q: "According to the NexaHealth case study, how much time did clinical documentation take before automation?", options: ["5 minutes", "10 minutes", "20 minutes", "30 minutes"], correct: 2 },
-            { q: "What does the 'I' in the Agent Design Canvas stand for?", options: ["Inputs", "Identity", "Instructions", "Integration"], correct: 1 },
-            { q: "How many test runs are recommended for consistency before publishing an agent?", a: "5+ test runs" },
-            { q: "Which of these is a bad agent name?", options: ["Q3-Report-Generator", "Meeting-Scribe-v2", "Agent 1", "Client-Follow-Up"], correct: 2 },
-            { q: "What format did the Clinical Scribe Agent use for notes?", options: ["APA", "SOAP", "MLA", "JSON"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Bottleneck", "right": "Step that limits overall throughput"}, {"left": "Trigger", "right": "Event that starts a workflow"}, {"left": "Action", "right": "Task performed automatically"}, {"left": "Condition", "right": "Decision point in a workflow"}]}
         },
         {
           title: "Employee Onboarding Automation",
@@ -777,14 +770,7 @@
             <li><strong>Share your wins:</strong> When your team sees you leaving on time, they'll ask how. Teach them. Automation scales through people.</li>
           </ul>
           <p><strong>Remember:</strong> Automation is not about replacing humans. It is about removing drudgery so humans can think, create, and lead. Your brain is for decisions, not data entry.</p>`,
-          quiz: [
-            { q: "How many hours per week did Sarah save after the 30-day challenge?", options: ["4 hours", "8 hours", "10 hours", "14 hours"], correct: 3 },
-            { q: "What is the formula for ranking tasks in Week 1?", options: ["Frequency + Time + Pain", "Frequency × Time × Pain", "Frequency ÷ Time × Pain", "Time × Pain only"], correct: 1 },
-            { q: "When should you remove a human approval gate?", options: ["After 3 runs", "After 5 runs", "After 10+ flawless runs", "Immediately"], correct: 2 },
-            { q: "What is the Week 4 target for workflow accuracy?", options: [">70%", ">80%", ">90%", "100%"], correct: 2 },
-            { q: "Which mindset shift is recommended for the challenge?", options: ["Automate everything perfectly before launching", "Start small and stack wins", "Never share workflows with your team", "Remove all human oversight immediately"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "sequencing", "instruction": "Order the steps to create a Zap.", "items": ["Choose a trigger app and event", "Test the trigger to pull sample data", "Choose an action app and event", "Map fields from trigger to action", "Turn on the Zap and monitor"], "correctOrder": [0, 1, 2, 3, 4]}
         }
       ]);
     });

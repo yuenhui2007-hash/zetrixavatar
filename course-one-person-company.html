@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -118,14 +118,7 @@
             <li>Content performance (views, clicks, conversions)</li>
           </ul>
           <p>Format: 5-bullet voice message. Time: 2 minutes. Impact: complete situational awareness before you start work.</p>`,
-          quiz: [
-            { q: "What is the FIRST step in setting up your Avatar as a co-founder?", options: ["Grant tool access","Create a dedicated 'Business' Avatar with a mission statement","Define escalation rules","Set up the morning briefing"], correct: 1 },
-            { q: "What does the Avatar do as Chief Marketing Officer?", options: ["Manages schedules","Drafts blog posts, social captions, and email newsletters","Tracks revenue and expenses","Answers customer FAQs"], correct: 1 },
-            { q: "How long should a morning briefing voice message be?", options: ["30 seconds","1 minute","2 minutes","5 minutes"], correct: 2 },
-            { q: "What format should the morning briefing use?", options: ["10-bullet email","5-bullet voice message","Video call","Spreadsheet report"], correct: 1 },
-            { q: "What should escalation rules specify?", options: ["When the Avatar should notify you immediately","How to write emails","Which colors to use in branding","Daily posting schedule"], correct: 0 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Sole Proprietorship", "right": "Simplest, unlimited liability"}, {"left": "LLC", "right": "Limited liability, flexible taxation"}, {"left": "S-Corp", "right": "Pass-through taxation, salary requirements"}, {"left": "C-Corp", "right": "Double taxation, easiest to raise capital"}]}
         },
         {
           title: "Automating Customer Acquisition",
@@ -214,14 +207,7 @@
             <li><strong>Pricing Research:</strong> "What do competitors charge? What pricing model maximises revenue per customer?"</li>
           </ul>
           <p><strong>Remember:</strong> The Avatar accelerates execution. But YOU must decide the vision. Never outsource strategy to AI.</p>`,
-          quiz: [
-            { q: "What is the first stage of the product development cycle?", options: ["Launch", "Ideation", "Creation", "Iteration"], correct: 1 },
-            { q: "How many days should an MVP sprint take?", options: ["7 days", "14 days", "30 days", "90 days"], correct: 1 },
-            { q: "What validates demand before building?", options: ["A landing page with a 'Buy Now' button", "A focus group", "A patent filing", "A team of developers"], correct: 0 },
-            { q: "What should you never outsource to AI?", options: ["Writing emails", "Customer support", "Strategy", "Data entry"], correct: 2 },
-            { q: "Which platform is mentioned for hosting digital products?", options: ["Shopify", "Gumroad or Podia", "AWS", "WordPress"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "fillblank", "instruction": "Complete the financial terms.", "text": "Revenue minus expenses equals {blank}. Fixed costs remain {blank} regardless of sales volume. {blank} margin shows profitability per unit sold.", "answers": [["profit", "net income"], ["constant", "the same", "unchanged"], ["Gross", "gross profit"]]}
         },
         {
           title: "Content Marketing Engine",
@@ -314,14 +300,7 @@
             <li><strong>Timeline:</strong> "When do you need this completed?"</li>
           </ul>
           <p>If the prospect answers all four positively, the Avatar books the call. If not, it nurtures them with content until they are ready.</p>`,
-          quiz: [
-            { q: "What does BANT stand for?", options: ["Budget, Authority, Need, Timeline", "Build, Analyse, Nurture, Target", "Brand, Audience, Network, Traffic", "Business, Analytics, Numbers, Trends"], correct: 0 },
-            { q: "How many touchpoints are recommended in a follow-up sequence?", options: ["1–2", "3–5", "7–10", "15+"], correct: 1 },
-            { q: "What should Message 1 of the sequence be?", options: ["A hard sales pitch", "A connection request with a personalised note", "A discount offer", "A meeting request"], correct: 1 },
-            { q: "When should the Avatar book a sales call?", options: ["Immediately after first contact", "After positive BANT answers", "Only on Fridays", "Never—the human should always book"], correct: 1 },
-            { q: "What is the goal of Message 5?", options: ["Close the deal", "Final follow-up with graceful exit", "Send an invoice", "Request a referral"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "truefalse", "statements": [{"text": "A handshake agreement is legally binding in most jurisdictions.", "correct": true}, {"text": "You do not need contracts for small projects.", "correct": false}, {"text": "Intellectual property rights transfer automatically when you hire a contractor.", "correct": false}, {"text": "Keeping business and personal finances separate protects your liability shield.", "correct": true}], "passThreshold": 75}
         },
         {
           title: "Operations & Finance",
@@ -427,14 +406,7 @@
             <li><strong>Analytics:</strong> Tracks cohort retention, churn rates, and lifetime value.</li>
           </ul>
           <p><strong>Pro Tip:</strong> The moment a task repeats 3 times, document it and delegate it to the Avatar. Your time is for strategy and creation only.</p>`,
-          quiz: [
-            { q: "What is the first rung of the product ladder?", options: ["Premium service","Core product","Free lead magnet","Subscription"], correct: 2 },
-            { q: "What price range is the 'core product' tier?", options: ["$10-50","$100-500","$1,000-5,000","$10,000+"], correct: 1 },
-            { q: "What was Elena's first product?", options: ["A course","A Figma plugin","A UI kit","A community"], correct: 2 },
-            { q: "How much recurring revenue did Elena generate?", options: ["$4,500/month","$8,700/month","$13,200/month","$19,800/month"], correct: 2 },
-            { q: "When should you delegate a task to the Avatar?", options: ["After the first time","After it repeats 3 times","Only on Fridays","Never—do everything yourself"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "scenario", "scenario": "You are a solo consultant with 20 hours/week for client work. You currently spend 10 hours/week on admin and marketing. Your pipeline is drying up.", "question": "What is the best immediate action?", "options": ["Hire a full-time assistant", "Raise prices to work fewer hours", "Automate repetitive tasks and focus marketing on one channel", "Take on any project to fill the gap"], "correct": 2, "explanation": "Automation frees up time. Focusing on one marketing channel is more effective for a solo operator than scattered efforts."}
         },
         {
           title: "Legal & Compliance",

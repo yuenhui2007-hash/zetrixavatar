@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Avatar Deployment — Zetrix AI Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -111,14 +111,7 @@
             <li><strong>Data handling:</strong> Retention policies, deletion procedures, backup encryption.</li>
             <li><strong>Incident response:</strong> SLA for breach notification, escalation procedures.</li>
           </ol>`,
-          quiz: [
-            { q: "Which regulation applies specifically to US healthcare data?", options: ["GDPR", "CCPA", "HIPAA", "PCI DSS"], correct: 2 },
-            { q: "What does SOC 2 Type II certify?", options: ["Financial accuracy", "Security controls over time", "Environmental standards", "Product quality"], correct: 1 },
-            { q: "Which country requires personal data to be stored domestically under PIPL?", options: ["Germany", "China", "Brazil", "Canada"], correct: 1 },
-            { q: "What encryption standard is used for data at rest?", options: ["DES", "AES-256", "MD5", "SHA-1"], correct: 1 }
-          ,
-            { q: "Which standard is commonly required for enterprise data protection?", options: ["ISO 9001", "GDPR / SOC 2", "IEEE 802.11", "HTML5"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Blue-Green", "right": "Two identical environments, instant switch"}, {"left": "Canary", "right": "Gradual rollout to subset of users"}, {"left": "Rolling", "right": "Replace instances one by one"}, {"left": "A/B Testing", "right": "Compare versions with real users"}]}
         },
         {
           title: "SSO & Identity Integration",
@@ -306,14 +299,7 @@
             <li><strong>Resolve:</strong> Apply fix. Verify with client.</li>
             <li><strong>Post-Mortem:</strong> Within 48 hours, deliver a root cause analysis and prevention steps.</li>
           </ol>`,
-          quiz: [
-            { q: "How many minutes of downtime per month are allowed under 99.99% SLA?", options: ["438", "43.8", "4.38", "0.438"], correct: 2 },
-            { q: "Which tier includes a dedicated CSM and on-call engineer?", options: ["Standard", "Business", "Enterprise", "Free"], correct: 2 },
-            { q: "How often should P1 incident updates be sent?", options: ["Every 5 minutes", "Every 30 minutes", "Every 24 hours", "Weekly"], correct: 1 },
-            { q: "What must be delivered within 48 hours of a P1 incident resolution?", options: ["Invoice", "Root cause analysis", "New contract", "Marketing materials"], correct: 1 }
-          ,
-            { q: "What does SLA typically define?", options: ["Software features only", "Service level commitments and response times", "Employee salaries", "Office locations"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "sequencing", "instruction": "Order the CI/CD pipeline stages.", "items": ["Code commit triggers the pipeline", "Automated tests run (unit, integration)", "Build artifacts are created", "Security scanning checks for vulnerabilities", "Deployment to staging environment", "Manual approval for production deployment", "Deployment to production with monitoring"], "correctOrder": [0, 1, 2, 3, 4, 5, 6]}
         },
         {
           title: "Deployment Patterns",
@@ -493,14 +479,7 @@
             <li>Verify document permissions match current org structure.</li>
             <li>Update blocklists and guardrails based on new risks.</li>
           </ol>`,
-          quiz: [
-            { q: "Which role has full platform access including tenant management?", options: ["Admin", "Analyst", "Super Admin", "Content Manager"], correct: 2 },
-            { q: "How often should API keys be rotated?", options: ["30 days", "60 days", "90 days", "1 year"], correct: 2 },
-            { q: "What prevents the avatar from answering certain topics regardless of role?", options: ["SSO", "Blocklists", "API keys", "Encryption"], correct: 1 },
-            { q: "How often should a governance review be conducted?", options: ["Monthly", "Quarterly", "Annually", "Never"], correct: 1 }
-          ,
-            { q: "What is the purpose of governance in enterprise AI?", options: ["To slow down development", "To ensure compliance and manage risk", "To increase costs", "To eliminate testing"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "truefalse", "statements": [{"text": "SLA defines the minimum acceptable uptime percentage.", "correct": true}, {"text": "SLI is the business agreement with customers.", "correct": false}, {"text": "SLO is the target reliability goal.", "correct": true}, {"text": "Alert fatigue occurs when teams receive too many non-actionable alerts.", "correct": true}], "passThreshold": 75}
         },
         {
           title: "30-Day Deployment Challenge",

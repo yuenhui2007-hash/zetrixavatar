@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -225,14 +225,7 @@
 
           <h3>Case Study: Marketo's Lead Scoring Evolution</h3>
           <p>Marketing automation pioneer Marketo discovered that their original scoring model overvalued email opens (+5 points each). A lead could reach "hot" status just by opening emails without ever visiting the website. They adjusted to weight website behaviour 3x higher than email engagement. MQL-to-SQL conversion improved from 12% to 28%.</p>`,
-          quiz: [
-            { q: "In BANT qualification, what does the 'N' stand for?", options: ["Network", "Need", "Negotiation", "Number of users"], correct: 1 },
-            { q: "What behaviour combination did Salesforce find converts at 4x baseline?", options: ["Email open + social click", "Pricing page visit + implementation guide view", "Webinar attendance + blog read", "Ad click + landing page visit"], correct: 1 },
-            { q: "What score range indicates a hot lead in the standard model?", options: ["0–30", "31–60", "61–100", "100+"], correct: 2 },
-            { q: "Why did Marketo reduce the weight of email opens in their scoring model?", options: ["Opens are too easy to fake", "Leads reached 'hot' without website engagement", "Email platforms stopped tracking opens", "It was technically difficult to measure"], correct: 1 },
-            { q: "What is the minimum score threshold for warm leads?", options: ["10", "20", "31", "50"], correct: 2 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Prospecting", "right": "Identifying potential customers"}, {"left": "Qualifying", "right": "Determining if a lead is worth pursuing"}, {"left": "Closing", "right": "Securing the commitment"}, {"left": "Nurturing", "right": "Building long-term relationships"}]}
         },
         {
           title: "Content Cascade Strategy",
@@ -563,14 +556,7 @@
 
           <h3>Case Study: Duolingo's TikTok Strategy</h3>
           <p>Language app Duolingo has 13M+ TikTok followers. Their secret? They do not post language lessons. They post absurdist comedy featuring their owl mascot. One video (the owl stalking Dua Lipa) hit 50M views. Their social team has full creative freedom—no approval process. Lesson: let your social team take risks. Boring brands get scrolled past.</p>`,
-          quiz: [
-            { q: "According to the 5-3-2 Rule, how many of every 10 posts should be personal?", options: ["2", "3", "5", "8"], correct: 0 },
-            { q: "What does LinkedIn's algorithm prioritise over likes?", options: ["Shares", "Comments", "Saves", "Views"], correct: 1 },
-            { q: "What is Duolingo's TikTok content strategy?", options: ["Language lessons", "Educational tips", "Absurdist comedy with their mascot", "User testimonials"], correct: 2 },
-            { q: "What was Wendy's viral tweet strategy?", options: ["Posting discounts", "Roasting competitors with wit", "Sharing recipes", "Customer service replies"], correct: 1 },
-            { q: "In the Hook-Story-Offer structure, what does the Hook do?", options: ["Provides a CTA", "Creates a pattern interrupt", "Shares a testimonial", "Lists features"], correct: 1 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "sequencing", "instruction": "Order the marketing funnel stages correctly.", "items": ["Awareness - Customer learns about your product", "Interest - Customer explores features and benefits", "Consideration - Customer compares with alternatives", "Conversion - Customer makes a purchase", "Retention - Customer becomes a repeat buyer"], "correctOrder": [0, 1, 2, 3, 4]}
         },
         {
           title: "Campaign Launch Playbook",
@@ -808,14 +794,7 @@
           </ol>
 
           <p><strong>Final Thought:</strong> Marketing is a system, not an event. Build the machine, then feed it consistently. The 30-day challenge is the ignition. The weekly ritual is the fuel.</p>`,
-          quiz: [
-            { q: "What is the target word count for the Day 5 pillar content piece?", options: ["500 words", "1,000 words", "2,000 words", "5,000 words"], correct: 2 },
-            { q: "What framework should you use for landing page copy on Day 8?", options: ["AIDA", "PAS", "COPY", "BANT"], correct: 1 },
-            { q: "How much should you spend daily on your first paid campaign (Day 18)?", options: ["£10", "£25", "£50", "£100"], correct: 2 },
-            { q: "What is the minimum duration for an A/B test (Day 21)?", options: ["12 hours", "24 hours", "48 hours", "1 week"], correct: 2 },
-            { q: "What is the industry average landing page conversion rate mentioned?", options: ["0.5%", "1.5%", "2.35%", "5%"], correct: 2 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "fillblank", "instruction": "Complete the CRM best practices.", "text": "Always {blank} contact information after each interaction. Use {blank} to track where leads come from. Set {blank} to follow up with prospects promptly.", "answers": [["update"], ["tags", "source tags"], ["reminders", "alerts", "notifications"]]}
         }
       ]);
     });

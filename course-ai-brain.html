@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -70,14 +70,7 @@
             <li><strong>Minutes 9–10:</strong> Move processed items to their permanent folder. Inbox = empty.</li>
           </ul>
           <p><strong>Golden Rule:</strong> Capture without judgment, process with intention, retrieve with precision.</p>`,
-          quiz: [
-            { q: "What are the four layers of the PKM Pyramid?", options: ["Capture, Process, Retrieve, Create", "Read, Write, Edit, Delete", "Upload, Tag, Search, Share", "Plan, Do, Check, Act"], correct: 0 },
-            { q: "Which layer involves writing your own insights and summaries?", options: ["Capture", "Process", "Retrieve", "Create"], correct: 1 },
-            { q: "How long should the daily Capture Ritual take?", options: ["5 minutes", "10 minutes", "30 minutes", "1 hour"], correct: 1 },
-            { q: "What should your Inbox look like after the ritual?", options: ["Full of unprocessed items", "Empty", "Sorted by date", "Alphabetical"], correct: 1 }
-          ,
-            { q: "What is the Golden Rule of PKM?", options: ["Capture without judgment, process with intention, retrieve with precision", "Store everything, search later", "Only capture important information", "Process immediately after capture"], correct: 0 }],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Capture Layer", "right": "Raw inputs like notes and clippings"}, {"left": "Process Layer", "right": "Distilled notes with insights"}, {"left": "Retrieve Layer", "right": "Structured folders and linked docs"}, {"left": "Create Layer", "right": "Reports, emails, presentations"}]}
         },
         {
           title: "Document Upload Workflows",
@@ -303,14 +296,7 @@
             <li>Pacing – Is the speed natural?</li>
           </ol>
           <p>Any score below 7 = retrain that dimension.</p>`,
-          quiz: [
-            { q: "How many voice samples are recommended for advanced training?", options: ["1", "2", "3–4", "10+"], correct: 2 },
-            { q: "What feature lets the Avatar choose the right tone automatically?", options: ["Voice Cloning", "Context-Aware Voice Selection", "Speed Control", "Filler Word Injection"], correct: 1 },
-            { q: "Which dimension measures whether the voice sounds like you?", options: ["Clarity", "Likeness", "Appropriateness", "Pacing"], correct: 1 },
-            { q: "What should you adjust if the Avatar speaks too fast?", options: ["Filler words", "Words-per-minute setting", "Context tag", "Sample length"], correct: 1 }
-          ,
-            { q: "What is a key benefit of voice training your Avatar?", options: ["It makes the Avatar speak louder", "It personalises responses to your style", "It changes the UI colour", "It speeds up the internet"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "fillblank", "instruction": "Fill in the missing words to complete the sentences about memory architecture.", "text": "Short-term memory holds about {blank} items for {blank} seconds. The hippocampus converts short-term to {blank} memory during sleep. Emotional tagging strengthens memory via the {blank}.", "answers": [["7", "seven"], ["30", "thirty"], ["long-term", "long term"], ["amygdala"]]}
         },
         {
           title: "Memory Architecture",
@@ -498,15 +484,7 @@
             <li><strong>Time saved:</strong> Track hours reclaimed from automated filing and synthesis.</li>
           </ul>
           <p><strong>Mindset:</strong> Your Avatar's brain is a garden. Tend it daily, prune monthly, and harvest insights on demand.</p>`,
-          quiz: [
-            { q: "What are the four layers of the PKM Pyramid?", options: ["Capture, Process, Retrieve, Create", "Read, Write, Edit, Delete", "Upload, Tag, Search, Share", "Plan, Do, Check, Act"], correct: 0 },
-            { q: "Which memory tier holds session context?", options: ["Semantic", "Episodic", "Working", "Long-term"], correct: 2 },
-            { q: "What does PARA stand for?", options: ["Plan, Act, Review, Archive", "Projects, Areas, Resources, Archive", "Process, Analyse, Retrieve, Apply", "Personal, Administrative, Resource, Archive"], correct: 1 },
-            { q: "How often should you run a memory defrag?", options: ["Daily", "Weekly", "Monthly", "Yearly"], correct: 2 },
-            { q: "What is the purpose of Auto-Link?", options: ["To delete old files", "To suggest document connections", "To upload files faster", "To encrypt documents"], correct: 1 },
-            { q: "In the LINK method, what does the 'K' stand for?", options: ["Keep current", "Know everything", "Kill stale links", "Key insight"], correct: 0 }
-          ],
-          passThreshold: 80
+          assessment: {"type": "truefalse", "statements": [{"text": "Multitasking increases productivity by allowing parallel processing.", "correct": false}, {"text": "The Pomodoro technique uses 25-minute focused work blocks.", "correct": true}, {"text": "Context switching has no cognitive cost.", "correct": false}, {"text": "Deep work requires uninterrupted focus for extended periods.", "correct": true}], "passThreshold": 75}
         }
       ]);
     });

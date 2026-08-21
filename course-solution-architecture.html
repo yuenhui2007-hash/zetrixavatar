@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solution Architecture &amp; Client Consultation — Zetrix AI Academy</title>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -149,14 +149,7 @@
             <li>Standard knowledge base + webhooks: Low complexity. Start here.</li>
           </ul>
           <p><strong>Rule:</strong> If a feature does not directly improve the core metric, defer it to phase 2.</p>`,
-          quiz: [
-            { q: "What does MVS stand for?", options: ["Maximum Value System", "Minimum Viable Solution", "Most Valuable Service", "Managed Vendor Solution"], correct: 1 },
-            { q: "How many integrations should an MVS include?", options: ["None", "One", "Five", "All available"], correct: 1 },
-            { q: "What percentage of tracking inquiries did the logistics pilot resolve?", options: ["45%", "60%", "73%", "90%"], correct: 2 },
-            { q: "What does an Architecture Decision Record document?", options: ["Only the final choice", "Context, decision, consequences, and alternatives", "Project timelines", "Budget allocation"], correct: 1 }
-          ,
-            { q: "What is a core principle of solution design?", options: ["Over-engineer everything", "Solve the right problem simply", "Ignore constraints", "Use the newest technology always"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Monolith", "right": "Single codebase, simple deployment"}, {"left": "Microservices", "right": "Independent deployable services"}, {"left": "Serverless", "right": "Event-driven, no server management"}, {"left": "Event-Driven", "right": "Components communicate via events"}]}
         },
         {
           title: "Technical Scoping",
@@ -338,14 +331,7 @@
             <li><strong>Milestone:</strong> Formal presentation to all stakeholders at phase gates.</li>
           </ul>
           <p><strong>Rule:</strong> Never let a stakeholder learn about the project from someone else. Control the narrative.</p>`,
-          quiz: [
-            { q: "Which stakeholder type should you focus on for ROI discussions?", options: ["Champion", "Decision Maker", "User", "Influencer"], correct: 1 },
-            { q: "What should you do with a Blocker?", options: ["Ignore them", "Bypass them", "Understand their fear and address it directly", "Wait for them to leave"], correct: 2 },
-            { q: "How often should you update the Champion?", options: ["Monthly", "Weekly", "Quarterly", "Never"], correct: 1 },
-            { q: "What happened when the healthcare consultant engaged the Head of Compliance directly?", options: ["The deal died", "The blocker became a supporter", "The CFO withdrew budget", "The CMO resigned"], correct: 1 }
-          ,
-            { q: "Who is a key stakeholder in solution architecture?", options: ["Only developers", "Business users, IT, and executives", "Only vendors", "Only customers"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "sequencing", "instruction": "Order the database normalization steps.", "items": ["First Normal Form: Eliminate repeating groups", "Second Normal Form: Remove partial dependencies", "Third Normal Form: Remove transitive dependencies", "Boyce-Codd Normal Form: Handle overlapping candidate keys", "Denormalize selectively for performance"], "correctOrder": [0, 1, 2, 3, 4]}
         },
         {
           title: "Implementation Planning",
@@ -566,14 +552,7 @@
             <li>Maintain a shared FAQ that grows with each client question.</li>
             <li>Document decisions, not just outcomes. Why did we choose this architecture?</li>
           </ul>`,
-          quiz: [
-            { q: "What does SAD stand for?", options: ["System Analysis Diagram", "Solution Architecture Document", "Software Application Design", "Security Audit Detail"], correct: 1 },
-            { q: "Who should be able to perform basic operations using only the runbook?", options: ["Only Zetrix engineers", "The client's IT team", "Only the project manager", "No one"], correct: 1 },
-            { q: "What should be scheduled at the handoff meeting?", options: ["The project kickoff", "The first QBR", "A sales pitch", "A team building event"], correct: 1 },
-            { q: "How long should video tutorials ideally be?", options: ["10–15 minutes", "2–3 minutes", "30 minutes", "1 hour"], correct: 1 }
-          ,
-            { q: "Why is documentation important for handoff?", options: ["It slows down delivery", "It ensures continuity and knowledge transfer", "It is optional", "It replaces testing"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "fillblank", "instruction": "Complete the API design principles.", "text": "REST APIs use {blank} methods like GET, POST, PUT, DELETE. {blank} responses should include proper status codes. API {blank} controls how many requests a client can make.", "answers": [["HTTP"], ["Error", "error"], ["rate limiting", "throttling", "rate limit"]]}
         },
         {
           title: "30-Day Consultation Challenge",

@@ -20,10 +20,10 @@
     })();
   </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
-  <link rel="stylesheet" href="css/course-engine.css?v=3">
+  <link rel="stylesheet" href="css/course-engine.css?v=4">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=8" defer></script>
-  <script src="js/theme.js?v=5" defer></script>
+  <script src="js/course-engine.js?v=9" defer></script>
+  <script src="js/theme.js?v=6" defer></script>
 </head>
 <body>
   <div class="course-layout">
@@ -222,14 +222,7 @@
             }
           <\/script>
           <p><strong>Pro Tip:</strong> Sync health data with your calendar. If sleep score was &lt;70, the Avatar suggests lighter meetings and a 20-min nap block.</p>`,
-          quiz: [
-            { q: "Which wearable can you NOT connect to Zetrix?", options: ["Apple Health", "Fitbit", "Garmin", "PlayStation"], correct: 3 },
-            { q: "What is the recommended sleep target?", options: ["5 hours", "6 hours", "7.5 hours", "9 hours"], correct: 2 },
-            { q: "What does HRV stand for?", options: ["High Resting Volume", "Heart Rate Variability", "Health Recovery Value", "Hydration Reference Volume"], correct: 1 },
-            { q: "How is health data stored by default?", options: ["On public cloud", "Encrypted and local", "Shared with advertisers", "Unencrypted"], correct: 1 }
-          ,
-            { q: "Which wearable brand is NOT compatible with Zetrix?", options: ["Apple Health", "Fitbit", "Garmin", "PlayStation"], correct: 3 }],
-          passThreshold: 80
+          assessment: {"type": "matching", "pairs": [{"left": "Eisenhower Matrix", "right": "Urgent vs Important tasks"}, {"left": "Pomodoro", "right": "25-minute focused intervals"}, {"left": "Time Blocking", "right": "Schedule tasks in calendar slots"}, {"left": "Two-Minute Rule", "right": "Do it now if under 2 minutes"}]}
         },
         {
           title: "Learning Acceleration",
@@ -542,14 +535,7 @@
             <li><strong>Trust:</strong> Would you share a vulnerability? (1–10)</li>
           </ul>
           <p>Any relationship scoring below 20/40 = needs attention.</p>`,
-          quiz: [
-            { q: "How far in advance should birthday alerts trigger?", options: ["1 day", "1 week", "1 month", "Same day"], correct: 1 },
-            { q: "What does gratitude logging compile into?", options: ["A todo list", "A monthly gratitude letter", "An invoice", "A calendar"], correct: 1 },
-            { q: "What is the recommended networking goal?", options: ["1 weak tie per month", "2 weak ties per week", "10 people per day", "Only strong ties"], correct: 1 },
-            { q: "What score indicates a relationship needs attention?", options: ["Below 40/40", "Below 30/40", "Below 20/40", "Below 10/40"], correct: 2 }
-          ,
-            { q: "How often should you reach out to weak ties for networking?", options: ["Once a month", "Twice a week", "Daily", "Never"], correct: 1 }],
-          passThreshold: 80
+          assessment: {"type": "sequencing", "instruction": "Order the email processing steps correctly.", "items": ["Scan subject lines and delete irrelevant emails", "Reply to emails requiring less than 2 minutes", "Move actionable emails to a todo folder", "Schedule time to handle complex responses", "Archive processed emails"], "correctOrder": [0, 1, 2, 3, 4]}
         },
         {
           title: "Focus & Deep Work",
