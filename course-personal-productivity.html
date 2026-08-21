@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" style="background:#ffffff !important;color:#000000 !important">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +24,6 @@
   <script src="js/nav.js?v=6" defer></script>
   <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
-<style>
-      html[data-theme="light"], html[data-theme="light"] body, html[data-theme="light"] .course-layout, html[data-theme="light"] .course-main { background: #ffffff !important; }
-      html[data-theme="light"] .segment-body, html[data-theme="light"] .segment-body * { color: #000000 !important; -webkit-text-fill-color: #000000 !important; opacity: 1 !important; }
-      html[data-theme="light"] .segment-body h2, html[data-theme="light"] .segment-body h3, html[data-theme="light"] .segment-body h4 { color: #000000 !important; font-weight: 700 !important; }
-      html[data-theme="light"] .segment-header h2 { color: #000000 !important; }
-    </style>
 </head>
 <body>
   <div class="course-layout">
@@ -679,6 +673,22 @@
   });
   var sc = document.getElementById('segment-content');
   if(sc) observer.observe(sc, {childList:true, subtree:true});
+})();
+</script>
+<script>
+(function(){
+  var html = document.documentElement;
+  html.setAttribute('data-theme', 'light');
+  html.classList.remove('dark');
+  // Definitive: override any dark mode text colors with !important inline styles
+  var css = document.createElement('style');
+  css.textContent = '.segment-body,.segment-body p,.segment-body li,.segment-body h2,.segment-body h3,.segment-body h4,.segment-body strong,.segment-body em,.segment-header h2,.seg-num{color:#0f172a!important;-webkit-text-fill-color:#0f172a!important}.course-main{background:#ffffff!important}';
+  document.head.appendChild(css);
+  // Also force all text elements immediately
+  document.querySelectorAll('.segment-body, .segment-body *, .segment-header h2').forEach(function(el){el.style.color='#0f172a';el.style.webkitTextFillColor='#0f172a';});
+  // Watch for dynamically added content
+  var sc = document.getElementById('segment-content');
+  if(sc) new MutationObserver(function(){document.querySelectorAll('.segment-body, .segment-body *').forEach(function(el){el.style.color='#0f172a';el.style.webkitTextFillColor='#0f172a';});}).observe(sc,{childList:true,subtree:true});
 })();
 </script>
 </body>
