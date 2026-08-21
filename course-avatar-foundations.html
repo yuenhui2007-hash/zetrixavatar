@@ -14,7 +14,7 @@
         window.__zbusted = true;
         var scripts = document.querySelectorAll('script[src*="course-engine"]');
         for (var i=0;i<scripts.length;i++) {
-          if (scripts[i].src.indexOf('course-engine-v6') !== -1 || scripts[i].src.indexOf('v=7') === -1) {
+          if (scripts[i].src.indexOf('course-engine-v6') !== -1 || scripts[i].src.indexOf('v=7') !== -1) {
             localStorage.clear();
             location.href = location.pathname + '?nocache=' + Date.now();
             return;
@@ -454,7 +454,7 @@
               <div class="sort-folder" data-folder="archive" style="padding:8px 12px;border:1px solid #ccc;margin:4px 0;cursor:pointer;border-radius:4px;">06 – Archive</div>
             </div>
           </div>
-          <p id="sort-docs-result" style="margin-top:1rem;font-weight:bold;"></p>
+          <p id="sort-docs-result" style="margin-top:1rem;font-weight:bold;"></p>`,
         },
         {
           title: "Daily Updates & Continuous Learning",
