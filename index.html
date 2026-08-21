@@ -384,24 +384,63 @@
   <canvas id="neuralCanvas" class="hero-canvas-layer"></canvas>
   <div class="container">
     <div class="academy-badge">🤖 Zetrix AI Academy</div>
-    <h1 id="typingText" data-texts='["Master AI Across Every Domain","Build AI Avatars","Automate Your Business","Code with AI","Launch Your Startup"]'>Master AI Across Every Domain</h1>
+    <h1 class="hero-headline">
+      <span class="hero-headline-static">Master AI Across Every</span>
+      <span class="hero-headline-rotate" id="wordRotate">
+        <span class="hero-word active">Domain</span>
+        <span class="hero-word">Avatar</span>
+        <span class="hero-word">Business</span>
+        <span class="hero-word">Code</span>
+        <span class="hero-word">Startup</span>
+      </span>
+    </h1>
     <style>
-      #typingText {
-        display: inline-block;
-        white-space: normal;
-        overflow: visible;
-        min-width: auto;
-      }
-      .academy-hero h1 {
-        min-height: 1.3em;
+      .hero-headline {
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+        font-weight: 800;
+        margin-bottom: 16px;
         line-height: 1.2;
-        padding: 0 24px;
-        overflow: visible;
-        width: auto;
-        max-width: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3em;
       }
-      .academy-hero .container {
-        overflow: visible;
+      .hero-headline-static {
+        background: linear-gradient(90deg, #fff, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-headline-rotate {
+        position: relative;
+        display: inline-block;
+        min-width: 120px;
+        height: 1.2em;
+        vertical-align: bottom;
+      }
+      .hero-word {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: linear-gradient(90deg, #a5b4fc, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+        font-weight: 800;
+      }
+      .hero-word.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .hero-word.exit {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+      }
+      @media (max-width: 480px) {
+        .hero-headline { flex-direction: column; gap: 0; }
+        .hero-headline-rotate { height: 1.3em; }
       }
     </style>
     <p>9 specialized courses — from building AI avatars to enterprise deployment and client consultation. Interactive lessons, quizzes, flashcards, and progress tracking.</p>

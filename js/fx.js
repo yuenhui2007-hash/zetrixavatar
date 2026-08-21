@@ -123,39 +123,22 @@
   counters.forEach(c => observer.observe(c));
 })();
 
-// ===== 3. TYPING EFFECT =====
+// ===== 3. WORD ROTATE EFFECT =====
 (function() {
-  const el = document.getElementById('typingText');
-  if (!el) return;
-  const texts = el.dataset.texts ? JSON.parse(el.dataset.texts) : ['Master AI Across Every Domain'];
-  let textIndex = 0, charIndex = 0, isDeleting = false;
+  const container = document.getElementById('wordRotate');
+  if (!container) return;
+  const words = container.querySelectorAll('.hero-word');
+  if (!words.length) return;
+  let idx = 0;
 
-  // Ensure container shows full text
-  el.style.display = 'inline-block';
-  el.style.whiteSpace = 'normal';
-  el.style.overflow = 'visible';
-  el.parentElement.style.overflow = 'visible';
+  setInterval(() => {
+    words[idx].classList.remove('active');
+    words[idx].classList.add('exit');
+    setTimeout(() => words[idx].classList.remove('exit'), 500);
 
-  function type() {
-    const current = texts[textIndex];
-    if (isDeleting) {
-      el.textContent = current.substring(0, charIndex--);
-    } else {
-      el.textContent = current.substring(0, charIndex++);
-    }
-
-    let speed = isDeleting ? 40 : 80;
-    if (!isDeleting && charIndex === current.length) {
-      speed = 2500;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      textIndex = (textIndex + 1) % texts.length;
-      speed = 600;
-    }
-    setTimeout(type, speed);
-  }
-  type();
+    idx = (idx + 1) % words.length;
+    words[idx].classList.add('active');
+  }, 3000);
 })();
 
 // ===== 4. 3D TILT CARDS =====
