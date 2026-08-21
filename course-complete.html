@@ -122,6 +122,110 @@
       0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
+    .certificate-card {
+      margin-top: 48px;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+      border-radius: 16px;
+      padding: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .certificate-border {
+      border: 2px solid rgba(165, 180, 252, 0.3);
+      border-radius: 14px;
+      padding: 40px;
+      position: relative;
+    }
+    .certificate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(165, 180, 252, 0.2);
+      padding-bottom: 16px;
+    }
+    .certificate-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #a5b4fc;
+    }
+    .certificate-stamp {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #1e1b4b;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 50px;
+      letter-spacing: 1px;
+    }
+    .certificate-body {
+      text-align: center;
+      margin: 32px 0;
+    }
+    .certificate-label {
+      font-size: 0.95rem;
+      opacity: 0.7;
+      margin: 8px 0;
+    }
+    .certificate-recipient {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 12px 0;
+      background: linear-gradient(90deg, #fff, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .certificate-course {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin: 12px 0;
+    }
+    .certificate-details {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      margin-top: 16px;
+    }
+    .certificate-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(165, 180, 252, 0.2);
+    }
+    .certificate-sig, .certificate-date {
+      text-align: center;
+    }
+    .certificate-line {
+      width: 120px;
+      height: 1px;
+      background: rgba(165, 180, 252, 0.5);
+      margin: 0 auto 8px;
+    }
+    .certificate-sig p, .certificate-date p {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .certificate-sig small, .certificate-date small {
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+    .certificate-seal {
+      font-size: 3rem;
+      opacity: 0.8;
+    }
+    @media print {
+      .complete-actions, .complete-badge, .complete-stats { display: none !important; }
+      .complete-title { font-size: 1.5rem !important; }
+      .complete-subtitle { font-size: 1rem !important; }
+      .certificate-card { margin-top: 0 !important; box-shadow: none !important; }
+      .complete-page { background: white !important; color: black !important; }
+      .certificate-border { border-color: #333 !important; }
+    }
   </style>
 </head>
 <body>
@@ -150,6 +254,38 @@
         <a href="index.html" class="btn btn-white">← Back to Academy</a>
         <a href="#" class="btn btn-outline" onclick="window.print(); return false;">🖨️ Print Certificate</a>
       </div>
+
+      <!-- CERTIFICATE -->
+      <div class="certificate-card" id="certificate">
+        <div class="certificate-border">
+          <div class="certificate-header">
+            <div class="certificate-logo">🤖 Zetrix AI Academy</div>
+            <div class="certificate-stamp">CERTIFIED</div>
+          </div>
+          <div class="certificate-body">
+            <p class="certificate-label">This certifies that</p>
+            <p class="certificate-recipient" id="cert-recipient">Student Name</p>
+            <p class="certificate-label">has successfully completed</p>
+            <p class="certificate-course" id="cert-course">Avatar Foundations</p>
+            <p class="certificate-details">
+              <span id="cert-segments">10</span> segments · <span id="cert-quizzes">3</span> quizzes passed · 100% completion
+            </p>
+          </div>
+          <div class="certificate-footer">
+            <div class="certificate-sig">
+              <div class="certificate-line"></div>
+              <p>Yuen Hui</p>
+              <small>Founder, Zetrix AI Academy</small>
+            </div>
+            <div class="certificate-date">
+              <div class="certificate-line"></div>
+              <p id="cert-date">21 August 2026</p>
+              <small>Date of Completion</small>
+            </div>
+            <div class="certificate-seal">🏆</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -162,6 +298,19 @@
     document.getElementById('course-name').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     document.getElementById('stat-segments').textContent = segments;
     document.getElementById('stat-quizzes').textContent = quizzes;
+
+    // Fill certificate
+    document.getElementById('cert-course').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById('cert-segments').textContent = segments;
+    document.getElementById('cert-quizzes').textContent = quizzes;
+    document.getElementById('cert-date').textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    // Try to get user name from localStorage auth
+    try {
+      const user = JSON.parse(localStorage.getItem('auth_user') || '{}');
+      if (user.name || user.email) {
+        document.getElementById('cert-recipient').textContent = user.name || user.email.split('@')[0];
+      }
+    } catch(e) {}
 
     // Confetti
     const container = document.getElementById('confetti-container');
