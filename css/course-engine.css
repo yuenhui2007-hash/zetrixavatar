@@ -3,6 +3,10 @@
   display: flex;
   min-height: 100vh;
   padding-top: 72px;
+  background: #ffffff;
+}
+.course-main {
+  background: #ffffff;
 }
 
 /* Sidebar */
