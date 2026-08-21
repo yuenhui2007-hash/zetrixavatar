@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" style="background:#ffffff !important;color:#000000 !important">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,20 +24,14 @@
   <script src="js/nav.js?v=6" defer></script>
   <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
-<style id="segment-content-style">
-  .segment-body, .segment-body *, .segment-body p, .segment-body li, .segment-body ol, .segment-body ul, .segment-body span, .segment-body div, .segment-body strong, .segment-body em, .segment-body b, .segment-body i { color: #000000 !important; -webkit-text-fill-color: #000000 !important; opacity: 1 !important; }
-  .segment-body h2, .segment-body h3, .segment-body h4 { color: #000000 !important; font-weight: 700 !important; }
-  .segment-header h2 { color: #000000 !important; }
-  .seg-num { color: #6366f1 !important; }
-</style>
+<style>
+      html[data-theme="light"], html[data-theme="light"] body, html[data-theme="light"] .course-layout, html[data-theme="light"] .course-main { background: #ffffff !important; }
+      html[data-theme="light"] .segment-body, html[data-theme="light"] .segment-body * { color: #000000 !important; -webkit-text-fill-color: #000000 !important; opacity: 1 !important; }
+      html[data-theme="light"] .segment-body h2, html[data-theme="light"] .segment-body h3, html[data-theme="light"] .segment-body h4 { color: #000000 !important; font-weight: 700 !important; }
+      html[data-theme="light"] .segment-header h2 { color: #000000 !important; }
+    </style>
 </head>
 <body>
-<script>
-  // FORCE LIGHT MODE — course pages always readable
-  document.documentElement.setAttribute("data-theme", "light");
-  document.documentElement.classList.remove("dark");
-  localStorage.setItem("theme", "light");
-</script>
   <div class="course-layout">
     <aside class="course-sidebar">
       <h3>AI for Coding</h3>
