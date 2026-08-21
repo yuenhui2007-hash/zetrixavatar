@@ -132,7 +132,7 @@
 
   // Ensure container shows full text
   el.style.display = 'inline-block';
-  el.style.whiteSpace = 'nowrap';
+  el.style.whiteSpace = 'normal';
   el.style.overflow = 'visible';
   el.parentElement.style.overflow = 'visible';
 
