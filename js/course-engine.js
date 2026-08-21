@@ -1,7 +1,7 @@
 /**
- * Course Engine — Interactive Segmented Learning
- * Handles segments, quizzes, flashcards, progress tracking
- * v6 — Pass threshold: 80%
+ * Course Engine v9 — Interactive Segmented Learning
+ * Handles segments, quizzes (multiple types), flashcards, progress tracking
+ * v9 — New assessment types: matching, sequencing, fill-blanks, true/false
  */
 (function() {
   'use strict';
@@ -103,6 +103,7 @@
       let html = `<div class="segment-header"><span class="seg-num">Segment ${idx+1} of ${this.totalSegments}</span><h2>${seg.title}</h2></div>`;
       html += `<div class="segment-body">${seg.content}</div>`;
 
+      // Flashcards
       if (seg.flashcards && seg.flashcards.length > 0) {
         html += '<div class="flashcard-section"><h4>🃏 Flashcards</h4>';
         seg.flashcards.forEach((fc, i) => {
@@ -120,52 +121,39 @@
         html += '</div>';
       }
 
+      // Assessment (quiz or other types)
+      if (seg.assessment && !state.completed) {
+        html += this.renderAssessment(seg.assessment, idx);
+      } else if (seg.assessment && state.completed) {
+        html += `<div class="quiz-section passed"><h4>✅ Passed</h4><p>You can proceed to the next segment.</p></div>`;
+      }
+
+      // Legacy quiz support
       if (seg.quiz && seg.quiz.length > 0) {
         if (state.quizPassed) {
-          html += `<div class="quiz-section passed">
-            <h4>✅ Quiz Passed (${state.quizBestScore}/${seg.quiz.length})</h4>
-            <p>You can proceed to the next segment.</p>
-          </div>`;
+          html += `<div class="quiz-section passed"><h4>✅ Quiz Passed (${state.quizBestScore}/${seg.quiz.length})</h4><p>You can proceed to the next segment.</p></div>`;
         } else {
-          html += '<div class="quiz-section"><h4>📝 Quiz</h4><p>Score at least 80% to unlock the next segment.</p>';
-          seg.quiz.forEach((q, i) => {
-            html += `<div class="quiz-q" id="qq-${i}"><p><strong>Q${i+1}:</strong> ${q.q}</p>`;
-            q.options.forEach((opt, j) => {
-              html += `<label class="quiz-opt"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
-            });
-            html += '</div>';
-          });
-          html += `<button class="btn btn-primary" onclick="CourseEngine.submitQuiz(${idx})">Submit Quiz</button>`;
-          html += '<div id="quiz-result" style="margin-top:16px;font-weight:600;"></div>';
-          html += '</div>';
+          html += this.renderLegacyQuiz(seg.quiz, idx, seg.passThreshold);
         }
       }
 
-      if (!seg.quiz && seg.interaction) {
+      // Interaction
+      if (!seg.quiz && !seg.assessment && seg.interaction) {
         if (state.completed) {
           html += `<div class="interaction-completed"><h4>✅ Completed</h4><p>${seg.interaction.completedText || 'You can proceed to the next segment.'}</p></div>`;
         } else {
-          html += `<div class="interaction-section"><h4>✏️ ${seg.interaction.title || 'Activity'}</h4>`;
-          html += `<p>${seg.interaction.instruction || seg.interaction.prompt || 'Complete the activity below to proceed.'}</p>`;
-          if (seg.interaction.type === 'textarea') {
-            html += `<textarea id="interaction-input" rows="4" style="width:100%;padding:12px;border-radius:8px;border:1px solid #e2e8f0;margin-top:8px;" placeholder="${seg.interaction.placeholder || 'Type your answer here...'}"></textarea>`;
-          } else if (seg.interaction.type === 'checkbox') {
-            seg.interaction.options.forEach((opt, j) => {
-              html += `<label style="display:block;margin:8px 0;"><input type="checkbox" value="${j}"> ${opt}</label>`;
-            });
-          }
-          html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitInteraction(${idx})">Submit</button>`;
-          html += '<div id="interaction-result" style="margin-top:12px;"></div>';
-          html += '</div>';
+          html += this.renderInteraction(seg.interaction, idx);
         }
       }
 
-      if (!seg.quiz && !seg.interaction) {
+      // Mark complete button (if no assessment/interaction)
+      if (!seg.quiz && !seg.assessment && !seg.interaction) {
         if (!state.completed) {
           html += `<div class="interaction-section" style="margin-top:24px;padding:20px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;"><h4>✅ Mark Complete</h4><p>Read through this segment, then click below to mark it complete and unlock the next segment.</p><button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.markSegmentComplete(${idx})">I've read this segment — Mark Complete</button></div>`;
         }
       }
 
+      // Navigation buttons
       html += '<div class="segment-nav-buttons">';
       if (idx > 0) {
         html += `<button class="btn btn-outline" onclick="CourseEngine.goTo(${idx-1})">← Previous</button>`;
@@ -179,34 +167,318 @@
           html += `<a href="course-complete.html?course=${encodeURIComponent(this.courseId)}&segments=${this.totalSegments}&quizzes=${this.countQuizzes()}" class="btn btn-primary">Finish Course →</a>`;
         }
       } else {
-        if (idx < this.totalSegments - 1) {
-          html += `<button class="btn btn-outline" disabled style="opacity:0.5">🔒 Complete this segment to continue</button>`;
-        } else {
-          html += `<button class="btn btn-outline" disabled style="opacity:0.5">🔒 Complete this segment to finish</button>`;
-        }
+        html += `<button class="btn btn-outline" disabled style="opacity:0.5">🔒 Complete this segment to continue</button>`;
       }
       html += '</div>';
 
       container.innerHTML = html;
+      this.forceReadableText();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      this.initMatchOS();
-      this.initDragDropSort();
     },
 
-    flipCard(i) {
-      const fc = document.getElementById(`fc-${i}`);
-      const front = fc.querySelector('.flashcard-front');
-      const back = fc.querySelector('.flashcard-back');
-      if (back.style.display === 'none') {
-        front.style.display = 'none';
-        back.style.display = 'block';
-      } else {
-        front.style.display = 'block';
-        back.style.display = 'none';
+    // NEW: Force all text to be readable black
+    forceReadableText() {
+      const selectors = '.segment-body, .segment-body p, .segment-body li, .segment-body ol, .segment-body ul, .segment-body h2, .segment-body h3, .segment-body h4, .segment-body strong, .segment-body em, .segment-body b, .segment-body i, .segment-body span, .segment-body div, .segment-header h2';
+      document.querySelectorAll(selectors).forEach(el => {
+        el.style.color = '#000000';
+        el.style.webkitTextFillColor = '#000000';
+        el.style.opacity = '1';
+      });
+    },
+
+    // NEW: Render assessment based on type
+    renderAssessment(assessment, segIdx) {
+      const type = assessment.type || 'mcq';
+      switch (type) {
+        case 'matching': return this.renderMatching(assessment, segIdx);
+        case 'sequencing': return this.renderSequencing(assessment, segIdx);
+        case 'fillblank': return this.renderFillBlank(assessment, segIdx);
+        case 'truefalse': return this.renderTrueFalse(assessment, segIdx);
+        case 'scenario': return this.renderScenario(assessment, segIdx);
+        default: return this.renderLegacyQuiz(assessment.questions || [], segIdx, assessment.passThreshold);
       }
     },
 
-    submitQuiz(segIdx) {
+    // MATCHING: Connect items on left to items on right
+    renderMatching(assessment, segIdx) {
+      const pairs = assessment.pairs || [];
+      let html = `<div class="matching-section" id="matching-${segIdx}"><h4>🔗 Connect the Dots</h4><p>Click an item on the left, then click its match on the right.</p><div class="matching-grid">`;
+      
+      // Left column
+      html += '<div class="matching-col">';
+      pairs.forEach((p, i) => {
+        html += `<div class="matching-item" data-key="${i}" onclick="CourseEngine.matchItem(this, ${segIdx})">${p.left}</div>`;
+      });
+      html += '</div>';
+      
+      // Right column (shuffled)
+      const shuffled = [...pairs].map((p, i) => ({...p, originalIndex: i})).sort(() => Math.random() - 0.5);
+      html += '<div class="matching-col">';
+      shuffled.forEach((p) => {
+        html += `<div class="matching-target" data-key="${p.originalIndex}" onclick="CourseEngine.matchTarget(this, ${segIdx})">${p.right}</div>`;
+      });
+      html += '</div></div>';
+      html += `<div id="matching-result-${segIdx}" class="matching-result"></div>`;
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitMatching(${segIdx})">Submit</button>`;
+      html += '</div>';
+      return html;
+    },
+
+    matchItem(el, segIdx) {
+      const section = document.getElementById(`matching-${segIdx}`);
+      section.querySelectorAll('.matching-item').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      this._selectedMatchItem = el;
+    },
+
+    matchTarget(el, segIdx) {
+      if (!this._selectedMatchItem) return;
+      const key = this._selectedMatchItem.dataset.key;
+      if (el.dataset.key === key) {
+        this._selectedMatchItem.classList.add('matched');
+        el.classList.add('matched');
+        this._selectedMatchItem = null;
+      } else {
+        el.style.animation = 'shake 0.3s';
+        setTimeout(() => el.style.animation = '', 300);
+      }
+      this.checkMatchingComplete(segIdx);
+    },
+
+    checkMatchingComplete(segIdx) {
+      const section = document.getElementById(`matching-${segIdx}`);
+      const total = section.querySelectorAll('.matching-item').length;
+      const matched = section.querySelectorAll('.matching-item.matched').length;
+      if (matched === total) {
+        document.getElementById(`matching-result-${segIdx}`).innerHTML = '<span style="color:#065f46">✅ All matched correctly!</span>';
+      }
+    },
+
+    submitMatching(segIdx) {
+      const section = document.getElementById(`matching-${segIdx}`);
+      const total = section.querySelectorAll('.matching-item').length;
+      const matched = section.querySelectorAll('.matching-item.matched').length;
+      if (matched === total) {
+        this.segmentStates[segIdx].completed = true;
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
+        this.saveProgress();
+        setTimeout(() => this.goTo(segIdx + 1), 1500);
+      } else {
+        document.getElementById(`matching-result-${segIdx}`).innerHTML = '<span style="color:#991b1b">❌ Match all pairs before submitting.</span>';
+      }
+    },
+
+    // SEQUENCING: Drag items into correct order
+    renderSequencing(assessment, segIdx) {
+      const items = assessment.items || [];
+      let html = `<div class="sequencing-section" id="sequencing-${segIdx}"><h4>📋 Put in Order</h4><p>Drag the steps into the correct sequence.</p>`;
+      html += '<div class="sequence-list">';
+      items.forEach((item, i) => {
+        html += `<div class="sequence-item" draggable="true" data-index="${i}" ondragstart="CourseEngine.seqDragStart(event)" ondragover="CourseEngine.seqDragOver(event)" ondrop="CourseEngine.seqDrop(event, ${segIdx})"><span class="seq-num">${i+1}</span>${item}</div>`;
+      });
+      html += '</div>';
+      html += `<div id="sequencing-result-${segIdx}" class="matching-result"></div>`;
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitSequencing(${segIdx})">Submit</button>`;
+      html += '</div>';
+      return html;
+    },
+
+    seqDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.dataset.index);
+      e.target.style.opacity = '0.5';
+    },
+
+    seqDragOver(e) {
+      e.preventDefault();
+    },
+
+    seqDrop(e, segIdx) {
+      e.preventDefault();
+      const fromIdx = e.dataTransfer.getData('text/plain');
+      const toEl = e.target.closest('.sequence-item');
+      if (!toEl) return;
+      const list = document.getElementById(`sequencing-${segIdx}`).querySelector('.sequence-list');
+      const items = Array.from(list.children);
+      const fromEl = items.find(el => el.dataset.index === fromIdx);
+      if (fromEl && toEl && fromEl !== toEl) {
+        const parent = list;
+        const fromPos = items.indexOf(fromEl);
+        const toPos = items.indexOf(toEl);
+        if (fromPos < toPos) {
+          parent.insertBefore(fromEl, toEl.nextSibling);
+        } else {
+          parent.insertBefore(fromEl, toEl);
+        }
+      }
+      if (fromEl) fromEl.style.opacity = '1';
+    },
+
+    submitSequencing(segIdx) {
+      const assessment = this.segments[segIdx].assessment;
+      const list = document.getElementById(`sequencing-${segIdx}`).querySelector('.sequence-list');
+      const currentOrder = Array.from(list.children).map(el => parseInt(el.dataset.index));
+      const correct = JSON.stringify(currentOrder) === JSON.stringify(assessment.correctOrder);
+      if (correct) {
+        document.getElementById(`sequencing-result-${segIdx}`).innerHTML = '<span style="color:#065f46">✅ Correct order!</span>';
+        this.segmentStates[segIdx].completed = true;
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
+        this.saveProgress();
+        setTimeout(() => this.goTo(segIdx + 1), 1500);
+      } else {
+        document.getElementById(`sequencing-result-${segIdx}`).innerHTML = '<span style="color:#991b1b">❌ Not quite right. Try again!</span>';
+      }
+    },
+
+    // FILL IN THE BLANKS
+    renderFillBlank(assessment, segIdx) {
+      let text = assessment.text || '';
+      const answers = assessment.answers || [];
+      let blankIndex = 0;
+      text = text.replace(/\{blank\}/g, () => {
+        return `<input type="text" class="fillblank-input" id="fb-${segIdx}-${blankIndex++}" placeholder="...">`;
+      });
+      let html = `<div class="fillblank-section" id="fillblank-${segIdx}"><h4>✏️ Fill in the Blanks</h4><p>${assessment.instruction || 'Complete the text below:'}</p>`;
+      html += `<div class="fillblank-text">${text}</div>`;
+      html += `<div id="fillblank-result-${segIdx}" class="matching-result"></div>`;
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitFillBlank(${segIdx})">Submit</button>`;
+      html += '</div>';
+      return html;
+    },
+
+    submitFillBlank(segIdx) {
+      const assessment = this.segments[segIdx].assessment;
+      const answers = assessment.answers || [];
+      let correct = 0;
+      answers.forEach((ans, i) => {
+        const input = document.getElementById(`fb-${segIdx}-${i}`);
+        if (input) {
+          const val = input.value.trim().toLowerCase();
+          const expected = (Array.isArray(ans) ? ans : [ans]).map(a => a.toLowerCase());
+          if (expected.includes(val)) {
+            input.classList.add('correct');
+            input.classList.remove('wrong');
+            correct++;
+          } else {
+            input.classList.add('wrong');
+            input.classList.remove('correct');
+          }
+        }
+      });
+      if (correct === answers.length) {
+        document.getElementById(`fillblank-result-${segIdx}`).innerHTML = '<span style="color:#065f46">✅ All correct!</span>';
+        this.segmentStates[segIdx].completed = true;
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
+        this.saveProgress();
+        setTimeout(() => this.goTo(segIdx + 1), 1500);
+      } else {
+        document.getElementById(`fillblank-result-${segIdx}`).innerHTML = `<span style="color:#92400e">${correct}/${answers.length} correct. Fix the highlighted blanks.</span>`;
+      }
+    },
+
+    // TRUE / FALSE
+    renderTrueFalse(assessment, segIdx) {
+      const statements = assessment.statements || [];
+      let html = `<div class="tf-section" id="tf-${segIdx}"><h4>⚖️ True or False</h4><p>Click True or False for each statement.</p>`;
+      statements.forEach((s, i) => {
+        html += `<div class="tf-item" id="tf-item-${segIdx}-${i}"><p>${i+1}. ${s.text}</p>`;
+        html += `<div class="tf-buttons"><button class="tf-btn" onclick="CourseEngine.tfAnswer(${segIdx}, ${i}, true, ${s.correct})">True</button><button class="tf-btn" onclick="CourseEngine.tfAnswer(${segIdx}, ${i}, false, ${s.correct})">False</button></div></div>`;
+      });
+      html += `<div id="tf-result-${segIdx}" class="matching-result"></div>`;
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitTrueFalse(${segIdx})">Submit</button>`;
+      html += '</div>';
+      return html;
+    },
+
+    tfAnswer(segIdx, itemIdx, answer, correct) {
+      const item = document.getElementById(`tf-item-${segIdx}-${itemIdx}`);
+      item.querySelectorAll('.tf-btn').forEach(btn => {
+        btn.classList.remove('correct', 'wrong');
+        btn.disabled = true;
+      });
+      const buttons = item.querySelectorAll('.tf-btn');
+      const selectedBtn = buttons[answer ? 0 : 1];
+      if (answer === correct) {
+        selectedBtn.classList.add('correct');
+      } else {
+        selectedBtn.classList.add('wrong');
+        buttons[correct ? 0 : 1].classList.add('correct');
+      }
+    },
+
+    submitTrueFalse(segIdx) {
+      const assessment = this.segments[segIdx].assessment;
+      const statements = assessment.statements || [];
+      const items = document.getElementById(`tf-${segIdx}`).querySelectorAll('.tf-item');
+      let correct = 0;
+      items.forEach((item, i) => {
+        const hasCorrect = item.querySelector('.tf-btn.correct');
+        if (hasCorrect && !item.querySelector('.tf-btn.wrong')) correct++;
+      });
+      const pct = (correct / statements.length) * 100;
+      const passThreshold = assessment.passThreshold || 80;
+      if (pct >= passThreshold) {
+        document.getElementById(`tf-result-${segIdx}`).innerHTML = `<span style="color:#065f46">✅ Passed! ${correct}/${statements.length} correct.</span>`;
+        this.segmentStates[segIdx].completed = true;
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
+        this.saveProgress();
+        setTimeout(() => this.goTo(segIdx + 1), 1500);
+      } else {
+        document.getElementById(`tf-result-${segIdx}`).innerHTML = `<span style="color:#991b1b">❌ ${correct}/${statements.length} correct. Need ${passThreshold}% to pass. Try again!</span>`;
+      }
+    },
+
+    // SCENARIO: Apply knowledge to a situation
+    renderScenario(assessment, segIdx) {
+      let html = `<div class="scenario-section" id="scenario-${segIdx}"><h4>🎯 Scenario Challenge</h4>`;
+      html += `<div class="scenario-text">${assessment.scenario}</div>`;
+      html += `<p><strong>${assessment.question}</strong></p>`;
+      html += `<div class="scenario-options">`;
+      (assessment.options || []).forEach((opt, i) => {
+        html += `<label class="scenario-opt"><input type="radio" name="scenario-${segIdx}" value="${i}"> ${opt}</label>`;
+      });
+      html += '</div>';
+      html += `<div id="scenario-result-${segIdx}" class="matching-result"></div>`;
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitScenario(${segIdx})">Submit</button>`;
+      html += '</div>';
+      return html;
+    },
+
+    submitScenario(segIdx) {
+      const assessment = this.segments[segIdx].assessment;
+      const selected = document.querySelector(`input[name="scenario-${segIdx}"]:checked`);
+      if (!selected) {
+        document.getElementById(`scenario-result-${segIdx}`).innerHTML = '<span style="color:#92400e">Please select an answer.</span>';
+        return;
+      }
+      const answer = parseInt(selected.value);
+      if (answer === assessment.correct) {
+        document.getElementById(`scenario-result-${segIdx}`).innerHTML = `<div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:16px;margin-top:12px;"><strong style="color:#065f46">✅ Correct!</strong><p style="color:#065f46;margin:8px 0 0;">${assessment.explanation || ''}</p></div>`;
+        this.segmentStates[segIdx].completed = true;
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
+        this.saveProgress();
+        setTimeout(() => this.goTo(segIdx + 1), 2500);
+      } else {
+        document.getElementById(`scenario-result-${segIdx}`).innerHTML = `<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;margin-top:12px;"><strong style="color:#991b1b">❌ Not quite.</strong><p style="color:#991b1b;margin:8px 0 0;">${assessment.explanation || 'Review the material and try again.'}</p></div>`;
+      }
+    },
+
+    // Legacy MCQ quiz renderer
+    renderLegacyQuiz(quiz, segIdx, passThreshold) {
+      let html = '<div class="quiz-section"><h4>📝 Quiz</h4><p>Score at least 80% to unlock the next segment.</p>';
+      quiz.forEach((q, i) => {
+        html += `<div class="quiz-q" id="qq-${i}"><p><strong>Q${i+1}:</strong> ${q.q}</p>`;
+        q.options.forEach((opt, j) => {
+          html += `<label class="quiz-opt"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+        });
+        html += '</div>';
+      });
+      html += `<button class="btn btn-primary" onclick="CourseEngine.submitLegacyQuiz(${segIdx})">Submit Quiz</button>`;
+      html += '<div id="quiz-result" style="margin-top:16px;font-weight:600;"></div>';
+      html += '</div>';
+      return html;
+    },
+
+    submitLegacyQuiz(segIdx) {
       const seg = this.segments[segIdx];
       let score = 0;
       seg.quiz.forEach((q, i) => {
@@ -214,32 +486,25 @@
         const qDiv = document.getElementById(`qq-${i}`);
         if (selected && parseInt(selected.value) === q.correct) {
           score++;
-          qDiv.style.background = '#d1fae5';
+          if (qDiv) qDiv.style.background = '#d1fae5';
         } else {
-          qDiv.style.background = '#fee2e2';
+          if (qDiv) qDiv.style.background = '#fee2e2';
         }
       });
-
       const pct = (score / seg.quiz.length) * 100;
       const resultDiv = document.getElementById('quiz-result');
       const passThreshold = seg.passThreshold || 70;
-
       if (pct >= passThreshold) {
-        const feedback = this.buildFeedback(score, seg.quiz.length, seg.title);
-        resultDiv.innerHTML = feedback;
+        resultDiv.innerHTML = this.buildFeedback(score, seg.quiz.length, seg.title);
         this.segmentStates[segIdx].quizPassed = true;
         this.segmentStates[segIdx].completed = true;
         this.segmentStates[segIdx].quizBestScore = Math.max(this.segmentStates[segIdx].quizBestScore, score);
-        if (segIdx < this.totalSegments - 1) {
-          this.segmentStates[segIdx + 1].unlocked = true;
-        }
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
         this.saveProgress();
-        const delay = 2500;
-        if (segIdx < this.totalSegments - 1) {
-          setTimeout(() => this.goTo(segIdx + 1), delay);
-        } else {
-          setTimeout(() => this.renderSegment(segIdx), delay);
-        }
+        setTimeout(() => {
+          if (segIdx < this.totalSegments - 1) this.goTo(segIdx + 1);
+          else this.renderSegment(segIdx);
+        }, 2500);
       } else {
         resultDiv.innerHTML = `<span style="color:#991b1b">❌ Failed. ${score}/${seg.quiz.length} (${Math.round(pct)}%). Need ${passThreshold}% to pass. Try again!</span>`;
         this.segmentStates[segIdx].quizBestScore = Math.max(this.segmentStates[segIdx].quizBestScore, score);
@@ -247,12 +512,27 @@
       }
     },
 
+    renderInteraction(interaction, segIdx) {
+      let html = `<div class="interaction-section"><h4>✏️ ${interaction.title || 'Activity'}</h4>`;
+      html += `<p>${interaction.instruction || interaction.prompt || 'Complete the activity below to proceed.'}</p>`;
+      if (interaction.type === 'textarea') {
+        html += `<textarea id="interaction-input" rows="4" style="width:100%;padding:12px;border-radius:8px;border:1px solid #e2e8f0;margin-top:8px;" placeholder="${interaction.placeholder || 'Type your answer here...'}"></textarea>`;
+      } else if (interaction.type === 'checkbox') {
+        (interaction.options || []).forEach((opt, j) => {
+          html += `<label style="display:block;margin:8px 0;"><input type="checkbox" value="${j}"> ${opt}</label>`;
+        });
+      }
+      html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitInteraction(${segIdx})">Submit</button>`;
+      html += '<div id="interaction-result" style="margin-top:12px;"></div>';
+      html += '</div>';
+      return html;
+    },
+
     submitInteraction(segIdx) {
       const seg = this.segments[segIdx];
       const input = document.getElementById('interaction-input');
       const resultDiv = document.getElementById('interaction-result');
       let valid = true;
-
       if (seg.interaction.type === 'textarea') {
         if (!input || input.value.trim().length < (seg.interaction.minLength || 10)) {
           valid = false;
@@ -272,19 +552,29 @@
           }
         }
       }
-
       if (valid) {
         resultDiv.innerHTML = '<span style="color:#065f46">✅ Completed! You can proceed.</span>';
         this.segmentStates[segIdx].completed = true;
-        if (segIdx < this.totalSegments - 1) {
-          this.segmentStates[segIdx + 1].unlocked = true;
-        }
+        if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
         this.saveProgress();
-        if (segIdx < this.totalSegments - 1) {
-          setTimeout(() => this.goTo(segIdx + 1), 1200);
-        } else {
-          setTimeout(() => this.renderSegment(segIdx), 1200);
-        }
+        setTimeout(() => {
+          if (segIdx < this.totalSegments - 1) this.goTo(segIdx + 1);
+          else this.renderSegment(segIdx);
+        }, 1200);
+      }
+    },
+
+    flipCard(i) {
+      const fc = document.getElementById(`fc-${i}`);
+      if (!fc) return;
+      const front = fc.querySelector('.flashcard-front');
+      const back = fc.querySelector('.flashcard-back');
+      if (back.style.display === 'none') {
+        front.style.display = 'none';
+        back.style.display = 'block';
+      } else {
+        front.style.display = 'block';
+        back.style.display = 'none';
       }
     },
 
@@ -292,11 +582,11 @@
       const pct = Math.round((score / total) * 100);
       let msg = '';
       if (pct === 100) {
-        msg = `Perfect score! You absolutely nailed <strong>${title}</strong>. The Zetrix Avatar is impressed — you're building a rock-solid foundation for your one-person company.`;
+        msg = `Perfect score! You absolutely nailed <strong>${title}</strong>.`;
       } else if (pct >= 80) {
-        msg = `Great work on <strong>${title}</strong>! You scored <strong>${score}/${total}</strong>. A couple of gaps to tighten up, but you're clearly getting the hang of this. The Avatar sees strong progress.`;
+        msg = `Great work on <strong>${title}</strong>! You scored <strong>${score}/${total}</strong>.`;
       } else {
-        msg = `You passed <strong>${title}</strong> with <strong>${score}/${total}</strong>. The Zetrix Avatar suggests revisiting the key concepts — small tweaks now will save hours later.`;
+        msg = `You passed <strong>${title}</strong> with <strong>${score}/${total}</strong>.`;
       }
       return `
         <div style="background:linear-gradient(135deg,#dcfce7 0%,#d1fae5 100%);border:1px solid #86efac;border-radius:16px;padding:20px;margin-top:12px;">
@@ -332,89 +622,7 @@
     },
 
     countQuizzes() {
-      return this.segments.filter(s => s.quiz && s.quiz.length > 0).length;
-    },
-
-    initMatchOS() {
-      const items = document.querySelectorAll('#match-os .match-item');
-      const targets = document.querySelectorAll('#match-os .match-target');
-      const result = document.getElementById('match-os-result');
-      if (!items.length || !targets.length) return;
-      let selected = null, correct = 0, total = items.length;
-      items.forEach(it => {
-        it.addEventListener('click', function() {
-          if (this.style.pointerEvents === 'none') return;
-          items.forEach(x => { if (x.style.pointerEvents !== 'none') x.style.background = ''; });
-          selected = this;
-          this.style.background = '#e0f0ff';
-        });
-      });
-      targets.forEach(tg => {
-        tg.addEventListener('click', function() {
-          if (!selected || this.style.pointerEvents === 'none') return;
-          if (selected.dataset.key === this.dataset.key) {
-            this.style.background = '#d4edda';
-            selected.style.background = '#d4edda';
-            this.style.pointerEvents = 'none';
-            selected.style.pointerEvents = 'none';
-            this.style.textDecoration = 'line-through';
-            selected.style.textDecoration = 'line-through';
-            this.style.opacity = '0.6';
-            selected.style.opacity = '0.6';
-            this.insertBefore(document.createTextNode('✓ '), this.firstChild);
-            selected.insertBefore(document.createTextNode('✓ '), selected.firstChild);
-            correct++;
-          } else {
-            this.style.background = '#f8d7da';
-            setTimeout(() => { if (this.style.pointerEvents !== 'none') this.style.background = ''; }, 800);
-          }
-          selected = null;
-          if (correct === total && result) {
-            result.textContent = '✅ Perfect! You matched all components correctly.';
-          }
-        });
-      });
-    },
-
-    initDragDropSort() {
-      const docs = document.querySelectorAll('#sort-docs .sort-doc');
-      const folders = document.querySelectorAll('#sort-docs .sort-folder');
-      const result = document.getElementById('sort-docs-result');
-      if (!docs.length || !folders.length) return;
-      let selectedDoc = null, correct = 0, total = docs.length;
-      docs.forEach(d => {
-        d.addEventListener('click', function() {
-          if (this.style.pointerEvents === 'none') return;
-          docs.forEach(x => { if (x.style.pointerEvents !== 'none') x.style.background = ''; });
-          selectedDoc = this;
-          this.style.background = '#e0f0ff';
-        });
-      });
-      folders.forEach(f => {
-        f.addEventListener('click', function() {
-          if (!selectedDoc || this.style.pointerEvents === 'none') return;
-          if (selectedDoc.dataset.folder === this.dataset.folder) {
-            this.style.background = '#d4edda';
-            selectedDoc.style.background = '#d4edda';
-            this.style.pointerEvents = 'none';
-            selectedDoc.style.pointerEvents = 'none';
-            this.style.textDecoration = 'line-through';
-            selectedDoc.style.textDecoration = 'line-through';
-            this.style.opacity = '0.6';
-            selectedDoc.style.opacity = '0.6';
-            this.insertBefore(document.createTextNode('✓ '), this.firstChild);
-            selectedDoc.insertBefore(document.createTextNode('✓ '), selectedDoc.firstChild);
-            correct++;
-          } else {
-            this.style.background = '#f8d7da';
-            setTimeout(() => { if (this.style.pointerEvents !== 'none') this.style.background = ''; }, 800);
-          }
-          selectedDoc = null;
-          if (correct === total && result) {
-            result.textContent = '✅ Excellent! All documents sorted correctly.';
-          }
-        });
-      });
+      return this.segments.filter(s => (s.quiz && s.quiz.length > 0) || s.assessment).length;
     }
   };
 })();
