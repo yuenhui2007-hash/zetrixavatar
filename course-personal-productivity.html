@@ -4,10 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Productivity — Zetrix AI Academy</title>
+  <script>
+    (function(){
+      if (!window.__zbusted) {
+        window.__zbusted = true;
+        var scripts = document.querySelectorAll('script[src*="course-engine"]');
+        for (var i=0;i<scripts.length;i++) {
+          if (scripts[i].src.indexOf('course-engine-v6') !== -1 || scripts[i].src.indexOf('v=7') === -1) {
+            localStorage.clear();
+            location.href = location.pathname + '?nocache=' + Date.now();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
   <link rel="stylesheet" href="css/course-engine.css?v=2">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=2" defer></script>
+  <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
 </head>
 <body>

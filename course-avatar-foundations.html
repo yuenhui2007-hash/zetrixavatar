@@ -3,11 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Avatar Foundations — Zetrix AI Academy</title>
+  <script>
+    // NUCLEAR CACHE BUST: detect stale CDN HTML and force hard reload once
+    (function(){
+      if (!window.__zbusted) {
+        window.__zbusted = true;
+        var scripts = document.querySelectorAll('script[src*="course-engine"]');
+        for (var i=0;i<scripts.length;i++) {
+          if (scripts[i].src.indexOf('course-engine-v6') !== -1 || scripts[i].src.indexOf('v=7') !== -1) {
+            localStorage.clear();
+            location.href = location.pathname + '?nocache=' + Date.now();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
   <link rel="stylesheet" href="css/course-engine.css?v=2">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=2" defer></script>
+  <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
 </head>
 <body>
@@ -145,7 +164,7 @@
               });
             });
           })();
-          </script>`
+          <\/script>`
         },
         {
           title: "Zetrix Platform Features",
@@ -435,36 +454,7 @@
               <div class="sort-folder" data-folder="archive" style="padding:8px 12px;border:1px solid #ccc;margin:4px 0;cursor:pointer;border-radius:4px;">06 – Archive</div>
             </div>
           </div>
-          <p id="sort-docs-result" style="margin-top:1rem;font-weight:bold;"></p>
-          <script>
-          (function(){
-            let selectedDoc=null, correct=0, total=6;
-            const docs=document.querySelectorAll('#sort-docs .sort-doc');
-            const folders=document.querySelectorAll('#sort-docs .sort-folder');
-            const result=document.getElementById('sort-docs-result');
-            docs.forEach(d=>{
-              d.addEventListener('click',function(){
-                docs.forEach(x=>x.style.background='');
-                selectedDoc=this;
-                this.style.background='#e0f0ff';
-              });
-            });
-            folders.forEach(f=>{
-              f.addEventListener('click',function(){
-                if(!selectedDoc) return;
-                if(selectedDoc.dataset.folder===this.dataset.folder){
-                  this.style.background='#d4edda'; selectedDoc.style.background='#d4edda';
-                  this.style.pointerEvents='none'; selectedDoc.style.pointerEvents='none';
-                  correct++;
-                }else{
-                  this.style.background='#f8d7da'; setTimeout(()=>this.style.background='',800);
-                }
-                selectedDoc=null;
-                if(correct===total) result.textContent='✅ Excellent! All documents sorted correctly.';
-              });
-            });
-          })();
-          </script>`
+          <p id="sort-docs-result" style="margin-top:1rem;font-weight:bold;"></p>`,
         },
         {
           title: "Daily Updates & Continuous Learning",
@@ -574,3 +564,4 @@
   </script>
 </body>
 </html>
+<!-- force deploy 1787129228 -->

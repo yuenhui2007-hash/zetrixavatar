@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- v2026-08-20 -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -10,12 +11,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zetrix AI Academy — LearnAI</title>
+<title>Zetrix AI Academy</title>
 <meta name="description" content="Zetrix AI Academy: 6 specialized AI courses with interactive lessons, quizzes, and progress tracking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=8">
-<link rel="stylesheet" href="css/znotes-style.css?v=8">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/znotes-style.css?v=10">
 <style>
 /* ===== HERO ===== */
 .academy-hero {
@@ -39,12 +40,13 @@
 }
 .academy-hero .container { position: relative; z-index: 1; }
 .academy-hero h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 16px;
   background: linear-gradient(90deg, #fff, #a5b4fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  min-height: 1.2em;
 }
 .academy-hero p {
   font-size: 1.15rem;
@@ -84,6 +86,56 @@
   font-size: 0.85rem;
   opacity: 0.7;
   margin-top: 4px;
+}
+
+/* Canvas particle layer */
+.hero-canvas-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: all;
+}
+#neuralCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mouse glow orb */
+.mouse-glow-orb {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
+/* Course card enhancements */
+.course-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.course-card .course-icon {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.course-card:hover .course-icon {
+  transform: scale(1.2) rotate(-8deg);
+}
+
+/* Cert floating emojis container */
+.floating-emojis {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Magnetic buttons */
+.btn-magnetic {
+  transition: transform 0.15s ease;
 }
 
 /* ===== COURSES GRID ===== */
@@ -308,6 +360,7 @@
   .hero-stat-number { font-size: 1.6rem; }
   .courses-grid { grid-template-columns: 1fr; }
   .course-card { flex-direction: column; }
+  .mouse-glow-orb { display: none; }
 }
 
 /* Entrance animations */
@@ -324,32 +377,52 @@
 </head>
 <body>
 <nav class="navbar" id="navbar"></nav>
-<script src="js/nav.js?v=8"></script>
+<script src="js/nav.js?v=9"></script>
 
 <!-- HERO -->
 <section class="academy-hero">
+  <canvas id="neuralCanvas" class="hero-canvas-layer"></canvas>
   <div class="container">
     <div class="academy-badge">🤖 Zetrix AI Academy</div>
-    <h1>Master AI Across Every Domain</h1>
-    <p>9 specialized courses — from building AI avatars to enterprise deployment and client consultation. Interactive lessons, quizzes, flashcards, and progress tracking.</p>
-    <a href="#courses" class="btn btn-white" style="margin-right:12px">Browse Courses</a>
-    <a href="#departments" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:white">Department Training</a>
+    <h1 id="typingText" data-texts='["Master AI Across Every Domain","Build AI Avatars","Automate Your Business","Code with AI","Launch Your Startup"]'>Master AI Across Every Domain</h1>
+    <style>
+      #typingText {
+        display: inline-block;
+        white-space: normal;
+        overflow: visible;
+        min-width: auto;
+      }
+      .academy-hero h1 {
+        min-height: 1.3em;
+        line-height: 1.2;
+        padding: 0 24px;
+        overflow: visible;
+        width: auto;
+        max-width: none;
+      }
+      .academy-hero .container {
+        overflow: visible;
+      }
+    </style>
+    <p>7 specialized courses — from building AI avatars to launching your own one-person company. Interactive lessons, quizzes, flashcards, and progress tracking.</p>
+    <a href="#courses" class="btn btn-white btn-magnetic ripple" style="margin-right:12px">Browse Courses</a>
+    <a href="#departments" class="btn btn-outline btn-magnetic ripple" style="border-color:rgba(255,255,255,0.4);color:white">Department Training</a>
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <span class="hero-stat-number">9</span>
+        <span class="hero-stat-number" data-count="7">0</span>
         <span class="hero-stat-label">Courses</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">60+</span>
+        <span class="hero-stat-number" data-count="60" data-suffix="+">0</span>
         <span class="hero-stat-label">Lessons</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">Quizzes</span>
-        <span class="hero-stat-label">+ Flashcards</span>
+        <span class="hero-stat-number" data-count="50" data-suffix="+">0</span>
+        <span class="hero-stat-label">Quizzes</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-number">∞</span>
+        <span class="hero-stat-number" data-count="100" data-suffix="%">0</span>
         <span class="hero-stat-label">Possibilities</span>
       </div>
     </div>
@@ -364,16 +437,16 @@
   </div>
 
   <div class="courses-grid">
-    <a href="course-avatar-foundations.html" class="course-card fade-up">
+    <a href="course-avatar-foundations.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">🎭</div>
       <div class="course-info">
         <h3>Avatar Foundations</h3>
         <p>Build AI avatars, voice & video agents, digital humans, and deployment pipelines.</p>
-        <div class="course-meta">10 segments • Quizzes • Progress tracking</div>
+        <div class="course-meta">10 segments • Quizzes • Flashcards • Progress tracking</div>
       </div>
     </a>
 
-    <a href="course-ai-brain.html" class="course-card fade-up">
+    <a href="course-ai-brain.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">🧠</div>
       <div class="course-info">
         <h3>AI Brain</h3>
@@ -382,16 +455,16 @@
       </div>
     </a>
 
-    <a href="course-business-automation.html" class="course-card fade-up">
+    <a href="course-business-automation.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">⚙️</div>
       <div class="course-info">
         <h3>Business Automation</h3>
         <p>Workflow automation, n8n/Zapier, CRM bots, document processing, and RPA.</p>
-        <div class="course-meta">10 segments • Quizzes • Progress tracking</div>
+        <div class="course-meta">10 segments • Quizzes • Flashcards • Progress tracking</div>
       </div>
     </a>
 
-    <a href="course-sales-marketing.html" class="course-card fade-up">
+    <a href="course-sales-marketing.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">📢</div>
       <div class="course-info">
         <h3>Sales & Marketing</h3>
@@ -400,7 +473,7 @@
       </div>
     </a>
 
-    <a href="course-personal-productivity.html" class="course-card fade-up">
+    <a href="course-personal-productivity.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">⚡</div>
       <div class="course-info">
         <h3>Personal Productivity</h3>
@@ -409,7 +482,7 @@
       </div>
     </a>
 
-    <a href="course-ai-coding.html" class="course-card fade-up">
+    <a href="course-ai-coding.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">💻</div>
       <div class="course-info">
         <h3>AI for Coding</h3>
@@ -418,29 +491,11 @@
       </div>
     </a>
 
-    <a href="course-one-person-company.html" class="course-card fade-up">
+    <a href="course-one-person-company.html" class="course-card fade-up tilt-3d">
       <div class="course-icon">🚀</div>
       <div class="course-info">
         <h3>One-Person Company</h3>
         <p>Build, launch, and scale a profitable company run entirely by you and your Zetrix Avatar. No employees needed.</p>
-        <div class="course-meta">10 segments • Quizzes • Flashcards • Progress tracking</div>
-      </div>
-    </a>
-
-    <a href="course-enterprise-deployment.html" class="course-card fade-up">
-      <div class="course-icon">🏢</div>
-      <div class="course-info">
-        <h3>Enterprise Avatar Deployment</h3>
-        <p>Deploy, secure, and scale avatar AI in corporate environments. SSO, compliance, multi-tenancy, SLAs, and ROI measurement.</p>
-        <div class="course-meta">10 segments • Quizzes • Flashcards • Progress tracking</div>
-      </div>
-    </a>
-
-    <a href="course-solution-architecture.html" class="course-card fade-up">
-      <div class="course-icon">🎯</div>
-      <div class="course-info">
-        <h3>Solution Architecture &amp; Client Consultation</h3>
-        <p>Scope client needs, design avatar solutions, price implementations, and manage post-sale success. Turn technical staff into consultants.</p>
         <div class="course-meta">10 segments • Quizzes • Flashcards • Progress tracking</div>
       </div>
     </a>
@@ -449,10 +504,11 @@
 
 <!-- CERTIFICATE -->
 <section class="cert-section" id="certSection">
+  <div class="floating-emojis" id="floatingEmojis"></div>
   <div class="container">
     <h2>🏆 Complete a Course, Earn a Certificate</h2>
     <p>Finish all segments and pass the final quiz to receive your Zetrix AI Academy certificate.</p>
-    <a href="#courses" class="btn btn-primary" style="font-size:1.05rem;padding:14px 32px">Start Learning</a>
+    <a href="#courses" class="btn btn-primary btn-magnetic ripple confetti-btn" style="font-size:1.05rem;padding:14px 32px">Start Learning</a>
   </div>
 </section>
 
@@ -465,14 +521,17 @@
   <div class="dept-grid" id="deptGrid"></div>
 </section>
 
+<!-- MOUSE GLOW ORB -->
+<div class="mouse-glow-orb" id="mouseGlow"></div>
+
 <!-- FLOATING MASCOT -->
 <div class="mascot-float" onclick="window.location.href='#courses'">
   <div class="mascot-bubble">👋 Ready to learn? Pick a course!</div>
   <div class="mascot-avatar">🤖</div>
 </div>
 
-<script src="js/theme.js?v=8"></script>
-<script src="js/auth.js?v=8"></script>
+<script src="js/theme.js?v=9"></script>
+<script src="js/auth.js?v=9"></script>
 <script>
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
@@ -649,7 +708,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script src="js/mascot.js?v=8"></script>
-<script src="js/pwa.js?v=8"></script>
+<script src="js/fx.js?v=9"></script>
+<script src="js/mascot.js?v=9"></script>
+<script src="js/pwa.js?v=9"></script>
 </body>
 </html>

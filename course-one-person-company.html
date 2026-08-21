@@ -4,10 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One-Person Company — Zetrix AI Academy</title>
+  <script>
+    (function(){
+      if (!window.__zbusted) {
+        window.__zbusted = true;
+        var scripts = document.querySelectorAll('script[src*="course-engine"]');
+        for (var i=0;i<scripts.length;i++) {
+          if (scripts[i].src.indexOf('course-engine-v6') !== -1 || scripts[i].src.indexOf('v=7') === -1) {
+            localStorage.clear();
+            location.href = location.pathname + '?nocache=' + Date.now();
+            return;
+          }
+        }
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css?v=10">
   <link rel="stylesheet" href="css/course-engine.css?v=2">
   <script src="js/nav.js?v=6" defer></script>
-  <script src="js/course-engine.js?v=2" defer></script>
+  <script src="js/course-engine.js?v=8" defer></script>
   <script src="js/theme.js?v=5" defer></script>
 </head>
 <body>
@@ -103,11 +118,14 @@
             <li>Content performance (views, clicks, conversions)</li>
           </ul>
           <p>Format: 5-bullet voice message. Time: 2 minutes. Impact: complete situational awareness before you start work.</p>`,
-          interaction: {
-            type: 'textarea',
-            prompt: 'Write a one-sentence mission statement for your "Business" Avatar co-founder. Include your industry, target revenue, and one boundary.',
-            placeholder: 'Example: Help me build a $10K/month freelance copywriting business by managing clients, drafting proposals, and tracking invoices—never commit to deadlines without my approval.'
-          }
+          quiz: [
+            { q: "What is the FIRST step in setting up your Avatar as a co-founder?", options: ["Grant tool access","Create a dedicated 'Business' Avatar with a mission statement","Define escalation rules","Set up the morning briefing"], correct: 1 },
+            { q: "What does the Avatar do as Chief Marketing Officer?", options: ["Manages schedules","Drafts blog posts, social captions, and email newsletters","Tracks revenue and expenses","Answers customer FAQs"], correct: 1 },
+            { q: "How long should a morning briefing voice message be?", options: ["30 seconds","1 minute","2 minutes","5 minutes"], correct: 2 },
+            { q: "What format should the morning briefing use?", options: ["10-bullet email","5-bullet voice message","Video call","Spreadsheet report"], correct: 1 },
+            { q: "What should escalation rules specify?", options: ["When the Avatar should notify you immediately","How to write emails","Which colors to use in branding","Daily posting schedule"], correct: 0 }
+          ],
+          passThreshold: 80
         },
         {
           title: "Automating Customer Acquisition",
@@ -148,14 +166,14 @@
             <li><strong>Day 7:</strong> Test and optimise. Submit a test email. Check mobile layout. Fix broken links.</li>
           </ul>
           <p><strong>Pro Tip:</strong> Start with ONE channel. LinkedIn for B2B. Instagram for visual products. Twitter for tech audiences. Master one before adding others.</p>`,
-          flashcards: [
-            { q: "What are the four stages of the acquisition funnel?", a: "Attention, Interest, Trust, Action." },
-            { q: "How many social posts should the Avatar draft per day?", a: "3 posts per day." },
-            { q: "What is a lead magnet?", a: "A free resource offered in exchange for an email address." },
-            { q: "How many emails should a welcome sequence have?", a: "5–7 emails over 14 days." },
-            { q: "What is the recommended approach to traffic channels?", a: "Master one channel before adding others." },
-            { q: "What tool category builds landing pages without code?", a: "No-code platforms like Carrd, Webflow, or Leadpages." }
-          ]
+          quiz: [
+            { q: "What are the four stages of the acquisition funnel?", options: ["Awareness, Interest, Desire, Action","Attention, Interest, Trust, Action","Prospect, Lead, Customer, Advocate","Search, Click, Buy, Repeat"], correct: 1 },
+            { q: "How many social posts should the Avatar draft per day?", options: ["1","2","3","5"], correct: 2 },
+            { q: "What is a lead magnet?", options: ["A paid product","A free resource for an email address","A social media ad","A sales call"], correct: 1 },
+            { q: "How many emails should a welcome sequence have?", options: ["1–2","3–4","5–7","10–15"], correct: 2 },
+            { q: "What is the recommended approach to traffic channels?", options: ["Post on every platform","Master one before adding others","Only use paid ads","Ignore social media"], correct: 1 }
+          ],
+          passThreshold: 80
         },
         {
           title: "Product Development with AI",
@@ -247,11 +265,14 @@
             <li><strong>Email Newsletter:</strong> "Draft a weekly newsletter with: 1 insight, 1 tool recommendation, 1 personal update. Keep it under 300 words."</li>
           </ul>
           <p><strong>Pro Tip:</strong> Consistency beats virality. One post per day for 90 days beats one viral post and 89 days of silence.</p>`,
-          interaction: {
-            type: 'textarea',
-            prompt: 'Write a content prompt for YOUR industry that your Avatar can use weekly. Include the platform, format, length, and one specific angle.',
-            placeholder: 'Example: Write a LinkedIn article (1,200 words) about common mistakes in SaaS onboarding. Include a case study from my PKM and end with a free template offer.'
-          }
+          quiz: [
+            { q: "What is the first step in setting up a content engine?", options: ["Schedule posts","Choose your primary platform","Hire a writer","Buy ads"], correct: 1 },
+            { q: "How many content ideas should the Avatar generate weekly?", options: ["2","3","5","10"], correct: 2 },
+            { q: "What day is recommended for batch content creation?", options: ["Monday","Wednesday","Friday","Sunday"], correct: 0 },
+            { q: "How much time should Aisha spend on content per week?", options: ["1 hour","2 hours","5 hours","10 hours"], correct: 1 },
+            { q: "What matters more than virality?", options: ["Post quality","Consistency","Hashtags","Follower count"], correct: 1 }
+          ],
+          passThreshold: 80
         },
         {
           title: "Sales & Outreach Automation",
@@ -356,14 +377,14 @@
             <li>Any issues requiring your attention</li>
           </ul>
           <p>Format: One-page PDF or 3-minute voice briefing. Time investment: zero. Information gain: complete.</p>`,
-          flashcards: [
-            { q: "What are the 5 operations automation areas?", a: "Client onboarding, project management, invoicing, meeting notes, documentation." },
-            { q: "What should the Avatar do with receipt photos?", a: "Categorise expenses and store them." },
-            { q: "How much admin time did Sam save after automation?", a: "From 8 hours/week to 30 minutes/week." },
-            { q: "What day should the weekly business review be delivered?", a: "Sunday." },
-            { q: "What format should the weekly review take?", a: "One-page PDF or 3-minute voice briefing." },
-            { q: "What three categories should tasks be sorted into?", a: "Automate, Delegate, Eliminate." }
-          ]
+          quiz: [
+            { q: "What are the 5 operations automation areas?", options: ["Sales, marketing, HR, IT, legal","Client onboarding, project management, invoicing, meeting notes, documentation","Design, coding, testing, deployment, support","Research, planning, execution, review, reporting"], correct: 1 },
+            { q: "What should the Avatar do with receipt photos?", options: ["Delete them","Categorise expenses and store them","Post them on social media","Email them to clients"], correct: 1 },
+            { q: "How much admin time did Sam save?", options: ["2 hours to 30 min","4 hours to 1 hour","8 hours to 30 minutes","10 hours to 1 hour"], correct: 2 },
+            { q: "What day should the weekly business review be delivered?", options: ["Monday","Friday","Saturday","Sunday"], correct: 3 },
+            { q: "What three categories should tasks be sorted into?", options: ["Plan, Do, Check","Automate, Delegate, Eliminate","High, Medium, Low","Urgent, Important, Later"], correct: 1 }
+          ],
+          passThreshold: 80
         },
         {
           title: "Scaling Without Hiring",
@@ -406,11 +427,14 @@
             <li><strong>Analytics:</strong> Tracks cohort retention, churn rates, and lifetime value.</li>
           </ul>
           <p><strong>Pro Tip:</strong> The moment a task repeats 3 times, document it and delegate it to the Avatar. Your time is for strategy and creation only.</p>`,
-          interaction: {
-            type: 'textarea',
-            prompt: 'Design a 3-rung product ladder for YOUR skill. Include a free lead magnet, a mid-tier product ($100-500), and a premium offer ($1K+). Describe each in one sentence.',
-            placeholder: 'Example: Free: "SEO Checklist PDF." Mid: "$299 SEO Course." Premium: "$2K/month SEO Retainer."'
-          }
+          quiz: [
+            { q: "What is the first rung of the product ladder?", options: ["Premium service","Core product","Free lead magnet","Subscription"], correct: 2 },
+            { q: "What price range is the 'core product' tier?", options: ["$10-50","$100-500","$1,000-5,000","$10,000+"], correct: 1 },
+            { q: "What was Elena's first product?", options: ["A course","A Figma plugin","A UI kit","A community"], correct: 2 },
+            { q: "How much recurring revenue did Elena generate?", options: ["$4,500/month","$8,700/month","$13,200/month","$19,800/month"], correct: 2 },
+            { q: "When should you delegate a task to the Avatar?", options: ["After the first time","After it repeats 3 times","Only on Fridays","Never—do everything yourself"], correct: 1 }
+          ],
+          passThreshold: 80
         },
         {
           title: "Legal & Compliance",
