@@ -1324,7 +1324,7 @@ const zetrixKnowledgeBase = {
   },
 
   'opc-framework': {
-    patterns: ['opc framework','one person company framework','business framework','solopreneur framework'],
+    patterns: ['opc','one person company','business framework','solopreneur framework'],
     response: `<h4>One-Person Company Framework</h4>
 <div class="formula-block">
   PROBLEM → CUSTOMER → OFFER → ACQUISITION → SALES → DELIVERY → SUPPORT → AUTOMATION → MEASUREMENT → IMPROVEMENT
