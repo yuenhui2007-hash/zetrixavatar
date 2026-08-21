@@ -184,14 +184,42 @@
           </ul>
           <h3>Framework: The Wellness Wheel</h3>
           <p>Rate yourself 1–10 on each spoke. Any score below 5 = priority intervention:</p>
-          <ul>
-            <li><strong>Sleep</strong></li>
-            <li><strong>Movement</strong></li>
-            <li><strong>Nutrition</strong></li>
-            <li><strong>Mental Health</strong></li>
-            <li><strong>Social Connection</strong></li>
-            <li><strong>Purpose & Meaning</strong></li>
-          </ul>
+          <style>
+            .wellness-wheel { max-width: 520px; margin: 20px 0; }
+            .wellness-item { display: flex; align-items: center; gap: 12px; margin: 14px 0; flex-wrap: wrap; }
+            .wellness-label { width: 140px; font-weight: 600; font-size: 0.95rem; }
+            .wellness-slider { flex: 1; min-width: 140px; -webkit-appearance: none; appearance: none; height: 8px; border-radius: 4px; background: #e2e8f0; outline: none; }
+            .wellness-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #6366f1; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+            .wellness-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #6366f1; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+            .wellness-score { width: 36px; text-align: center; font-weight: 700; font-size: 1.1rem; border-radius: 6px; padding: 2px 0; }
+            .wellness-score.low { color: #dc2626; background: #fef2f2; }
+            .wellness-score.mid { color: #d97706; background: #fffbeb; }
+            .wellness-score.high { color: #16a34a; background: #f0fdf4; }
+            .wellness-total { margin-top: 16px; padding: 12px 16px; background: #f8fafc; border-radius: 8px; border-left: 4px solid #6366f1; font-weight: 600; }
+            @media (max-width: 480px) { .wellness-label { width: 100%; } .wellness-slider { min-width: 100px; } }
+          </style>
+          <div class="wellness-wheel" id="wellnessWheel">
+            <div class="wellness-item"><span class="wellness-label">Sleep</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Movement</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Nutrition</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Mental Health</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Social Connection</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-item"><span class="wellness-label">Purpose & Meaning</span><input type="range" class="wellness-slider" min="1" max="10" value="5" oninput="updateWellness(this)"><span class="wellness-score mid">5</span></div>
+            <div class="wellness-total">Total: <span id="wellnessTotal">30</span> / 60 &nbsp;|&nbsp; Average: <span id="wellnessAvg">5.0</span></div>
+          </div>
+          <script>
+            function updateWellness(slider) {
+              const scoreEl = slider.nextElementSibling;
+              const val = parseInt(slider.value);
+              scoreEl.textContent = val;
+              scoreEl.className = 'wellness-score ' + (val < 5 ? 'low' : val < 8 ? 'mid' : 'high');
+              const sliders = document.querySelectorAll('.wellness-slider');
+              let total = 0;
+              sliders.forEach(s => total += parseInt(s.value));
+              document.getElementById('wellnessTotal').textContent = total;
+              document.getElementById('wellnessAvg').textContent = (total / 6).toFixed(1);
+            }
+          </script>
           <p><strong>Pro Tip:</strong> Sync health data with your calendar. If sleep score was &lt;70, the Avatar suggests lighter meetings and a 20-min nap block.</p>`,
           quiz: [
             { q: "Which wearable can you NOT connect to Zetrix?", options: ["Apple Health", "Fitbit", "Garmin", "PlayStation"], correct: 3 },
