@@ -6,9 +6,12 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Course Complete — Zetrix AI Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=10">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; }
+
     .complete-page {
       min-height: 100vh;
       display: flex;
@@ -36,6 +39,7 @@
       position: relative;
       z-index: 1;
       max-width: 640px;
+      width: 100%;
     }
     .complete-badge {
       font-size: 5rem;
@@ -69,24 +73,15 @@
       margin-bottom: 40px;
       flex-wrap: wrap;
     }
-    .complete-stat {
-      text-align: center;
-    }
-    .complete-stat-number {
-      display: block;
-      font-size: 2rem;
-      font-weight: 800;
-      color: #a5b4fc;
-    }
-    .complete-stat-label {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
+    .complete-stat { text-align: center; }
+    .complete-stat-number { display: block; font-size: 2rem; font-weight: 800; color: #a5b4fc; }
+    .complete-stat-label { font-size: 0.85rem; opacity: 0.7; }
     .complete-actions {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 48px;
     }
     .complete-actions .btn {
       padding: 14px 32px;
@@ -98,17 +93,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      border: none;
     }
-    .btn-white {
-      background: white;
-      color: #3730a3;
-    }
+    .btn-white { background: white; color: #3730a3; }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.4);
-      color: white;
-      background: transparent;
-    }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; background: transparent; }
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
     .confetti {
       position: absolute;
@@ -122,122 +112,209 @@
       0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
+
+    /* ===== CERTIFICATE ===== */
+    .certificate-wrap {
+      margin: 0 auto;
+      max-width: 800px;
+    }
     .certificate-card {
-      margin-top: 48px;
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
-      border-radius: 16px;
-      padding: 4px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .certificate-border {
-      border: 2px solid rgba(165, 180, 252, 0.3);
-      border-radius: 14px;
-      padding: 40px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 60px 50px;
+      color: #1e1b4b;
+      text-align: center;
       position: relative;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
     }
-    .certificate-header {
+    .certificate-card::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 2px solid #c7b299;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .certificate-card::after {
+      content: '';
+      position: absolute;
+      inset: 18px;
+      border: 1px solid #e8dcc8;
+      border-radius: 1px;
+      pointer-events: none;
+    }
+    .cert-header {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-logo {
+      display: flex;
       align-items: center;
-      margin-bottom: 32px;
-      border-bottom: 1px solid rgba(165, 180, 252, 0.2);
-      padding-bottom: 16px;
-    }
-    .certificate-logo {
-      font-weight: 700;
+      gap: 10px;
+      font-weight: 800;
       font-size: 1.1rem;
-      color: #a5b4fc;
+      color: #3730a3;
     }
-    .certificate-stamp {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      color: #1e1b4b;
+    .cert-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+    .cert-stamp {
+      width: 90px;
+      height: 90px;
+      border: 3px solid #6366f1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6366f1;
       font-size: 0.7rem;
       font-weight: 800;
-      padding: 6px 14px;
-      border-radius: 50px;
       letter-spacing: 1px;
+      transform: rotate(-12deg);
+      opacity: 0.9;
     }
-    .certificate-body {
-      text-align: center;
-      margin: 32px 0;
-    }
-    .certificate-label {
-      font-size: 0.95rem;
-      opacity: 0.7;
-      margin: 8px 0;
-    }
-    .certificate-recipient {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 12px 0;
-      background: linear-gradient(90deg, #fff, #a5b4fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      border-bottom: 2px dashed rgba(165, 180, 252, 0.4);
-      padding-bottom: 4px;
-      cursor: text;
-      outline: none;
-      min-width: 200px;
-      display: inline-block;
-    }
-    .certificate-recipient:empty::before {
-      content: 'Click to enter your name';
-      opacity: 0.5;
-    }
-    .certificate-recipient:focus {
-      border-bottom-color: #a5b4fc;
-    }
-    .certificate-course {
-      font-size: 1.5rem;
+    .cert-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
       font-weight: 700;
-      color: #a5b4fc;
-      margin: 12px 0;
+      color: #1e1b4b;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
     }
-    .certificate-details {
-      font-size: 0.9rem;
-      opacity: 0.6;
-      margin-top: 16px;
+    .cert-label {
+      font-size: 1rem;
+      color: #64748b;
+      margin: 10px 0;
+      position: relative;
+      z-index: 1;
     }
-    .certificate-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 40px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(165, 180, 252, 0.2);
+    .cert-recipient {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #1e1b4b;
+      margin: 16px 0;
+      padding: 8px 24px;
+      border-bottom: 2px solid #c7b299;
+      display: inline-block;
+      min-width: 280px;
+      outline: none;
+      position: relative;
+      z-index: 1;
     }
-    .certificate-sig, .certificate-date {
-      text-align: center;
+    .cert-recipient:focus {
+      border-bottom-color: #6366f1;
+      background: rgba(99,102,241,0.05);
+      border-radius: 4px 4px 0 0;
     }
-    .certificate-line {
-      width: 120px;
-      height: 1px;
-      background: rgba(165, 180, 252, 0.5);
-      margin: 0 auto 8px;
+    .cert-course {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #3730a3;
+      margin: 16px 0 8px;
+      position: relative;
+      z-index: 1;
     }
-    .certificate-sig p, .certificate-date p {
+    .cert-details {
       font-size: 0.95rem;
+      color: #64748b;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #c7b299, #6366f1);
+      margin: 32px auto;
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-top: 48px;
+      padding-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-sig {
+      text-align: center;
+      flex: 1;
+    }
+    .cert-sig-line {
+      width: 140px;
+      height: 1px;
+      background: #1e1b4b;
+      margin: 0 auto 10px;
+    }
+    .cert-sig p {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e1b4b;
       margin: 0;
     }
-    .certificate-sig small, .certificate-date small {
+    .cert-sig small {
       font-size: 0.75rem;
-      opacity: 0.5;
+      color: #64748b;
     }
-    .certificate-seal {
-      font-size: 3rem;
-      opacity: 0.8;
+    .cert-seal {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 12px rgba(251,191,36,0.4);
+      flex-shrink: 0;
     }
+
+    @media (max-width: 640px) {
+      .certificate-card { padding: 40px 24px; }
+      .cert-title { font-size: 1.8rem; }
+      .cert-recipient { font-size: 1.8rem; min-width: 200px; }
+      .cert-footer { flex-wrap: wrap; gap: 24px; }
+      .cert-seal { order: -1; margin: 0 auto 16px; }
+    }
+
+    /* ===== PRINT STYLES ===== */
     @media print {
-      .complete-actions, .complete-badge, .complete-stats { display: none !important; }
-      .complete-title { font-size: 1.5rem !important; }
-      .complete-subtitle { font-size: 1rem !important; }
-      .certificate-card { margin-top: 0 !important; box-shadow: none !important; }
-      .complete-page { background: white !important; color: black !important; }
-      .certificate-border { border-color: #333 !important; }
+      @page { margin: 0; size: auto; }
+      body { background: white; }
+      .complete-actions, .complete-badge, .complete-stats, .complete-title, .complete-subtitle, .confetti { display: none !important; }
+      .complete-page {
+        background: white !important;
+        padding: 0 !important;
+        min-height: auto !important;
+      }
+      .complete-content { max-width: none !important; }
+      .certificate-wrap { max-width: none !important; margin: 0 !important; }
+      .certificate-card {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 60px 50px !important;
+        page-break-inside: avoid;
+      }
+      .certificate-card::before { inset: 16px !important; border-color: #c7b299 !important; }
+      .certificate-card::after { inset: 22px !important; border-color: #e8dcc8 !important; }
+      .cert-recipient { border-bottom-color: #c7b299 !important; }
     }
   </style>
 </head>
@@ -265,42 +342,44 @@
 
       <div class="complete-actions">
         <a href="index.html" class="btn btn-white">← Back to Academy</a>
-        <a href="#" class="btn btn-outline" onclick="window.print(); return false;">🖨️ Print Certificate</a>
+        <button class="btn btn-outline" onclick="window.print()">🖨️ Print Certificate</button>
       </div>
 
       <!-- CERTIFICATE -->
-      <div class="certificate-card" id="certificate">
-        <div class="certificate-border">
-          <div class="certificate-header">
-            <div class="certificate-logo">🤖 Zetrix AI Academy</div>
-            <div class="certificate-stamp">CERTIFIED</div>
+      <div class="certificate-wrap">
+        <div class="certificate-card">
+          <div class="cert-header">
+            <div class="cert-logo">
+              <div class="cert-logo-icon">🤖</div>
+              <span>Zetrix AI Academy</span>
+            </div>
+            <div class="cert-stamp">CERTIFIED</div>
           </div>
-          <div class="certificate-body">
-            <p class="certificate-label">This certifies that</p>
-            <p class="certificate-recipient" id="cert-recipient" contenteditable="true" spellcheck="false">Click to enter your name</p>
-            <p class="certificate-label">has successfully completed</p>
-            <p class="certificate-course" id="cert-course">Avatar Foundations</p>
-            <p class="certificate-details">
-              <span id="cert-segments">10</span> segments · <span id="cert-quizzes">3</span> quizzes passed · 100% completion
-            </p>
-          </div>
-          <div class="certificate-footer">
-            <div class="certificate-sig">
-              <div class="certificate-line"></div>
+
+          <div class="cert-title">Certificate of Completion</div>
+
+          <p class="cert-label">This certifies that</p>
+          <p class="cert-recipient" id="cert-recipient" contenteditable="true" spellcheck="false">Enter Your Name</p>
+          <p class="cert-label">has successfully completed</p>
+          <p class="cert-course" id="cert-course">Avatar Foundations</p>
+          <p class="cert-details">
+            <span id="cert-segments">10</span> segments · <span id="cert-quizzes">3</span> quizzes passed · 100% completion
+          </p>
+
+          <div class="cert-divider"></div>
+
+          <div class="cert-footer">
+            <div class="cert-sig">
+              <div class="cert-sig-line"></div>
               <p>Joshua</p>
               <small>Founder, Zetrix AI Academy</small>
             </div>
-            <div class="certificate-sig">
-              <div class="certificate-line"></div>
+            <div class="cert-seal">🏆</div>
+            <div class="cert-sig">
+              <div class="cert-sig-line"></div>
               <p>Yuen Hui</p>
               <small>Founder, Zetrix AI Academy</small>
             </div>
-            <div class="certificate-date">
-              <div class="certificate-line"></div>
-              <p id="cert-date">21 August 2026</p>
-              <small>Date of Completion</small>
-            </div>
-            <div class="certificate-seal">🏆</div>
           </div>
         </div>
       </div>
@@ -308,25 +387,27 @@
   </div>
 
   <script>
-    // Parse URL params for course info
     const params = new URLSearchParams(location.search);
     const courseName = params.get('course') || 'Avatar Foundations';
     const segments = params.get('segments') || '10';
     const quizzes = params.get('quizzes') || '3';
+
     document.getElementById('course-name').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     document.getElementById('stat-segments').textContent = segments;
     document.getElementById('stat-quizzes').textContent = quizzes;
 
-    // Fill certificate
     document.getElementById('cert-course').textContent = courseName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     document.getElementById('cert-segments').textContent = segments;
     document.getElementById('cert-quizzes').textContent = quizzes;
-    document.getElementById('cert-date').textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-    // Try to get user name from localStorage auth
+
+    const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
     try {
       const user = JSON.parse(localStorage.getItem('auth_user') || '{}');
-      if (user.name || user.email) {
-        document.getElementById('cert-recipient').textContent = user.name || user.email.split('@')[0];
+      if (user.name) {
+        document.getElementById('cert-recipient').textContent = user.name;
+      } else if (user.email) {
+        document.getElementById('cert-recipient').textContent = user.email.split('@')[0];
       }
     } catch(e) {}
 
