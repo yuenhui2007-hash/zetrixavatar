@@ -107,7 +107,7 @@ const SubjectAIMarker = {
     }
 
     if (subject === 'chemistry' || subject === 'physics' || subject === 'biology') {
-      const hasEquation = /(\b[A-Z][a-z]?\d*|→|⇌|=/).test(answer);
+      const hasEquation = /(\b[A-Z][a-z]?\d*|→|⇌|=)/.test(answer);
       if (hasEquation) {
         feedback.push('Equations / formulas used.');
         score += 0.5;
