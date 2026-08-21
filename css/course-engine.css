@@ -295,30 +295,59 @@
 }
 
 /* Dark mode */
+[data-theme="dark"] body, .dark body {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+[data-theme="dark"] .course-layout, .dark .course-layout {
+  background: #0f172a;
+}
+[data-theme="dark"] .course-main, .dark .course-main {
+  background: #0f172a;
+  color: #f1f5f9;
+}
 [data-theme="dark"] .course-sidebar, .dark .course-sidebar {
-  background: #1a1a1a;
-  border-color: #333333;
+  background: #1e293b;
+  border-color: #334155;
+}
+[data-theme="dark"] .course-sidebar h3, .dark .course-sidebar h3 {
+  color: #94a3b8;
+}
+[data-theme="dark"] .progress-track, .dark .progress-track {
+  background: #334155;
+}
+[data-theme="dark"] .progress-text, .dark .progress-text {
+  color: #94a3b8;
 }
 [data-theme="dark"] .nav-item:hover:not(.locked), .dark .nav-item:hover:not(.locked) {
-  background: #333333;
+  background: #334155;
 }
 [data-theme="dark"] .nav-item.active, .dark .nav-item.active {
   background: #312e81;
   color: #c7d2fe;
 }
 [data-theme="dark"] .nav-num, .dark .nav-num {
-  background: #333333;
-  color: #f0f0f0;
+  background: #334155;
+  color: #f1f5f9;
+}
+[data-theme="dark"] .segment-header h2, .dark .segment-header h2 {
+  color: #f1f5f9;
 }
 [data-theme="dark"] .segment-body, .dark .segment-body {
-  color: #f0f0f0;
+  color: #cbd5e1;
+}
+[data-theme="dark"] .segment-body h3, .dark .segment-body h3 {
+  color: #f1f5f9;
 }
 [data-theme="dark"] .flashcard-section, .dark .flashcard-section {
-  background: #1a1a1a;
+  background: #1e293b;
 }
 [data-theme="dark"] .flashcard, .dark .flashcard {
-  background: #000000;
-  border-color: #333333;
+  background: #0f172a;
+  border-color: #334155;
+}
+[data-theme="dark"] .flashcard-front p, .dark .flashcard-front p {
+  color: #f1f5f9;
 }
 [data-theme="dark"] .flashcard-back, .dark .flashcard-back {
   background: #172554;
@@ -330,10 +359,42 @@
   background: #451a03;
   border-color: #92400e;
 }
+[data-theme="dark"] .quiz-section h4, .dark .quiz-section h4 {
+  color: #f1f5f9;
+}
 [data-theme="dark"] .quiz-q, .dark .quiz-q {
-  background: #1a1a1a;
+  background: #1e293b;
+}
+[data-theme="dark"] .quiz-q p, .dark .quiz-q p {
+  color: #f1f5f9;
+}
+[data-theme="dark"] .quiz-opt, .dark .quiz-opt {
+  color: #cbd5e1;
 }
 [data-theme="dark"] .interaction-section, .dark .interaction-section {
-  background: #172554;
-  border-color: #1e40af;
+  background: #1e293b;
+  border-color: #334155;
+}
+[data-theme="dark"] .interaction-section h4, .dark .interaction-section h4 {
+  color: #f1f5f9;
+}
+[data-theme="dark"] .interaction-section p, .dark .interaction-section p {
+  color: #cbd5e1;
+}
+[data-theme="dark"] .interaction-completed, .dark .interaction-completed {
+  background: #1e293b;
+  border-color: #059669;
+}
+[data-theme="dark"] .segment-nav-buttons, .dark .segment-nav-buttons {
+  border-color: #334155;
+}
+[data-theme="dark"] ::-webkit-scrollbar, .dark ::-webkit-scrollbar {
+  width: 8px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-track, .dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb, .dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
 }
