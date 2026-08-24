@@ -1,66 +1,33 @@
-(function(){
-'use strict';
-var protectedPages = ['dashboard.html','planner.html','study-tools.html','exam-practice.html','flashcards.html','mock-exam.html','ai-marker.html','quiz.html'];
-var path = window.location.pathname;
-var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-var isProtected = protectedPages.indexOf(page) !== -1;
-var isAuthPage = page === 'login.html' || page === 'register.html';
+(function() {
+  'use strict';
 
-var API_BASE = window.location.origin.includes('localhost')
-  ? 'http://localhost:10000/api'
-  : 'https://learnai-backend-n0df.onrender.com/api';
+  // Auth guard for protected pages (dashboard, courses, etc.)
+  // Include this script AFTER auth.js on any page that requires login
 
-function getAuthHeaders() {
-  var token = localStorage.getItem('auth_token');
-  return token ? { 'Authorization': 'Bearer ' + token } : {};
-}
+  var PUBLIC_PATHS = ['index.html', 'signin.html', 'signup.html', 'support.html', 'blog.html', 'courses.html', ''];
+  var current = window.location.pathname.split('/').pop() || 'index.html';
 
-// Hide pages until auth check completes (prevents flash/redirect loops)
-if (isProtected || isAuthPage) {
-  document.documentElement.style.visibility = 'hidden';
-}
-
-function checkAuth() {
-  if (window.Auth && window.Auth.getUser) {
-    window.Auth.getUser().then(function(user) {
-      handleUser(user);
-    }).catch(function() {
-      handleUser(null);
-    });
-  } else {
-    fetch(API_BASE + '/auth/me', { headers: getAuthHeaders(), credentials: 'include' })
-      .then(function(res) {
-        if (!res.ok) throw new Error('Not authenticated');
-        return res.json();
-      })
-      .then(function(data) {
-        handleUser(data.user || null);
-      })
-      .catch(function() {
-        handleUser(null);
-      });
+  function isPublic(path) {
+    return PUBLIC_PATHS.some(function(p) { return path === p || path.endsWith('/' + p); });
   }
-}
 
-function handleUser(user) {
-  if (user) {
-    localStorage.setItem('learnai_auth', JSON.stringify(user));
-    if (isAuthPage) {
-      var params = new URLSearchParams(window.location.search);
-      window.location.replace(params.get('redirect') || 'dashboard.html');
-    } else if (isProtected) {
-      document.documentElement.style.visibility = '';
+  function checkAuth() {
+    // Auth module must be loaded
+    if (typeof Auth === 'undefined') {
+      console.warn('Auth guard: Auth module not loaded');
+      return;
     }
-  } else {
-    localStorage.removeItem('learnai_auth');
-    localStorage.removeItem('auth_token');
-    if (isProtected) {
-      window.location.replace('login.html?redirect=' + encodeURIComponent(window.location.href));
-    } else if (isAuthPage) {
-      document.documentElement.style.visibility = '';
+    var user = Auth.getUser();
+    if (!user && !isPublic(current)) {
+      // Redirect to sign-in with return URL
+      var redirect = encodeURIComponent(current);
+      window.location.replace('signin.html?redirect=' + redirect);
     }
   }
-}
 
-checkAuth();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  } else {
+    checkAuth();
+  }
 })();

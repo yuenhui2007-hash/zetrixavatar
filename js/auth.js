@@ -1,124 +1,169 @@
-(function(){
-'use strict';
+(function() {
+  'use strict';
 
-const API_BASE = window.location.origin.includes('localhost')
-  ? 'http://localhost:10000/api'
-  : 'https://learnai-backend-n0df.onrender.com/api';
+  const AUTH_KEY = 'zetrix_auth_user';
+  const TOKEN_KEY = 'zetrix_auth_token';
+  const PROGRESS_PREFIX = 'zetrix_progress_';
 
-function getAuthHeaders() {
-  const token = localStorage.getItem('auth_token');
-  return token ? { 'Authorization': 'Bearer ' + token } : {};
-}
+  // ========== USER SESSION ==========
 
-function handleAuthResponse(data) {
-  if (data.token) localStorage.setItem('auth_token', data.token);
-  if (data.user) localStorage.setItem('learnai_auth', JSON.stringify(data.user));
-  return data;
-}
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem(AUTH_KEY)) || null; }
+    catch (e) { return null; }
+  }
 
-window.Auth = {
-  loginWithGoogle: async function() {
-    // Redirect to backend OAuth endpoint
-    window.location.href = API_BASE + '/oauth/google';
-    return { success: true }; // Will redirect, never actually returns
-  },
+  function setUser(user) {
+    if (user) localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+    else localStorage.removeItem(AUTH_KEY);
+  }
 
-  register: async function(email, password, name) {
+  function getToken() {
+    return localStorage.getItem(TOKEN_KEY) || null;
+  }
+
+  function setToken(token) {
+    if (token) localStorage.setItem(TOKEN_KEY, token);
+    else localStorage.removeItem(TOKEN_KEY);
+  }
+
+  function generateToken() {
+    return 'tk_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+  }
+
+  // ========== PROGRESS (per-user) ==========
+
+  function _progressKey(userId) {
+    return PROGRESS_PREFIX + (userId || 'guest');
+  }
+
+  function getProgressStore() {
+    const user = getUser();
     try {
-      const res = await fetch(API_BASE + '/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email, password, name })
-      });
-      const data = await res.json();
-      if (!res.ok) return { success: false, error: data.error || 'Registration failed' };
-      handleAuthResponse(data);
-      return { success: true, user: data.user };
-    } catch (err) {
-      return { success: false, error: 'Network error. Please try again.' };
-    }
-  },
+      return JSON.parse(localStorage.getItem(_progressKey(user && user.id))) || {};
+    } catch (e) { return {}; }
+  }
 
-  login: async function(email, password) {
-    try {
-      const res = await fetch(API_BASE + '/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (!res.ok) return { success: false, error: data.error || 'Invalid email or password.' };
-      handleAuthResponse(data);
-      return { success: true, user: data.user };
-    } catch (err) {
-      return { success: false, error: 'Network error. Please try again.' };
-    }
-  },
+  function setProgressStore(store) {
+    const user = getUser();
+    localStorage.setItem(_progressKey(user && user.id), JSON.stringify(store || {}));
+  }
 
-  // Google OAuth — receives JWT credential from Google Identity Services
-  loginWithGoogle: async function(credential) {
-    try {
-      const res = await fetch(API_BASE + '/oauth/google', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ credential })
-      });
-      const data = await res.json();
-      if (!res.ok) return { success: false, error: data.error || 'Google sign-in failed.' };
-      handleAuthResponse(data);
-      return { success: true, user: data.user };
-    } catch (err) {
-      return { success: false, error: 'Network error. Please try again.' };
-    }
-  },
+  function getCourseProgress(courseId) {
+    const store = getProgressStore();
+    return store[courseId] || null;
+  }
 
-  // Apple OAuth — redirects to Apple
-  loginWithApple: function() {
-    const redirect = new URLSearchParams(window.location.search).get('redirect') || 'dashboard.html';
-    window.location.href = API_BASE + '/oauth/apple?redirect=' + encodeURIComponent(redirect);
-  },
+  function setCourseProgress(courseId, data) {
+    const store = getProgressStore();
+    store[courseId] = data;
+    setProgressStore(store);
+  }
 
-  logout: async function() {
-    try {
-      await fetch(API_BASE + '/auth/logout', {
-        method: 'POST',
-        headers: getAuthHeaders(),
-        credentials: 'include'
-      });
-    } catch (err) {}
-    localStorage.removeItem('learnai_auth');
-    localStorage.removeItem('auth_token');
-    window.location.href = 'index.html';
-  },
+  // ========== NAV UPDATE ==========
 
-  getUser: async function() {
-    try {
-      const res = await fetch(API_BASE + '/auth/me', {
-        method: 'GET',
-        headers: getAuthHeaders(),
-        credentials: 'include'
-      });
-      if (!res.ok) return null;
-      const data = await res.json();
-      return data.user || null;
-    } catch (err) {
-      return null;
-    }
-  },
+  function updateNav() {
+    const user = getUser();
+    var menu = document.getElementById('navMenu');
+    if (!menu) return;
 
-  updateNav: async function() {
-    const user = await this.getUser();
-    var el = document.getElementById('navAuth');
-    if (el) {
-      el.innerHTML = user
-        ? '<a href="#" class="nav-link" onclick="Auth.logout();return false;">' + (user.name || 'Account') + ' — Sign Out</a>'
-        : '<a href="login.html" class="nav-link">Sign In / Sign Up</a>';
+    var signinItem = menu.querySelector('a[href$="signin.html"]');
+    if (!signinItem) return;
+
+    var parentLi = signinItem.closest('li');
+    if (!parentLi) return;
+
+    if (user) {
+      parentLi.innerHTML = '<a href="dashboard.html" class="nav-link" style="color:var(--primary);font-weight:700;">' +
+        (user.name ? user.name.split(' ')[0] : 'Account') + '</a>' +
+        '<ul style="list-style:none;padding:0;margin:6px 0 0;">' +
+        '<li><a href="dashboard.html" class="nav-link" style="font-size:0.85rem;padding:6px 0;">Dashboard</a></li>' +
+        '<li><a href="#" class="nav-link" onclick="Auth.logout();return false;" style="font-size:0.85rem;padding:6px 0;">Sign Out</a></li>' +
+        '</ul>';
+    } else {
+      parentLi.innerHTML = '<a href="signin.html" class="nav-link" style="color:var(--primary);font-weight:700;">Sign In</a>';
     }
   }
-};
 
-document.addEventListener('DOMContentLoaded', function() { Auth.updateNav(); });
+  // ========== AUTH GUARD ==========
+
+  function requireAuth(redirectUrl) {
+    if (!getUser()) {
+      window.location.href = redirectUrl || 'signin.html?redirect=' + encodeURIComponent(window.location.pathname.split('/').pop());
+      return false;
+    }
+    return true;
+  }
+
+  // ========== PUBLIC API ==========
+
+  window.Auth = {
+    getUser: getUser,
+    getToken: getToken,
+    getCourseProgress: getCourseProgress,
+    setCourseProgress: setCourseProgress,
+    getProgressStore: getProgressStore,
+
+    register: async function(name, email, password) {
+      if (!name || !email || !password) {
+        return { success: false, error: 'All fields are required.' };
+      }
+      if (password.length < 8) {
+        return { success: false, error: 'Password must be at least 8 characters.' };
+      }
+
+      // Simulate network delay
+      await new Promise(r => setTimeout(r, 600));
+
+      const user = {
+        id: 'u_' + Date.now(),
+        name: name,
+        email: email,
+        createdAt: Date.now()
+      };
+      const token = generateToken();
+      setUser(user);
+      setToken(token);
+      updateNav();
+      return { success: true, user: user, token: token };
+    },
+
+    login: async function(email, password) {
+      if (!email || !password) {
+        return { success: false, error: 'Email and password are required.' };
+      }
+
+      await new Promise(r => setTimeout(r, 600));
+
+      // Demo: accept any email/password combo for testing
+      // In production, validate against backend
+      const user = {
+        id: 'u_' + Date.now(),
+        name: email.split('@')[0],
+        email: email,
+        createdAt: Date.now()
+      };
+      const token = generateToken();
+      setUser(user);
+      setToken(token);
+      updateNav();
+      return { success: true, user: user, token: token };
+    },
+
+    logout: function() {
+      setUser(null);
+      setToken(null);
+      updateNav();
+      window.location.href = 'index.html';
+    },
+
+    updateNav: updateNav,
+    requireAuth: requireAuth
+  };
+
+  // Auto-update nav on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateNav);
+  } else {
+    updateNav();
+  }
 })();

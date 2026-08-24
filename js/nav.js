@@ -22,11 +22,13 @@
 
     var navbar = document.getElementById('navbar');
     if (navbar) {
+      navbar.setAttribute('aria-label', 'Main navigation');
       navbar.innerHTML = navHTML;
     } else {
       navbar = document.createElement('nav');
       navbar.className = 'navbar';
       navbar.id = 'navbar';
+      navbar.setAttribute('aria-label', 'Main navigation');
       navbar.innerHTML = navHTML;
       document.body.insertBefore(navbar, document.body.firstChild);
     }

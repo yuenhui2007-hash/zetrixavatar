@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.allorigins.win https://api.allorigins.hexabin.com https://www.reddit.com https://hn.algolia.com https://dev.to; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -367,14 +368,12 @@
 </main>
 
 <script src="js/theme.js?v=15"></script>
+<script src="js/auth.js?v=15"></script>
 <script>
 // Check if already authenticated
 (function() {
-  const token = localStorage.getItem('zetrix_auth_token');
-  if (token) {
-    // Already logged in — redirect to dashboard
-    // window.location.href = 'dashboard.html';
-    console.log('User already authenticated — would redirect to dashboard');
+  if (Auth.getUser()) {
+    window.location.href = 'dashboard.html';
   }
 })();
 
@@ -486,25 +485,26 @@ form.addEventListener('submit', (e) => {
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
 
-  // Placeholder: wire to your auth backend
-  console.log('Sign in attempt:', { email, remember: document.getElementById('remember').checked });
-
-  setTimeout(() => {
+  Auth.login(email, password).then(function(result) {
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
-    showError('Demo mode — sign-in backend not connected. Wire this to your auth API.');
-  }, 1200);
+    if (result.success) {
+      const params = new URLSearchParams(window.location.search);
+      const redirect = params.get('redirect') || 'dashboard.html';
+      window.location.href = redirect;
+    } else {
+      showError(result.error || 'Sign in failed. Please try again.');
+    }
+  });
 });
 
 // Social sign-in placeholders
-document.getElementById('google-signin').addEventListener('click', () => {
-  console.log('Google OAuth sign-in clicked');
-  // Wire to OAuth provider
+document.getElementById('google-signin').addEventListener('click', function() {
+  showError('Google sign-in requires backend OAuth setup. Use email/password for demo.');
 });
 
-document.getElementById('github-signin').addEventListener('click', () => {
-  console.log('GitHub OAuth sign-in clicked');
-  // Wire to OAuth provider
+document.getElementById('github-signin').addEventListener('click', function() {
+  showError('GitHub sign-in requires backend OAuth setup. Use email/password for demo.');
 });
 </script>
 </body>
