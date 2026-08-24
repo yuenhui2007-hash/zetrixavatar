@@ -26,15 +26,17 @@
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
   <div class="course-layout">
-    <aside class="course-sidebar">
+    <aside class="course-sidebar" aria-label="Course sidebar">
       <h3>Enterprise Avatar Deployment</h3>
       <div class="progress-wrap">
         <div class="progress-track"><div id="overall-progress" class="progress-fill" style="width:0%"></div></div>
         <div id="overall-progress-text" class="progress-text">0/10 segments</div>
       </div>
-      <nav id="segment-nav"></nav>
+      <nav id="segment-nav" aria-label="Segment navigation"></nav>
     </aside>
-    <main class="course-main" id="segment-content"></main>
+    <main class="course-main" id="main-content">
+      <div id="segment-content"></div>
+    </main>
   </div>
 
   <script>
