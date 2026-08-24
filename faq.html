@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFA200">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Zetrix AI Academy</title>
+<meta name="description" content="Find answers about Zetrix AI Academy courses, Avatar, billing, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/znotes-style.css?v=10">
+<style>
+/* ===== PAGE STYLES ===== */
+.faq-hero {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  color: white;
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.faq-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  animation: floatBg 20s linear infinite;
+}
+@keyframes floatBg {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-60px); }
+}
+.faq-hero .container { position: relative; z-index: 1; }
+.faq-hero h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #fff, #FFD699);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.faq-hero p {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.faq-section {
+  padding: 80px 0;
+  background: #0f172a;
+}
+.faq-section .container { max-width: 900px; }
+
+/* Category tabs */
+.faq-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.faq-tab {
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,162,0,0.25);
+  background: transparent;
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.faq-tab:hover { border-color: #FFA200; color: #FFA200; }
+.faq-tab.active {
+  background: linear-gradient(135deg, #FFA200, #E69100);
+  color: #000;
+  border-color: transparent;
+}
+
+/* Category panels */
+.faq-category { display: none; }
+.faq-category.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.faq-category-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.faq-category-title .cat-icon { font-size: 1.3rem; }
+
+/* Accordion */
+.accordion-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.accordion-item:hover { border-color: rgba(255,162,0,0.2); }
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.accordion-header:hover { color: #FFA200; }
+.accordion-header .arrow {
+  font-size: 0.75rem;
+  color: #64748b;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+.accordion-item.open .arrow { transform: rotate(180deg); color: #FFA200; }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.accordion-item.open .accordion-body {
+  max-height: 500px;
+}
+.accordion-content {
+  padding: 0 24px 20px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.accordion-content a { color: #FFA200; text-decoration: underline; }
+.accordion-content a:hover { color: #FFD699; }
+.accordion-content ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+.accordion-content li { margin-bottom: 6px; }
+
+/* CTA */
+.faq-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  text-align: center;
+  color: #fff;
+}
+.faq-cta h2 { font-size: 1.8rem; margin-bottom: 12px; }
+.faq-cta p { opacity: 0.85; max-width: 480px; margin: 0 auto 28px; }
+
+/* Footer override */
+.footer { background: #0f172a; color: #94a3b8; }
+
+/* Fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .faq-hero { padding: 100px 0 60px; }
+  .faq-tabs { gap: 8px; }
+  .faq-tab { padding: 8px 16px; font-size: 0.82rem; }
+  .accordion-header { padding: 16px 18px; font-size: 0.95rem; }
+  .accordion-content { padding: 0 18px 18px; }
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+<script src="js/nav.js?v=10"></script>
+
+<!-- HERO -->
+<section class="faq-hero">
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about Zetrix AI Academy, your Avatar, courses, and account.</p>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-tabs fade-up">
+      <button class="faq-tab active" data-cat="getting-started">Getting Started</button>
+      <button class="faq-tab" data-cat="courses">Courses</button>
+      <button class="faq-tab" data-cat="avatar">Avatar</button>
+      <button class="faq-tab" data-cat="privacy">Data & Privacy</button>
+      <button class="faq-tab" data-cat="billing">Billing</button>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="faq-category active" id="cat-getting-started">
+      <h3 class="faq-category-title fade-up"><span class="cat-icon">🚀</span> Getting Started</h3>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What is Zetrix AI Academy? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Zetrix AI Academy is a hands-on learning platform that teaches you how to build and deploy AI systems — from a personal AI brain to a fully autonomous digital Avatar. You learn by doing, with real-world projects, automation recipes, and guided courses.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Do I need coding experience to start? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          No. We have courses for every level. Beginners can start with <em>AI Avatar Foundations</em> or <em>Personal Productivity</em>, which require zero coding. As you progress, you can move into automation and coding courses at your own pace.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">How do I create an account? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Click "Get Started" or "Sign In" in the navigation bar. You can register with your email or sign in with Google. Once logged in, your progress is saved across all devices automatically.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Can I access the platform on mobile? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. Zetrix AI Academy is fully responsive and works on phones, tablets, and desktops. You can also install it as a PWA (Progressive Web App) for a native app-like experience on Android and iOS.
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Courses -->
+    <div class="faq-category" id="cat-courses">
+      <h3 class="faq-category-title fade-up"><span class="cat-icon">📚</span> Courses</h3>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">How many courses are available? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          We currently offer 9 core AI courses plus 12 department-level training modules. Topics range from AI avatar creation and business automation to coding, marketing, sales, and solution architecture.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Are the courses self-paced or live? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          All courses are self-paced. You can start, pause, and resume anytime. Each course is broken into bite-sized modules with quizzes, flashcards, and practical assignments you complete on your own schedule.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Do I get a certificate after completing a course? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. Upon completing all modules and passing the final assessment, you receive a digital completion certificate that you can share on LinkedIn or download as a PDF.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Can I retake quizzes and exams? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Absolutely. You can retake any quiz or exam as many times as you need. We encourage using the AI Tutor to review weak areas before attempting again.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What is the AI Tutor and how do I use it? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          The AI Tutor is your 24/7 study companion. Ask it anything about course material, request explanations in simpler terms, generate practice questions, or get help with assignments. Access it from the <a href="tutor.html">Tutor page</a>.
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div class="faq-category" id="cat-avatar">
+      <h3 class="faq-category-title fade-up"><span class="cat-icon">🤖</span> Avatar</h3>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What is a Zetrix Avatar? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          A Zetrix Avatar is a digital replica of your expertise, personality, and workflows. It is powered by a structured knowledge graph, voice training, and continuous learning — essentially an operating system for your intelligence.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">How do I train my Avatar's voice? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Upload audio samples of yourself speaking, or paste writing samples into the Avatar training interface. The system learns your tone, vocabulary, sentence structure, and speech patterns over time.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What data can I feed into my Avatar? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          You can upload documents (PDF, DOCX, TXT), paste notes, connect cloud storage, and link external knowledge sources. The Avatar indexes everything into a searchable knowledge graph you can query conversationally.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Can my Avatar integrate with other tools? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. The Avatar connects to email, calendars, CRMs, project management tools, and cloud storage. It becomes a central brain that touches every part of your workflow.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Is the Avatar available on all plans? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Basic Avatar features are included in all plans. Advanced capabilities like voice cloning, API integrations, and unlimited knowledge storage are available on Pro and Enterprise tiers.
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Data & Privacy -->
+    <div class="faq-category" id="cat-privacy">
+      <h3 class="faq-category-title fade-up"><span class="cat-icon">🔒</span> Data & Privacy</h3>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Where is my data stored? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Your data is stored on secure, encrypted cloud infrastructure. Enterprise customers can opt for on-premise or private-cloud deployments for full data sovereignty.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Do you use my data to train public AI models? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          No. Your data is never used to train public or shared AI models. Your Avatar's knowledge graph is private to your account and isolated from other users.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Can I export or delete my data? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. You can export all your notes, documents, and Avatar knowledge at any time. You also have the right to request full account deletion under GDPR and similar privacy regulations.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Who has access to my Avatar conversations? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Only you. Avatar conversations are end-to-end encrypted and accessible only through your authenticated sessions. Our support team cannot view your chat history unless you explicitly share it for troubleshooting.
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Billing -->
+    <div class="faq-category" id="cat-billing">
+      <h3 class="faq-category-title fade-up"><span class="cat-icon">💳</span> Billing</h3>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What payment methods do you accept? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          We accept all major credit and debit cards (Visa, Mastercard, Amex), PayPal, and bank transfers for annual Enterprise plans. Regional payment methods are added regularly.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Is there a free trial? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. Every new account gets a 14-day free trial of Pro features. No credit card required to start. You can upgrade, downgrade, or cancel anytime during or after the trial.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Can I switch plans or cancel anytime? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. You can upgrade, downgrade, or cancel your subscription at any time from your account settings. Prorated refunds are issued for annual plan downgrades.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">Do you offer discounts for teams or students? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Yes. We offer team discounts starting at 5+ seats, and verified students and educators receive 50% off Pro plans. Contact <a href="contact.html">support</a> to apply.
+        </div></div>
+      </div>
+
+      <div class="accordion-item fade-up">
+        <button class="accordion-header">What happens to my Avatar if I cancel? <span class="arrow">&#9662;</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          Your Avatar data is preserved for 90 days after cancellation, giving you time to export or resubscribe. After 90 days, knowledge graph data is permanently deleted per our retention policy.
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="faq-cta">
+  <div class="container">
+    <h2>Still have questions?</h2>
+    <p>Our support team is here to help. Reach out and we will get back to you within 24 hours.</p>
+    <a href="contact.html" class="btn btn-white btn-lg" style="margin-right:12px">Contact Support</a>
+    <a href="tutor.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.4);color:white">Ask AI Tutor</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="assets/logo-zetrix-new.png" alt="Zetrix" style="height:32px;vertical-align:middle;border-radius:4px;"></a>
+        <p>Zetrix AI Academy — Master AI avatars, automation, coding, and business.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutor.html">AI Tutor</a></li>
+          <li><a href="blog.html">Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zetrix AI Academy.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js?v=10"></script>
+<script src="js/pwa.js?v=10"></script>
+<script>
+/* Fade-up observer */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* Tab switching */
+const tabs = document.querySelectorAll('.faq-tab');
+const cats = document.querySelectorAll('.faq-category');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    cats.forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('cat-' + tab.dataset.cat).classList.add('active');
+  });
+});
+
+/* Accordion */
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Optional: close others in same category
+    item.closest('.faq-category').querySelectorAll('.accordion-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+    });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

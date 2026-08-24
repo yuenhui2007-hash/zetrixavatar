@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFA200">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Zetrix AI Academy</title>
+<meta name="description" content="Your Zetrix AI Academy progress dashboard. Track courses, scores, and study time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/znotes-style.css?v=10">
+<style>
+/* ===== DASHBOARD HERO ===== */
+.dashboard-hero {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  color: white;
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.dashboard-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  animation: floatBg 20s linear infinite;
+}
+@keyframes floatBg {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-60px); }
+}
+.dashboard-hero .container { position: relative; z-index: 1; }
+.dashboard-hero h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #fff, #FFD699);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dashboard-hero p {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 20px 28px;
+  min-width: 140px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.stat-card:hover { transform: translateY(-4px); }
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #FFD699;
+  display: block;
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 6px;
+  display: block;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 60px 0;
+  background: #ffffff;
+}
+.section.alt {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.section-subtitle {
+  color: #64748b;
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  font-size: 0.95rem;
+}
+
+/* ===== COURSE CARDS ===== */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.dash-course-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dash-course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  border-color: #FFA200;
+}
+.dash-course-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.dash-course-icon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+.dash-course-info { flex: 1; }
+.dash-course-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+.dash-course-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.status-not-started { background: #f1f5f9; color: #64748b; }
+.status-in-progress { background: #fff7ed; color: #c2410c; }
+.status-completed { background: #dcfce7; color: #166534; }
+
+.dash-progress-wrap { margin-top: 2px; }
+.dash-progress-track {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.dash-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFA200, #FFD699);
+  border-radius: 50px;
+  transition: width 0.6s ease;
+}
+.dash-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.dash-course-metrics {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #334155;
+}
+.dash-metric { display: flex; align-items: center; gap: 6px; }
+.dash-metric strong { color: #1a1a1a; }
+
+.dash-course-link {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFA200;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.dash-course-link:hover { opacity: 0.8; }
+
+/* ===== RECENT ACTIVITY ===== */
+.activity-list {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.activity-icon {
+  font-size: 1.4rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.activity-body { flex: 1; }
+.activity-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.activity-course {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+.activity-time {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+.empty-activity {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  padding: 32px 0;
+}
+
+/* Footer override */
+.footer { background: #0f172a; color: #94a3b8; }
+
+@media (max-width: 640px) {
+  .dashboard-hero { padding: 120px 0 60px; }
+  .stats-row { gap: 12px; }
+  .stat-card { min-width: 110px; padding: 16px 18px; }
+  .stat-number { font-size: 1.6rem; }
+  .courses-grid { padding: 0 16px; }
+  .activity-list { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+<script src="js/nav.js?v=10"></script>
+
+<!-- HERO -->
+<section class="dashboard-hero">
+  <div class="container">
+    <h1>Your Dashboard</h1>
+    <p>Track your progress across all Zetrix AI Academy courses.</p>
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card"><span class="stat-number" id="statCompleted">0</span><span class="stat-label">Courses Completed</span></div>
+      <div class="stat-card"><span class="stat-number" id="statSegments">0</span><span class="stat-label">Segments Done</span></div>
+      <div class="stat-card"><span class="stat-number" id="statAvg">0%</span><span class="stat-label">Avg Quiz Score</span></div>
+      <div class="stat-card"><span class="stat-number" id="statTime">0h</span><span class="stat-label">Total Study Time</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Course Progress</h2>
+    <p class="section-subtitle">Continue where you left off or explore a new course.</p>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- RECENT ACTIVITY -->
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">Recent Activity</h2>
+    <p class="section-subtitle">Your latest completed segments.</p>
+    <div class="activity-list" id="activityList"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zetrix AI Academy.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js?v=10"></script>
+<script src="js/auth.js?v=10"></script>
+<script>
+(function() {
+  'use strict';
+
+  var COURSES = [
+    { id: 'ai-brain', name: 'AI Brain', icon: '🧠', page: 'course-ai-brain.html' },
+    { id: 'ai-coding', name: 'AI for Coding', icon: '💻', page: 'course-ai-coding.html' },
+    { id: 'avatar-foundations', name: 'Avatar Foundations', icon: '🎭', page: 'course-avatar-foundations.html' },
+    { id: 'business-automation', name: 'Business Automation', icon: '⚙️', page: 'course-business-automation.html' },
+    { id: 'enterprise-deployment', name: 'Enterprise Avatar Deployment', icon: '🏢', page: 'course-enterprise-deployment.html' },
+    { id: 'one-person-company', name: 'One-Person Company', icon: '🚀', page: 'course-one-person-company.html' },
+    { id: 'personal-productivity', name: 'Personal Productivity', icon: '⚡', page: 'course-personal-productivity.html' },
+    { id: 'sales-marketing', name: 'Sales & Marketing', icon: '📢', page: 'course-sales-marketing.html' },
+    { id: 'solution-architecture', name: 'Solution Architecture & Client Consultation', icon: '🎯', page: 'course-solution-architecture.html' }
+  ];
+
+  function fmtTime(totalSeconds) {
+    if (!totalSeconds || totalSeconds < 0) return '0h 0m';
+    var h = Math.floor(totalSeconds / 3600);
+    var m = Math.floor((totalSeconds % 3600) / 60);
+    if (h > 0 && m > 0) return h + 'h ' + m + 'm';
+    if (h > 0) return h + 'h';
+    return m + 'm';
+  }
+
+  function fmtTimeShort(totalSeconds) {
+    if (!totalSeconds || totalSeconds < 0) return '0h';
+    var h = Math.floor(totalSeconds / 3600);
+    var m = Math.floor((totalSeconds % 3600) / 60);
+    if (h > 0) return h + 'h';
+    return m + 'm';
+  }
+
+  function timeAgo(ts) {
+    if (!ts) return '';
+    var diff = Math.floor((Date.now() - ts) / 1000);
+    if (diff < 60) return 'just now';
+    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+    if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
+    return Math.floor(diff / 604800) + 'w ago';
+  }
+
+  function getProgress(id) {
+    try {
+      var raw = localStorage.getItem('course_' + id + '_progress');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function getTime(id) {
+    try {
+      var raw = localStorage.getItem('course_' + id + '_time');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function isCompleted(id) {
+    return localStorage.getItem('course_' + id + '_completed') === 'true';
+  }
+
+  function computeCourseStats(course) {
+    var prog = getProgress(course.id);
+    var time = getTime(course.id);
+    var segmentStates = (prog && Array.isArray(prog.segmentStates)) ? prog.segmentStates : [];
+    var totalSegments = segmentStates.length || 10;
+    var completedSegments = 0;
+    var bestScores = [];
+    var recentEvents = [];
+
+    for (var i = 0; i < segmentStates.length; i++) {
+      var s = segmentStates[i];
+      if (s && s.completed) {
+        completedSegments++;
+        if (s.quizBestScore != null && !isNaN(s.quizBestScore)) {
+          bestScores.push(s.quizBestScore);
+        }
+        // Use segment index + 1 as title proxy; we don't have per-segment titles here
+        recentEvents.push({
+          courseId: course.id,
+          courseName: course.name,
+          courseIcon: course.icon,
+          segmentIndex: i,
+          title: 'Segment ' + (i + 1),
+          ts: time && time.lastTouchedAt ? time.lastTouchedAt : (time && time.lastActiveAt ? time.lastActiveAt : 0)
+        });
+      }
+    }
+
+    var pct = totalSegments > 0 ? Math.round((completedSegments / totalSegments) * 100) : 0;
+    var done = isCompleted(course.id) || pct >= 100;
+    var status = done ? 'Completed' : (completedSegments > 0 ? 'In progress' : 'Not started');
+
+    var sumScores = 0;
+    for (var j = 0; j < bestScores.length; j++) sumScores += bestScores[j];
+    var avgScore = bestScores.length > 0 ? Math.round(sumScores / bestScores.length) : 0;
+
+    return {
+      course: course,
+      totalSegments: totalSegments,
+      completedSegments: completedSegments,
+      pct: pct,
+      status: status,
+      avgScore: avgScore,
+      totalSeconds: (time && time.totalSeconds) ? time.totalSeconds : 0,
+      recentEvents: recentEvents
+    };
+  }
+
+  function render() {
+    var allStats = [];
+    var globalCompleted = 0;
+    var globalSegments = 0;
+    var globalScoreSum = 0;
+    var globalScoreCount = 0;
+    var globalSeconds = 0;
+    var allEvents = [];
+
+    for (var i = 0; i < COURSES.length; i++) {
+      var s = computeCourseStats(COURSES[i]);
+      allStats.push(s);
+      if (s.status === 'Completed') globalCompleted++;
+      globalSegments += s.completedSegments;
+      globalSeconds += s.totalSeconds;
+      if (s.avgScore > 0) {
+        globalScoreSum += s.avgScore;
+        globalScoreCount++;
+      }
+      for (var e = 0; e < s.recentEvents.length; e++) {
+        allEvents.push(s.recentEvents[e]);
+      }
+    }
+
+    var globalAvg = globalScoreCount > 0 ? Math.round(globalScoreSum / globalScoreCount) : 0;
+
+    document.getElementById('statCompleted').textContent = globalCompleted;
+    document.getElementById('statSegments').textContent = globalSegments;
+    document.getElementById('statAvg').textContent = globalAvg + '%';
+    document.getElementById('statTime').textContent = fmtTimeShort(globalSeconds);
+
+    var grid = document.getElementById('coursesGrid');
+    var html = '';
+    for (var c = 0; c < allStats.length; c++) {
+      var st = allStats[c];
+      var statusClass = st.status === 'Completed' ? 'status-completed' : (st.status === 'In progress' ? 'status-in-progress' : 'status-not-started');
+      html += '<div class="dash-course-card">' +
+        '<div class="dash-course-header">' +
+          '<div class="dash-course-icon">' + st.course.icon + '</div>' +
+          '<div class="dash-course-info">' +
+            '<h3>' + st.course.name + '</h3>' +
+            '<span class="dash-course-status ' + statusClass + '">' + st.status + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="dash-progress-wrap">' +
+          '<div class="dash-progress-track"><div class="dash-progress-fill" style="width:' + st.pct + '%"></div></div>' +
+          '<div class="dash-progress-meta"><span>' + st.pct + '% complete</span><span>' + st.completedSegments + '/' + st.totalSegments + ' segments</span></div>' +
+        '</div>' +
+        '<div class="dash-course-metrics">' +
+          '<div class="dash-metric">🏆 <strong>' + st.avgScore + '%</strong> best</div>' +
+          '<div class="dash-metric">⏱️ <strong>' + fmtTime(st.totalSeconds) + '</strong></div>' +
+        '</div>' +
+        '<a href="' + st.course.page + '" class="dash-course-link">Continue Course →</a>' +
+      '</div>';
+    }
+    grid.innerHTML = html;
+
+    // Sort events by timestamp desc, pick last 5
+    allEvents.sort(function(a, b) { return b.ts - a.ts; });
+    var recent = allEvents.slice(0, 5);
+    var actEl = document.getElementById('activityList');
+    if (recent.length === 0) {
+      actEl.innerHTML = '<div class="empty-activity">No recent activity yet. Start a course to see your progress here!</div>';
+    } else {
+      var actHtml = '';
+      for (var r = 0; r < recent.length; r++) {
+        var ev = recent[r];
+        actHtml += '<div class="activity-item">' +
+          '<div class="activity-icon">' + ev.courseIcon + '</div>' +
+          '<div class="activity-body">' +
+            '<div class="activity-title">Completed ' + ev.title + '</div>' +
+            '<div class="activity-course">' + ev.courseName + '</div>' +
+          '</div>' +
+          '<div class="activity-time">' + timeAgo(ev.ts) + '</div>' +
+        '</div>';
+      }
+      actEl.innerHTML = actHtml;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', render);
+  } else {
+    render();
+  }
+})();
+</script>
+<script src="js/pwa.js?v=10"></script>
+</body>
+</html>

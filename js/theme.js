@@ -28,13 +28,7 @@
   }
 
   function init() {
-    // Course pages are always light mode for readability
-    if (window.location.pathname.includes('/course-')) {
-      html.setAttribute('data-theme', 'light');
-      html.classList.remove('dark');
-      updateToggleIcon('light');
-      return;
-    }
+    // Course pages respect user theme preference
     var saved = getTheme();
     if (!localStorage.getItem(STORAGE_KEY)) {
       saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

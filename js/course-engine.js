@@ -176,13 +176,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
-    // NEW: Force all text to be readable black
+    // Ensure text inherits proper color from theme
     forceReadableText() {
       const selectors = '.segment-body, .segment-body p, .segment-body li, .segment-body ol, .segment-body ul, .segment-body h2, .segment-body h3, .segment-body h4, .segment-body strong, .segment-body em, .segment-body b, .segment-body i, .segment-body span, .segment-body div, .segment-header h2';
       document.querySelectorAll(selectors).forEach(el => {
-        el.style.color = '#000000';
-        el.style.webkitTextFillColor = '#000000';
-        el.style.opacity = '1';
+        el.style.color = '';
+        el.style.webkitTextFillColor = '';
+        el.style.opacity = '';
       });
     },
 
