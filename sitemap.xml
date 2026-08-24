@@ -9,4 +9,10 @@
   <url><loc>https://yuenhui2007-hash.github.io/zetrixavatar/privacy-policy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://yuenhui2007-hash.github.io/zetrixavatar/copyright.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://yuenhui2007-hash.github.io/zetrixavatar/terms-of-service.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url>
+    <loc>https://yuenhui2007-hash.github.io/zetrixavatar/signup.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

@@ -6,23 +6,23 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, follow">
-<meta name="description" content="Sign in to Zetrix AI Academy. Access your courses, dashboard, and AI tutor.">
-<title>Sign In — Zetrix AI Academy</title>
-<link rel="canonical" href="https://yuenhui2007-hash.github.io/zetrixavatar/signin.html">
-<meta property="og:title" content="Sign In — Zetrix AI Academy">
-<meta property="og:description" content="Sign in to Zetrix AI Academy. Access your courses, dashboard, and AI tutor.">
+<meta name="description" content="Create your Zetrix AI Academy account. Start learning AI, build your avatar, and automate your workflow.">
+<title>Sign Up — Zetrix AI Academy</title>
+<link rel="canonical" href="https://yuenhui2007-hash.github.io/zetrixavatar/signup.html">
+<meta property="og:title" content="Sign Up — Zetrix AI Academy">
+<meta property="og:description" content="Create your Zetrix AI Academy account. Start learning AI, build your avatar, and automate your workflow.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yuenhui2007-hash.github.io/zetrixavatar/signin.html">
+<meta property="og:url" content="https://yuenhui2007-hash.github.io/zetrixavatar/signup.html">
 <meta property="og:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sign In — Zetrix AI Academy">
-<meta name="twitter:description" content="Sign in to Zetrix AI Academy. Access your courses, dashboard, and AI tutor.">
+<meta name="twitter:title" content="Sign Up — Zetrix AI Academy">
+<meta name="twitter:description" content="Create your Zetrix AI Academy account. Start learning AI, build your avatar, and automate your workflow.">
 <meta name="twitter:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css?v=15">
 <style>
-.signin-page {
+.signup-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -30,12 +30,12 @@
   padding: 100px 24px 40px;
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 40%, #0f172a 100%);
 }
-.signin-card {
+.signup-card {
   background: var(--card-bg);
   border-radius: var(--radius-xl);
   padding: 40px 36px;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-color);
   animation: cardEnter 0.5s ease-out;
@@ -44,21 +44,21 @@
   from { opacity: 0; transform: translateY(20px) scale(0.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.signin-logo {
+.signup-logo {
   text-align: center;
   margin-bottom: 28px;
 }
-.signin-logo img {
+.signup-logo img {
   height: 40px;
   display: inline-block;
 }
-.signin-logo h2 {
+.signup-logo h2 {
   font-size: 1.4rem;
   font-weight: 800;
   margin-top: 12px;
   color: var(--dark);
 }
-.signin-logo p {
+.signup-logo p {
   font-size: 0.85rem;
   color: var(--gray);
   margin-top: 4px;
@@ -123,26 +123,33 @@
 }
 .toggle-password:hover { color: var(--dark); }
 
-.form-options {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 0.8rem;
+.password-strength {
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 6px;
+  background: #e2e8f0;
+  overflow: hidden;
+  display: none;
 }
-.form-options label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.password-strength.show { display: block; }
+.password-strength .bar {
+  height: 100%;
+  width: 0;
+  transition: width 0.3s, background 0.3s;
+  border-radius: 2px;
+}
+
+.terms-line {
+  font-size: 0.78rem;
   color: var(--gray);
-  cursor: pointer;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
-.form-options a {
+.terms-line a {
   color: var(--primary);
   text-decoration: none;
-  font-weight: 500;
 }
-.form-options a:hover { text-decoration: underline; }
+.terms-line a:hover { text-decoration: underline; }
 
 .btn-block {
   width: 100%;
@@ -217,18 +224,18 @@
 .btn-social.github { border-color: #333; color: #333; }
 .btn-social.github:hover { background: rgba(0,0,0,0.06); }
 
-.signin-footer {
+.signup-footer {
   text-align: center;
   margin-top: 24px;
   font-size: 0.85rem;
   color: var(--gray);
 }
-.signin-footer a {
+.signup-footer a {
   color: var(--primary);
   font-weight: 600;
   text-decoration: none;
 }
-.signin-footer a:hover { text-decoration: underline; }
+.signup-footer a:hover { text-decoration: underline; }
 
 .back-home {
   text-align: center;
@@ -262,24 +269,21 @@
   75% { transform: translateX(4px); }
 }
 
-.password-strength {
-  height: 3px;
-  border-radius: 2px;
-  margin-top: 6px;
-  background: #e2e8f0;
-  overflow: hidden;
+.success-msg {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  color: #15803d;
+  padding: 14px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
   display: none;
+  text-align: center;
 }
-.password-strength.show { display: block; }
-.password-strength .bar {
-  height: 100%;
-  width: 0;
-  transition: width 0.3s, background 0.3s;
-  border-radius: 2px;
-}
+.success-msg.show { display: block; }
 
-[data-theme="dark"] .signin-page,
-.dark .signin-page {
+[data-theme="dark"] .signup-page,
+.dark .signup-page {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #000000 100%);
 }
 [data-theme="dark"] .btn-social,
@@ -308,56 +312,71 @@
 <script src="js/nav.js?v=15"></script>
 
 <main id="main-content">
-<section class="signin-page">
-  <div class="signin-card">
-    <div class="signin-logo">
+<section class="signup-page">
+  <div class="signup-card">
+    <div class="signup-logo">
       <a href="index.html"><img src="assets/logo-zetrix-new.png" alt="Zetrix" loading="lazy"></a>
-      <h2>Welcome back</h2>
-      <p>Sign in to continue your AI journey</p>
+      <h2>Create your account</h2>
+      <p>Start building your AI avatar today</p>
     </div>
 
     <div class="error-msg" id="error-msg"></div>
+    <div class="success-msg" id="success-msg">
+      Account created! Redirecting to dashboard...
+    </div>
 
-    <form id="signin-form" novalidate>
+    <form id="signup-form" novalidate>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" autofocus>
+        <span class="input-hint" id="name-hint">Name is required.</span>
+      </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" autofocus>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
         <span class="input-hint" id="email-hint">Please enter a valid email address.</span>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <div class="password-wrap">
-          <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+          <input type="password" id="password" name="password" placeholder="Create a strong password" required autocomplete="new-password">
           <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password">👁</button>
         </div>
         <div class="password-strength" id="strength-bar"><div class="bar" id="strength-bar-inner"></div></div>
-        <span class="input-hint" id="password-hint">Password is required.</span>
+        <span class="input-hint" id="password-hint">Password must be at least 8 characters.</span>
       </div>
-      <div class="form-options">
-        <label><input type="checkbox" id="remember"> Remember me</label>
-        <a href="support.html">Forgot password?</a>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <div class="password-wrap">
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Repeat your password" required autocomplete="new-password">
+          <button type="button" class="toggle-password" id="toggle-confirm" aria-label="Show password">👁</button>
+        </div>
+        <span class="input-hint" id="confirm-hint">Passwords do not match.</span>
       </div>
+      <p class="terms-line">
+        By signing up, you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.
+      </p>
       <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
-        <span class="btn-text">Sign In</span>
+        <span class="btn-text">Create Account</span>
         <span class="spinner"></span>
       </button>
     </form>
 
-    <div class="divider">or continue with</div>
+    <div class="divider">or sign up with</div>
 
     <div class="social-signin">
-      <button class="btn-social google" id="google-signin" type="button">
+      <button class="btn-social google" id="google-signup" type="button">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
         Google
       </button>
-      <button class="btn-social github" id="github-signin" type="button">
+      <button class="btn-social github" id="github-signup" type="button">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
         GitHub
       </button>
     </div>
 
-    <div class="signin-footer">
-      Don't have an account? <a href="signup.html">Get started</a>
+    <div class="signup-footer">
+      Already have an account? <a href="signin.html">Sign in</a>
     </div>
     <div class="back-home">
       <a href="index.html">&larr; Back to home</a>
@@ -368,30 +387,37 @@
 
 <script src="js/theme.js?v=15"></script>
 <script>
-// Check if already authenticated
+// If already authenticated, redirect to dashboard
 (function() {
   const token = localStorage.getItem('zetrix_auth_token');
   if (token) {
-    // Already logged in — redirect to dashboard
     // window.location.href = 'dashboard.html';
     console.log('User already authenticated — would redirect to dashboard');
   }
 })();
 
-const form = document.getElementById('signin-form');
+const form = document.getElementById('signup-form');
 const errorMsg = document.getElementById('error-msg');
+const successMsg = document.getElementById('success-msg');
+
+const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
+const confirmInput = document.getElementById('confirm-password');
+const submitBtn = document.getElementById('submit-btn');
+
+const nameHint = document.getElementById('name-hint');
 const emailHint = document.getElementById('email-hint');
 const passwordHint = document.getElementById('password-hint');
-const submitBtn = document.getElementById('submit-btn');
-const togglePw = document.getElementById('toggle-password');
+const confirmHint = document.getElementById('confirm-hint');
+
 const strengthBar = document.getElementById('strength-bar');
 const strengthBarInner = document.getElementById('strength-bar-inner');
 
 function showError(msg) {
   errorMsg.textContent = msg;
   errorMsg.classList.add('show');
+  successMsg.classList.remove('show');
 }
 function hideError() {
   errorMsg.classList.remove('show');
@@ -401,30 +427,18 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Real-time email validation
-emailInput.addEventListener('blur', () => {
-  if (emailInput.value && !validateEmail(emailInput.value)) {
-    emailInput.classList.add('error');
-    emailHint.classList.add('show');
-  } else {
-    emailInput.classList.remove('error');
-    emailHint.classList.remove('show');
-  }
-});
-emailInput.addEventListener('input', () => {
-  if (validateEmail(emailInput.value)) {
-    emailInput.classList.remove('error');
-    emailHint.classList.remove('show');
-  }
-  hideError();
-});
-
-// Password visibility toggle
-togglePw.addEventListener('click', () => {
+// Password visibility toggles
+document.getElementById('toggle-password').addEventListener('click', function() {
   const isHidden = passwordInput.type === 'password';
   passwordInput.type = isHidden ? 'text' : 'password';
-  togglePw.textContent = isHidden ? '🙈' : '👁';
-  togglePw.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+  this.textContent = isHidden ? '🙈' : '👁';
+  this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+});
+document.getElementById('toggle-confirm').addEventListener('click', function() {
+  const isHidden = confirmInput.type === 'password';
+  confirmInput.type = isHidden ? 'text' : 'password';
+  this.textContent = isHidden ? '🙈' : '👁';
+  this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
 });
 
 // Password strength meter
@@ -448,63 +462,89 @@ passwordInput.addEventListener('input', () => {
   strengthBarInner.style.background = colors[score];
 });
 
+// Real-time validation
+nameInput.addEventListener('input', () => {
+  if (nameInput.value.trim()) { nameInput.classList.remove('error'); nameHint.classList.remove('show'); }
+  hideError();
+});
+emailInput.addEventListener('blur', () => {
+  if (emailInput.value && !validateEmail(emailInput.value)) {
+    emailInput.classList.add('error');
+    emailHint.classList.add('show');
+  } else {
+    emailInput.classList.remove('error');
+    emailHint.classList.remove('show');
+  }
+});
+emailInput.addEventListener('input', () => {
+  if (validateEmail(emailInput.value)) { emailInput.classList.remove('error'); emailHint.classList.remove('show'); }
+  hideError();
+});
+confirmInput.addEventListener('input', () => {
+  if (confirmInput.value === passwordInput.value) { confirmInput.classList.remove('error'); confirmHint.classList.remove('show'); }
+  hideError();
+});
+
 // Form submit
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   hideError();
 
+  const name = nameInput.value.trim();
   const email = emailInput.value.trim();
   const password = passwordInput.value;
+  const confirm = confirmInput.value;
 
-  // Validation
-  if (!email) {
-    emailInput.classList.add('error');
-    emailHint.textContent = 'Email is required.';
-    emailHint.classList.add('show');
-    emailInput.focus();
-    return;
+  let hasError = false;
+
+  if (!name) {
+    nameInput.classList.add('error');
+    nameHint.classList.add('show');
+    hasError = true;
   }
-  if (!validateEmail(email)) {
+  if (!email || !validateEmail(email)) {
     emailInput.classList.add('error');
-    emailHint.textContent = 'Please enter a valid email address.';
     emailHint.classList.add('show');
-    emailInput.focus();
-    return;
+    hasError = true;
   }
-  if (!password) {
+  if (!password || password.length < 8) {
     passwordHint.classList.add('show');
-    passwordInput.focus();
-    return;
+    hasError = true;
+  }
+  if (password !== confirm) {
+    confirmInput.classList.add('error');
+    confirmHint.classList.add('show');
+    hasError = true;
   }
 
-  // Clear field errors
-  emailInput.classList.remove('error');
-  emailHint.classList.remove('show');
-  passwordHint.classList.remove('show');
+  if (hasError) return;
 
-  // Loading state
+  // Clear errors
+  [nameInput, emailInput, passwordInput, confirmInput].forEach(i => i.classList.remove('error'));
+  [nameHint, emailHint, passwordHint, confirmHint].forEach(h => h.classList.remove('show'));
+
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
 
-  // Placeholder: wire to your auth backend
-  console.log('Sign in attempt:', { email, remember: document.getElementById('remember').checked });
+  console.log('Sign up attempt:', { name, email });
 
   setTimeout(() => {
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
-    showError('Demo mode — sign-in backend not connected. Wire this to your auth API.');
+    // Demo: show success message
+    successMsg.classList.add('show');
+    // In production, store token and redirect:
+    // localStorage.setItem('zetrix_auth_token', 'demo_token_' + Date.now());
+    // setTimeout(() => window.location.href = 'dashboard.html', 1000);
   }, 1200);
 });
 
-// Social sign-in placeholders
-document.getElementById('google-signin').addEventListener('click', () => {
-  console.log('Google OAuth sign-in clicked');
-  // Wire to OAuth provider
+// Social sign-up placeholders
+document.getElementById('google-signup').addEventListener('click', () => {
+  console.log('Google OAuth sign-up clicked');
 });
-
-document.getElementById('github-signin').addEventListener('click', () => {
-  console.log('GitHub OAuth sign-in clicked');
-  // Wire to OAuth provider
+document.getElementById('github-signup').addEventListener('click', () => {
+  console.log('GitHub OAuth sign-up clicked');
 });
 </script>
 </body>
