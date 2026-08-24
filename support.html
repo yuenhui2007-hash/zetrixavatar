@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="description" content="Get help, browse FAQs, or contact the Zetrix AI Academy support team.">
+<title>Support & FAQ — Zetrix AI Academy</title>
+<link rel="canonical" href="https://yuenhui2007-hash.github.io/zetrixavatar/support.html">
+<meta property="og:title" content="Support & FAQ — Zetrix AI Academy">
+<meta property="og:description" content="Get help, browse FAQs, or contact the Zetrix AI Academy support team.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yuenhui2007-hash.github.io/zetrixavatar/support.html">
+<meta property="og:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Support & FAQ — Zetrix AI Academy">
+<meta name="twitter:description" content="Get help, browse FAQs, or contact the Zetrix AI Academy support team.">
+<meta name="twitter:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=15">
+<style>
+.support-hero {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
+  color: white;
+  padding: 140px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.support-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  animation: floatBg 20s linear infinite;
+}
+@keyframes floatBg { 0%{transform:translateY(0)} 100%{transform:translateY(-60px)} }
+.support-hero .container { position: relative; z-index: 1; }
+.support-hero h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #fff, #FF8090);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.support-hero p { font-size: 1.15rem; opacity: 0.85; max-width: 560px; margin: 0 auto; }
+
+.support-section { padding: 80px 0; background: #0f172a; }
+.support-section .container { max-width: 1100px; }
+
+/* Cards */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.support-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.support-card:hover { border-color: rgba(230,0,18,0.3); transform: translateY(-4px); background: rgba(255,255,255,0.06); }
+.support-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+.support-card h3 { color: #fff; font-size: 1.1rem; margin-bottom: 8px; }
+.support-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px; }
+.support-card a { color: #E60012; font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+.support-card a:hover { text-decoration: underline; }
+
+/* FAQ tabs */
+.faq-tabs {
+  display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center;
+}
+.faq-tab {
+  padding: 10px 22px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: #94a3b8; font-weight: 600; font-size: 0.88rem;
+  cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
+}
+.faq-tab:hover { border-color: #E60012; color: #E60012; }
+.faq-tab.active { background: linear-gradient(135deg, #E60012, #B3000E); color: #fff; border-color: transparent; }
+
+.faq-category { display: none; }
+.faq-category.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.faq-category-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+
+/* Accordion */
+.accordion-item {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s;
+}
+.accordion-item:hover { border-color: rgba(230,0,18,0.2); }
+.accordion-header {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 24px; background: none; border: none; color: #e2e8f0;
+  font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer;
+  transition: all 0.3s; font-family: 'Inter', sans-serif;
+}
+.accordion-header:hover { color: #E60012; }
+.accordion-header .arrow { font-size: 0.75rem; color: #64748b; transition: transform 0.3s; flex-shrink: 0; margin-left: 12px; }
+.accordion-item.open .arrow { transform: rotate(180deg); color: #E60012; }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+.accordion-item.open .accordion-body { max-height: 500px; }
+.accordion-content { padding: 0 24px 20px; color: #94a3b8; font-size: 0.95rem; line-height: 1.7; }
+.accordion-content a { color: #E60012; text-decoration: underline; }
+.accordion-content ul { margin: 12px 0 0; padding-left: 20px; }
+.accordion-content li { margin-bottom: 6px; }
+
+/* Contact form */
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 60px;
+}
+.contact-form-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 36px;
+}
+.contact-form-card h2 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
+.contact-form-card .sub { color: #64748b; font-size: 0.95rem; margin-bottom: 28px; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 8px; color: #cbd5e1; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; background: rgba(0,0,0,0.25); color: #e2e8f0;
+  font-size: 1rem; font-family: 'Inter', sans-serif; transition: all 0.3s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { outline: none; border-color: #E60012; background: rgba(0,0,0,0.35); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #475569; }
+.form-group textarea { resize: vertical; min-height: 140px; }
+
+.form-submit {
+  width: 100%; padding: 14px; border-radius: 12px; border: none;
+  background: linear-gradient(135deg, #E60012, #B3000E); color: #fff;
+  font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,0,18,0.3); }
+
+.form-feedback {
+  display: none; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px;
+  font-size: 0.95rem; font-weight: 500;
+}
+.form-feedback.success { display: block; background: rgba(34,197,94,0.12); color: #86efac; border: 1px solid rgba(34,197,94,0.25); }
+.form-feedback.error { display: block; background: rgba(239,68,68,0.12); color: #fca5a5; border: 1px solid rgba(239,68,68,0.25); }
+
+/* Contact info */
+.contact-info h2 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
+.contact-info .sub { color: #64748b; font-size: 0.95rem; margin-bottom: 28px; }
+.info-list { display: flex; flex-direction: column; gap: 18px; }
+.info-item { display: flex; align-items: flex-start; gap: 14px; }
+.info-item .info-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.info-item h4 { color: #e2e8f0; font-size: 0.95rem; margin-bottom: 2px; }
+.info-item p, .info-item a { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+.info-item a { color: #E60012; text-decoration: none; }
+.info-item a:hover { text-decoration: underline; }
+
+.quick-links { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); }
+.quick-links h4 { color: #e2e8f0; font-size: 0.95rem; margin-bottom: 12px; }
+.quick-links a {
+  display: inline-block; padding: 8px 16px; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.12); color: #94a3b8;
+  font-size: 0.85rem; margin-right: 8px; margin-bottom: 8px;
+  transition: all 0.3s; text-decoration: none;
+}
+.quick-links a:hover { border-color: #E60012; color: #E60012; }
+
+.footer { background: #0f172a; color: #94a3b8; }
+.fade-up { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .support-hero { padding: 100px 0 60px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  .contact-form-card { padding: 24px; }
+  .support-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="navbar" id="navbar" aria-label="Main navigation"></nav>
+<script src="js/nav.js?v=15"></script>
+
+<main id="main-content">
+<!-- HERO -->
+<section class="support-hero">
+  <div class="container">
+    <h1>Support & FAQ</h1>
+    <p>Find answers instantly or reach out — we are here to help.</p>
+  </div>
+</section>
+
+<!-- SUPPORT CARDS -->
+<section class="support-section">
+  <div class="container">
+    <div class="support-grid">
+      <div class="support-card fade-up">
+        <div class="icon">📧</div>
+        <h3>Email Support</h3>
+        <p>Get a response within 24 hours.</p>
+        <a href="mailto:support@zetrix.ai">support@zetrix.ai</a>
+      </div>
+      <div class="support-card fade-up">
+        <div class="icon">❓</div>
+        <h3>Help Center</h3>
+        <p>Browse answers to common questions.</p>
+        <a href="#faq">View FAQ</a>
+      </div>
+      <div class="support-card fade-up">
+        <div class="icon">🐛</div>
+        <h3>Report a Bug</h3>
+        <p>Found something broken? Let us know.</p>
+        <a href="#contact-form">Submit Report</a>
+      </div>
+      <div class="support-card fade-up">
+        <div class="icon">💡</div>
+        <h3>Feature Request</h3>
+        <p>Have an idea? We want to hear it.</p>
+        <a href="#contact-form">Suggest Feature</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq">
+      <div class="faq-tabs fade-up">
+        <button class="faq-tab active" data-cat="getting-started">Getting Started</button>
+        <button class="faq-tab" data-cat="courses">Courses</button>
+        <button class="faq-tab" data-cat="avatar">Avatar</button>
+        <button class="faq-tab" data-cat="privacy">Data & Privacy</button>
+        <button class="faq-tab" data-cat="billing">Billing</button>
+      </div>
+
+      <div class="faq-category active" id="cat-getting-started">
+        <h3 class="faq-category-title fade-up"><span class="cat-icon">🚀</span> Getting Started</h3>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">What is Zetrix AI Academy? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Zetrix AI Academy is a hands-on learning platform that teaches you how to build and deploy AI systems — from a personal AI brain to a fully autonomous digital Avatar. You learn by doing, with real-world projects, automation recipes, and guided courses.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Do I need coding experience to start? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">No. We have courses for every level. Beginners can start with <em>AI Avatar Foundations</em> or <em>Personal Productivity</em>, which require zero coding. As you progress, you can move into automation and coding courses at your own pace.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">How do I create an account? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Click <a href="signin.html">Sign In</a> in the navigation bar. You can register with your email or sign in with Google. Once logged in, your progress is saved across all devices automatically.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Can I access the platform on mobile? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. Zetrix AI Academy is fully responsive and works on phones, tablets, and desktops. You can also install it as a PWA for a native app-like experience on Android and iOS.</div></div>
+        </div>
+      </div>
+
+      <div class="faq-category" id="cat-courses">
+        <h3 class="faq-category-title fade-up"><span class="cat-icon">📚</span> Courses</h3>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">How many courses are available? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">We currently offer 9 core AI courses plus 12 department-level training modules. Topics range from AI avatar creation and business automation to coding, marketing, sales, and solution architecture.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Are the courses self-paced or live? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">All courses are self-paced. You can start, pause, and resume anytime. Each course is broken into bite-sized modules with quizzes, flashcards, and practical assignments.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Do I get a certificate after completing a course? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. Upon completing all modules and passing the final assessment, you receive a digital completion certificate that you can share on LinkedIn or download as a PDF.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">What is the AI Tutor and how do I use it? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">The AI Tutor is your 24/7 study companion. Ask it anything about course material, request explanations in simpler terms, generate practice questions, or get help with assignments. Access it from the <a href="tutor.html">Tutor page</a>.</div></div>
+        </div>
+      </div>
+
+      <div class="faq-category" id="cat-avatar">
+        <h3 class="faq-category-title fade-up"><span class="cat-icon">🤖</span> Avatar</h3>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">What is a Zetrix Avatar? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">A Zetrix Avatar is a digital replica of your expertise, personality, and workflows. It is powered by a structured knowledge graph, voice training, and continuous learning.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">How do I train my Avatar's voice? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Upload audio samples of yourself speaking, or paste writing samples into the Avatar training interface. The system learns your tone, vocabulary, sentence structure, and speech patterns over time.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">What data can I feed into my Avatar? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">You can upload documents (PDF, DOCX, TXT), paste notes, connect cloud storage, and link external knowledge sources. The Avatar indexes everything into a searchable knowledge graph.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Can my Avatar integrate with other tools? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. The Avatar connects to email, calendars, CRMs, project management tools, and cloud storage. It becomes a central brain that touches every part of your workflow.</div></div>
+        </div>
+      </div>
+
+      <div class="faq-category" id="cat-privacy">
+        <h3 class="faq-category-title fade-up"><span class="cat-icon">🔒</span> Data & Privacy</h3>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Where is my data stored? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Your data is stored on secure, encrypted cloud infrastructure. Enterprise customers can opt for on-premise or private-cloud deployments for full data sovereignty.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Do you use my data to train public AI models? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">No. Your data is never used to train public or shared AI models. Your Avatar's knowledge graph is private to your account and isolated from other users.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Can I export or delete my data? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. You can export all your notes, documents, and Avatar knowledge at any time. You also have the right to request full account deletion under GDPR and similar privacy regulations.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Who has access to my Avatar conversations? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Only you. Avatar conversations are end-to-end encrypted and accessible only through your authenticated sessions. Our support team cannot view your chat history unless you explicitly share it for troubleshooting.</div></div>
+        </div>
+      </div>
+
+      <div class="faq-category" id="cat-billing">
+        <h3 class="faq-category-title fade-up"><span class="cat-icon">💳</span> Billing</h3>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">What payment methods do you accept? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">We accept all major credit and debit cards (Visa, Mastercard, Amex), PayPal, and bank transfers for annual Enterprise plans.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Is there a free trial? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. Every new account gets a 14-day free trial of Pro features. No credit card required to start. You can upgrade, downgrade, or cancel anytime.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Can I switch plans or cancel anytime? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. You can upgrade, downgrade, or cancel your subscription at any time from your account settings. Prorated refunds are issued for annual plan downgrades.</div></div>
+        </div>
+        <div class="accordion-item fade-up">
+          <button class="accordion-header">Do you offer discounts for teams or students? <span class="arrow">&#9662;</span></button>
+          <div class="accordion-body"><div class="accordion-content">Yes. We offer team discounts starting at 5+ seats, and verified students and educators receive 50% off Pro plans. Contact <a href="mailto:support@zetrix.ai">support</a> to apply.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-layout" id="contact-form">
+      <div class="contact-form-card fade-up">
+        <h2>Send a Message</h2>
+        <p class="sub">Fill out the form and we will get back to you as soon as possible.</p>
+        <div class="form-feedback" id="formFeedback"></div>
+        <form id="contactForm" onsubmit="return handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="cName">Name</label>
+            <input type="text" id="cName" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="cTopic">Topic</label>
+            <select id="cTopic" name="topic" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="general">General Inquiry</option>
+              <option value="bug">Report a Bug</option>
+              <option value="feature">Feature Request</option>
+              <option value="billing">Billing Question</option>
+              <option value="account">Account Help</option>
+              <option value="course">Course Feedback</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" placeholder="Describe your question, issue, or idea in detail..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info fade-up">
+        <h2>Other Ways to Reach Us</h2>
+        <p class="sub">Prefer a different channel? Here are all your options.</p>
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-icon">📧</span>
+            <div><h4>Email</h4><p><a href="mailto:support@zetrix.ai">support@zetrix.ai</a></p></div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">⏱️</span>
+            <div><h4>Response Time</h4><p>Within 24 hours on business days. Enterprise plans get 4-hour priority.</p></div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🌍</span>
+            <div><h4>Availability</h4><p>Mon – Fri, 09:00 – 18:00 UTC. AI Tutor is 24/7.</p></div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🤖</span>
+            <div><h4>AI Tutor</h4><p>Get instant answers. <a href="tutor.html">Ask the Tutor</a></p></div>
+          </div>
+        </div>
+        <div class="quick-links">
+          <h4>Quick Links</h4>
+          <a href="courses.html">All Courses</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="assets/logo-zetrix-new.png" alt="Zetrix" loading="lazy" style="height:32px;vertical-align:middle;border-radius:4px;"></a>
+        <p>Zetrix AI Academy — Master AI avatars, automation, coding, and business.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutor.html">AI Tutor</a></li>
+          <li><a href="blog.html">Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="support.html">Support &amp; FAQ & FAQ</a></li>
+          <li><a href="mailto:support@zetrix.ai">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a> &middot; <a href="terms-of-service.html" style="color:var(--gray);">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js?v=15"></script>
+<script src="js/pwa.js?v=15"></script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const tabs = document.querySelectorAll('.faq-tab');
+const cats = document.querySelectorAll('.faq-category');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    cats.forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('cat-' + tab.dataset.cat).classList.add('active');
+  });
+});
+
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const wasOpen = item.classList.contains('open');
+    item.closest('.faq-category').querySelectorAll('.accordion-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const fb = document.getElementById('formFeedback');
+  const btn = e.target.querySelector('.form-submit');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    fb.className = 'form-feedback success';
+    fb.textContent = 'Thanks! Your message has been received. We will get back to you shortly.';
+    e.target.reset();
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 1200);
+  return false;
+}
+</script>
+</body>
+</html>
