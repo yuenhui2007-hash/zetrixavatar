@@ -2,6 +2,8 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Complete — Zetrix AI Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -28,13 +30,13 @@
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       margin-bottom: 16px;
-      background: linear-gradient(90deg, #fff, #FFD699);
+      background: linear-gradient(90deg, #fff, #FF8090);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .complete-subtitle { font-size: 1.15rem; opacity: 0.85; margin-bottom: 32px; }
     .complete-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; }
-    .complete-stat-number { display: block; font-size: 2rem; font-weight: 800; color: #FFD699; }
+    .complete-stat-number { display: block; font-size: 2rem; font-weight: 800; color: #FF8090; }
     .complete-stat-label { font-size: 0.85rem; opacity: 0.7; }
     .complete-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
     .btn {
@@ -54,7 +56,7 @@
       box-shadow: 0 25px 80px rgba(0,0,0,0.35);
     }
     .certificate-inner {
-      border: 3px solid #FFA200;
+      border: 3px solid #E60012;
       border-radius: 6px;
       padding: 50px 40px;
       position: relative;
@@ -64,7 +66,7 @@
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px solid #FFD699;
+      border: 1px solid #FF8090;
       border-radius: 3px;
       pointer-events: none;
     }
@@ -72,7 +74,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      border: 3px solid #FFA200;
+      border: 3px solid #E60012;
       z-index: 2;
     }
     .corner-tl { top: -3px; left: -3px; border-right: none; border-bottom: none; }
@@ -112,7 +114,7 @@
       display: block;
     }
     .cert-badge {
-      background: linear-gradient(135deg, #FFB84D, #FFA200);
+      background: linear-gradient(135deg, #FF4D5E, #E60012);
       color: #000000;
       font-size: 0.65rem;
       font-weight: 800;
@@ -144,7 +146,7 @@
       color: #000000;
       margin: 12px 0;
       padding: 8px 24px;
-      border-bottom: 3px solid #FFA200;
+      border-bottom: 3px solid #E60012;
       display: inline-block;
       min-width: 300px;
       outline: none;
@@ -158,12 +160,12 @@
     }
     .cert-recipient:empty::before {
       content: 'Enter Your Name';
-      color: #FFD699;
+      color: #FF8090;
     }
     .cert-course {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #FFA200;
+      color: #E60012;
       margin: 12px 0 6px;
       position: relative;
       z-index: 1;
@@ -178,7 +180,7 @@
     .cert-divider {
       width: 100px;
       height: 4px;
-      background: linear-gradient(90deg, #FFA200, #FFD699, #FFA200);
+      background: linear-gradient(90deg, #E60012, #FF8090, #E60012);
       margin: 28px auto;
       border-radius: 2px;
       position: relative;
@@ -205,7 +207,7 @@
     .cert-sig small { font-size: 0.75rem; color: #666666; }
     .cert-seal {
       width: 60px; height: 60px;
-      background: linear-gradient(135deg, #FFB84D, #FFA200);
+      background: linear-gradient(135deg, #FF4D5E, #E60012);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.6rem;
@@ -242,10 +244,10 @@
         padding: 0 !important; background: white !important;
       }
       .certificate-inner {
-        border: 3px solid #FFA200 !important; padding: 60px 50px !important;
+        border: 3px solid #E60012 !important; padding: 60px 50px !important;
         page-break-inside: avoid; background: white !important;
       }
-      .cert-recipient { color: #000000 !important; border-bottom-color: #FFA200 !important; }
+      .cert-recipient { color: #000000 !important; border-bottom-color: #E60012 !important; }
     }
   </style>
 </head>

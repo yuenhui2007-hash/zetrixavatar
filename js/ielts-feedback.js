@@ -323,7 +323,7 @@ const IELTSFeedback = {
     html += `<div class="breakdown-bars">`;
     breakdown.forEach(b => {
       const pct = (b.score / 9 * 100).toFixed(0);
-      const color = b.score >= 7 ? '#FFA200' : b.score >= 5.5 ? '#FFA200' : '#ef4444';
+      const color = b.score >= 7 ? '#E60012' : b.score >= 5.5 ? '#E60012' : '#ef4444';
       html += `<div class="breakdown-item">`;
       html += `<div class="breakdown-label">${b.criterion}</div>`;
       html += `<div class="breakdown-bar-wrap">`;
@@ -345,7 +345,7 @@ const IELTSFeedback = {
     const maxBand = Math.max(...history.map(h => h.band), 9);
     history.forEach((h, i) => {
       const height = (h.band / maxBand * 100).toFixed(0);
-      const color = h.band >= 7 ? '#FFA200' : h.band >= 5.5 ? '#FFA200' : '#ef4444';
+      const color = h.band >= 7 ? '#E60012' : h.band >= 5.5 ? '#E60012' : '#ef4444';
       html += `<div class="progress-bar-item">`;
       html += `<div class="progress-bar-col" style="height:${height}%;background:${color}"></div>`;
       html += `<div class="progress-bar-label">${h.date}</div>`;

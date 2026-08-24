@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +21,7 @@
 <style>
 /* ===== DASHBOARD HERO ===== */
 .dashboard-hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   color: white;
   padding: 140px 0 80px;
   text-align: center;
@@ -42,7 +44,7 @@
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 12px;
-  background: linear-gradient(90deg, #fff, #FFD699);
+  background: linear-gradient(90deg, #fff, #FF8090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -73,7 +75,7 @@
 .stat-number {
   font-size: 2rem;
   font-weight: 800;
-  color: #FFD699;
+  color: #FF8090;
   display: block;
   line-height: 1.2;
 }
@@ -130,7 +132,7 @@
 .dash-course-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .dash-course-header {
   display: flex;
@@ -177,7 +179,7 @@
 }
 .dash-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #FFA200, #FFD699);
+  background: linear-gradient(90deg, #E60012, #FF8090);
   border-radius: 50px;
   transition: width 0.6s ease;
 }
@@ -205,7 +207,7 @@
   gap: 6px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #FFA200;
+  color: #E60012;
   text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -317,7 +319,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; 2026 Zetrix AI Academy.</p>
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a></p>
     </div>
   </div>
 </footer>

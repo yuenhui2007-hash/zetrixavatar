@@ -160,7 +160,7 @@
 
 // ===== 6. CONFETTI BURST =====
 function confettiBurst(x, y) {
-  const colors = ['#FFA200','#FFA200','#FFD699','#FFA200','#FFA200','#FFA200'];
+  const colors = ['#E60012','#E60012','#FF8090','#E60012','#E60012','#E60012'];
   for (let i = 0; i < 40; i++) {
     const el = document.createElement('div');
     el.style.cssText = `

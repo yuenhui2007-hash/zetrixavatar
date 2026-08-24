@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +21,7 @@
 <style>
 /* ===== PAGE STYLES ===== */
 .faq-hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   color: white;
   padding: 140px 0 80px;
   text-align: center;
@@ -42,7 +44,7 @@
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 16px;
-  background: linear-gradient(90deg, #fff, #FFD699);
+  background: linear-gradient(90deg, #fff, #FF8090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -79,9 +81,9 @@
   transition: all 0.3s;
   font-family: 'Inter', sans-serif;
 }
-.faq-tab:hover { border-color: #FFA200; color: #FFA200; }
+.faq-tab:hover { border-color: #E60012; color: #E60012; }
 .faq-tab.active {
-  background: linear-gradient(135deg, #FFA200, #E69100);
+  background: linear-gradient(135deg, #E60012, #B3000E);
   color: #000;
   border-color: transparent;
 }
@@ -128,7 +130,7 @@
   transition: all 0.3s;
   font-family: 'Inter', sans-serif;
 }
-.accordion-header:hover { color: #FFA200; }
+.accordion-header:hover { color: #E60012; }
 .accordion-header .arrow {
   font-size: 0.75rem;
   color: #64748b;
@@ -136,7 +138,7 @@
   flex-shrink: 0;
   margin-left: 12px;
 }
-.accordion-item.open .arrow { transform: rotate(180deg); color: #FFA200; }
+.accordion-item.open .arrow { transform: rotate(180deg); color: #E60012; }
 .accordion-body {
   max-height: 0;
   overflow: hidden;
@@ -151,8 +153,8 @@
   font-size: 0.95rem;
   line-height: 1.7;
 }
-.accordion-content a { color: #FFA200; text-decoration: underline; }
-.accordion-content a:hover { color: #FFD699; }
+.accordion-content a { color: #E60012; text-decoration: underline; }
+.accordion-content a:hover { color: #FF8090; }
 .accordion-content ul {
   margin: 12px 0 0;
   padding-left: 20px;
@@ -162,7 +164,7 @@
 /* CTA */
 .faq-cta {
   padding: 80px 0;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   text-align: center;
   color: #fff;
 }
@@ -436,7 +438,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Zetrix AI Academy.</p>
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a></p>
     </div>
   </div>
 </footer>

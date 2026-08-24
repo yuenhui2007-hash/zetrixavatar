@@ -191,7 +191,7 @@ class SubjectTestEngine {
 
     const percentage = (earnedMarks / totalMarks * 100).toFixed(1);
     const grade = percentage >= 80 ? 'A' : percentage >= 70 ? 'B' : percentage >= 60 ? 'C' : percentage >= 50 ? 'D' : 'E';
-    const gradeColor = percentage >= 80 ? '#FFA200' : percentage >= 60 ? '#FFA200' : '#ef4444';
+    const gradeColor = percentage >= 80 ? '#E60012' : percentage >= 60 ? '#E60012' : '#ef4444';
 
     let html = `<div class="score-card">`;
     html += `<div class="score-band" style="color:${gradeColor}">Grade ${grade}</div>`;

@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +21,7 @@
 <style>
 /* ===== SEARCH HERO ===== */
 .search-hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   color: white;
   padding: 120px 0 80px;
   text-align: center;
@@ -42,7 +44,7 @@
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 12px;
-  background: linear-gradient(90deg, #fff, #FFD699);
+  background: linear-gradient(90deg, #fff, #FF8090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -74,7 +76,7 @@
 }
 .search-box input::placeholder { color: rgba(255,255,255,0.5); }
 .search-box input:focus {
-  border-color: #FFA200;
+  border-color: #E60012;
   background: rgba(255,255,255,0.12);
   box-shadow: 0 0 0 4px rgba(255,162,0,0.15);
 }
@@ -83,7 +85,7 @@
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  background: #FFA200;
+  background: #E60012;
   border: none;
   border-radius: 50%;
   width: 44px;
@@ -122,8 +124,8 @@
   color: #fff;
 }
 .quick-filters button.active {
-  background: #FFA200;
-  border-color: #FFA200;
+  background: #E60012;
+  border-color: #E60012;
   color: #000;
   font-weight: 600;
 }
@@ -176,14 +178,14 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #FFA200, #FFD699);
+  background: linear-gradient(90deg, #E60012, #FF8090);
   opacity: 0;
   transition: opacity 0.3s;
 }
 .course-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .course-card:hover::before { opacity: 1; }
 .course-card .card-icon {
@@ -221,7 +223,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #FFA200;
+  color: #E60012;
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
@@ -268,8 +270,8 @@
   transition: all 0.2s;
 }
 .empty-state .suggested-searches button:hover {
-  background: #FFA200;
-  border-color: #FFA200;
+  background: #E60012;
+  border-color: #E60012;
   color: #000;
   font-weight: 500;
 }
@@ -361,7 +363,7 @@ mark {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Zetrix AI Academy.</p>
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a></p>
     </div>
   </div>
 </footer>

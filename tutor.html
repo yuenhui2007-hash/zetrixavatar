@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <title>AI Tutor — Zetrix AI Academy</title>
 <meta name="description" content="Your Zetrix AI Academy Tutor. Learn AI, Zetrix Avatar, Zetrix Claw, automation, coding, and business with AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +14,8 @@
 <link rel="stylesheet" href="css/styles.css?v=8">
 <style>
   :root {
-    --primary: #FFA200; --primary-light: #FFB84D; --secondary: #FFA200;
-    --accent: #FFA200; --success: #22c55e; --danger: #ef4444;
+    --primary: #E60012; --primary-light: #FF4D5E; --secondary: #E60012;
+    --accent: #E60012; --success: #22c55e; --danger: #ef4444;
     --dark: #000000; --body-text: #000000; --gray: #999999; --gray-light: #f0f0f0;
     --light: #ffffff; --white: #ffffff; --card-bg: #ffffff;
     --radius: 12px; --radius-xl: 20px;
@@ -21,7 +23,7 @@
   }
   .tutor-page { padding: 100px 0 40px; background: var(--light); min-height: 100vh; }
   .tutor-container { max-width: 860px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; height: calc(100vh - 140px); }
-  .tutor-header { padding: 22px 28px; background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #FFA200 100%); color: white; display: flex; align-items: center; gap: 14px; position: relative; }
+  .tutor-header { padding: 22px 28px; background: linear-gradient(135deg, #000000 0%, #1a1a1a 60%, #E60012 100%); color: white; display: flex; align-items: center; gap: 14px; position: relative; }
   .extend-btn { margin-left: auto; background: rgba(255,255,255,0.15); border: none; color: white; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
   .extend-btn:hover { background: rgba(255,255,255,0.25); }
   .tutor-container.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; max-width: 100vw; border-radius: 0; z-index: 9999; }
@@ -41,7 +43,7 @@
   .tutor-chat { flex: 1; overflow-y: auto; padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; }
   .message { max-width: 82%; padding: 12px 16px; border-radius: 16px; line-height: 1.55; font-size: 0.92rem; animation: fadeIn 0.3s ease; }
   .message-bot { align-self: flex-start; background: var(--light); color: var(--body-text); border-bottom-left-radius: 4px; }
-  .message-user { align-self: flex-end; background: linear-gradient(135deg, #FFA200 0%, #E69100 100%); color: white; border-bottom-right-radius: 4px; }
+  .message-user { align-self: flex-end; background: linear-gradient(135deg, #E60012 0%, #B3000E 100%); color: white; border-bottom-right-radius: 4px; }
   .message-bot h4 { margin: 0 0 8px; font-size: 0.92rem; color: var(--primary); font-weight: 700; }
   .message-bot p { margin: 6px 0; }
   .message-bot ol, .message-bot ul { margin: 6px 0; padding-left: 20px; }
@@ -59,7 +61,7 @@
   .tutor-input { padding: 14px 28px; border-top: 1px solid var(--gray-light); display: flex; gap: 10px; align-items: center; }
   .tutor-input input { flex: 1; padding: 11px 16px; border: 2px solid var(--gray-light); border-radius: 50px; font-size: 0.92rem; outline: none; transition: border-color 0.3s; font-family: 'Inter', sans-serif; }
   .tutor-input input:focus { border-color: var(--primary); }
-  .tutor-input button { padding: 11px 22px; background: linear-gradient(135deg, #FFA200 0%, #E69100 100%); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
+  .tutor-input button { padding: 11px 22px; background: linear-gradient(135deg, #E60012 0%, #B3000E 100%); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
   .tutor-input button:hover { transform: scale(1.05); }
   .suggestion-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 28px 14px; }
   .chip { padding: 7px 14px; background: var(--light); border: 1px solid var(--gray-light); border-radius: 50px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; color: var(--body-text); }

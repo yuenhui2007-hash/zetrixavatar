@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog & Resources — Zetrix AI Academy</title>
-<meta name="description" content="AI tips, Avatar use cases, automation recipes, and productivity hacks from Zetrix AI Academy.">
+<title>Blog & AI News — Zetrix AI Academy</title>
+<meta name="description" content="Real-world AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=10">
-<link rel="stylesheet" href="css/znotes-style.css?v=10">
+<link rel="stylesheet" href="css/styles.css?v=14">
 <style>
 .hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   color: white;
   padding: 120px 0 80px;
   text-align: center;
@@ -24,21 +25,18 @@
 .hero h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  background: linear-gradient(90deg, #fff, #FFD699);
+  background: linear-gradient(90deg, #fff, #FF4D5E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .hero p { opacity: 0.85; max-width: 600px; margin: 12px auto 0; }
 
-.blog-section {
-  padding: 60px 0;
-  background: var(--body-bg);
-}
+.blog-section { padding: 60px 0; background: var(--body-bg); }
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 24px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -51,163 +49,472 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  border: 1px solid var(--border-color);
 }
 .blog-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  border-color: rgba(230,0,18,0.2);
 }
 .blog-card-image {
-  height: 160px;
-  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  height: 140px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #E60012 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  position: relative;
 }
-.blog-card-content {
-  padding: 20px;
+.blog-card-image .source-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
+.blog-card-content { padding: 20px; }
 .blog-tag {
   display: inline-block;
   padding: 4px 10px;
-  background: #fff7ed;
-  color: #c2410c;
+  background: rgba(230, 0, 18, 0.1);
+  color: #E60012;
   border-radius: 50px;
   font-size: 0.72rem;
   font-weight: 600;
   margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
+.blog-tag.guide { background: rgba(0,0,0,0.06); color: #555; }
+.blog-tag.news { background: rgba(230, 0, 18, 0.12); color: #E60012; }
 .blog-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
   color: var(--body-text);
+  line-height: 1.4;
+  font-weight: 600;
 }
 .blog-card p {
   color: var(--gray);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .blog-meta {
   display: flex;
-  gap: 16px;
-  margin-top: 12px;
-  font-size: 0.78rem;
+  gap: 14px;
+  margin-top: 14px;
+  font-size: 0.76rem;
   color: var(--gray);
+  align-items: center;
+}
+.blog-meta .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gray);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray);
+}
+.loading-spinner {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(230,0,18,0.15);
+  border-top-color: #E60012;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 14px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-box {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--gray);
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px dashed var(--border-color);
+}
+
+.source-filter {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding: 0 24px;
+}
+.source-filter button {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--body-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.source-filter button:hover, .source-filter button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }
 
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
+  transform: translateY(16px);
+  transition: all 0.4s ease;
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 <nav class="navbar" id="navbar"></nav>
-<script src="js/nav.js?v=10"></script>
+<script src="js/nav.js?v=14"></script>
 
 <section class="hero">
   <div class="container">
-    <h1>Blog & Resources</h1>
-    <p>AI tips, Avatar use cases, automation recipes, and productivity hacks.</p>
+    <h1>Blog & AI News</h1>
+    <p>Curated AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to.</p>
   </div>
 </section>
 
 <section class="blog-section">
-  <div class="blog-grid">
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">🧠</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">AI Tips</span>
-        <h3>How to Build a Knowledge Graph That Actually Works</h3>
-        <p>Most PKM systems fail because they are too complex. Here is a 3-layer approach that scales from 10 to 10,000 notes.</p>
-        <div class="blog-meta"><span>8 min read</span><span>Aug 20, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">⚡</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Automation</span>
-        <h3>5 n8n Workflows That Save 10 Hours a Week</h3>
-        <p>From auto-sorting emails to generating weekly reports — these workflows run themselves while you sleep.</p>
-        <div class="blog-meta"><span>6 min read</span><span>Aug 18, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">🎭</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Avatar</span>
-        <h3>Training Your Avatar to Sound Like You</h3>
-        <p>Voice cloning is just the start. Here is how to capture your vocabulary, tone, and decision-making style.</p>
-        <div class="blog-meta"><span>10 min read</span><span>Aug 15, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">📈</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Marketing</span>
-        <h3>The AI Copywriting Framework That Doubled Our CTR</h3>
-        <p>AIDA is dead. Here is the PAIN-GAIN-PROOF framework we use to write copy that converts at 2x industry average.</p>
-        <div class="blog-meta"><span>7 min read</span><span>Aug 12, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">💻</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Coding</span>
-        <h3>Prompt Engineering for Clean Code</h3>
-        <p>How to write prompts that generate production-ready code, not spaghetti. Includes 12 tested templates.</p>
-        <div class="blog-meta"><span>9 min read</span><span>Aug 10, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">🚀</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Productivity</span>
-        <h3>Building a One-Person Company with AI</h3>
-        <p>How one founder scaled to $50k MRR with zero employees — just a Zetrix Avatar and the right automations.</p>
-        <div class="blog-meta"><span>12 min read</span><span>Aug 8, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">🔒</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Security</span>
-        <h3>Securing Your Avatar: A Hardening Checklist</h3>
-        <p>Enterprise-grade security for your personal AI. SSO, encryption, audit logs, and data residency explained.</p>
-        <div class="blog-meta"><span>11 min read</span><span>Aug 5, 2026</span></div>
-      </div>
-    </a>
-    <a href="#" class="blog-card fade-up">
-      <div class="blog-card-image">🎯</div>
-      <div class="blog-card-content">
-        <span class="blog-tag">Consulting</span>
-        <h3>From Developer to Solution Architect</h3>
-        <p>The mindset shift, skill stack, and client communication patterns that separate implementers from architects.</p>
-        <div class="blog-meta"><span>8 min read</span><span>Aug 2, 2026</span></div>
-      </div>
-    </a>
+  <div class="source-filter" id="source-filter">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="news">Tech News</button>
+    <button data-filter="reddit">Reddit</button>
+    <button data-filter="hackernews">Hacker News</button>
+    <button data-filter="devto">Dev.to</button>
+    <button data-filter="guide">Academy Guides</button>
+  </div>
+  <div class="blog-grid" id="blog-grid">
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <div>Fetching latest AI news...</div>
+    </div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; 2026 Zetrix AI Academy.</p>
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a></p>
     </div>
   </div>
 </footer>
 
-<script src="js/theme.js?v=10"></script>
+<script src="js/theme.js?v=14"></script>
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+// ─── Static Academy Guides ───
+const staticPosts = [
+  {
+    tag: 'Guide', tagClass: 'guide', icon: '⚡',
+    title: '5 n8n Workflows That Save 10 Hours a Week',
+    desc: 'From auto-sorting emails to generating weekly reports — these workflows run themselves while you sleep.',
+    meta: '6 min read', date: 'Aug 18, 2026', url: '#',
+    source: 'Zetrix Academy', sourceType: 'guide'
+  },
+  {
+    tag: 'Guide', tagClass: 'guide', icon: '🧠',
+    title: 'How to Build a Knowledge Graph That Actually Works',
+    desc: 'Most PKM systems fail because they are too complex. Here is a 3-layer approach that scales from 10 to 10,000 notes.',
+    meta: '8 min read', date: 'Aug 15, 2026', url: '#',
+    source: 'Zetrix Academy', sourceType: 'guide'
+  },
+  {
+    tag: 'Guide', tagClass: 'guide', icon: '🎭',
+    title: 'Training Your Avatar to Sound Like You',
+    desc: 'Voice cloning is just the start. Here is how to capture your vocabulary, tone, and decision-making style.',
+    meta: '10 min read', date: 'Aug 10, 2026', url: '#',
+    source: 'Zetrix Academy', sourceType: 'guide'
+  },
+  {
+    tag: 'Guide', tagClass: 'guide', icon: '💻',
+    title: 'Prompt Engineering for Clean Code',
+    desc: 'How to write prompts that generate production-ready code, not spaghetti. Includes 12 tested templates.',
+    meta: '9 min read', date: 'Aug 5, 2026', url: '#',
+    source: 'Zetrix Academy', sourceType: 'guide'
+  }
+];
+
+// ─── Source Mapping ───
+const sourceIcons = {
+  'TechCrunch': '📰', 'Wired': '⚡', 'Ars Technica': '🔬', 'The Verge': '▶️',
+  'Reddit': '🤖', 'r/artificial': '🤖', 'r/MachineLearning': '🧮', 'r/technology': '💻',
+  'Hacker News': '📰', 'Dev.to': '👨‍💻', 'Zetrix Academy': '⚡'
+};
+
+const sourceColors = {
+  'TechCrunch': '#0A9B00', 'Wired': '#000000', 'Ars Technica': '#FF4E00', 'The Verge': '#E2127A',
+  'Reddit': '#FF4500', 'r/artificial': '#FF4500', 'r/MachineLearning': '#FF4500', 'r/technology': '#FF4500',
+  'Hacker News': '#E60012', 'Dev.to': '#0D47A1', 'Zetrix Academy': '#E60012'
+};
+
+// ─── AI Keywords ───
+const aiKeywords = ['ai','artificial intelligence','llm','gpt','openai','anthropic','claude','machine learning','neural','deep learning','automation','agent','copilot','gemini','midjourney','stable diffusion','transformer','nlp','computer vision','robotics','autonomous','chatgpt','gpt-4','gpt-5','mistral','llama','fine-tuning','inference','model','training','dataset','benchmark','rag','vector','embedding','prompt','chain-of-thought','reasoning','agi','alignment','safety','hallucination','token','parameter','foundation model','multimodal','diffusion','generative','synthetic','sora','runway','elevenlabs','perplexity','cursor','devin','github copilot','codeium','tabnine','ollama','langchain','crewai','auto-gpt','babyagi','sam altman','demis hassabis','sundar pichai','satya nadella'];
+
+function isAiRelated(text) {
+  if (!text) return false;
+  const lower = text.toLowerCase();
+  return aiKeywords.some(k => lower.includes(k));
+}
+
+function timeAgo(timestamp) {
+  if (!timestamp) return '';
+  const seconds = Math.floor((Date.now() - timestamp * 1000) / 1000);
+  if (seconds < 60) return 'just now';
+  if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+  if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ago';
+  if (seconds < 604800) return Math.floor(seconds / 86400) + 'd ago';
+  return Math.floor(seconds / 604800) + 'w ago';
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function stripHtml(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').replace(/&\w+;/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function createCard(post) {
+  const icon = sourceIcons[post.source] || '📰';
+  const color = sourceColors[post.source] || '#E60012';
+  return `
+    <a href="${post.url}" target="_blank" rel="noopener" class="blog-card fade-up visible" data-source="${post.sourceType}">
+      <div class="blog-card-image">
+        <span class="source-badge" style="background:${color};">${post.source}</span>
+        ${icon}
+      </div>
+      <div class="blog-card-content">
+        <span class="blog-tag ${post.tagClass}">${post.tag}</span>
+        <h3>${post.title}</h3>
+        <p>${post.desc}</p>
+        <div class="blog-meta">
+          <span>${post.meta}</span>
+          <span class="dot"></span>
+          <span>${post.date}</span>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+// ─── Fetch RSS via rss2json ───
+async function fetchRSS(feedUrl, sourceName, limit = 6) {
+  try {
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=${limit}`, {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('RSS fetch failed');
+    const data = await res.json();
+    if (data.status !== 'ok') throw new Error(data.message || 'RSS parse error');
+
+    return (data.items || [])
+      .filter(item => item.title && item.link && isAiRelated(item.title + ' ' + stripHtml(item.description || item.content || '')))
+      .slice(0, limit)
+      .map(item => ({
+        tag: 'Tech News',
+        tagClass: 'news',
+        icon: sourceIcons[sourceName] || '📰',
+        title: item.title,
+        desc: stripHtml(item.description || item.content || '').slice(0, 220) + '...',
+        meta: `${item.author || sourceName}`,
+        date: formatDate(item.pubDate),
+        url: item.link,
+        source: sourceName,
+        sourceType: 'news'
+      }));
+  } catch (e) {
+    console.log(`${sourceName} RSS failed:`, e.message);
+    return [];
+  }
+}
+
+// ─── Fetch Reddit Posts ───
+async function fetchReddit(subreddit, limit = 10) {
+  try {
+    const res = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?t=week&limit=${limit}`, {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('Reddit fetch failed');
+    const data = await res.json();
+    return (data.data.children || [])
+      .map(c => c.data)
+      .filter(p => p && p.title && p.url && isAiRelated(p.title + ' ' + (p.selftext || '')))
+      .map(p => ({
+        tag: 'AI News', tagClass: 'news', icon: '🤖',
+        title: p.title,
+        desc: (p.selftext || '').slice(0, 220) + ((p.selftext || '').length > 220 ? '...' : '') || `Discussion on r/${subreddit} with ${(p.ups || 0).toLocaleString()} upvotes and ${p.num_comments || 0} comments.`,
+        meta: `${(p.ups || 0).toLocaleString()} upvotes`,
+        date: timeAgo(p.created_utc),
+        url: p.url,
+        source: `r/${subreddit}`,
+        sourceType: 'reddit'
+      }));
+  } catch (e) {
+    console.log(`Reddit r/${subreddit} failed:`, e.message);
+    return [];
+  }
+}
+
+// ─── Fetch Hacker News ───
+async function fetchHN() {
+  try {
+    const topRes = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+    const topIds = await topRes.json();
+    const candidates = topIds.slice(0, 60);
+    const stories = await Promise.all(
+      candidates.map(id => fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(r => r.json()))
+    );
+    return stories
+      .filter(s => s && s.title && s.url && isAiRelated(s.title))
+      .slice(0, 6)
+      .map(s => ({
+        tag: 'AI News', tagClass: 'news', icon: '📰',
+        title: s.title,
+        desc: `Discussion on Hacker News with ${(s.score || 0).toLocaleString()} points and ${s.descendants || 0} comments.`,
+        meta: `${(s.score || 0).toLocaleString()} points`,
+        date: timeAgo(s.time),
+        url: s.url,
+        source: 'Hacker News',
+        sourceType: 'hackernews'
+      }));
+  } catch (e) {
+    console.log('HN failed:', e.message);
+    return [];
+  }
+}
+
+// ─── Fetch Dev.to ───
+async function fetchDevTo() {
+  try {
+    const res = await fetch('https://dev.to/api/articles?tag=ai&per_page=10', {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('Dev.to fetch failed');
+    const data = await res.json();
+    return (data || [])
+      .filter(p => p && p.title && p.url && isAiRelated(p.title + ' ' + (p.description || '')))
+      .slice(0, 5)
+      .map(p => ({
+        tag: 'AI News', tagClass: 'news', icon: '👨‍💻',
+        title: p.title,
+        desc: (p.description || '').slice(0, 220) + ((p.description || '').length > 220 ? '...' : '') || `Article by ${p.user?.name || 'Dev.to author'} with ${p.public_reactions_count || 0} reactions.`,
+        meta: `${p.public_reactions_count || 0} reactions`,
+        date: formatDate(p.published_at),
+        url: p.url,
+        source: 'Dev.to',
+        sourceType: 'devto'
+      }));
+  } catch (e) {
+    console.log('Dev.to failed:', e.message);
+    return [];
+  }
+}
+
+// ─── Main Load ───
+let allPosts = [];
+
+async function loadNews() {
+  const grid = document.getElementById('blog-grid');
+
+  // Fetch from ALL sources in parallel
+  const [
+    techcrunch, wired, ars, verge,
+    redditAI, redditML, redditTech,
+    hnPosts, devtoPosts
+  ] = await Promise.all([
+    fetchRSS('https://techcrunch.com/category/artificial-intelligence/feed/', 'TechCrunch', 5),
+    fetchRSS('https://www.wired.com/feed/tag/ai/latest/rss', 'Wired', 4),
+    fetchRSS('https://arstechnica.com/tag/artificial-intelligence/feed/', 'Ars Technica', 4),
+    fetchRSS('https://www.theverge.com/ai-artificial-intelligence/rss/index.xml', 'The Verge', 4),
+    fetchReddit('artificial', 8),
+    fetchReddit('MachineLearning', 6),
+    fetchReddit('technology', 8),
+    fetchHN(),
+    fetchDevTo()
+  ]);
+
+  allPosts = [
+    ...staticPosts,
+    ...techcrunch, ...wired, ...ars, ...verge,
+    ...redditAI, ...redditML, ...redditTech,
+    ...hnPosts, ...devtoPosts
+  ];
+
+  if (allPosts.length === 0) {
+    grid.innerHTML = `
+      <div class="error-box">
+        <div style="font-size:2rem;margin-bottom:12px;">📡</div>
+        <div>Unable to fetch live news right now.</div>
+        <div style="margin-top:8px;font-size:0.85rem;">Showing Academy guides.</div>
+      </div>
+      ${staticPosts.map(createCard).join('')}
+    `;
+    return;
+  }
+
+  // Round-robin mix so every source gets visibility
+  const mixed = [];
+  const bySource = {};
+  allPosts.forEach(p => {
+    const key = p.sourceType || 'other';
+    if (!bySource[key]) bySource[key] = [];
+    bySource[key].push(p);
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  let hasMore = true;
+  while (hasMore) {
+    hasMore = false;
+    Object.values(bySource).forEach(list => {
+      if (list.length > 0) {
+        mixed.push(list.shift());
+        hasMore = true;
+      }
+    });
+  }
+
+  grid.innerHTML = mixed.map(createCard).join('');
+}
+
+// ─── Filter Buttons ───
+document.getElementById('source-filter').addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('.source-filter button').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+
+  const filter = e.target.dataset.filter;
+  document.querySelectorAll('.blog-card').forEach(card => {
+    card.style.display = (filter === 'all' || card.dataset.source === filter) ? 'block' : 'none';
+  });
+});
+
+loadNews();
 </script>
-<script src="js/pwa.js?v=10"></script>
+<script src="js/pwa.js?v=14"></script>
 </body>
 </html>

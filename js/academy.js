@@ -120,7 +120,7 @@
             ${completed}/6 levels completed · ${avg}% average (need 80%+)
           </p>
           <div style="width:100%;height:8px;background:#f0f0f0;border-radius:50px;margin-top:8px;overflow:hidden;">
-            <div style="width:${(completed/6)*100}%;height:100%;background:linear-gradient(90deg,#FFA200,#FFA200);border-radius:50px;"></div>
+            <div style="width:${(completed/6)*100}%;height:100%;background:linear-gradient(90deg,#E60012,#E60012);border-radius:50px;"></div>
           </div>
         </div>
       `;

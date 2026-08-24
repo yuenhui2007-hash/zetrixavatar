@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFA200">
+<meta name="theme-color" content="#E60012">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +20,7 @@
 <link rel="stylesheet" href="css/znotes-style.css?v=10">
 <style>
 .academy-hero {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #E60012 100%);
   color: white;
   padding: 120px 0 80px;
   text-align: center;
@@ -26,7 +28,7 @@
 .academy-hero h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  background: linear-gradient(90deg, #fff, #FFD699);
+  background: linear-gradient(90deg, #fff, #FF8090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -68,7 +70,7 @@
 .course-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .course-icon {
   font-size: 2.2rem;
@@ -96,7 +98,7 @@
 }
 .course-meta {
   font-size: 0.75rem;
-  color: #FFA200;
+  color: #E60012;
   font-weight: 600;
 }
 
@@ -128,7 +130,7 @@
 .dept-icon { font-size: 2rem; margin-bottom: 8px; }
 .dept-card h3 { font-size: 0.95rem; margin-bottom: 4px; color: #1a1a1a; }
 .dept-card p { font-size: 0.8rem; color: #64748b; line-height: 1.4; }
-.dept-meta { margin-top: 8px; font-size: 0.72rem; color: #FFA200; font-weight: 600; }
+.dept-meta { margin-top: 8px; font-size: 0.72rem; color: #E60012; font-weight: 600; }
 
 .fade-up {
   opacity: 0;
@@ -245,7 +247,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <p>&copy; 2026 Zetrix AI Academy.</p>
+      <p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a></p>
     </div>
   </div>
 </footer>
@@ -281,7 +283,7 @@ function renderProgressBars() {
       if (h3 && h3.textContent.includes(c.name.split(' ')[0])) {
         const meta = card.querySelector('.course-meta');
         if (meta && prog.pct > 0) {
-          const barHtml = '<div style="margin-top:8px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;"><div style="height:100%;width:' + prog.pct + '%;background:linear-gradient(90deg,#FFA200,#E69100);border-radius:3px;transition:width 0.5s;"></div></div><div style="font-size:0.72rem;color:#64748b;margin-top:4px;">' + prog.pct + '% complete (' + prog.completed + '/' + c.segments + ' segments)</div>';
+          const barHtml = '<div style="margin-top:8px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;"><div style="height:100%;width:' + prog.pct + '%;background:linear-gradient(90deg,#E60012,#B3000E);border-radius:3px;transition:width 0.5s;"></div></div><div style="font-size:0.72rem;color:#64748b;margin-top:4px;">' + prog.pct + '% complete (' + prog.completed + '/' + c.segments + ' segments)</div>';
           meta.insertAdjacentHTML('afterend', barHtml);
         }
       }

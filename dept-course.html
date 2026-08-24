@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Department Course v2 — Zetrix</title>
@@ -31,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #FFD699;
+  color: #FF8090;
   text-decoration: none;
   margin-bottom: 16px;
   font-size: 0.9rem;
@@ -77,7 +79,7 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: #FFA200;
+  color: #E60012;
   font-weight: 700;
 }
 
@@ -101,7 +103,7 @@
   box-shadow: 0 4px 20px rgba(99,102,241,0.1);
 }
 .lesson-card.expanded {
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .lesson-header {
   display: flex;
@@ -111,7 +113,7 @@
 .lesson-number {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #FFA200, #FFA200);
+  background: linear-gradient(135deg, #E60012, #E60012);
   color: white;
   border-radius: 10px;
   display: flex;
@@ -122,7 +124,7 @@
   flex-shrink: 0;
 }
 .lesson-number.done {
-  background: linear-gradient(135deg, #FFA200, #FFB84D);
+  background: linear-gradient(135deg, #E60012, #FF4D5E);
 }
 .lesson-title {
   font-size: 1.05rem;
@@ -170,7 +172,7 @@
 }
 .case-study {
   background: #fef3c7;
-  border-left: 4px solid #FFA200;
+  border-left: 4px solid #E60012;
   padding: 16px;
   border-radius: 0 12px 12px 0;
   margin: 16px 0;
@@ -193,7 +195,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #FFA200;
+  color: #E60012;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -239,17 +241,17 @@
 }
 .quiz-opt.selected {
   background: #e0e7ff;
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .quiz-opt.correct {
   background: #dcfce7;
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .quiz-opt.wrong {
   background: #fee2e2;
   border-color: #dc2626;
 }
-.quiz-opt input { accent-color: #FFA200; }
+.quiz-opt input { accent-color: #E60012; }
 .quiz-opt label {
   flex: 1;
   cursor: pointer;
@@ -304,7 +306,7 @@
 }
 .assignment-textarea:focus {
   outline: none;
-  border-color: #FFA200;
+  border-color: #E60012;
 }
 .assignment-actions {
   display: flex;
@@ -316,7 +318,7 @@
   padding: 24px;
   background: #fff;
   border-radius: 14px;
-  border-left: 4px solid #FFA200;
+  border-left: 4px solid #E60012;
   box-shadow: 0 2px 16px rgba(0,0,0,0.05);
 }
 .ai-result h4 {
@@ -370,7 +372,7 @@
 }
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #FFD699, #FFA200);
+  background: linear-gradient(90deg, #FF8090, #E60012);
   border-radius: 50px;
   transition: width 0.5s ease;
 }
@@ -485,7 +487,7 @@
       <p id="assignmentText">Loading assignment...</p>
       <textarea class="assignment-textarea" id="assignmentInput" placeholder="Type your response here (300–500 words recommended)..."></textarea>
       <div class="assignment-actions">
-        <button class="btn btn-primary" style="background:#FFA200;border-color:#FFA200;color:#000000;" onclick="submitAssignment()">Submit for AI Marking</button>
+        <button class="btn btn-primary" style="background:#E60012;border-color:#E60012;color:#000000;" onclick="submitAssignment()">Submit for AI Marking</button>
         <button class="btn btn-secondary" onclick="document.getElementById('assignmentInput').value=''" style="border-color:#e0e0e0;color:#475569;">Clear</button>
       </div>
       <div id="assignmentResult"></div>

@@ -124,7 +124,7 @@ router.post('/issue', authenticate, async (req, res) => {
                 subject: '🏆 Your Zetrix AI Academy Certificate',
                 html: `
                     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;">
-                        <h2 style="color:#FFA200;">Congratulations, ${user.name}!</h2>
+                        <h2 style="color:#E60012;">Congratulations, ${user.name}!</h2>
                         <p>You have successfully completed all 6 levels of the Zetrix AI Academy with an average score of <strong>${avgScore}%</strong>.</p>
                         <p>Your certificate (ID: <strong>${certId}</strong>) is attached to this email.</p>
                         <div style="background:#ffffff;padding:20px;border-radius:12px;margin:20px 0;text-align:center;">
