@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yuenhui2007-hash.github.io/zetrixavatar/sitemap.xml

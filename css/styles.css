@@ -547,3 +547,19 @@ body.has-mobile-nav { padding-bottom: 64px; }
     .navbar { padding-top: env(safe-area-inset-top); }
     body.has-mobile-nav { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 10000;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }

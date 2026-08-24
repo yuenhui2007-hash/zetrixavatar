@@ -1,0 +1,22 @@
+{
+  "name": "Zetrix AI Academy",
+  "short_name": "Zetrix",
+  "description": "Master AI avatars, automation, coding, and business.",
+  "start_url": "/zetrixavatar/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E60012",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/logo-zetrix-new.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo-zetrix-new.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
