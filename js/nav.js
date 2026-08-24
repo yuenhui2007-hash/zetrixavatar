@@ -12,6 +12,10 @@
         '<ul class="nav-menu" id="navMenu">' +
           '<li><a href="' + prefix + 'index.html" class="nav-link">AI Academy</a></li>' +
           '<li><a href="' + prefix + 'courses.html" class="nav-link">Courses</a></li>' +
+          '<li><a href="' + prefix + 'dashboard.html" class="nav-link">Dashboard</a></li>' +
+          '<li><a href="' + prefix + 'blog.html" class="nav-link">Blog</a></li>' +
+          '<li><a href="' + prefix + 'faq.html" class="nav-link">FAQ</a></li>' +
+          '<li><a href="' + prefix + 'contact.html" class="nav-link">Contact</a></li>' +
           '<li><a href="' + prefix + 'tutor.html" class="nav-link">AI Tutor</a></li>' +
         '</ul>' +
       '</div>';

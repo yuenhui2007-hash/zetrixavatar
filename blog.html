@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFA200">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Resources — Zetrix AI Academy</title>
+<meta name="description" content="AI tips, Avatar use cases, automation recipes, and productivity hacks from Zetrix AI Academy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/znotes-style.css?v=10">
+<style>
+.hero {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  color: white;
+  padding: 120px 0 80px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #FFD699);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p { opacity: 0.85; max-width: 600px; margin: 12px auto 0; }
+
+.blog-section {
+  padding: 60px 0;
+  background: var(--body-bg);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.blog-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+.blog-card-image {
+  height: 160px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+.blog-card-content {
+  padding: 20px;
+}
+.blog-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #fff7ed;
+  color: #c2410c;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.blog-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--body-text);
+}
+.blog-card p {
+  color: var(--gray);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.blog-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+<script src="js/nav.js?v=10"></script>
+
+<section class="hero">
+  <div class="container">
+    <h1>Blog & Resources</h1>
+    <p>AI tips, Avatar use cases, automation recipes, and productivity hacks.</p>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="blog-grid">
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">🧠</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">AI Tips</span>
+        <h3>How to Build a Knowledge Graph That Actually Works</h3>
+        <p>Most PKM systems fail because they are too complex. Here is a 3-layer approach that scales from 10 to 10,000 notes.</p>
+        <div class="blog-meta"><span>8 min read</span><span>Aug 20, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">⚡</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Automation</span>
+        <h3>5 n8n Workflows That Save 10 Hours a Week</h3>
+        <p>From auto-sorting emails to generating weekly reports — these workflows run themselves while you sleep.</p>
+        <div class="blog-meta"><span>6 min read</span><span>Aug 18, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">🎭</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Avatar</span>
+        <h3>Training Your Avatar to Sound Like You</h3>
+        <p>Voice cloning is just the start. Here is how to capture your vocabulary, tone, and decision-making style.</p>
+        <div class="blog-meta"><span>10 min read</span><span>Aug 15, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">📈</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Marketing</span>
+        <h3>The AI Copywriting Framework That Doubled Our CTR</h3>
+        <p>AIDA is dead. Here is the PAIN-GAIN-PROOF framework we use to write copy that converts at 2x industry average.</p>
+        <div class="blog-meta"><span>7 min read</span><span>Aug 12, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">💻</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Coding</span>
+        <h3>Prompt Engineering for Clean Code</h3>
+        <p>How to write prompts that generate production-ready code, not spaghetti. Includes 12 tested templates.</p>
+        <div class="blog-meta"><span>9 min read</span><span>Aug 10, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">🚀</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Productivity</span>
+        <h3>Building a One-Person Company with AI</h3>
+        <p>How one founder scaled to $50k MRR with zero employees — just a Zetrix Avatar and the right automations.</p>
+        <div class="blog-meta"><span>12 min read</span><span>Aug 8, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">🔒</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Security</span>
+        <h3>Securing Your Avatar: A Hardening Checklist</h3>
+        <p>Enterprise-grade security for your personal AI. SSO, encryption, audit logs, and data residency explained.</p>
+        <div class="blog-meta"><span>11 min read</span><span>Aug 5, 2026</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card fade-up">
+      <div class="blog-card-image">🎯</div>
+      <div class="blog-card-content">
+        <span class="blog-tag">Consulting</span>
+        <h3>From Developer to Solution Architect</h3>
+        <p>The mindset shift, skill stack, and client communication patterns that separate implementers from architects.</p>
+        <div class="blog-meta"><span>8 min read</span><span>Aug 2, 2026</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zetrix AI Academy.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js?v=10"></script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+<script src="js/pwa.js?v=10"></script>
+</body>
+</html>
