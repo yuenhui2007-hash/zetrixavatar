@@ -21,6 +21,7 @@
       this.renderSidebar();
       this.renderSegment(this.currentSegment);
       this.updateOverallProgress();
+      this.initKeyboard();
     },
 
     loadProgress() {
@@ -623,6 +624,37 @@
 
     countQuizzes() {
       return this.segments.filter(s => (s.quiz && s.quiz.length > 0) || s.assessment).length;
+    },
+
+    initKeyboard() {
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const seg = this.segments[this.currentSegment];
+        const state = this.segmentStates[this.currentSegment];
+        switch (e.key) {
+          case 'ArrowRight':
+            if (state.completed && this.currentSegment < this.totalSegments - 1) {
+              this.goTo(this.currentSegment + 1);
+            }
+            break;
+          case 'ArrowLeft':
+            if (this.currentSegment > 0) {
+              this.goTo(this.currentSegment - 1);
+            }
+            break;
+          case ' ':
+            if (seg.flashcards && seg.flashcards.length > 0) {
+              e.preventDefault();
+              this.flipCard(0);
+            }
+            break;
+          case '1': case '2': case '3': case '4':
+            const num = parseInt(e.key) - 1;
+            const radio = document.querySelector(`input[name="q${this.currentSegment}"][value="${num}"]`);
+            if (radio) radio.checked = true;
+            break;
+        }
+      });
     }
   };
 })();

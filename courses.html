@@ -252,6 +252,43 @@
 
 <script src="js/theme.js?v=10"></script>
 <script>
+const courseIds = [
+  { id:'avatar-foundations', name:'Avatar Foundations', segments:10 },
+  { id:'ai-brain', name:'AI Brain', segments:10 },
+  { id:'business-automation', name:'Business Automation', segments:10 },
+  { id:'sales-marketing', name:'Sales & Marketing', segments:10 },
+  { id:'personal-productivity', name:'Personal Productivity', segments:10 },
+  { id:'ai-coding', name:'AI for Coding', segments:10 },
+  { id:'one-person-company', name:'One-Person Company', segments:10 },
+  { id:'enterprise-deployment', name:'Enterprise Avatar Deployment', segments:10 },
+  { id:'solution-architecture', name:'Solution Architecture & Client Consultation', segments:10 }
+];
+
+function getCourseProgress(id, totalSegments) {
+  try {
+    const data = JSON.parse(localStorage.getItem('course_' + id + '_progress') || '{}');
+    const completed = (data.segmentStates || []).filter(s => s.completed).length;
+    return { completed, pct: Math.round((completed / totalSegments) * 100) };
+  } catch(e) { return { completed:0, pct:0 }; }
+}
+
+function renderProgressBars() {
+  courseIds.forEach(c => {
+    const prog = getCourseProgress(c.id, c.segments);
+    const cards = document.querySelectorAll('.course-card');
+    cards.forEach(card => {
+      const h3 = card.querySelector('h3');
+      if (h3 && h3.textContent.includes(c.name.split(' ')[0])) {
+        const meta = card.querySelector('.course-meta');
+        if (meta && prog.pct > 0) {
+          const barHtml = '<div style="margin-top:8px;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;"><div style="height:100%;width:' + prog.pct + '%;background:linear-gradient(90deg,#FFA200,#E69100);border-radius:3px;transition:width 0.5s;"></div></div><div style="font-size:0.72rem;color:#64748b;margin-top:4px;">' + prog.pct + '% complete (' + prog.completed + '/' + c.segments + ' segments)</div>';
+          meta.insertAdjacentHTML('afterend', barHtml);
+        }
+      }
+    });
+  });
+}
+
 const corpDepts = [
   { id:'hr', name:'Human Resources', icon:'👥', desc:'Recruitment, employee relations, performance management, and organizational development.', quiz:5 },
   { id:'finance', name:'Finance & Accounting', icon:'💰', desc:'Financial planning, budgeting, auditing, taxation, and investment analysis.', quiz:5 },
@@ -281,6 +318,7 @@ function renderDeptGrid() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderProgressBars();
   renderDeptGrid();
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
