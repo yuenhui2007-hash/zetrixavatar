@@ -17,6 +17,7 @@
           '<li><a href="' + prefix + 'faq.html" class="nav-link">FAQ</a></li>' +
           '<li><a href="' + prefix + 'contact.html" class="nav-link">Contact</a></li>' +
           '<li><a href="' + prefix + 'tutor.html" class="nav-link">AI Tutor</a></li>' +
+          '<li><a href="' + prefix + 'signin.html" class="nav-link" style="color:var(--primary);font-weight:700;">Sign In</a></li>' +
         '</ul>' +
       '</div>';
 
