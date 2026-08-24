@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFA200">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses — Zetrix AI Academy</title>
+<meta name="description" content="Browse all Zetrix AI Academy courses and department training programs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/znotes-style.css?v=10">
+<style>
+.academy-hero {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFA200 100%);
+  color: white;
+  padding: 120px 0 80px;
+  text-align: center;
+}
+.academy-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #FFD699);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.academy-hero p { opacity: 0.85; max-width: 600px; margin: 12px auto 0; }
+
+.courses-section {
+  padding: 60px 0;
+  background: #ffffff;
+}
+.courses-section.alt {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+.path-title { text-align: center; margin-bottom: 40px; }
+.path-title h2 { font-size: 1.8rem; margin-bottom: 8px; color: #1a1a1a; }
+.path-title p { color: #64748b; font-size: 1rem; }
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.course-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid transparent;
+}
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  border-color: #FFA200;
+}
+.course-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-radius: 14px;
+}
+.course-info { flex: 1; }
+.course-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+.course-info p {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.course-meta {
+  font-size: 0.75rem;
+  color: #FFA200;
+  font-weight: 600;
+}
+
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.dept-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.dept-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  border-color: #c7d2fe;
+}
+.dept-icon { font-size: 2rem; margin-bottom: 8px; }
+.dept-card h3 { font-size: 0.95rem; margin-bottom: 4px; color: #1a1a1a; }
+.dept-card p { font-size: 0.8rem; color: #64748b; line-height: 1.4; }
+.dept-meta { margin-top: 8px; font-size: 0.72rem; color: #FFA200; font-weight: 600; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+<script src="js/nav.js?v=10"></script>
+
+<section class="academy-hero">
+  <div class="container">
+    <h1>All Courses</h1>
+    <p>Two learning paths. One platform. Choose your focus.</p>
+  </div>
+</section>
+
+<!-- AI ACADEMY COURSES -->
+<section class="courses-section">
+  <div class="path-title">
+    <span style="display:inline-block;padding:4px 14px;background:#fff7ed;color:#c2410c;border-radius:50px;font-size:0.78rem;font-weight:600;margin-bottom:12px;">Zetrix AI Academy</span>
+    <h2>Master AI & Build Your Avatar</h2>
+    <p>Hands-on courses with interactive lessons, mixed assessments, and real-world projects.</p>
+  </div>
+  <div class="courses-grid">
+    <a href="course-avatar-foundations.html" class="course-card fade-up">
+      <div class="course-icon">🎭</div>
+      <div class="course-info">
+        <h3>Avatar Foundations</h3>
+        <p>Build AI avatars, voice & video agents, digital humans, and deployment pipelines.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-ai-brain.html" class="course-card fade-up">
+      <div class="course-icon">🧠</div>
+      <div class="course-info">
+        <h3>AI Brain</h3>
+        <p>Neural networks, deep learning, transformers, RAG, fine-tuning, and model deployment.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-business-automation.html" class="course-card fade-up">
+      <div class="course-icon">⚙️</div>
+      <div class="course-info">
+        <h3>Business Automation</h3>
+        <p>Workflow automation, n8n/Zapier, CRM bots, document processing, and RPA.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-sales-marketing.html" class="course-card fade-up">
+      <div class="course-icon">📢</div>
+      <div class="course-info">
+        <h3>Sales & Marketing</h3>
+        <p>AI copywriting, lead scoring, ad optimization, social media, and email automation.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-personal-productivity.html" class="course-card fade-up">
+      <div class="course-icon">⚡</div>
+      <div class="course-info">
+        <h3>Personal Productivity</h3>
+        <p>Prompt engineering, meeting assistants, research tools, scheduling, and knowledge management.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-ai-coding.html" class="course-card fade-up">
+      <div class="course-icon">💻</div>
+      <div class="course-info">
+        <h3>AI for Coding</h3>
+        <p>GitHub Copilot, code review, debugging, testing, API integration, and documentation.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-one-person-company.html" class="course-card fade-up">
+      <div class="course-icon">🚀</div>
+      <div class="course-info">
+        <h3>One-Person Company</h3>
+        <p>Build, launch, and scale a profitable company run entirely by you and your Zetrix Avatar.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-enterprise-deployment.html" class="course-card fade-up">
+      <div class="course-icon">🏢</div>
+      <div class="course-info">
+        <h3>Enterprise Avatar Deployment</h3>
+        <p>Deploy, secure, and scale avatar AI in corporate environments. SSO, compliance, multi-tenancy, SLAs.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+    <a href="course-solution-architecture.html" class="course-card fade-up">
+      <div class="course-icon">🎯</div>
+      <div class="course-info">
+        <h3>Solution Architecture & Client Consultation</h3>
+        <p>Scope client needs, design avatar solutions, price implementations, and manage post-sale success.</p>
+        <div class="course-meta">10 segments &middot; Mixed assessments</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- DEPARTMENT COURSES -->
+<section class="courses-section alt">
+  <div class="path-title">
+    <span style="display:inline-block;padding:4px 14px;background:#eff6ff;color:#1e40af;border-radius:50px;font-size:0.78rem;font-weight:600;margin-bottom:12px;">Department Training</span>
+    <h2>Corporate Training Across 12 Departments</h2>
+    <p>Take quizzes and submit assignments graded by AI.</p>
+  </div>
+  <div class="dept-grid" id="deptGrid"></div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zetrix AI Academy.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/theme.js?v=10"></script>
+<script>
+const corpDepts = [
+  { id:'hr', name:'Human Resources', icon:'👥', desc:'Recruitment, employee relations, performance management, and organizational development.', quiz:5 },
+  { id:'finance', name:'Finance & Accounting', icon:'💰', desc:'Financial planning, budgeting, auditing, taxation, and investment analysis.', quiz:5 },
+  { id:'admin', name:'Administration', icon:'📋', desc:'Office management, record keeping, scheduling, and supporting organizational operations.', quiz:5 },
+  { id:'sales', name:'Sales', icon:'🤝', desc:'Lead generation, client acquisition, negotiation, CRM, and revenue growth strategies.', quiz:5 },
+  { id:'marketing', name:'Marketing', icon:'📢', desc:'Brand strategy, digital marketing, content creation, market research, and campaign management.', quiz:5 },
+  { id:'ops', name:'Operations', icon:'⚙️', desc:'Process optimization, supply chain, logistics, production planning, and quality control.', quiz:5 },
+  { id:'it', name:'Information Technology', icon:'💻', desc:'Infrastructure, cybersecurity, software development, technical support, and digital transformation.', quiz:5 },
+  { id:'cs', name:'Customer Service', icon:'🎧', desc:'Customer support, complaint resolution, satisfaction metrics, and service excellence.', quiz:5 },
+  { id:'procurement', name:'Procurement / Purchasing', icon:'🛒', desc:'Vendor management, sourcing, contract negotiation, purchasing strategy, and cost control.', quiz:5 },
+  { id:'legal', name:'Legal & Compliance', icon:'⚖️', desc:'Contract law, regulatory compliance, risk management, corporate governance, and dispute resolution.', quiz:5 },
+  { id:'rnd', name:'Research & Development', icon:'🔬', desc:'Innovation, product development, prototyping, testing, and technology advancement.', quiz:5 },
+  { id:'qa', name:'Quality Assurance', icon:'✅', desc:'Testing protocols, standards compliance, defect tracking, continuous improvement, and audit processes.', quiz:5 }
+];
+
+function renderDeptGrid() {
+  const grid = document.getElementById('deptGrid');
+  if (!grid) return;
+  grid.innerHTML = corpDepts.map(d => `
+    <a href="dept-course.html?dept=${d.id}" class="dept-card fade-up">
+      <div class="dept-icon">${d.icon}</div>
+      <h3>${d.name}</h3>
+      <p>${d.desc}</p>
+      <div class="dept-meta">${d.quiz} quiz questions &middot; 1 assignment</div>
+    </a>
+  `).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDeptGrid();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+});
+</script>
+<script src="js/pwa.js?v=10"></script>
+</body>
+</html>
