@@ -451,6 +451,98 @@ img { max-width: 100%; display: block; }
     background: rgba(99,102,241,0.2);
 }
 
+/* ===== Mobile Clutter Reduction ===== */
+@media (max-width: 768px) {
+    /* Container — tighter padding */
+    .container { padding: 0 16px; }
+
+    /* Hero — less vertical space */
+    .hero { padding: 100px 0 40px; }
+    .hero-title { font-size: 1.8rem; line-height: 1.15; margin-bottom: 12px; }
+    .hero-subtitle { font-size: 0.95rem; margin-bottom: 24px; }
+    .hero-badge { font-size: 0.75rem; padding: 6px 14px; margin-bottom: 16px; }
+    .hero-cta { flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .hero-cta .btn { width: 100%; max-width: 320px; margin: 0 auto; }
+    .hero-stats { gap: 20px; }
+    .stat-number { font-size: 1.6rem; }
+    .stat-label { font-size: 0.8rem; }
+
+    /* Remove decorative blobs on mobile */
+    .hero-blob-left, .hero-blob-right, .hero-grid-overlay { display: none; }
+
+    /* Sections — less padding */
+    .section { padding: 48px 0; }
+    .subjects-preview, .features, .pricing-preview, .pricing-section { padding: 48px 0; }
+    .section-title { font-size: 1.5rem; }
+    .section-header { margin-bottom: 32px; }
+    .section-tag { font-size: 0.7rem; margin-bottom: 10px; }
+
+    /* Cards — compact */
+    .subject-card { padding: 20px 16px; }
+    .subject-icon { font-size: 2rem; margin-bottom: 10px; }
+    .subject-card h3 { font-size: 1rem; }
+    .subject-card p { font-size: 0.8rem; margin-bottom: 8px; }
+
+    .feature-card { padding: 20px 16px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 10px; }
+    .feature-card h3 { font-size: 1rem; margin-bottom: 6px; }
+    .feature-card p { font-size: 0.82rem; line-height: 1.5; }
+
+    .pricing-card { padding: 24px 16px; }
+    .pricing-header h3 { font-size: 1.1rem; }
+    .pricing-price { font-size: 2rem; }
+    .pricing-features li { padding: 6px 0; font-size: 0.85rem; }
+
+    /* Dashboard */
+    .dashboard-section { padding: 90px 0 40px; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+    .dashboard-header h1 { font-size: 1.5rem; }
+    .dashboard-card { padding: 20px 16px; }
+
+    /* Auth pages */
+    .auth-section { padding: 100px 0 40px; }
+    .auth-card { padding: 28px 20px; }
+    .auth-card h1 { font-size: 1.4rem; }
+
+    /* Subject / Topic */
+    .subject-section { padding: 90px 0 40px; }
+    .subject-header h1 { font-size: 1.6rem; }
+    .topic-item { padding: 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .topic-item h3 { font-size: 1rem; }
+    .topic-item p { font-size: 0.8rem; }
+
+    /* Grid gaps */
+    .subjects-grid, .features-grid, .dashboard-grid { gap: 12px; }
+    .blog-grid { grid-template-columns: 1fr; gap: 16px; padding: 0 16px; }
+
+    /* Footer — compact */
+    .footer { padding: 32px 0 16px; }
+    .footer-grid { gap: 24px; margin-bottom: 24px; }
+    .footer-links h4 { font-size: 0.9rem; margin-bottom: 12px; }
+    .footer-links a { padding: 4px 0; font-size: 0.82rem; }
+    .footer-bottom { padding-top: 16px; }
+    .footer-bottom p { font-size: 0.75rem; }
+
+    /* Hide mascot on mobile */
+    .mascot-container { display: none; }
+
+    /* Notes */
+    .notes-container { padding: 20px 16px; }
+    .notes-container h2 { font-size: 1.4rem; }
+    .notes-container h3 { font-size: 1.1rem; }
+    .notes-container p { font-size: 0.9rem; line-height: 1.6; }
+
+    /* Course engine sidebar */
+    .course-sidebar { width: 100%; position: relative; margin-bottom: 20px; }
+    .course-main { padding: 16px; }
+
+    /* Mobile bottom nav more compact */
+    .mobile-bottom-nav { height: 56px; }
+    .mobile-bottom-nav .mobile-nav-icon { font-size: 1.2rem; }
+    .mobile-bottom-nav .mobile-nav-label { font-size: 0.6rem; }
+    body.has-mobile-nav { padding-bottom: 56px; }
+}
+
 /* ===== Mobile-First Enhancements ===== */
 
 /* Touch feedback */
