@@ -307,6 +307,23 @@
       return { success: false, error: 'Google sign-in requires Firebase backend setup.' };
     },
 
+    loginWithGitHub: async function() {
+      if (_firebaseReady()) {
+        try {
+          var provider = new firebase.auth.GithubAuthProvider();
+          var cred = await firebase.auth().signInWithPopup(provider);
+          var u = _fromFirebaseUser(cred.user);
+          localStorage.setItem(AUTH_KEY, JSON.stringify(u));
+          _notify(u);
+          updateNav();
+          return { success: true, user: u };
+        } catch (err) {
+          return { success: false, error: _mapFirebaseErr(err) };
+        }
+      }
+      return { success: false, error: 'GitHub sign-in requires Firebase backend setup.' };
+    },
+
     updateNav: updateNav,
     requireAuth: requireAuth
   };
