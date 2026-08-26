@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zetrix-v1';
+const CACHE_NAME = 'zetrix-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -69,6 +69,10 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
         }
         return response;
+      }).catch(() => {
+        if (request.mode === 'navigate') {
+          return caches.match('/offline.html');
+        }
       });
     })
   );

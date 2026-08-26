@@ -17,17 +17,35 @@
     else localStorage.removeItem(AUTH_KEY);
   }
 
-  function getToken() {
-    return localStorage.getItem(TOKEN_KEY) || null;
-  }
 
-  function setToken(token) {
-    if (token) localStorage.setItem(TOKEN_KEY, token);
-    else localStorage.removeItem(TOKEN_KEY);
-  }
 
   function generateToken() {
-    return 'tk_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+    const arr = new Uint8Array(16);
+    crypto.getRandomValues(arr);
+    const hex = Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
+    return 'tk_' + Date.now() + '_' + hex;
+  }
+
+  const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+  function setToken(token) {
+    if (token) {
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(TOKEN_KEY + '_expiry', Date.now() + SESSION_DURATION);
+    } else {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(TOKEN_KEY + '_expiry');
+    }
+  }
+
+  function getToken() {
+    const expiry = localStorage.getItem(TOKEN_KEY + '_expiry');
+    if (expiry && Date.now() > parseInt(expiry, 10)) {
+      setUser(null);
+      setToken(null);
+      return null;
+    }
+    return localStorage.getItem(TOKEN_KEY) || null;
   }
 
   // ========== PROGRESS (per-user) ==========
@@ -121,13 +139,14 @@
         createdAt: Date.now()
       };
       const token = generateToken();
+      localStorage.removeItem(TOKEN_KEY + '_duration');
       setUser(user);
       setToken(token);
       updateNav();
       return { success: true, user: user, token: token };
     },
 
-    login: async function(email, password) {
+    login: async function(email, password, remember) {
       if (!email || !password) {
         return { success: false, error: 'Email and password are required.' };
       }
@@ -143,6 +162,11 @@
         createdAt: Date.now()
       };
       const token = generateToken();
+      if (remember) {
+        localStorage.setItem(TOKEN_KEY + '_duration', (30 * 24 * 60 * 60 * 1000).toString());
+      } else {
+        localStorage.removeItem(TOKEN_KEY + '_duration');
+      }
       setUser(user);
       setToken(token);
       updateNav();
