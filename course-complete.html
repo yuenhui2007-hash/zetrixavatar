@@ -241,24 +241,33 @@
     @media print {
       @page { margin: 0; size: A4 portrait; }
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      html, body { background: white !important; height: auto; margin: 0; padding: 0; }
+      html, body { background: white !important; height: 100%; margin: 0; padding: 0; }
       /* Aggressive hide: nav, header, footer, and all celebration UI */
       .navbar, #navbar, .nav-toggle, .nav-menu, .skip-link, .footer,
       .complete-badge, .complete-title, .complete-subtitle, .complete-stats, .complete-actions,
       nav, header, .site-header, .page-header { display: none !important; }
       .complete-page {
         background: white !important; padding: 0 !important; margin: 0 !important;
-        min-height: auto !important; display: block !important;
+        min-height: 100vh !important; display: flex !important;
+        align-items: stretch !important;
       }
-      .complete-content { max-width: none !important; margin: 0 !important; width: 100% !important; padding: 10px !important; }
-      .certificate-wrap { max-width: none !important; margin: 0 !important; }
+      .complete-content { max-width: none !important; margin: 0 !important; width: 100% !important; padding: 0 !important; }
+      .certificate-wrap { max-width: none !important; margin: 0 !important; height: 100vh !important; }
       .certificate-card {
         box-shadow: none !important; border-radius: 0 !important;
         padding: 0 !important; background: white !important;
+        height: 100% !important;
       }
       .certificate-inner {
-        border: 3px solid #E60012 !important; padding: 40px 36px !important;
+        border: 3px solid #E60012 !important; padding: 48px 48px !important;
         page-break-inside: avoid; background: white !important;
+        height: 100% !important;
+        display: flex !important; flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+      .cert-header, .cert-footer { flex-shrink: 0 !important; }
+      .cert-title, .cert-label, .cert-recipient, .cert-course, .cert-details, .cert-divider {
+        margin-top: 0 !important; margin-bottom: 0 !important;
       }
       .cert-recipient { color: #000000 !important; border-bottom-color: #E60012 !important; }
       .cert-seal { box-shadow: none !important; }
