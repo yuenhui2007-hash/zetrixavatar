@@ -552,30 +552,28 @@
   .matching-grid { grid-template-columns: 1fr; gap: 12px; }
 }
 
-/* ===== LIGHT MODE (default, enforced on course pages) ===== */
-.segment-body,
-.segment-body p,
-.segment-body li,
-.segment-body ol,
-.segment-body ul,
-.segment-body span,
-.segment-body div,
-.segment-body strong,
-.segment-body em,
-.segment-body b,
-.segment-body i,
-.segment-body h2,
-.segment-body h3,
-.segment-body h4,
-.segment-header h2,
-.seg-num {
-  color: #0f172a !important;
-  -webkit-text-fill-color: #0f172a !important;
-}
-
 /* ===== DARK MODE ===== */
 [data-theme="dark"] .course-layout{ background: #0f172a; }
 [data-theme="dark"] .course-main{ background: #0f172a; }
+[data-theme="dark"] .segment-body,
+[data-theme="dark"] .segment-body p,
+[data-theme="dark"] .segment-body li,
+[data-theme="dark"] .segment-body ol,
+[data-theme="dark"] .segment-body ul,
+[data-theme="dark"] .segment-body span,
+[data-theme="dark"] .segment-body div,
+[data-theme="dark"] .segment-body strong,
+[data-theme="dark"] .segment-body em,
+[data-theme="dark"] .segment-body b,
+[data-theme="dark"] .segment-body i,
+[data-theme="dark"] .segment-body h2,
+[data-theme="dark"] .segment-body h3,
+[data-theme="dark"] .segment-body h4,
+[data-theme="dark"] .segment-header h2,
+[data-theme="dark"] .seg-num {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+}
 
 [data-theme="dark"] .course-sidebar{ background: #1e293b; border-color: #334155; }
 [data-theme="dark"] .course-sidebar h3{ color: #94a3b8; }
