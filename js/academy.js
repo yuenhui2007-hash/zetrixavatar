@@ -1,5 +1,6 @@
 // Zetrix AI Academy — Progress tracking, level unlocking & certificate
 (function() {
+  const DEBUG = false;
   const STORAGE_KEY = 'zetrix_academy_progress';
   const API_BASE = window.location.origin.includes('localhost')
     ? 'http://localhost:10000/api'
@@ -47,7 +48,7 @@
         body: JSON.stringify({ level, score, completed: true })
       });
     } catch (e) {
-      console.log('Progress sync failed (offline mode)', e);
+      if (DEBUG) console.log('Progress sync failed (offline mode)', e);
     }
   }
 
@@ -73,7 +74,7 @@
         const data = await res.json();
         updateCertificateUI(data);
       } catch (e) {
-        console.log('Certificate check failed', e);
+        if (DEBUG) console.log('Certificate check failed', e);
       }
     }
   }

@@ -3,6 +3,8 @@
  * Uses backend authorization code flow (PKCE) for security
  */
 
+const DEBUG = false;
+
 const OAuth = {
   /**
    * Initiate Google OAuth login via backend
@@ -62,7 +64,7 @@ const OAuth = {
       if (e.data.type === 'oauth-error') {
         window.removeEventListener('message', handleMessage);
         if (popup && !popup.closed) popup.close();
-        console.error('OAuth error:', e.data.error || 'Unknown error');
+        if (DEBUG) console.error('OAuth error:', e.data.error || 'Unknown error');
       }
     });
   }

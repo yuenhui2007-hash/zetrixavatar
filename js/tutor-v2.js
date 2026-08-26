@@ -1124,7 +1124,7 @@ async function handleSend() {
         return;
       }
     } catch (err) {
-      console.log('AI API failed, falling back to local:', err);
+      if (typeof DEBUG !== 'undefined' && DEBUG) console.log('AI API failed, falling back to local:', err);
     }
   }
 

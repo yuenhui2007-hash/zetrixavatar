@@ -14,13 +14,13 @@
 <title>Blog & AI News — Zetrix AI Academy</title>
 <meta name="description" content="Curated AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to.">
 <link rel="canonical" href="https://yuenhui2007-hash.github.io/zetrixavatar/blog.html">
-<meta property="og:title" content="Blog <meta name="description" content="Real-world AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to."> AI News — Zetrix AI Academy">
+<meta property="og:title" content="Blog & AI News — Zetrix AI Academy">
 <meta property="og:description" content="Curated AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://yuenhui2007-hash.github.io/zetrixavatar/blog.html">
 <meta property="og:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog <meta name="description" content="Real-world AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to."> AI News — Zetrix AI Academy">
+<meta name="twitter:title" content="Blog & AI News — Zetrix AI Academy">
 <meta name="twitter:description" content="Curated AI news from TechCrunch, Wired, Ars Technica, The Verge, Reddit, Hacker News, and Dev.to.">
 <meta name="twitter:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -375,7 +375,6 @@ async function fetchRSS(feedUrl, sourceName, limit = 6) {
         sourceType: 'news'
       }));
   } catch (e) {
-    console.log(`${sourceName} RSS failed:`, e.message);
     return [];
   }
 }
@@ -402,7 +401,6 @@ async function fetchReddit(subreddit, limit = 10) {
         sourceType: 'reddit'
       }));
   } catch (e) {
-    console.log(`Reddit r/${subreddit} failed:`, e.message);
     return [];
   }
 }
@@ -430,7 +428,6 @@ async function fetchHN() {
         sourceType: 'hackernews'
       }));
   } catch (e) {
-    console.log('HN failed:', e.message);
     return [];
   }
 }
@@ -457,7 +454,6 @@ async function fetchDevTo() {
         sourceType: 'devto'
       }));
   } catch (e) {
-    console.log('Dev.to failed:', e.message);
     return [];
   }
 }

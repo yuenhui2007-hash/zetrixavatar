@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+  var DEBUG = false;
 
   // Auth guard for protected pages (dashboard, courses, etc.)
   // Include this script AFTER auth.js on any page that requires login
@@ -14,7 +15,7 @@
   function checkAuth() {
     // Auth module must be loaded
     if (typeof Auth === 'undefined') {
-      console.warn('Auth guard: Auth module not loaded');
+      if (DEBUG) console.warn('Auth guard: Auth module not loaded');
       return;
     }
     var user = Auth.getUser();

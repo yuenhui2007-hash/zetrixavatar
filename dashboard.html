@@ -340,12 +340,13 @@
 <script src="js/theme.js?v=15"></script>
 <script src="js/auth.js?v=15"></script>
 <script>
-// Auth guard
+// Auth guard — hide page until confirmed
 (function() {
   if (!Auth.getUser()) {
-    window.location.href = 'signin.html?redirect=' + encodeURIComponent('dashboard.html');
+    window.location.replace('signin.html?redirect=' + encodeURIComponent('dashboard.html'));
     return;
   }
+  document.body.style.display = 'block';
   var user = Auth.getUser();
   var greet = document.getElementById('dash-greeting');
   if (greet && user && user.name) {
