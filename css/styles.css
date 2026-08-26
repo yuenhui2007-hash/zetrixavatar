@@ -783,7 +783,7 @@ body.has-mobile-nav { padding-bottom: 64px; }
 .back-button-fixed {
   position: fixed;
   top: 84px;
-  left: 16px;
+  right: 16px;
   z-index: 9999;
   background: var(--card-bg, #ffffff);
   border: 1.5px solid var(--border-color, rgba(0,0,0,0.08));
@@ -816,8 +816,64 @@ body.has-mobile-nav { padding-bottom: 64px; }
 @media (max-width: 768px) {
   .back-button-fixed {
     top: 72px;
-    left: 10px;
+    right: 10px;
     padding: 7px 14px;
     font-size: 0.8rem;
+  }
+}
+
+/* Back button - inside course sidebar (top-right, no overlap) */
+.back-button-sidebar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+  background: rgba(255,255,255,0.95);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  font-family: inherit;
+  backdrop-filter: blur(8px);
+}
+.back-button-sidebar:hover {
+  box-shadow: 0 4px 14px rgba(230, 0, 18, 0.2);
+  background: var(--primary, #E60012);
+  color: white;
+  border-color: var(--primary, #E60012);
+  transform: scale(1.05);
+}
+.back-button-sidebar svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+[data-theme="dark"] .back-button-sidebar,
+.dark .back-button-sidebar {
+  background: rgba(30,41,59,0.95);
+  color: #e2e8f0;
+  border-color: rgba(255,255,255,0.08);
+}
+[data-theme="dark"] .back-button-sidebar:hover,
+.dark .back-button-sidebar:hover {
+  background: var(--primary, #E60012);
+  color: white;
+  border-color: var(--primary, #E60012);
+}
+@media (max-width: 768px) {
+  .back-button-sidebar {
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    font-size: 0.75rem;
   }
 }

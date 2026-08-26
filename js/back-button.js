@@ -23,13 +23,10 @@
       }
     };
 
-    // On course pages, insert into sidebar so it doesn't overlap content
+    // On course pages, insert into sidebar top-right area
     var sidebar = document.querySelector('.course-sidebar');
     if (sidebar) {
-      btn.style.position = 'relative';
-      btn.style.top = 'auto';
-      btn.style.left = 'auto';
-      btn.style.marginBottom = '16px';
+      btn.className = 'back-button-sidebar';
       sidebar.insertBefore(btn, sidebar.firstChild);
     } else {
       document.body.appendChild(btn);
