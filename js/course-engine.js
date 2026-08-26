@@ -379,10 +379,10 @@
     // TRUE / FALSE
     renderTrueFalse(assessment, segIdx) {
       const statements = assessment.statements || [];
-      let html = `<div class="tf-section" id="tf-${segIdx}"><h4>⚖️ True or False</h4><p>Click True or False for each statement.</p>`;
+      let html = `<div class="tf-section" id="tf-${segIdx}"><h4>⚖️ True or False</h4><p>Click True or False for each statement, then submit.</p>`;
       statements.forEach((s, i) => {
-        html += `<div class="tf-item" id="tf-item-${segIdx}-${i}"><p>${i+1}. ${s.text}</p>`;
-        html += `<div class="tf-buttons"><button class="tf-btn" onclick="CourseEngine.tfAnswer(${segIdx}, ${i}, true, ${s.correct})">True</button><button class="tf-btn" onclick="CourseEngine.tfAnswer(${segIdx}, ${i}, false, ${s.correct})">False</button></div></div>`;
+        html += `<div class="tf-item" id="tf-item-${segIdx}-${i}" data-correct="${s.correct}"><p>${i+1}. ${s.text}</p>`;
+        html += `<div class="tf-buttons"><button class="tf-btn" onclick="CourseEngine.tfSelect(${segIdx}, ${i}, true)">True</button><button class="tf-btn" onclick="CourseEngine.tfSelect(${segIdx}, ${i}, false)">False</button></div></div>`;
       });
       html += `<div id="tf-result-${segIdx}" class="matching-result"></div>`;
       html += `<button class="btn btn-primary" style="margin-top:12px;" onclick="CourseEngine.submitTrueFalse(${segIdx})">Submit</button>`;
@@ -390,20 +390,13 @@
       return html;
     },
 
-    tfAnswer(segIdx, itemIdx, answer, correct) {
+    tfSelect(segIdx, itemIdx, answer) {
       const item = document.getElementById(`tf-item-${segIdx}-${itemIdx}`);
-      item.querySelectorAll('.tf-btn').forEach(btn => {
-        btn.classList.remove('correct', 'wrong');
-        btn.disabled = true;
-      });
       const buttons = item.querySelectorAll('.tf-btn');
-      const selectedBtn = buttons[answer ? 0 : 1];
-      if (answer === correct) {
-        selectedBtn.classList.add('correct');
-      } else {
-        selectedBtn.classList.add('wrong');
-        buttons[correct ? 0 : 1].classList.add('correct');
-      }
+      if (buttons[0].disabled) return; // locked after pass
+      buttons.forEach(btn => btn.classList.remove('selected', 'correct', 'wrong'));
+      buttons[answer ? 0 : 1].classList.add('selected');
+      item.dataset.answer = answer;
     },
 
     submitTrueFalse(segIdx) {
@@ -411,14 +404,39 @@
       const statements = assessment.statements || [];
       const items = document.getElementById(`tf-${segIdx}`).querySelectorAll('.tf-item');
       let correct = 0;
-      items.forEach((item, i) => {
-        const hasCorrect = item.querySelector('.tf-btn.correct');
-        if (hasCorrect && !item.querySelector('.tf-btn.wrong')) correct++;
+      let allAnswered = true;
+
+      items.forEach((item) => {
+        const answer = item.dataset.answer;
+        const correctVal = item.dataset.correct === 'true';
+        const buttons = item.querySelectorAll('.tf-btn');
+
+        if (answer === undefined) { allAnswered = false; return; }
+
+        const answerBool = answer === 'true';
+        buttons.forEach(btn => btn.classList.remove('selected'));
+
+        if (answerBool === correctVal) {
+          correct++;
+          buttons[answerBool ? 0 : 1].classList.add('correct');
+          buttons[answerBool ? 1 : 0].classList.remove('correct', 'wrong');
+        } else {
+          buttons[answerBool ? 0 : 1].classList.add('wrong');
+          buttons[correctVal ? 0 : 1].classList.add('correct');
+          buttons[answerBool ? 1 : 0].classList.remove('correct', 'wrong');
+        }
       });
+
+      if (!allAnswered) {
+        document.getElementById(`tf-result-${segIdx}`).innerHTML = '<span style="color:#92400e">Please answer all statements before submitting.</span>';
+        return;
+      }
+
       const pct = (correct / statements.length) * 100;
       const passThreshold = assessment.passThreshold || 80;
       if (pct >= passThreshold) {
         document.getElementById(`tf-result-${segIdx}`).innerHTML = `<span style="color:#065f46">✅ Passed! ${correct}/${statements.length} correct.</span>`;
+        items.forEach(item => item.querySelectorAll('.tf-btn').forEach(btn => btn.disabled = true));
         this.segmentStates[segIdx].completed = true;
         if (segIdx < this.totalSegments - 1) this.segmentStates[segIdx + 1].unlocked = true;
         this.saveProgress();

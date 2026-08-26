@@ -262,6 +262,7 @@
   color: #334155;
 }
 .tf-btn:hover { border-color: #6366f1; }
+.tf-btn.selected { border-color: #6366f1; background: #e0e7ff; color: #4338ca; }
 .tf-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; }
 .tf-btn.wrong { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
 
