@@ -8,6 +8,7 @@ const STATIC_ASSETS = [
   '/support.html',
   '/signin.html',
   '/signup.html',
+  '/offline.html',
   '/css/styles.css',
   '/css/znotes-style.css',
   '/js/nav.js',
