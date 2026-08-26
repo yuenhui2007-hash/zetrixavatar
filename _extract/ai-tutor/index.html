@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <rect width="28" height="28" rx="8" fill="#4F46E5"/>
+                        <path d="M8 14C8 10.686 10.686 8 14 8C17.314 8 20 10.686 20 14C20 17.314 17.314 20 14 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="14" cy="14" r="2.5" fill="white"/>
+                    </svg>
+                    <span>AI Tutor</span>
+                </div>
+                <button class="new-chat-btn" onclick="startNewChat()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    New Chat
+                </button>
+            </div>
+            
+            <div class="chat-history" id="chatHistory">
+                <div class="history-section">
+                    <span class="history-label">Today</span>
+                    <div class="history-item active" data-chat="1">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 2C4.686 2 2 4.686 2 8C2 9.092 2.296 10.12 2.816 11L2.5 13.5L5 13.184C5.88 13.704 6.908 14 8 14C11.314 14 14 11.314 14 8C14 4.686 11.314 2 8 2Z" stroke="currentColor" stroke-width="1.2"/>
+                        </svg>
+                        <span>Introduction to Calculus</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">Y</div>
+                    <span>Yuen Hui</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="chat-title">
+                    <h1>Introduction to Calculus</h1>
+                    <span class="chat-subtitle">AI Tutor Session</span>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="toggleExpand()" title="Expand Chat">
+                        <svg id="expandIcon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M4 14V10M4 14H8M14 4V8M14 4H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" title="Settings">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14.657 6.343L13.243 4.929M3.757 13.071L2.343 11.657M9 1V3M9 15V17M1 9H3M15 9H17M4.929 4.929L6.343 6.343M11.657 11.657L13.071 13.071" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Messages Area -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <div class="welcome-icon">
+                        <svg width="48" height="48" viewBox="0 0 28 28" fill="none">
+                            <rect width="28" height="28" rx="8" fill="#4F46E5"/>
+                            <path d="M8 14C8 10.686 10.686 8 14 8C17.314 8 20 10.686 20 14C20 17.314 17.314 20 14 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="14" cy="14" r="2.5" fill="white"/>
+                        </svg>
+                    </div>
+                    <h2>Welcome to AI Tutor</h2>
+                    <p>I'm your personal learning assistant. Ask me anything about math, science, programming, languages, or any topic you'd like to learn!</p>
+                    <div class="suggestion-chips">
+                        <button class="chip" onclick="sendQuickMessage('Explain derivatives in simple terms')">📐 Explain derivatives</button>
+                        <button class="chip" onclick="sendQuickMessage('Help me solve x² + 5x + 6 = 0')">🧮 Solve an equation</button>
+                        <button class="chip" onclick="sendQuickMessage('What are the key concepts in machine learning?')">🤖 Machine learning basics</button>
+                        <button class="chip" onclick="sendQuickMessage('Quiz me on world history')">📚 History quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask your tutor anything..."
+                        rows="1"
+                        oninput="autoResize(this)"
+                        onkeydown="handleKeyDown(event)"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button class="attach-btn" title="Attach file">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M9 1V17M1 9H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M2 9L16 2L9 16L7.5 10.5L2 9Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="input-hint">Press Enter to send, Shift+Enter for new line</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Expanded Overlay (for expanded mode) -->
+    <div class="expand-overlay" id="expandOverlay" onclick="toggleExpand()"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
