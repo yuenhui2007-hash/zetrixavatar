@@ -22,7 +22,15 @@
         window.location.href = 'index.html';
       }
     };
-    document.body.appendChild(btn);
+
+    // On course pages, insert into sidebar top-right area
+    var sidebar = document.querySelector('.course-sidebar');
+    if (sidebar) {
+      btn.className = 'back-button-sidebar';
+      sidebar.insertBefore(btn, sidebar.firstChild);
+    } else {
+      document.body.appendChild(btn);
+    }
   }
 
   if (document.readyState === 'loading') {

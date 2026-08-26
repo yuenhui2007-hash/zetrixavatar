@@ -56,29 +56,6 @@
       window.Auth.updateNav();
     }
 
-    // Inject back button on all pages except index/home
-    injectBackButton();
-  }
-
-  function injectBackButton() {
-    var currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    if (currentPath === 'index.html' || currentPath === '' || currentPath === '/') return;
-
-    // Don't show on course pages (they have their own nav)
-    if (document.querySelector('.course-layout')) return;
-
-    var backBtn = document.createElement('button');
-    backBtn.className = 'back-button';
-    backBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg> Back';
-    backBtn.setAttribute('aria-label', 'Go back one page');
-    backBtn.onclick = function() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        window.location.href = './index.html';
-      }
-    };
-    document.body.appendChild(backBtn);
   }
 
   if (document.readyState === 'loading') {

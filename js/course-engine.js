@@ -29,23 +29,6 @@
       this.renderSegment(this.currentSegment);
       this.updateOverallProgress();
       this.initKeyboard();
-      this.injectBackButton();
-    },
-
-    injectBackButton() {
-      if (document.querySelector('.course-back-button')) return;
-      var backBtn = document.createElement('button');
-      backBtn.className = 'course-back-button';
-      backBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg> Back';
-      backBtn.setAttribute('aria-label', 'Go back one page');
-      backBtn.style.cssText = 'position:fixed;top:84px;left:16px;z-index:50;background:#fff;border:1.5px solid #e2e8f0;border-radius:50px;padding:8px 16px;font-size:0.85rem;font-weight:600;color:#334155;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:all 0.25s ease;text-decoration:none;';
-      backBtn.onmouseenter = function() { this.style.background = '#E60012'; this.style.color = '#fff'; this.style.borderColor = '#E60012'; this.style.transform = 'translateX(-3px)'; };
-      backBtn.onmouseleave = function() { this.style.background = '#fff'; this.style.color = '#334155'; this.style.borderColor = '#e2e8f0'; this.style.transform = 'translateX(0)'; };
-      backBtn.onclick = function() {
-        if (window.history.length > 1) { window.history.back(); }
-        else { window.location.href = './courses.html'; }
-      };
-      document.body.appendChild(backBtn);
     },
 
     // ========== PROGRESS (local + cloud) ==========
