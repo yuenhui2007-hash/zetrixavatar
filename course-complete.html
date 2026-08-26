@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.allorigins.win https://api.allorigins.hexabin.com https://www.reddit.com https://hn.algolia.com https://dev.to; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
@@ -384,42 +384,6 @@
       sel.addRange(range);
     });
   </script>
-<script>
-(function(){
-  // Force light mode on course pages — overrides theme.js
-  var html = document.documentElement;
-  html.setAttribute('data-theme', 'light');
-  html.classList.remove('dark');
-  // Inject highest-specificity style to ensure readable text
-  var style = document.createElement('style');
-  style.textContent = 'html[data-theme="light"] .segment-body,html[data-theme="light"] .segment-body p,html[data-theme="light"] .segment-body li,html[data-theme="light"] .segment-body h2,html[data-theme="light"] .segment-body h3,html[data-theme="light"] .segment-body h4,html[data-theme="light"] .segment-body strong,html[data-theme="light"] .segment-body em,html[data-theme="light"] .segment-header h2,html[data-theme="light"] .seg-num{color:#000!important;-webkit-text-fill-color:#000!important}html[data-theme="light"] .course-main{background:#fff!important}';
-  document.head.appendChild(style);
-  // Also watch for dynamically injected content
-  var observer = new MutationObserver(function(){
-    var els = document.querySelectorAll('.segment-body, .segment-body *, .segment-header h2');
-    els.forEach(function(el){ el.style.color = ''; el.style.webkitTextFillColor = ''; });
-  });
-  var sc = document.getElementById('segment-content');
-  if(sc) observer.observe(sc, {childList:true, subtree:true});
-})();
-</script>
-<script>
-(function(){
-  var html = document.documentElement;
-  html.setAttribute('data-theme', 'light');
-  html.classList.remove('dark');
-  // Definitive: override any dark mode text colors with !important inline styles
-  var css = document.createElement('style');
-  css.textContent = '.segment-body,.segment-body p,.segment-body li,.segment-body h2,.segment-body h3,.segment-body h4,.segment-body strong,.segment-body em,.segment-header h2,.seg-num{color:#0f172a!important;-webkit-text-fill-color:#0f172a!important}.course-main{background:#ffffff!important}';
-  document.head.appendChild(css);
-  // Also force all text elements immediately
-  document.querySelectorAll('.segment-body, .segment-body *, .segment-header h2').forEach(function(el){el.style.color='#0f172a';el.style.webkitTextFillColor='#0f172a';});
-  // Watch for dynamically added content
-  var sc = document.getElementById('segment-content');
-  if(sc) new MutationObserver(function(){document.querySelectorAll('.segment-body, .segment-body *').forEach(function(el){el.style.color='#0f172a';el.style.webkitTextFillColor='#0f172a';});}).observe(sc,{childList:true,subtree:true});
-})();
-</script>
-
 <footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Zetrix AI Academy. <a href="copyright.html" style="color:var(--gray);">Copyright</a> &middot; <a href="privacy-policy.html" style="color:var(--gray);">Privacy Policy</a> &middot; <a href="terms-of-service.html" style="color:var(--gray);">Terms</a></p></div></div></footer>
 </body>
 </html>
