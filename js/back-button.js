@@ -22,7 +22,18 @@
         window.location.href = 'index.html';
       }
     };
-    document.body.appendChild(btn);
+
+    // On course pages, insert into sidebar so it doesn't overlap content
+    var sidebar = document.querySelector('.course-sidebar');
+    if (sidebar) {
+      btn.style.position = 'relative';
+      btn.style.top = 'auto';
+      btn.style.left = 'auto';
+      btn.style.marginBottom = '16px';
+      sidebar.insertBefore(btn, sidebar.firstChild);
+    } else {
+      document.body.appendChild(btn);
+    }
   }
 
   if (document.readyState === 'loading') {
