@@ -737,3 +737,87 @@ body.has-mobile-nav { padding-bottom: 64px; }
   transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
+
+/* Back button - floating */
+.back-button {
+  position: fixed;
+  top: 88px;
+  left: 20px;
+  z-index: 100;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, rgba(0,0,0,0.08));
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--body-text, #000000);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.08));
+  transition: var(--transition, all 0.3s ease);
+  text-decoration: none;
+}
+.back-button:hover {
+  transform: translateX(-4px);
+  box-shadow: var(--shadow-lg, 0 8px 16px rgba(0,0,0,0.12));
+  background: var(--primary, #E60012);
+  color: white;
+  border-color: var(--primary, #E60012);
+}
+.back-button svg {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 768px) {
+  .back-button {
+    top: 76px;
+    left: 12px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Back button - universal fixed */
+.back-button-fixed {
+  position: fixed;
+  top: 84px;
+  left: 16px;
+  z-index: 9999;
+  background: var(--card-bg, #ffffff);
+  border: 1.5px solid var(--border-color, rgba(0,0,0,0.08));
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--body-text, #000000);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  font-family: inherit;
+}
+.back-button-fixed:hover {
+  transform: translateX(-3px);
+  box-shadow: 0 6px 20px rgba(230, 0, 18, 0.2);
+  background: var(--primary, #E60012);
+  color: white;
+  border-color: var(--primary, #E60012);
+}
+.back-button-fixed svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5;
+}
+@media (max-width: 768px) {
+  .back-button-fixed {
+    top: 72px;
+    left: 10px;
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+}
