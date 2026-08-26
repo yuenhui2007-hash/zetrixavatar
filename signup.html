@@ -387,7 +387,12 @@
 </main>
 
 <script src="js/theme.js?v=15"></script>
-<script src="js/auth.js?v=15"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="js/firebase-config.js?v=15"></script>
+  <script src="js/auth.js?v=15"></script>
+  <script src="js/progress-sync.js?v=15"></script>
 <script>
 // If already authenticated, redirect to dashboard
 (function() {
@@ -540,12 +545,18 @@ form.addEventListener('submit', (e) => {
   });
 });
 
-// Social sign-up placeholders
+// Social sign-up
 document.getElementById('google-signup').addEventListener('click', function() {
-  showError('Google sign-up requires backend OAuth setup. Use email/password for demo.');
+  Auth.loginWithGoogle().then(function(result) {
+    if (result.success) {
+      window.location.href = 'dashboard.html';
+    } else {
+      showError(result.error || 'Google sign-up failed. Please try again.');
+    }
+  });
 });
 document.getElementById('github-signup').addEventListener('click', function() {
-  showError('GitHub sign-up requires backend OAuth setup. Use email/password for demo.');
+  showError('GitHub sign-up is not configured. Use Google or email/password.');
 });
 </script>
 </body>

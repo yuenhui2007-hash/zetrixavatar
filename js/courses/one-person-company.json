@@ -1,0 +1,450 @@
+{
+  "courseId": "one-person-company",
+  "title": "One-Person Company — Zetrix AI Academy",
+  "segments": [
+    {
+      "title": "The One-Person Company Model",
+      "content": "<h3>Welcome to the One-Person Company Course</h3>\n          <p>This course teaches you how to build, launch, and scale a profitable company run entirely by you and your Zetrix Avatar. No employees. No office. Just leverage.</p>\n          <h3>What Is a One-Person Company?</h3>\n          <p>A one-person company (OPC) is a lean business entity where a single founder uses technology, automation, and outsourcing to handle every function that traditionally requires a team. Your Zetrix Avatar becomes your co-founder, handling operations, marketing, sales, and customer support while you focus on strategy and product.</p>\n          <h3>Why Now?</h3>\n          <ul>\n            <li><strong>AI Tools:</strong> GPT-4, Claude, and Zetrix Avatar can write code, create content, and manage customers.</li>\n            <li><strong>No-Code Platforms:</strong> Webflow, Zapier, and Airtable let you build products without engineers.</li>\n            <li><strong>Global Talent:</strong> Fiverr and Upwork provide on-demand specialists for tasks AI cannot handle.</li>\n            <li><strong>Low Overhead:</strong> No payroll, no rent, no benefits. Profit margins exceed 80%.</li>\n          </ul>\n          <h3>Real-World Case Study: Maya's $40K/Month Design Studio</h3>\n          <p>Maya is a solo brand designer. Before Zetrix, she managed client communication, invoicing, and social media herself—working 60-hour weeks and earning $8K/month. After building her One-Person Company:</p>\n          <ul>\n            <li><strong>Avatar handles:</strong> Client onboarding, proposal drafting, invoice chasing, and project updates.</li>\n            <li><strong>Automation handles:</strong> Social posting, email sequences, and calendar booking.</li>\n            <li><strong>Maya focuses on:</strong> Creative direction and high-value client calls only.</li>\n          </ul>\n          <p>Result: Revenue grew to $40K/month. Workweek dropped to 25 hours. Zero employees.</p>\n          <h3>Actionable Framework: The OPC Stack</h3>\n          <p>Every one-person company needs four layers:</p>\n          <ol>\n            <li><strong>Product Layer:</strong> What you sell (digital product, service, or subscription).</li>\n            <li><strong>Marketing Layer:</strong> How strangers discover you (content, ads, partnerships).</li>\n            <li><strong>Sales Layer:</strong> How prospects become customers (funnels, calls, checkout).</li>\n            <li><strong>Operations Layer:</strong> How you deliver and retain (automation, support, fulfilment).</li>\n          </ol>\n          <p><strong>Practical Tip:</strong> Start with a service (consulting, design, writing). Services generate cash flow immediately. Transition to products (templates, courses, SaaS) for scalability.</p>",
+      "quiz": [
+        {
+          "q": "What is the primary advantage of a one-person company?",
+          "options": [
+            "Unlimited funding",
+            "Low overhead and high margins",
+            "Automatic market dominance",
+            "No need for a product"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Which layer of the OPC Stack handles client onboarding and invoicing?",
+          "options": [
+            "Product Layer",
+            "Marketing Layer",
+            "Sales Layer",
+            "Operations Layer"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "What should you start with for immediate cash flow?",
+          "options": [
+            "SaaS product",
+            "Physical product",
+            "Service",
+            "Franchise"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "How much did Maya's monthly revenue grow after building her OPC?",
+          "options": [
+            "$8K to $15K",
+            "$8K to $25K",
+            "$8K to $40K",
+            "$8K to $60K"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Which tool category lets you build products without coding?",
+          "options": [
+            "AI Tools",
+            "No-Code Platforms",
+            "Global Talent",
+            "Cloud Storage"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Avatar as Your Co-Founder",
+      "content": "<h3>Your Avatar Is Your Business Partner</h3>\n          <p>In a traditional company, co-founders split responsibilities: one builds, one sells. In your OPC, the Avatar is both.</p>\n          <h3>Roles Your Avatar Can Fill</h3>\n          <ol>\n            <li><strong>Chief Operating Officer:</strong> Manages schedules, deadlines, and project workflows.</li>\n            <li><strong>Chief Marketing Officer:</strong> Drafts blog posts, social captions, email newsletters, and ad copy.</li>\n            <li><strong>Sales Development Rep:</strong> Researches leads, personalises outreach, and follows up.</li>\n            <li><strong>Customer Support Agent:</strong> Answers FAQs, troubleshoots issues, and escalates when needed.</li>\n            <li><strong>Financial Analyst:</strong> Tracks revenue, expenses, and generates monthly reports.</li>\n          </ol>\n          <h3>Case Study: The Developer Who Stopped Coding</h3>\n          <p>Leo is a software developer who wanted to launch a SaaS product. He spent 6 months building features no one asked for. After reconfiguring his Avatar as a \"co-founder\":</p>\n          <ul>\n            <li>The Avatar interviewed 50 potential customers and compiled a feature priority list.</li>\n            <li>It drafted landing page copy, email sequences, and onboarding flows.</li>\n            <li>It managed the beta tester community, collecting feedback and bug reports.</li>\n          </ul>\n          <p>Leo focused only on coding the top 3 features. Launch revenue: $12K in the first month.</p>\n          <h3>Actionable Framework: The Co-Founder Setup</h3>\n          <ol>\n            <li><strong>Step 1:</strong> Create a dedicated \"Business\" Avatar with a mission statement: \"Help me build and operate a profitable one-person company.\"</li>\n            <li><strong>Step 2:</strong> Upload your business documents: business plan, pricing sheet, brand guidelines, and competitor analysis.</li>\n            <li><strong>Step 3:</strong> Define communication channels. Example: \"Send me a morning briefing at 08:00 with today's priorities.\"</li>\n            <li><strong>Step 4:</strong> Grant tool access. Connect Gmail, Stripe, Notion, and any other platforms the Avatar needs.</li>\n            <li><strong>Step 5:</strong> Set escalation rules. Example: \"If a customer complains twice, notify me immediately.\"</li>\n          </ol>\n          <h3>Deep Dive: The Morning Briefing</h3>\n          <p>The most powerful habit in an OPC is the daily morning briefing. Configure your Avatar to deliver:</p>\n          <ul>\n            <li>Revenue yesterday vs. target</li>\n            <li>New leads and their source</li>\n            <li>Pending tasks requiring your input</li>\n            <li>Customer feedback summary</li>\n            <li>Content performance (views, clicks, conversions)</li>\n          </ul>\n          <p>Format: 5-bullet voice message. Time: 2 minutes. Impact: complete situational awareness before you start work.</p>",
+      "assessment": {
+        "type": "matching",
+        "pairs": [
+          {
+            "left": "Sole Proprietorship",
+            "right": "Simplest, unlimited liability"
+          },
+          {
+            "left": "LLC",
+            "right": "Limited liability, flexible taxation"
+          },
+          {
+            "left": "S-Corp",
+            "right": "Pass-through taxation, salary requirements"
+          },
+          {
+            "left": "C-Corp",
+            "right": "Double taxation, easiest to raise capital"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Automating Customer Acquisition",
+      "content": "<h3>Customers on Autopilot</h3>\n          <p>The hardest part of any business is finding customers. In an OPC, your Avatar and automation handle the entire acquisition pipeline.</p>\n          <h3>The Acquisition Funnel</h3>\n          <ol>\n            <li><strong>Attention:</strong> Strangers see your content (blog, video, social post).</li>\n            <li><strong>Interest:</strong> They visit your landing page and opt into your email list.</li>\n            <li><strong>Trust:</strong> Your email sequence educates and builds credibility.</li>\n            <li><strong>Action:</strong> They book a call or purchase directly.</li>\n          </ol>\n          <h3>What the Avatar Does at Each Stage</h3>\n          <ul>\n            <li><strong>Attention:</strong> Drafts 3 social posts per day based on your PKM knowledge base.</li>\n            <li><strong>Interest:</strong> Writes landing page copy, creates lead magnets (checklists, templates), and A/B tests headlines.</li>\n            <li><strong>Trust:</strong> Composes a 7-email welcome sequence with case studies and testimonials.</li>\n            <li><strong>Action:</strong> Personalises outreach to high-value leads and schedules discovery calls.</li>\n          </ul>\n          <h3>Case Study: The Consultant's Pipeline</h3>\n          <p>Rachel offers leadership coaching. Her Avatar-built funnel:</p>\n          <ul>\n            <li><strong>LinkedIn:</strong> 2 posts/day drafted by Avatar, scheduled via Buffer.</li>\n            <li><strong>Lead Magnet:</strong> \"5 CEO Mistakes\" PDF. Landing page built in Carrd.</li>\n            <li><strong>Email Sequence:</strong> 7 emails over 14 days, each with a client story and a tip.</li>\n            <li><strong>Sales Call:</strong> Avatar pre-qualifies leads with 3 questions before Rachel accepts the booking.</li>\n          </ul>\n          <p>Result: 15 qualified leads per week. 30% close rate. $8K average project.</p>\n          <h3>Actionable Framework: The 7-Day Funnel Build</h3>\n          <p>Build your entire acquisition funnel in one week:</p>\n          <ul>\n            <li><strong>Day 1:</strong> Define your ideal customer (industry, role, pain point, budget).</li>\n            <li><strong>Day 2:</strong> Create one lead magnet. Use the Avatar to draft it. Format: PDF checklist or template.</li>\n            <li><strong>Day 3:</strong> Build a landing page. Tools: Carrd, Webflow, or Leadpages.</li>\n            <li><strong>Day 4:</strong> Write the email sequence. 5–7 emails. Hook → Story → Tip → Offer.</li>\n            <li><strong>Day 5:</strong> Set up automation. Tools: ConvertKit, Mailchimp, or ActiveCampaign.</li>\n            <li><strong>Day 6:</strong> Connect traffic. Share the landing page on LinkedIn, Twitter, or relevant communities.</li>\n            <li><strong>Day 7:</strong> Test and optimise. Submit a test email. Check mobile layout. Fix broken links.</li>\n          </ul>\n          <p><strong>Pro Tip:</strong> Start with ONE channel. LinkedIn for B2B. Instagram for visual products. Twitter for tech audiences. Master one before adding others.</p>",
+      "quiz": [
+        {
+          "q": "What are the four stages of the acquisition funnel?",
+          "options": [
+            "Awareness, Interest, Desire, Action",
+            "Attention, Interest, Trust, Action",
+            "Prospect, Lead, Customer, Advocate",
+            "Search, Click, Buy, Repeat"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How many social posts should the Avatar draft per day?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "5"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What is a lead magnet?",
+          "options": [
+            "A paid product",
+            "A free resource for an email address",
+            "A social media ad",
+            "A sales call"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How many emails should a welcome sequence have?",
+          "options": [
+            "1–2",
+            "3–4",
+            "5–7",
+            "10–15"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What is the recommended approach to traffic channels?",
+          "options": [
+            "Post on every platform",
+            "Master one before adding others",
+            "Only use paid ads",
+            "Ignore social media"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Product Development with AI",
+      "content": "<h3>Build Products Without a Team</h3>\n          <p>Whether you are creating a digital product, a service package, or a SaaS tool, your Avatar accelerates every stage of development.</p>\n          <h3>The Product Development Cycle</h3>\n          <ol>\n            <li><strong>Ideation:</strong> The Avatar researches market gaps, analyses competitors, and surveys potential customers.</li>\n            <li><strong>Validation:</strong> It drafts landing pages, creates waitlists, and interviews beta testers.</li>\n            <li><strong>Creation:</strong> For digital products, it writes content, designs layouts, and structures modules.</li>\n            <li><strong>Launch:</strong> It composes launch emails, social campaigns, and PR outreach.</li>\n            <li><strong>Iteration:</strong> It collects feedback, prioritises feature requests, and plans updates.</li>\n          </ol>\n          <h3>Case Study: The Course Creator</h3>\n          <p>Tom wanted to launch an online course about financial modelling. His Avatar:</p>\n          <ul>\n            <li>Researched 10 competitor courses and identified gaps (no real-world case studies).</li>\n            <li>Drafted a 12-module curriculum with learning objectives for each lesson.</li>\n            <li>Wrote scripts for 30 video lessons, including slide notes and quiz questions.</li>\n            <li>Created the sales page, email sequence, and affiliate pitch deck.</li>\n          </ul>\n          <p>Tom recorded the videos in 2 weeks. The Avatar handled everything else. First launch: $45K in 5 days.</p>\n          <h3>Actionable Framework: The MVP Sprint</h3>\n          <p>Launch a minimum viable product in 14 days:</p>\n          <ul>\n            <li><strong>Day 1–2:</strong> Validate demand. Create a landing page with a \"Buy Now\" button. Run $50 in ads. If 3+ people click, proceed.</li>\n            <li><strong>Day 3–5:</strong> Outline the product. For courses: module titles and key takeaways. For templates: sections and use cases.</li>\n            <li><strong>Day 6–10:</strong> Build the product. Use the Avatar to draft content. Use Canva for design. Use Gumroad or Podia for hosting.</li>\n            <li><strong>Day 11–12:</strong> Create sales assets. Landing page, checkout flow, and 3-email launch sequence.</li>\n            <li><strong>Day 13–14:</strong> Soft launch to your email list. Collect feedback. Fix issues.</li>\n          </ul>\n          <h3>Deep Dive: Using the Avatar for Research</h3>\n          <p>Before building anything, your Avatar can conduct market research:</p>\n          <ul>\n            <li><strong>Competitor Analysis:</strong> \"Analyse the top 5 courses on [topic]. What do they cover? What do they miss? What do reviews complain about?\"</li>\n            <li><strong>Customer Surveys:</strong> \"Draft a 5-question survey to understand what [target audience] struggles with most.\"</li>\n            <li><strong>Keyword Research:</strong> \"What are the top 20 search terms people use when looking for [solution]?\"</li>\n            <li><strong>Pricing Research:</strong> \"What do competitors charge? What pricing model maximises revenue per customer?\"</li>\n          </ul>\n          <p><strong>Remember:</strong> The Avatar accelerates execution. But YOU must decide the vision. Never outsource strategy to AI.</p>",
+      "assessment": {
+        "type": "fillblank",
+        "instruction": "Complete the financial terms.",
+        "text": "Revenue minus expenses equals {blank}. Fixed costs remain {blank} regardless of sales volume. {blank} margin shows profitability per unit sold.",
+        "answers": [
+          [
+            "profit",
+            "net income"
+          ],
+          [
+            "constant",
+            "the same",
+            "unchanged"
+          ],
+          [
+            "Gross",
+            "gross profit"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Content Marketing Engine",
+      "content": "<h3>Become a Thought Leader on Autopilot</h3>\n          <p>Content marketing is the engine of customer acquisition for OPCs. Your Avatar becomes your content department—researching, drafting, and distributing.</p>\n          <h3>The Content Flywheel</h3>\n          <ol>\n            <li><strong>Research:</strong> The Avatar identifies trending topics, competitor content gaps, and audience questions.</li>\n            <li><strong>Create:</strong> It drafts blog posts, LinkedIn articles, Twitter threads, and video scripts.</li>\n            <li><strong>Repurpose:</strong> One long-form piece becomes 5–10 smaller assets.</li>\n            <li><strong>Distribute:</strong> It schedules posts, writes captions, and engages with comments.</li>\n            <li><strong>Analyse:</strong> It reviews analytics and suggests content adjustments.</li>\n          </ol>\n          <h3>Case Study: The Writer Who Never Writes</h3>\n          <p>Aisha is a B2B copywriter. Her content engine:</p>\n          <ul>\n            <li><strong>Monday:</strong> Avatar researches 5 topics her audience cares about.</li>\n            <li><strong>Tuesday:</strong> Avatar drafts a 1,500-word LinkedIn article.</li>\n            <li><strong>Wednesday:</strong> Article is repurposed into 3 Twitter threads and 2 Instagram carousels.</li>\n            <li><strong>Thursday:</strong> All content is scheduled for the week ahead.</li>\n            <li><strong>Friday:</strong> Avatar reviews engagement data and suggests next week's topics.</li>\n          </ul>\n          <p>Result: 50K LinkedIn followers. 3–5 inbound leads per week. Aisha spends 2 hours per week on content.</p>\n          <h3>Actionable Framework: The Content System</h3>\n          <p>Set up a content engine in one afternoon:</p>\n          <ol>\n            <li><strong>Step 1:</strong> Choose your primary platform. LinkedIn for B2B. YouTube for education. Twitter for tech.</li>\n            <li><strong>Step 2:</strong> Create a \"Content Ideas\" PKM folder. The Avatar stores research here.</li>\n            <li><strong>Step 3:</strong> Set a weekly prompt: \"Generate 5 content ideas based on trending topics in [industry].\"</li>\n            <li><strong>Step 4:</strong> Batch creation. Every Monday, the Avatar drafts one long-form piece.</li>\n            <li><strong>Step 5:</strong> Auto-repurpose. Prompt: \"Turn this article into 3 Twitter threads and 2 carousel outlines.\"</li>\n            <li><strong>Step 6:</strong> Schedule. Use Buffer, Hootsuite, or native scheduling.</li>\n            <li><strong>Step 7:</strong> Review. Every Friday, spend 15 minutes reviewing analytics and adjusting.</li>\n          </ol>\n          <h3>Deep Dive: The Avatar Content Prompt Library</h3>\n          <p>Save these prompts in your PKM for instant content creation:</p>\n          <ul>\n            <li><strong>Blog Post:</strong> \"Write a 1,500-word blog post on [topic]. Include 3 case studies, 5 actionable tips, and a conclusion with a CTA.\"</li>\n            <li><strong>Twitter Thread:</strong> \"Turn this article into a 10-tweet thread. Each tweet must stand alone. Use hooks and data points.\"</li>\n            <li><strong>LinkedIn Article:</strong> \"Write a professional LinkedIn article on [topic]. Start with a personal story. End with a question to drive comments.\"</li>\n            <li><strong>Email Newsletter:</strong> \"Draft a weekly newsletter with: 1 insight, 1 tool recommendation, 1 personal update. Keep it under 300 words.\"</li>\n          </ul>\n          <p><strong>Pro Tip:</strong> Consistency beats virality. One post per day for 90 days beats one viral post and 89 days of silence.</p>",
+      "quiz": [
+        {
+          "q": "What is the first step in setting up a content engine?",
+          "options": [
+            "Schedule posts",
+            "Choose your primary platform",
+            "Hire a writer",
+            "Buy ads"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How many content ideas should the Avatar generate weekly?",
+          "options": [
+            "2",
+            "3",
+            "5",
+            "10"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What day is recommended for batch content creation?",
+          "options": [
+            "Monday",
+            "Wednesday",
+            "Friday",
+            "Sunday"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "How much time should Aisha spend on content per week?",
+          "options": [
+            "1 hour",
+            "2 hours",
+            "5 hours",
+            "10 hours"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What matters more than virality?",
+          "options": [
+            "Post quality",
+            "Consistency",
+            "Hashtags",
+            "Follower count"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Sales & Outreach Automation",
+      "content": "<h3>Close Deals While You Sleep</h3>\n          <p>Sales is the lifeblood of your OPC. Your Avatar handles prospecting, qualification, follow-up, and proposal drafting—freeing you to only join calls with pre-qualified buyers.</p>\n          <h3>The Sales Automation Stack</h3>\n          <ol>\n            <li><strong>Prospecting:</strong> The Avatar researches leads on LinkedIn, company websites, and industry databases.</li>\n            <li><strong>Personalisation:</strong> It crafts individualised outreach messages referencing the prospect's recent posts, company news, or pain points.</li>\n            <li><strong>Outreach:</strong> It sends connection requests, emails, or DMs at optimal times.</li>\n            <li><strong>Follow-Up:</strong> It sends 3–5 touchpoints over 2 weeks, each adding value (case study, tip, insight).</li>\n            <li><strong>Qualification:</strong> It asks BANT questions (Budget, Authority, Need, Timeline) before booking your calendar.</li>\n            <li><strong>Proposal:</strong> It drafts customised proposals based on the prospect's specific needs.</li>\n          </ol>\n          <h3>Case Study: The Agency Owner's Pipeline</h3>\n          <p>James runs a web design agency. His sales system:</p>\n          <ul>\n            <li><strong>Avatar Prospects:</strong> Every morning, it identifies 20 new e-commerce companies on LinkedIn with outdated websites.</li>\n            <li><strong>Personalised Outreach:</strong> Each message references a specific page on their site and suggests one improvement.</li>\n            <li><strong>Value Sequence:</strong> Day 1: Connection request. Day 3: Case study. Day 7: Free audit offer. Day 14: Final follow-up.</li>\n            <li><strong>Qualification:</strong> The Avatar asks 3 questions before James accepts a call: budget range, timeline, and decision-maker status.</li>\n          </ul>\n          <p>Result: 40% connection rate. 15% reply rate. 5 qualified calls per week. $15K average project.</p>\n          <h3>Actionable Framework: The 5-Message Sequence</h3>\n          <p>Craft a proven outreach sequence:</p>\n          <ul>\n            <li><strong>Message 1 (Day 1):</strong> Connection request with a personalised note. \"Hi [Name], I noticed [specific detail]. Would love to connect.\"</li>\n            <li><strong>Message 2 (Day 3):</strong> Value add. \"I wrote a quick guide on [topic] that might help with [pain point]. Happy to share.\"</li>\n            <li><strong>Message 3 (Day 7):</strong> Soft pitch. \"I help [target audience] achieve [outcome]. Curious if this is a priority for you right now?\"</li>\n            <li><strong>Message 4 (Day 12):</strong> Social proof. \"Just helped a [similar company] achieve [result]. Thought of you. Worth a 10-min chat?\"</li>\n            <li><strong>Message 5 (Day 18):</strong> Final follow-up. \"I know you're busy. If [topic] isn't a priority now, no worries. Happy to reconnect later.\"</li>\n          </ul>\n          <h3>Deep Dive: The Avatar Qualification Bot</h3>\n          <p>Before you join any sales call, your Avatar should pre-qualify the prospect:</p>\n          <ul>\n            <li><strong>Budget:</strong> \"What budget have you allocated for this project?\"</li>\n            <li><strong>Authority:</strong> \"Are you the decision-maker, or will others need to approve?\"</li>\n            <li><strong>Need:</strong> \"What specific outcome are you looking to achieve in the next 90 days?\"</li>\n            <li><strong>Timeline:</strong> \"When do you need this completed?\"</li>\n          </ul>\n          <p>If the prospect answers all four positively, the Avatar books the call. If not, it nurtures them with content until they are ready.</p>",
+      "assessment": {
+        "type": "truefalse",
+        "statements": [
+          {
+            "text": "A handshake agreement is legally binding in most jurisdictions.",
+            "correct": true
+          },
+          {
+            "text": "You do not need contracts for small projects.",
+            "correct": false
+          },
+          {
+            "text": "Intellectual property rights transfer automatically when you hire a contractor.",
+            "correct": false
+          },
+          {
+            "text": "Keeping business and personal finances separate protects your liability shield.",
+            "correct": true
+          }
+        ],
+        "passThreshold": 75
+      }
+    },
+    {
+      "title": "Operations & Finance",
+      "content": "<h3>Run the Business Without the Busywork</h3>\n          <p>Operations and finance are where most founders waste time. In an OPC, these functions are fully automated.</p>\n          <h3>Operations Automation</h3>\n          <ol>\n            <li><strong>Client Onboarding:</strong> The Avatar sends welcome emails, collects intake forms, and schedules kickoff calls.</li>\n            <li><strong>Project Management:</strong> It updates task boards, sends deadline reminders, and generates weekly status reports.</li>\n            <li><strong>Invoicing:</strong> It creates invoices from time logs, sends them on schedule, and chases late payments.</li>\n            <li><strong>Meeting Notes:</strong> It attends calls (via recording), summarises action items, and distributes them.</li>\n            <li><strong>Documentation:</strong> It maintains SOPs, templates, and knowledge bases.</li>\n          </ol>\n          <h3>Finance Automation</h3>\n          <ul>\n            <li><strong>Revenue Tracking:</strong> The Avatar pulls data from Stripe, PayPal, and bank accounts into a weekly report.</li>\n            <li><strong>Expense Logging:</strong> It categorises expenses from receipt photos and credit card statements.</li>\n            <li><strong>Tax Preparation:</strong> It organises quarterly documents and calculates estimated tax payments.</li>\n            <li><strong>Profit & Loss:</strong> It generates monthly P&L statements with variance analysis.</li>\n            <li><strong>Cash Flow Forecasting:</strong> It projects next month's cash position based on pipeline and recurring revenue.</li>\n          </ul>\n          <h3>Case Study: The Consultant's Back Office</h3>\n          <p>Sam is a strategy consultant. Before automation:</p>\n          <ul>\n            <li>Spent 8 hours/week on admin: invoicing, scheduling, follow-ups.</li>\n            <li>Missed two payments because he forgot to send invoices.</li>\n            <li>Had no visibility into profit margins.</li>\n          </ul>\n          <p>After building his OPC operations:</p>\n          <ul>\n            <li>Invoices auto-generate and send on project milestones.</li>\n            <li>Late payments trigger automatic reminder sequences.</li>\n            <li>Weekly finance report delivered every Monday morning.</li>\n            <li>All receipts are photographed, categorised, and stored.</li>\n          </ul>\n          <p>Result: Admin time reduced to 30 minutes/week. Cash flow visibility improved. Zero missed payments.</p>\n          <h3>Actionable Framework: The Operations Setup</h3>\n          <ol>\n            <li><strong>Step 1:</strong> Map your current admin tasks. List everything you do that is not billable or strategic.</li>\n            <li><strong>Step 2:</strong> Categorise: \"Automate,\" \"Delegate,\" or \"Eliminate.\"</li>\n            <li><strong>Step 3:</strong> Build automation flows in Zapier or Make for the top 5 time-wasters.</li>\n            <li><strong>Step 4:</strong> Connect financial accounts to the Avatar for reporting.</li>\n            <li><strong>Step 5:</strong> Create SOPs for any task that cannot be automated. The Avatar maintains them.</li>\n          </ol>\n          <h3>Deep Dive: The Weekly Business Review</h3>\n          <p>Every Sunday, your Avatar should deliver a \"State of the Business\" report:</p>\n          <ul>\n            <li>Revenue this week vs. last week vs. goal</li>\n            <li>Expenses and net profit</li>\n            <li>New leads, proposals sent, deals closed</li>\n            <li>Content performance (views, engagement, conversions)</li>\n            <li>Top 3 priorities for next week</li>\n            <li>Any issues requiring your attention</li>\n          </ul>\n          <p>Format: One-page PDF or 3-minute voice briefing. Time investment: zero. Information gain: complete.</p>",
+      "quiz": [
+        {
+          "q": "What are the 5 operations automation areas?",
+          "options": [
+            "Sales, marketing, HR, IT, legal",
+            "Client onboarding, project management, invoicing, meeting notes, documentation",
+            "Design, coding, testing, deployment, support",
+            "Research, planning, execution, review, reporting"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What should the Avatar do with receipt photos?",
+          "options": [
+            "Delete them",
+            "Categorise expenses and store them",
+            "Post them on social media",
+            "Email them to clients"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How much admin time did Sam save?",
+          "options": [
+            "2 hours to 30 min",
+            "4 hours to 1 hour",
+            "8 hours to 30 minutes",
+            "10 hours to 1 hour"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What day should the weekly business review be delivered?",
+          "options": [
+            "Monday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "What three categories should tasks be sorted into?",
+          "options": [
+            "Plan, Do, Check",
+            "Automate, Delegate, Eliminate",
+            "High, Medium, Low",
+            "Urgent, Important, Later"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Scaling Without Hiring",
+      "content": "<h3>Grow Revenue, Not Headcount</h3>\n          <p>The ultimate goal of an OPC is to scale revenue without adding employees. This is achieved through productisation, automation, and strategic partnerships.</p>\n          <h3>Scaling Strategies</h3>\n          <ol>\n            <li><strong>Productise Services:</strong> Turn custom work into repeatable products. Example: \"Custom website\" becomes \"Website-in-a-Box template.\"</li>\n            <li><strong>Subscription Models:</strong> Shift from one-time projects to recurring revenue. Retainers, memberships, and SaaS.</li>\n            <li><strong>Digital Products:</strong> Create templates, courses, and tools that sell while you sleep.</li>\n            <li><strong>Affiliate & Partnerships:</strong> Earn commission recommending tools you already use.</li>\n            <li><strong>License Your IP:</strong> Sell usage rights to your processes, content, or software.</li>\n          </ol>\n          <h3>Case Study: From Freelancer to Product Empire</h3>\n          <p>Elena was a UX designer charging $5K per project. She hit a ceiling—there were only so many projects she could handle. Her scaling journey:</p>\n          <ul>\n            <li><strong>Month 1–3:</strong> Created a UI kit ($99). Sold 200 units. Revenue: $19,800.</li>\n            <li><strong>Month 4–6:</strong> Launched a design course ($499). Sold 50 seats. Revenue: $24,950.</li>\n            <li><strong>Month 7–9:</strong> Built a Figma plugin ($9/month). 500 subscribers. Revenue: $4,500/month recurring.</li>\n            <li><strong>Month 10–12:</strong> Started a design community ($29/month). 300 members. Revenue: $8,700/month recurring.</li>\n          </ul>\n          <p>Total: $58K one-time + $13K/month recurring. Still one person. Still 30-hour weeks.</p>\n          <h3>Actionable Framework: The Product Ladder</h3>\n          <p>Build a value ladder that serves customers at every price point:</p>\n          <ul>\n            <li><strong>Free:</strong> Lead magnet (checklist, template, mini-course). Builds trust and email list.</li>\n            <li><strong>$10–$50:</strong> Entry product (template, guide, tool). Low friction, high volume.</li>\n            <li><strong>$100–$500:</strong> Core product (course, workshop, comprehensive toolkit).</li>\n            <li><strong>$1,000–$5,000:</strong> Premium service (done-with-you, group program, intensive).</li>\n            <li><strong>$10,000+:</strong> High-ticket offer (done-for-you, consulting, mastermind).</li>\n          </ul>\n          <p>Move customers up the ladder. A free lead becomes a $50 buyer, then a $500 buyer, then a $5K client.</p>\n          <h3>Deep Dive: The Avatar's Role in Scaling</h3>\n          <p>As you scale, the Avatar's responsibilities expand:</p>\n          <ul>\n            <li><strong>Customer Support:</strong> Answers questions about products. Escalates complex issues.</li>\n            <li><strong>Community Management:</strong> Welcomes new members, moderates discussions, schedules events.</li>\n            <li><strong>Product Updates:</strong> Drafts changelog entries, update emails, and tutorial scripts.</li>\n            <li><strong>Partner Outreach:</strong> Identifies affiliate partners and drafts collaboration proposals.</li>\n            <li><strong>Analytics:</strong> Tracks cohort retention, churn rates, and lifetime value.</li>\n          </ul>\n          <p><strong>Pro Tip:</strong> The moment a task repeats 3 times, document it and delegate it to the Avatar. Your time is for strategy and creation only.</p>",
+      "assessment": {
+        "type": "scenario",
+        "scenario": "You are a solo consultant with 20 hours/week for client work. You currently spend 10 hours/week on admin and marketing. Your pipeline is drying up.",
+        "question": "What is the best immediate action?",
+        "options": [
+          "Hire a full-time assistant",
+          "Raise prices to work fewer hours",
+          "Automate repetitive tasks and focus marketing on one channel",
+          "Take on any project to fill the gap"
+        ],
+        "correct": 2,
+        "explanation": "Automation frees up time. Focusing on one marketing channel is more effective for a solo operator than scattered efforts."
+      }
+    },
+    {
+      "title": "Legal & Compliance",
+      "content": "<h3>Protect Your Business</h3>\n          <p>Even a one-person company needs legal protection. Your Avatar helps you stay compliant without hiring a lawyer for every question.</p>\n          <h3>Essential Legal Foundations</h3>\n          <ol>\n            <li><strong>Business Structure:</strong> Sole proprietor, LLC, or LTD? The Avatar can research implications for your country and revenue level.</li>\n            <li><strong>Contracts:</strong> Client agreements, terms of service, and privacy policies. The Avatar drafts templates; a lawyer reviews them.</li>\n            <li><strong>Intellectual Property:</strong> Trademarks, copyrights, and patents. The Avatar monitors for infringement.</li>\n            <li><strong>Tax Compliance:</strong> VAT/GST registration, quarterly filings, and deduction tracking.</li>\n            <li><strong>Data Protection:</strong> GDPR, CCPA compliance. The Avatar audits your data practices.</li>\n          </ol>\n          <h3>Case Study: The Prevented Lawsuit</h3>\n          <p>Marcus, a course creator, used a generic terms-of-service template he found online. A customer demanded a refund 6 months after purchase, claiming the course did not deliver. The Avatar flagged the gap:</p>\n          <ul>\n            <li>The TOS had no refund policy clause.</li>\n            <li>There was no limitation of liability statement.</li>\n            <li>The jurisdiction clause was for the wrong country.</li>\n          </ul>\n          <p>The Avatar drafted an updated TOS. A lawyer reviewed it for $200. The next dispute was resolved in Marcus's favour in 48 hours.</p>\n          <h3>Actionable Framework: The Legal Checklist</h3>\n          <p>Complete these within your first 30 days:</p>\n          <ul>\n            <li><strong>Week 1:</strong> Register your business entity. Use the Avatar to compare structures.</li>\n            <li><strong>Week 2:</strong> Draft client contracts. Include: scope, payment terms, revision limits, and termination clauses.</li>\n            <li><strong>Week 3:</strong> Create privacy policy and terms of service. Use the Avatar to research requirements for your jurisdiction.</li>\n            <li><strong>Week 4:</strong> Set up accounting software (QuickBooks, Xero, or Wave). Connect bank accounts.</li>\n          </ul>\n          <h3>Deep Dive: The Compliance Monitor</h3>\n          <p>Configure your Avatar to monitor compliance continuously:</p>\n          <ul>\n            <li><strong>Monthly:</strong> Review contract expiry dates and renewal terms.</li>\n            <li><strong>Quarterly:</strong> Check for new regulations in your industry or country.</li>\n            <li><strong>Annually:</strong> Audit data retention practices. Delete old customer data per your policy.</li>\n            <li><strong>Ongoing:</strong> Scan for trademark conflicts when you launch new products or brands.</li>\n          </ul>\n          <p><strong>Important:</strong> The Avatar assists with legal research and drafting. Always have a qualified attorney review final documents. Do not rely solely on AI for legal advice.</p>",
+      "quiz": [
+        {
+          "q": "What should Week 1 of the legal checklist focus on?",
+          "options": [
+            "Drafting contracts",
+            "Registering business entity",
+            "Creating privacy policy",
+            "Setting up accounting"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What was missing from Marcus's original TOS?",
+          "options": [
+            "A logo",
+            "Refund policy and liability limitation",
+            "A welcome message",
+            "Social media links"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How often should the Avatar check for new regulations?",
+          "options": [
+            "Daily",
+            "Weekly",
+            "Quarterly",
+            "Never"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What is the Avatar's role in legal matters?",
+          "options": [
+            "Replace lawyers entirely",
+            "Assist with research and drafting; lawyer reviews final docs",
+            "Ignore legal issues",
+            "Only handle tax filing"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Which compliance area covers customer data rights in Europe?",
+          "options": [
+            "CCPA",
+            "GDPR",
+            "HIPAA",
+            "SEC"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "The 90-Day Launch Plan",
+      "content": "<h3>From Zero to Operating OPC in 90 Days</h3>\n          <p>This is your complete roadmap. Follow it exactly, and you will have a functioning one-person company generating revenue within 90 days.</p>\n          <h3>Days 1–30: Foundation</h3>\n          <ol>\n            <li><strong>Day 1–3:</strong> Choose your niche and offer. Validate demand with 5 conversations.</li>\n            <li><strong>Day 4–7:</strong> Set up your Avatar as co-founder. Upload identity, voice, and PKM.</li>\n            <li><strong>Day 8–14:</strong> Build your acquisition funnel. Landing page, lead magnet, email sequence.</li>\n            <li><strong>Day 15–21:</strong> Create your first product or service package. Price it.</li>\n            <li><strong>Day 22–28:</strong> Launch content engine. 1 post per day on your primary platform.</li>\n            <li><strong>Day 29–30:</strong> Set up operations automation. Invoicing, onboarding, scheduling.</li>\n          </ol>\n          <h3>Days 31–60: Acquisition</h3>\n          <ol>\n            <li><strong>Day 31–37:</strong> Begin outreach. 10 personalised messages per day.</li>\n            <li><strong>Day 38–44:</strong> Run your first paid traffic test. $100 budget. Measure CAC.</li>\n            <li><strong>Day 45–51:</strong> Optimise funnel based on data. Fix leaks. A/B test headlines.</li>\n            <li><strong>Day 52–58:</strong> Launch a webinar or workshop. The Avatar handles promotion and follow-up.</li>\n            <li><strong>Day 59–60:</strong> Review Month 2 metrics. Revenue, leads, conversion rate, CAC.</li>\n          </ol>\n          <h3>Days 61–90: Scale</h3>\n          <ol>\n            <li><strong>Day 61–67:</strong> Productise your service. Create a template, course, or tool.</li>\n            <li><strong>Day 68–74:</strong> Build your product ladder. Free → $50 → $500 → $5K.</li>\n            <li><strong>Day 75–81:</strong> Add recurring revenue. Membership, retainer, or subscription.</li>\n            <li><strong>Day 82–88:</strong> Optimise operations. Cut manual tasks. Delegate to Avatar.</li>\n            <li><strong>Day 89–90:</strong> Plan Quarter 2. Set new revenue targets. Expand or niche down.</li>\n          </ol>\n          <h3>Weekly Review Template</h3>\n          <p>Every Sunday, answer these questions with your Avatar:</p>\n          <ul>\n            <li>What was my revenue this week? vs. goal?</li>\n            <li>How many leads did I generate? What was the source?</li>\n            <li>What content performed best?</li>\n            <li>What operational friction can I eliminate?</li>\n            <li>What is the #1 priority for next week?</li>\n          </ul>\n          <h3>Success Metrics</h3>\n          <table class=\"data-table\">\n            <tr><th>Metric</th><th>Day 30 Target</th><th>Day 60 Target</th><th>Day 90 Target</th></tr>\n            <tr><td>Revenue</td><td>$1,000</td><td>$5,000</td><td>$10,000</td></tr>\n            <tr><td>Email List</td><td>100</td><td>500</td><td>1,000</td></tr>\n            <tr><td>Leads/Week</td><td>5</td><td>15</td><td>30</td></tr>\n            <tr><td>Content Posts</td><td>30</td><td>60</td><td>90</td></tr>\n            <tr><td>Hours/Week on Admin</td><td>10</td><td>5</td><td>2</td></tr>\n          </table>\n          <p><strong>Remember:</strong> The goal is not perfection. The goal is operation. Launch before you are ready. Iterate based on real customer feedback.</p>",
+      "quiz": [
+        {
+          "q": "What should you accomplish by Day 30?",
+          "options": [
+            "$10K revenue",
+            "Foundation (funnel, product, content, ops)",
+            "Hire a team",
+            "Launch a SaaS"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What is the Day 90 revenue target?",
+          "options": [
+            "$1,000",
+            "$5,000",
+            "$10,000",
+            "$50,000"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "How many personalised outreach messages per day in Days 31–60?",
+          "options": [
+            "1",
+            "5",
+            "10",
+            "50"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What is the first paid traffic test budget?",
+          "options": [
+            "$10",
+            "$50",
+            "$100",
+            "$1,000"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What day should you plan Quarter 2?",
+          "options": [
+            "Day 30",
+            "Day 60",
+            "Day 89–90",
+            "Day 120"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "What is the admin hours/week target by Day 90?",
+          "options": [
+            "10",
+            "5",
+            "2",
+            "0"
+          ],
+          "correct": 2
+        }
+      ],
+      "passThreshold": 80
+    }
+  ]
+}

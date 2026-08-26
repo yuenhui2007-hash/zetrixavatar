@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.allorigins.win https://api.allorigins.hexabin.com https://www.reddit.com https://hn.algolia.com https://dev.to; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+<link rel="canonical" href="https://yuenhui2007-hash.github.io/zetrixavatar/course.html">
+<meta property="og:title" content="Course — Zetrix AI Academy">
+<meta property="og:description" content="Learn AI-powered skills with Zetrix AI Academy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yuenhui2007-hash.github.io/zetrixavatar/course.html">
+<meta property="og:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Course — Zetrix AI Academy">
+<meta name="twitter:description" content="Learn AI-powered skills with Zetrix AI Academy.">
+<meta name="twitter:image" content="https://yuenhui2007-hash.github.io/zetrixavatar/assets/logo-zetrix-new.png">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course — Zetrix AI Academy</title>
+  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/course-engine.css?v=5">
+  <script src="js/nav.js?v=15" defer></script>
+  <script src="js/course-engine.js?v=15" defer></script>
+  <script src="js/theme.js?v=15" defer></script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="course-layout">
+    <aside class="course-sidebar" aria-label="Course sidebar">
+      <h3 id="course-sidebar-title">Loading...</h3>
+      <div class="progress-wrap">
+        <div class="progress-track"><div id="overall-progress" class="progress-fill" style="width:0%"></div></div>
+        <div id="overall-progress-text" class="progress-text">0/0 segments</div>
+      </div>
+      <nav id="segment-nav" aria-label="Segment navigation"></nav>
+    </aside>
+    <main class="course-main" id="main-content" tabindex="-1">
+      <div id="segment-content">
+        <div class="segment-body" style="text-align:center;padding:60px 20px;">
+          <p>Loading course...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const courseId = params.get('course');
+
+      if (!courseId) {
+        document.getElementById('segment-content').innerHTML =
+          '<div class="segment-body" style="text-align:center;padding:60px 20px;">' +
+          '<h2>No course specified</h2>' +
+          '<p>Add <code>?course=one-person-company</code> to the URL.</p>' +
+          '<a href="courses.html" class="btn btn-primary" style="margin-top:16px;">Browse Courses</a>' +
+          '</div>';
+        document.getElementById('course-sidebar-title').textContent = 'Error';
+        return;
+      }
+
+      // Validate course ID (alphanumeric and hyphens only)
+      if (!/^[a-z0-9-]+$/.test(courseId)) {
+        document.getElementById('segment-content').innerHTML =
+          '<div class="segment-body" style="text-align:center;padding:60px 20px;">' +
+          '<h2>Invalid course ID</h2>' +
+          '<a href="courses.html" class="btn btn-primary" style="margin-top:16px;">Browse Courses</a>' +
+          '</div>';
+        document.getElementById('course-sidebar-title').textContent = 'Error';
+        return;
+      }
+
+      fetch('js/courses/' + courseId + '.json')
+        .then(function(res) {
+          if (!res.ok) throw new Error('Course not found (HTTP ' + res.status + ')');
+          return res.json();
+        })
+        .then(function(data) {
+          if (!data.courseId || !Array.isArray(data.segments)) {
+            throw new Error('Invalid course data');
+          }
+          document.title = data.title || (courseId + ' — Zetrix AI Academy');
+          document.getElementById('course-sidebar-title').textContent =
+            data.title ? data.title.replace(' — Zetrix AI Academy', '') : courseId;
+          CourseEngine.init(data.courseId, data.segments);
+        })
+        .catch(function(err) {
+          document.getElementById('segment-content').innerHTML =
+            '<div class="segment-body" style="text-align:center;padding:60px 20px;">' +
+            '<h2>Course not found</h2>' +
+            '<p>' + err.message + '</p>' +
+            '<a href="courses.html" class="btn btn-primary" style="margin-top:16px;">Browse Courses</a>' +
+            '</div>';
+          document.getElementById('course-sidebar-title').textContent = 'Error';
+        });
+    })();
+  </script>
+</body>
+</html>

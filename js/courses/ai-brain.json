@@ -1,0 +1,354 @@
+{
+  "courseId": "ai-brain",
+  "title": "AI Brain — Zetrix AI Academy",
+  "segments": [
+    {
+      "title": "PKM Deep Dive",
+      "content": "<h3>Mastering Personal Knowledge Management</h3>\n          <p>Your Avatar's intelligence is only as good as the knowledge you feed it. This segment explores advanced PKM strategies.</p>\n          <h3>The PKM Pyramid</h3>\n          <ol>\n            <li><strong>Capture Layer:</strong> Raw inputs—meeting notes, web clippings, voice memos, and screenshots. Quantity matters here.</li>\n            <li><strong>Process Layer:</strong> Distilled notes, summaries, and tagged highlights. This is where you add your own insights.</li>\n            <li><strong>Retrieve Layer:</strong> Structured folders, linked documents, and indexed metadata. The Avatar searches here.</li>\n            <li><strong>Create Layer:</strong> Outputs generated from retrieved knowledge—reports, emails, and presentations.</li>\n          </ol>\n          <h3>Case Study: The Researcher Who Never Forgot</h3>\n          <p>Dr. Elena Voss, a pharmaceutical researcher, reads 40+ papers monthly. Before Zetrix, she relied on scattered PDFs and handwritten notes. After building her PKM Pyramid:</p>\n          <ul>\n            <li><strong>Capture:</strong> She clips every paper summary using the Zetrix browser extension.</li>\n            <li><strong>Process:</strong> Each Sunday, she spends 30 minutes writing 3-bullet takeaways for each clip.</li>\n            <li><strong>Retrieve:</strong> Her Avatar answers complex queries like \"What papers mention kinase inhibitors and liver toxicity?\" in seconds.</li>\n            <li><strong>Create:</strong> Grant proposals now draft themselves from her curated knowledge base.</li>\n          </ul>\n          <p>Result: Proposal writing time cut from 2 weeks to 3 days. She won 3 new grants in 12 months.</p>\n          <h3>Framework: The 10-Minute Capture Ritual</h3>\n          <p>Build this into your daily routine. Set a timer:</p>\n          <ul>\n            <li><strong>Minutes 0–2:</strong> Open your \"00 – Inbox\" folder. Review what you captured today.</li>\n            <li><strong>Minutes 2–6:</strong> For each item, decide: Process now, Archive, or Delete.</li>\n            <li><strong>Minutes 6–9:</strong> Write 1–2 sentences summarising the key insight. Tag with relevant keywords.</li>\n            <li><strong>Minutes 9–10:</strong> Move processed items to their permanent folder. Inbox = empty.</li>\n          </ul>\n          <p><strong>Golden Rule:</strong> Capture without judgment, process with intention, retrieve with precision.</p>",
+      "assessment": {
+        "type": "matching",
+        "pairs": [
+          {
+            "left": "Capture Layer",
+            "right": "Raw inputs like notes and clippings"
+          },
+          {
+            "left": "Process Layer",
+            "right": "Distilled notes with insights"
+          },
+          {
+            "left": "Retrieve Layer",
+            "right": "Structured folders and linked docs"
+          },
+          {
+            "left": "Create Layer",
+            "right": "Reports, emails, presentations"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Document Upload Workflows",
+      "content": "<h3>Efficient Document Ingestion</h3>\n          <p>Uploading documents is easy. Uploading them so the Avatar understands them is an art. Here is the workflow.</p>\n          <h3>Step-by-Step: Preparing Documents for Upload</h3>\n          <ol>\n            <li><strong>Clean the source:</strong> Remove headers, footers, and page numbers from PDFs. They confuse retrieval.</li>\n            <li><strong>Use descriptive filenames:</strong> \"2026-Q3-Sales-Report-v2.pdf\" beats \"report-final-FINAL.pdf.\"</li>\n            <li><strong>Add a cover page summary:</strong> For long documents, include a 1-paragraph summary at the top. The Avatar weights top content heavily.</li>\n            <li><strong>Convert images to text:</strong> If a document contains charts with key data, add a text appendix explaining the numbers.</li>\n            <li><strong>Batch upload by topic:</strong> Upload all marketing documents in one session. The Avatar builds a richer context cluster.</li>\n            <li><strong>Verify extraction:</strong> After upload, click \"Preview Text.\" If tables are garbled, re-export as a cleaner PDF.</li>\n            <li><strong>Set metadata:</strong> Add author, date, and topic tags in the PKM Manager sidebar.</li>\n          </ol>\n          <h3>Supported Formats and Tips</h3>\n          <ul>\n            <li><strong>PDF:</strong> Best for static documents. Ensure text is selectable, not scanned images.</li>\n            <li><strong>DOCX:</strong> Ideal for editable content. The Avatar preserves heading structure for better navigation.</li>\n            <li><strong>Markdown (MD):</strong> Perfect for structured notes. Supports links, code blocks, and tables natively.</li>\n            <li><strong>CSV/XLSX:</strong> Use for data-heavy content. The Avatar can query specific rows during retrieval.</li>\n          </ul>\n          <h3>Case Study: The Lawyer’s Document Pipeline</h3>\n          <p>James, a corporate lawyer, uploads 20–30 contracts weekly. His old system: dump everything in one folder. Retrieval was a nightmare. His new workflow:</p>\n          <ol>\n            <li>Renames every file: \"Client-ContractType-Date-vX.\"</li>\n            <li>Adds a 3-sentence summary at the top of each document.</li>\n            <li>Tags with: client name, contract type, value tier, and risk level.</li>\n            <li>Uploads in batches by client to build context clusters.</li>\n          </ol>\n          <p>Now his Avatar retrieves relevant clauses in 3 seconds. Contract review time: down 60%.</p>\n          <h3>Framework: The PREP Checklist</h3>\n          <p>Before uploading any document, run PREP:</p>\n          <ul>\n            <li><strong>P – Purge:</strong> Remove irrelevant pages, headers, and footers.</li>\n            <li><strong>R – Rename:</strong> Use descriptive, dated filenames.</li>\n            <li><strong>E – Explain:</strong> Add a summary at the top.</li>\n            <li><strong>P – Preview:</strong> Check extracted text for errors.</li>\n          </ul>",
+      "interaction": {
+        "type": "checkbox",
+        "prompt": "Which steps are part of the PREP checklist for document upload? Select all that apply.",
+        "options": [
+          "Purge irrelevant pages and headers",
+          "Rename with descriptive filenames",
+          "Explain with a top summary",
+          "Preview extracted text",
+          "Print the document",
+          "Share on social media"
+        ],
+        "correct": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "title": "Advanced Folder Organisation",
+      "content": "<h3>Scaling Your PKM Beyond 100 Documents</h3>\n          <p>As your knowledge base grows, flat folders collapse. Here is how to organise at scale.</p>\n          <h3>The PARA Method (Adapted for AI)</h3>\n          <ol>\n            <li><strong>Projects:</strong> Folders with a deadline and outcome. Example: \"Launch New Website – Aug 2026.\" Close them when done.</li>\n            <li><strong>Areas:</strong> Ongoing responsibilities without a deadline. Example: \"Health,\" \"Finance,\" \"Team Management.\"</li>\n            <li><strong>Resources:</strong> Reference material you might need someday. Example: \"UX Design Patterns,\" \"Tax Law 2026.\"</li>\n            <li><strong>Archive:</strong> Completed projects and outdated resources. Keeps active folders lean.</li>\n          </ol>\n          <h3>Step-by-Step: Reorganising an Existing PKM</h3>\n          <ol>\n            <li>Export a list of all documents from the PKM Manager.</li>\n            <li>Create four new top-level folders: 01-Projects, 02-Areas, 03-Resources, 04-Archive.</li>\n            <li>Sort each existing document into one of the four categories. Be ruthless—if in doubt, choose Archive.</li>\n            <li>Inside Projects, create subfolders named with a deadline prefix: \"2026-08 – Website Launch.\"</li>\n            <li>Inside Areas, create subfolders for each responsibility. Add a recurring review note.</li>\n            <li>Tag every document with a primary and secondary keyword.</li>\n            <li>Test retrieval: Ask the Avatar a question that spans multiple folders and verify it synthesises correctly.</li>\n          </ol>\n          <h3>Case Study: From 400 Files to Organised Bliss</h3>\n          <p>Maria, a freelance designer, had 400 files in one \"Work\" folder. Finding anything took 5+ minutes. After applying PARA:</p>\n          <ul>\n            <li><strong>Projects:</strong> 12 active client folders with clear deadlines.</li>\n            <li><strong>Areas:</strong> \"Invoicing,\" \"Marketing,\" \"Skill Development.\"</li>\n            <li><strong>Resources:</strong> \"Typography Guides,\" \"Colour Theory,\" \"Contract Templates.\"</li>\n            <li><strong>Archive:</strong> 200+ completed projects moved out of the way.</li>\n          </ul>\n          <p>Retrieval time: under 10 seconds. Stress level: significantly lower.</p>\n          <h3>Deep Dive: The Archive Rule</h3>\n          <p>Archive is not a trash can. It is a reference library. The key difference: Archived documents are excluded from <em>active</em> retrieval but remain searchable when explicitly requested. This keeps your Avatar's \"working memory\" lean and fast.</p>\n          <p><strong>Pro Tip:</strong> Review your folder structure every 90 days. What made sense in January may be obsolete by April.</p>",
+      "quiz": [
+        {
+          "q": "What does the 'P' in PARA stand for?",
+          "options": [
+            "Processes",
+            "Projects",
+            "Programs",
+            "Protocols"
+          ],
+          "correct": 1,
+          "explanation": "PARA stands for Projects, Areas, Resources, Archive. Projects are folders with a deadline and outcome."
+        },
+        {
+          "q": "Which PARA category is for ongoing responsibilities WITHOUT a deadline?",
+          "options": [
+            "Projects",
+            "Archive",
+            "Areas",
+            "Resources"
+          ],
+          "correct": 2,
+          "explanation": "Areas are ongoing responsibilities without a deadline — e.g., Health, Finance, Team Management."
+        },
+        {
+          "q": "What is the key difference between Archive and Trash?",
+          "options": [
+            "Archive deletes files permanently",
+            "Archive is excluded from active retrieval but remains searchable",
+            "Archive is only for images",
+            "Trash is searchable but Archive is not"
+          ],
+          "correct": 1,
+          "explanation": "Archived documents are excluded from active retrieval but remain searchable when explicitly requested. Trash is deleted permanently."
+        },
+        {
+          "q": "How often should you review your folder structure?",
+          "options": [
+            "Every 30 days",
+            "Every 60 days",
+            "Every 90 days",
+            "Once a year"
+          ],
+          "correct": 2,
+          "explanation": "Pro Tip: Review your folder structure every 90 days. What made sense in January may be obsolete by April."
+        },
+        {
+          "q": "Where would you file 'UX Design Patterns' in PARA?",
+          "options": [
+            "Projects",
+            "Areas",
+            "Resources",
+            "Archive"
+          ],
+          "correct": 2,
+          "explanation": "Resources are reference materials you might need someday — e.g., UX Design Patterns, Tax Law 2026."
+        },
+        {
+          "q": "Maria had 400 files in one folder. After applying PARA, how many completed projects moved to Archive?",
+          "options": [
+            "50",
+            "100",
+            "200+",
+            "All 400"
+          ],
+          "correct": 2,
+          "explanation": "Maria moved 200+ completed projects to Archive, keeping active folders lean."
+        }
+      ]
+    },
+    {
+      "title": "Daily Updates & Memory Refresh",
+      "content": "<h3>Turning Information into Memory</h3>\n          <p>Daily Updates are not just news feeds—they are memory reinforcement loops. This segment shows you how to optimise them.</p>\n          <h3>How Memory Works in Your Avatar</h3>\n          <ol>\n            <li><strong>Encoding:</strong> New information enters via uploads, Daily Updates, or conversation.</li>\n            <li><strong>Consolidation:</strong> The Avatar links new data to existing knowledge during idle periods (usually overnight).</li>\n            <li><strong>Retrieval:</strong> When you ask a question, the Avatar searches indexed memory and ranks relevance.</li>\n            <li><strong>Reinforcement:</strong> Frequently accessed memories are prioritised. Rarely used data fades but is not deleted.</li>\n          </ol>\n          <h3>Step-by-Step: Optimising Daily Updates</h3>\n          <ol>\n            <li>Open <strong>Daily Updates &gt; Sources</strong> and review current feeds. Remove any source that has not provided value in 2 weeks.</li>\n            <li>Add a <strong>manual reflection source</strong>. Each evening, type or dictate 3 bullets: what you learned, what you decided, and what you need tomorrow.</li>\n            <li>Enable <strong>cross-linking</strong> in settings. This tells the Avatar to connect new updates to existing documents automatically.</li>\n            <li>Set a <strong>weekly memory review</strong>. Every Sunday, ask: \"What did I learn this week?\" The Avatar synthesises highlights.</li>\n            <li>Use <strong>memory pinning</strong> for critical facts. Click the pin icon next to any retrieved result to keep it permanently accessible.</li>\n          </ol>\n          <h3>Case Study: The Executive Who Never Missed a Beat</h3>\n          <p>Thomas, a CTO at a fintech startup, receives 200+ Slack messages and 50+ emails daily. Before Daily Updates, he missed context constantly. His setup now:</p>\n          <ul>\n            <li><strong>Morning briefing (08:00):</strong> Summary of overnight commits, Jira ticket changes, and key Slack threads.</li>\n            <li><strong>Midday pulse (12:30):</strong> Calendar preview for afternoon meetings, with relevant PKM documents attached.</li>\n            <li><strong>Evening reflection (18:00):</strong> He dictates 3 bullets. The Avatar links them to relevant projects and surfaces them in tomorrow's briefing.</li>\n          </ul>\n          <p>\"I used to spend 90 minutes catching up every morning. Now I'm informed in 90 seconds,\" Thomas reports.</p>\n          <p><strong>Example Reflection:</strong> \"Learned: AI agents need clear boundaries. Decided: Limit my sales agent to 3 email templates. Need tomorrow: Q3 budget spreadsheet.\"</p>\n          <h3>Framework: The Spaced Repetition Loop</h3>\n          <p>Your Avatar can reinforce your own memory, not just its own. Ask it to:</p>\n          <ul>\n            <li>Quiz you on yesterday's reflections.</li>\n            <li>Surface last week's decisions before this week's planning.</li>\n            <li>Connect today's news to last month's learnings.</li>\n          </ul>",
+      "quiz": [
+        {
+          "q": "What are the four stages of memory in your Avatar?",
+          "options": [
+            "Capture, Process, Retrieve, Create",
+            "Encoding, Consolidation, Retrieval, Reinforcement",
+            "Upload, Index, Search, Display",
+            "Read, Write, Edit, Delete"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "When does memory consolidation typically happen?",
+          "options": [
+            "During active chat",
+            "During idle periods (usually overnight)",
+            "Only on weekends",
+            "When you manually trigger it"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What should your evening reflection include?",
+          "options": [
+            "A full essay",
+            "3 bullets: learned, decided, need tomorrow",
+            "Only tasks for next week",
+            "A list of complaints"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How often should you review your Daily Update sources?",
+          "options": [
+            "Daily",
+            "Weekly",
+            "Every 2 weeks",
+            "Monthly"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "How often should you review and update your Avatar's memory?",
+          "options": [
+            "Once a year",
+            "Monthly",
+            "Daily or weekly",
+            "Never"
+          ],
+          "correct": 2
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Identity Model Mastery",
+      "content": "<h3>Refining Your Avatar's Core Self</h3>\n          <p>An Identity Model is never finished. It evolves as you evolve. Here is how to refine it based on real interactions.</p>\n          <h3>Step-by-Step: Identity Audit</h3>\n          <ol>\n            <li>Navigate to <strong>Avatar Profile &gt; Identity Model &gt; Audit</strong>.</li>\n            <li>Review the last 50 interactions. The system flags responses where the Avatar seemed off-tone or off-topic.</li>\n            <li>For each flagged interaction, ask: <em>Did this match my values? Was the tone right? Was it too verbose?</em></li>\n            <li>Edit the <strong>Core Values</strong> section. Add clarifying sentences. Example: \"When giving feedback, start with a specific strength, then one improvement.\"</li>\n            <li>Update your <strong>bio</strong> with recent milestones. If you changed jobs or goals, the Avatar needs to know.</li>\n            <li>Adjust <strong>communication preferences</strong>. If you find yourself asking for shorter answers, lower the default response length.</li>\n            <li>Save and test. Ask a sample question and compare the new response to an old one.</li>\n          </ol>\n          <h3>Case Study: The Evolving Entrepreneur</h3>\n          <p>Alex started Zetrix as a solo founder. His Identity Model bio said: \"Building a SaaS MVP, seeking product-market fit.\" Six months later, he had 50 customers and 2 employees. But his Avatar was still giving \"MVP advice\"—build fast, ship broken, iterate daily. This clashed with his new reality: he needed stability, customer support, and team coordination.</p>\n          <p>After updating his bio to \"Scaling a SaaS from 50 to 500 customers. Focus: retention, team processes, and predictable releases,\" his Avatar's advice transformed. It now suggested onboarding sequences, hiring playbooks, and release management.</p>\n          <p><strong>Lesson:</strong> Your Identity Model is a living document. Review it monthly, or it will give you advice from your past.</p>\n          <h3>Advanced: Adding Role-Specific Identities</h3>\n          <p>You can create multiple identity profiles within one Avatar:</p>\n          <ul>\n            <li><strong>Work Mode:</strong> Direct, data-driven, concise.</li>\n            <li><strong>Creative Mode:</strong> Exploratory, metaphorical, long-form.</li>\n            <li><strong>Coach Mode:</strong> Supportive, question-based, patient.</li>\n          </ul>\n          <p>Switch modes by saying: \"Switch to Coach Mode.\" The Avatar loads the relevant identity subset instantly.</p>\n          <h3>Framework: The Identity Delta</h3>\n          <p>Track the gap between your ideal self and your Avatar's current behaviour:</p>\n          <ol>\n            <li>Write down 3 traits your ideal assistant would have. (e.g., \"Proactive,\" \"Concise,\" \"Encouraging\")</li>\n            <li>Score your Avatar 1–10 on each trait.</li>\n            <li>For any score below 7, edit the Identity Model to close the gap.</li>\n            <li>Re-score in 2 weeks. Repeat.</li>\n          </ol>",
+      "flashcards": [
+        {
+          "q": "How often should you review your Identity Model bio?",
+          "a": "Monthly, or whenever your role or goals change."
+        },
+        {
+          "q": "What command switches identity modes?",
+          "a": "Say 'Switch to [Mode Name].'"
+        },
+        {
+          "q": "What is the Identity Delta framework used for?",
+          "a": "Tracking the gap between your ideal assistant and current Avatar behaviour."
+        },
+        {
+          "q": "How many recent interactions should you audit?",
+          "a": "The last 50 interactions."
+        },
+        {
+          "q": "What should you do if you keep asking for shorter answers?",
+          "a": "Lower the default response length in communication preferences."
+        },
+        {
+          "q": "Can one Avatar have multiple identity profiles?",
+          "a": "Yes—Work Mode, Creative Mode, Coach Mode, and more."
+        }
+      ]
+    },
+    {
+      "title": "Voice Training & Speech Patterns",
+      "content": "<h3>Making Your Avatar Sound Like You</h3>\n          <p>Voice cloning is the start. Speech pattern training makes the Avatar truly indistinguishable.</p>\n          <h3>Step-by-Step: Advanced Voice Training</h3>\n          <ol>\n            <li>Record a <strong>variety of samples</strong>:\n              <ul>\n                <li>A professional introduction (30 sec)</li>\n                <li>A casual story about your weekend (60 sec)</li>\n                <li>A technical explanation of your work (45 sec)</li>\n                <li>An emotional message—excited or concerned (30 sec)</li>\n              </ul>\n            </li>\n            <li>Upload all samples in the <strong>Voice &gt; Advanced Training</strong> section.</li>\n            <li>Label each sample with its <strong>context tag</strong>: professional, casual, technical, emotional.</li>\n            <li>Enable <strong>context-aware voice selection</strong>. The Avatar now picks the right tone for the right situation.</li>\n            <li>Test with prompts:\n              <ul>\n                <li>\"Explain quantum computing\" → should use technical tone</li>\n                <li>\"Tell me a joke\" → should use casual tone</li>\n                <li>\"I just got promoted!\" → should use emotional/excited tone</li>\n              </ul>\n            </li>\n            <li>Fine-tune pacing. In Voice Settings, adjust words-per-minute for each context. Match your natural speed.</li>\n          </ol>\n          <h3>Case Study: The Voice Actor's Surprise</h3>\n          <p>Lisa, a professional voice actor, was sceptical about AI voice cloning. She uploaded 4 samples: commercial, audiobook, character voice, and conversational. After training:</p>\n          <ul>\n            <li>Her Avatar could read scripts in her \"commercial\" voice for ad clients.</li>\n            <li>It could narrate long articles in her \"audiobook\" voice.</li>\n            <li>It could answer casual questions in her natural conversational tone.</li>\n          </ul>\n          <p>She now uses it for first-pass auditions, saving 10+ hours weekly. Clients cannot tell the difference between AI-generated samples and her live recordings.</p>\n          <h3>Speech Pattern Customisation</h3>\n          <ul>\n            <li><strong>Filler words:</strong> Add or remove \"um,\" \"you know,\" and \"actually\" to match your style.</li>\n            <li><strong>Pauses:</strong> Set pause length after sentences and paragraphs. Longer pauses feel more thoughtful.</li>\n            <li><strong>Emphasis:</strong> Teach the Avatar which words you naturally stress. Use bold markers in training transcripts.</li>\n          </ul>\n          <h3>Framework: The Voice Consistency Score</h3>\n          <p>Rate your Avatar's voice on these 5 dimensions (1–10):</p>\n          <ol>\n            <li>Clarity – Can you understand every word?</li>\n            <li>Likeness – Does it sound like YOU?</li>\n            <li>Appropriateness – Is the tone right for the context?</li>\n            <li>Emotion – Does it convey the right feeling?</li>\n            <li>Pacing – Is the speed natural?</li>\n          </ol>\n          <p>Any score below 7 = retrain that dimension.</p>",
+      "assessment": {
+        "type": "fillblank",
+        "instruction": "Fill in the missing words to complete the sentences about memory architecture.",
+        "text": "Short-term memory holds about {blank} items for {blank} seconds. The hippocampus converts short-term to {blank} memory during sleep. Emotional tagging strengthens memory via the {blank}.",
+        "answers": [
+          [
+            "7",
+            "seven"
+          ],
+          [
+            "30",
+            "thirty"
+          ],
+          [
+            "long-term",
+            "long term"
+          ],
+          [
+            "amygdala"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Memory Architecture",
+      "content": "<h3>How Your Avatar Remembers</h3>\n          <p>Memory is not a black box. Understanding the architecture lets you optimise what sticks and what fades.</p>\n          <h3>Three Memory Tiers</h3>\n          <ol>\n            <li><strong>Working Memory (Session):</strong> Lasts for the current conversation. Holds 8–12 recent turns. Used for immediate context.</li>\n            <li><strong>Episodic Memory (Daily Updates):</strong> Stores events, decisions, and reflections from the past 90 days. Used for \"what did I do last week?\" questions.</li>\n            <li><strong>Semantic Memory (PKM):</strong> Long-term knowledge from documents and structured data. Used for expertise and facts.</li>\n          </ol>\n          <h3>Step-by-Step: Memory Optimisation</h3>\n          <ol>\n            <li>Check <strong>Memory Stats</strong> in the Avatar Profile. Review memory distribution across tiers.</li>\n            <li>If Working Memory is overloaded (long conversations), break chats into topics. Start a new thread for each subject.</li>\n            <li>If Episodic Memory is thin, increase Daily Update frequency. Add manual reflections every evening.</li>\n            <li>If Semantic Memory is bloated, archive documents older than 12 months. The Avatar retrieves faster with a leaner index.</li>\n            <li>Use <strong>memory tags</strong> to link related items. Tag a project document and a meeting note with the same keyword to create a cluster.</li>\n            <li>Run a <strong>memory defrag</strong> monthly. This reorganises the index and removes orphaned references.</li>\n          </ol>\n          <h3>Case Study: The Memory Doctor</h3>\n          <p>Dr. Patel, a general practitioner, uploaded 500+ medical guidelines to his Avatar. Retrieval slowed to 8 seconds. After optimisation:</p>\n          <ul>\n            <li>Archived guidelines older than 2 years.</li>\n            <li>Added tags for body system, condition severity, and patient age group.</li>\n            <li>Started new chat threads per patient case.</li>\n          </ul>\n          <p>Retrieval time: under 2 seconds. Patient consultation efficiency: up 25%.</p>\n          <h3>Deep Dive: Memory Decay Curves</h3>\n          <p>Not all memories are equal. Zetrix uses a decay algorithm:</p>\n          <ul>\n            <li><strong>High-access memories</strong> (retrieved daily) stay in fast cache.</li>\n            <li><strong>Medium-access memories</strong> (retrieved weekly) move to standard index.</li>\n            <li><strong>Low-access memories</strong> (retrieved monthly) are archived but still searchable.</li>\n            <li><strong>Pinned memories</strong> bypass decay entirely. Use sparingly for critical facts.</li>\n          </ul>\n          <p><strong>Example Question per Tier:</strong></p>\n          <ul>\n            <li>Working: \"What did I just ask?\"</li>\n            <li>Episodic: \"What did we decide about the budget in last Tuesday's meeting?\"</li>\n            <li>Semantic: \"What are the three pillars of our marketing strategy?\"</li>\n          </ul>",
+      "interaction": {
+        "type": "textarea",
+        "prompt": "For your own use case, describe which Memory Tier (Working, Episodic, or Semantic) would handle each of these 3 questions: (1) \"What did I ask 2 minutes ago?\" (2) \"What did I decide in last week's strategy session?\" (3) \"What are my company's core values?\" Explain why each tier fits.",
+        "placeholder": "1) Working Memory - recent conversation context. 2) Episodic Memory - past events and decisions. 3) Semantic Memory - long-term knowledge from documents."
+      }
+    },
+    {
+      "title": "Retrieval & Search Techniques",
+      "content": "<h3>Finding Exactly What You Need</h3>\n          <p>Even the best-organised PKM is useless if you cannot find things. Master these retrieval techniques.</p>\n          <h3>Basic Retrieval Commands</h3>\n          <ol>\n            <li><strong>Keyword search:</strong> \"Find documents about Q3 budget.\"</li>\n            <li><strong>Date filter:</strong> \"Show me meeting notes from July 2026.\"</li>\n            <li><strong>Author filter:</strong> \"What did Sarah write about onboarding?\"</li>\n            <li><strong>Type filter:</strong> \"List all spreadsheets in the Finance folder.\"</li>\n          </ol>\n          <h3>Advanced Retrieval Techniques</h3>\n          <ol>\n            <li><strong>Cross-document synthesis:</strong> \"Compare the Q2 and Q3 sales reports. What changed?\" The Avatar reads both and produces a diff.</li>\n            <li><strong>Question-driven retrieval:</strong> \"Why did we choose React over Vue?\" The Avatar searches decision logs and meeting notes.</li>\n            <li><strong>Hypothetical retrieval:</strong> \"If we had doubled the marketing budget, what would the plan say?\" The Avatar finds the budget sensitivity analysis.</li>\n            <li><strong>Temporal retrieval:</strong> \"What was my opinion on remote work a year ago?\" The Avatar searches old reflections and notes.</li>\n          </ol>\n          <h3>Step-by-Step: Testing Retrieval Accuracy</h3>\n          <ol>\n            <li>Pick a document you know exists. Ask a question that requires it.</li>\n            <li>Review the Avatar's answer. Did it cite the right source?</li>\n            <li>If not, check the document's tags and folder. Move or retag for better discoverability.</li>\n            <li>Add a <strong>retrieval hint</strong> in the document's first paragraph. Example: \"This document covers the 2026 marketing budget and ROI projections.\"</li>\n            <li>Re-test after 5 minutes. The index updates quickly.</li>\n          </ol>\n          <h3>Case Study: The Lawyer Who Won with Retrieval</h3>\n          <p>Sophie, a litigation lawyer, had 2,000+ case documents. Before mastering retrieval, she manually searched folders for hours. Her breakthrough techniques:</p>\n          <ul>\n            <li><strong>Cross-document synthesis:</strong> \"Compare the witness statements from Case A and Case B. Flag contradictions.\"</li>\n            <li><strong>Temporal retrieval:</strong> \"Show me all motions filed in the 30 days before the trial date.\"</li>\n            <li><strong>Retrieval hints:</strong> She added a 1-sentence summary at the top of every document.</li>\n          </ul>\n          <p>Case preparation time: reduced by 45%. She won a major case partly because her Avatar surfaced a precedent she had forgotten.</p>\n          <h3>Framework: The Retrieval Funnel</h3>\n          <p>Structure your searches from broad to narrow:</p>\n          <ol>\n            <li><strong>Broad:</strong> \"What do I know about marketing?\"</li>\n            <li><strong>Filtered:</strong> \"Show me marketing documents from Q3 2026.\"</li>\n            <li><strong>Specific:</strong> \"What did the Q3 marketing budget say about paid social?\"</li>\n            <li><strong>Synthetic:</strong> \"Compare Q3 paid social results to Q2. What changed?\"</li>\n          </ol>",
+      "quiz": [
+        {
+          "q": "Which technique compares two documents and shows differences?",
+          "options": [
+            "Keyword search",
+            "Cross-document synthesis",
+            "Temporal retrieval",
+            "Type filter"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What should you add to a document's first paragraph to improve retrieval?",
+          "options": [
+            "A joke",
+            "A retrieval hint",
+            "Your signature",
+            "The file size"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "How long should you wait after retagging before re-testing retrieval?",
+          "options": [
+            "Instantly",
+            "5 minutes",
+            "1 hour",
+            "24 hours"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Which retrieval type finds past opinions or decisions?",
+          "options": [
+            "Hypothetical retrieval",
+            "Temporal retrieval",
+            "Cross-document synthesis",
+            "Author filter"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "What improves search results in Zetrix?",
+          "options": [
+            "Random keywords",
+            "Clear tags and structured metadata",
+            "Long file names",
+            "Storing everything in one folder"
+          ],
+          "correct": 1
+        }
+      ],
+      "passThreshold": 80
+    },
+    {
+      "title": "Linking Knowledge & Building Graphs",
+      "content": "<h3>Connecting Ideas for Deeper Intelligence</h3>\n          <p>Isolated documents are facts. Linked documents are understanding. This segment teaches you to build a knowledge graph.</p>\n          <h3>What Is a Knowledge Graph?</h3>\n          <p>A knowledge graph connects documents, people, projects, and concepts via relationships. Example: \"Document A mentions Project B, which is owned by Person C, who reports to Person D.\"</p>\n          <h3>Step-by-Step: Creating Links</h3>\n          <ol>\n            <li>In the PKM Manager, open any document and click <strong>Add Link</strong>.</li>\n            <li>Choose the link type: <strong>references</strong>, <strong>contradicts</strong>, <strong>supports</strong>, <strong>parent of</strong>, or <strong>child of</strong>.</li>\n            <li>Select the target document from the search box.</li>\n            <li>Add a <strong>link note</strong> explaining the connection. Example: \"This budget supports the marketing plan in Document B.\"</li>\n            <li>Save the link. It now appears in both documents' link panels.</li>\n            <li>View the <strong>Graph Visualiser</strong> from the PKM sidebar. Zoom in to see local clusters; zoom out to see the whole knowledge map.</li>\n          </ol>\n          <h3>Automated Linking</h3>\n          <ol>\n            <li>Enable <strong>Auto-Link</strong> in PKM Settings.</li>\n            <li>The Avatar scans new uploads and suggests links based on shared keywords, authors, and dates.</li>\n            <li>Review suggestions weekly. Approve good ones, reject irrelevant ones.</li>\n            <li>Over time, the graph becomes self-organising. The Avatar predicts connections before you make them.</li>\n          </ol>\n          <h3>Case Study: The Product Manager's Graph</h3>\n          <p>Hassan, a product manager at a SaaS company, built a knowledge graph connecting:</p>\n          <ul>\n            <li><strong>User research documents</strong> → linked to <strong>feature specs</strong> (supports relationship)</li>\n            <li><strong>Feature specs</strong> → linked to <strong>engineering tickets</strong> (parent of relationship)</li>\n            <li><strong>Competitor analysis</strong> → linked to <strong>strategy docs</strong> (references relationship)</li>\n            <li><strong>Post-mortems</strong> → linked to <strong>project plans</strong> (contradicts relationship, showing lessons learned)</li>\n          </ul>\n          <p>When his CEO asked, \"Why did we prioritise Feature X over Feature Y?\" Hassan traced the graph in 30 seconds: user research → feature spec → strategy doc. The answer was crystal clear.</p>\n          <h3>Framework: The LINK Method</h3>\n          <p>When adding a link, always include:</p>\n          <ul>\n            <li><strong>L – Label:</strong> What type of link is this? (references, supports, contradicts)</li>\n            <li><strong>I – Insight:</strong> Why does this connection matter?</li>\n            <li><strong>N – Note:</strong> A 1-sentence explanation.</li>\n            <li><strong>K – Keep current:</strong> Review links quarterly. Remove stale ones.</li>\n          </ul>\n          <p><strong>Benefit:</strong> When you ask \"What do I know about X?\" the Avatar traverses the graph and returns connected insights, not just isolated facts.</p>",
+      "interaction": {
+        "type": "checkbox",
+        "prompt": "Which of the following are valid link types in the Zetrix Knowledge Graph? Select all that apply.",
+        "options": [
+          "references",
+          "contradicts",
+          "supports",
+          "parent of",
+          "child of",
+          "likes",
+          "dislikes"
+        ],
+        "correct": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "title": "30-Day Brain Challenge",
+      "content": "<h3>Building an Unstoppable Knowledge System</h3>\n          <p>This challenge transforms your Avatar from a chatbot into a true second brain. Commit to 30 days.</p>\n          <h3>Week 1: Capture Everything</h3>\n          <ol>\n            <li><strong>Day 1:</strong> Install the browser extension and clip 5 articles.</li>\n            <li><strong>Day 2:</strong> Upload all documents from your Downloads folder. Sort into PARA folders.</li>\n            <li><strong>Day 3:</strong> Record 3 voice memos and let the Avatar transcribe them.</li>\n            <li><strong>Day 4:</strong> Add one RSS feed and one newsletter source to Daily Updates.</li>\n            <li><strong>Day 5:</strong> Write your first evening reflection. 3 bullets only.</li>\n            <li><strong>Day 6:</strong> Create links between 3 pairs of related documents.</li>\n            <li><strong>Day 7:</strong> Ask the Avatar: \"Summarise my week.\" Review accuracy.</li>\n          </ol>\n          <h3>Week 2: Retrieve with Precision</h3>\n          <ol>\n            <li><strong>Day 8–10:</strong> Ask 5 complex questions daily. Note which ones fail.</li>\n            <li><strong>Day 11–12:</strong> Fix failed retrievals by retagging, moving, or summarising documents.</li>\n            <li><strong>Day 13–14:</strong> Test cross-document synthesis. Ask comparison and trend questions.</li>\n          </ol>\n          <h3>Week 3: Automate & Integrate</h3>\n          <ol>\n            <li><strong>Day 15–17:</strong> Connect Gmail and Slack. Let the Avatar auto-file messages.</li>\n            <li><strong>Day 18–19:</strong> Build a custom agent that answers FAQs using your PKM.</li>\n            <li><strong>Day 20–21:</strong> Enable Auto-Link and review 10 suggested connections.</li>\n          </ol>\n          <h3>Week 4: Reflect & Scale</h3>\n          <ol>\n            <li><strong>Day 22–24:</strong> Review memory stats. Archive old documents.</li>\n            <li><strong>Day 25–27:</strong> Refine Identity Model based on 3 weeks of usage.</li>\n            <li><strong>Day 28–29:</strong> Teach a teammate to use your PKM structure.</li>\n            <li><strong>Day 30:</strong> Export a knowledge report. Celebrate your second brain.</li>\n          </ol>\n          <h3>Success Metrics</h3>\n          <ul>\n            <li><strong>Documents captured:</strong> Target 50+ by Day 30.</li>\n            <li><strong>Links created:</strong> Target 20+ connections.</li>\n            <li><strong>Retrieval accuracy:</strong> 80%+ of complex questions answered correctly.</li>\n            <li><strong>Time saved:</strong> Track hours reclaimed from automated filing and synthesis.</li>\n          </ul>\n          <p><strong>Mindset:</strong> Your Avatar's brain is a garden. Tend it daily, prune monthly, and harvest insights on demand.</p>",
+      "assessment": {
+        "type": "truefalse",
+        "statements": [
+          {
+            "text": "Multitasking increases productivity by allowing parallel processing.",
+            "correct": false
+          },
+          {
+            "text": "The Pomodoro technique uses 25-minute focused work blocks.",
+            "correct": true
+          },
+          {
+            "text": "Context switching has no cognitive cost.",
+            "correct": false
+          },
+          {
+            "text": "Deep work requires uninterrupted focus for extended periods.",
+            "correct": true
+          }
+        ],
+        "passThreshold": 75
+      }
+    }
+  ]
+}

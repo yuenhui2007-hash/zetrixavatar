@@ -1,7 +1,7 @@
 /**
- * Course Engine v9 — Interactive Segmented Learning
+ * Course Engine v10 — Interactive Segmented Learning
  * Handles segments, quizzes (multiple types), flashcards, progress tracking
- * v9 — New assessment types: matching, sequencing, fill-blanks, true/false
+ * v10 — Firebase Firestore sync + per-question analytics
  */
 (function() {
   'use strict';
@@ -11,12 +11,19 @@
     totalSegments: 0,
     currentSegment: 0,
     storageKey: '',
+    analyticsKey: '',
+    analytics: null,
+    _questionTimers: {},
+    _sessionStart: 0,
 
     init(courseId, segments) {
       this.courseId = courseId;
       this.segments = segments;
       this.totalSegments = segments.length;
       this.storageKey = `course_${courseId}_progress`;
+      this.analyticsKey = `course_${courseId}_analytics`;
+      this._loadAnalytics();
+      this._sessionStart = Date.now();
       this.loadProgress();
       this.renderSidebar();
       this.renderSegment(this.currentSegment);
@@ -41,6 +48,8 @@
       document.body.appendChild(backBtn);
     },
 
+    // ========== PROGRESS (local + cloud) ==========
+
     loadProgress() {
       const saved = localStorage.getItem(this.storageKey);
       if (saved) {
@@ -54,6 +63,19 @@
       } else {
         this.segmentStates = this.makeEmptyStates();
       }
+      // Attempt cloud merge if available
+      if (typeof ProgressSync !== 'undefined') {
+        ProgressSync.pullAndMerge(this.courseId).then((cloud) => {
+          if (cloud && cloud.segmentStates) {
+            this.segmentStates = cloud.segmentStates;
+            this.currentSegment = Math.min(cloud.currentSegment || 0, this.totalSegments - 1);
+            this.saveProgress(false);
+            this.renderSidebar();
+            this.renderSegment(this.currentSegment);
+            this.updateOverallProgress();
+          }
+        }).catch(() => {});
+      }
     },
 
     makeEmptyStates() {
@@ -66,13 +88,18 @@
       }));
     },
 
-    saveProgress() {
-      localStorage.setItem(this.storageKey, JSON.stringify({
+    saveProgress(pushToCloud = true) {
+      const payload = {
         currentSegment: this.currentSegment,
-        segmentStates: this.segmentStates
-      }));
+        segmentStates: this.segmentStates,
+        _syncedAt: Date.now()
+      };
+      localStorage.setItem(this.storageKey, JSON.stringify(payload));
       this.updateOverallProgress();
       this.renderSidebar();
+      if (pushToCloud && typeof ProgressSync !== 'undefined') {
+        ProgressSync.push(this.courseId, payload).catch(() => {});
+      }
     },
 
     updateOverallProgress() {
@@ -84,6 +111,133 @@
       if (text) text.textContent = `${completed}/${this.totalSegments} segments`;
       if (pct === 100) {
         localStorage.setItem(`course_${this.courseId}_completed`, 'true');
+      }
+    },
+
+    // ========== ANALYTICS ==========
+
+    _loadAnalytics() {
+      try {
+        this.analytics = JSON.parse(localStorage.getItem(this.analyticsKey)) || this._emptyAnalytics();
+      } catch (e) {
+        this.analytics = this._emptyAnalytics();
+      }
+      if (typeof ProgressSync !== 'undefined') {
+        ProgressSync.pullAnalytics(this.courseId).then((cloud) => {
+          if (cloud && cloud.questions) {
+            this.analytics = this._mergeAnalytics(this.analytics, cloud);
+            this._persistAnalytics(false);
+          }
+        }).catch(() => {});
+      }
+    },
+
+    _emptyAnalytics() {
+      return { questions: {}, _syncedAt: 0, courseId: this.courseId };
+    },
+
+    _mergeAnalytics(local, cloud) {
+      var merged = { questions: {}, _syncedAt: Date.now(), courseId: this.courseId };
+      var allKeys = new Set(Object.keys(local.questions || {}).concat(Object.keys(cloud.questions || {})));
+      allKeys.forEach(function(k) {
+        var l = (local.questions || {})[k] || { attempts: 0, correct: 0, totalTimeMs: 0, lastCorrect: null };
+        var c = (cloud.questions || {})[k] || { attempts: 0, correct: 0, totalTimeMs: 0, lastCorrect: null };
+        merged.questions[k] = {
+          attempts: Math.max(l.attempts, c.attempts),
+          correct: Math.max(l.correct, c.correct),
+          totalTimeMs: Math.max(l.totalTimeMs, c.totalTimeMs),
+          lastCorrect: (l.lastCorrect || 0) > (c.lastCorrect || 0) ? l.lastCorrect : c.lastCorrect
+        };
+      });
+      return merged;
+    },
+
+    _persistAnalytics(pushToCloud = true) {
+      this.analytics._syncedAt = Date.now();
+      localStorage.setItem(this.analyticsKey, JSON.stringify(this.analytics));
+      if (pushToCloud && typeof ProgressSync !== 'undefined') {
+        ProgressSync.pushAnalytics(this.courseId, this.analytics).catch(() => {});
+      }
+    },
+
+    _recordQuestionStart(qid) {
+      this._questionTimers[qid] = Date.now();
+    },
+
+    _recordQuestionEnd(qid, isCorrect) {
+      var start = this._questionTimers[qid];
+      var elapsed = start ? (Date.now() - start) : 0;
+      var q = this.analytics.questions[qid];
+      if (!q) {
+        q = { attempts: 0, correct: 0, totalTimeMs: 0, lastCorrect: null };
+        this.analytics.questions[qid] = q;
+      }
+      q.attempts += 1;
+      if (isCorrect) {
+        q.correct += 1;
+        q.lastCorrect = Date.now();
+      }
+      q.totalTimeMs += elapsed;
+      delete this._questionTimers[qid];
+      this._persistAnalytics();
+    },
+
+    showAnalytics() {
+      var q = this.analytics.questions || {};
+      var keys = Object.keys(q);
+      if (keys.length === 0) {
+        alert('No quiz data yet. Complete some quizzes to see analytics.');
+        return;
+      }
+
+      var totalAttempts = 0, totalCorrect = 0, totalTime = 0, totalQuestions = keys.length;
+      var weakest = [];
+      keys.forEach(function(k) {
+        var item = q[k];
+        totalAttempts += item.attempts;
+        totalCorrect += item.correct;
+        totalTime += item.totalTimeMs;
+        var accuracy = item.attempts > 0 ? (item.correct / item.attempts) : 0;
+        if (accuracy < 0.6) weakest.push({ qid: k, accuracy: accuracy, attempts: item.attempts });
+      });
+
+      var avgTime = totalQuestions > 0 ? Math.round(totalTime / totalAttempts) : 0;
+      var overallAccuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+      var avgRetries = totalQuestions > 0 ? (totalAttempts / totalQuestions).toFixed(1) : '0.0';
+
+      weakest.sort(function(a, b) { return a.accuracy - b.accuracy; });
+
+      var html = '<div style="max-width:560px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.06);">';
+      html += '<h3 style="margin-top:0;font-size:1.2rem;">📊 Quiz Analytics</h3>';
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">';
+      html += '<div style="background:#f8fafc;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:1.3rem;font-weight:700;color:#0f172a;">' + overallAccuracy + '%</div><div style="font-size:0.78rem;color:#64748b;">Overall Accuracy</div></div>';
+      html += '<div style="background:#f8fafc;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:1.3rem;font-weight:700;color:#0f172a;">' + avgRetries + '</div><div style="font-size:0.78rem;color:#64748b;">Avg Retries</div></div>';
+      html += '<div style="background:#f8fafc;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:1.3rem;font-weight:700;color:#0f172a;">' + (avgTime > 0 ? Math.round(avgTime / 1000) + 's' : 'N/A') + '</div><div style="font-size:0.78rem;color:#64748b;">Avg Time / Q</div></div>';
+      html += '<div style="background:#f8fafc;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:1.3rem;font-weight:700;color:#0f172a;">' + totalQuestions + '</div><div style="font-size:0.78rem;color:#64748b;">Questions Tracked</div></div>';
+      html += '</div>';
+
+      if (weakest.length > 0) {
+        html += '<h4 style="margin:16px 0 8px;font-size:1rem;">⚠️ Weakest Topics</h4><ul style="padding-left:18px;margin:0;">';
+        weakest.slice(0, 5).forEach(function(w) {
+          html += '<li style="margin-bottom:6px;font-size:0.9rem;"><code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:0.8rem;">' + w.qid + '</code> — accuracy ' + Math.round(w.accuracy * 100) + '% (' + w.attempts + ' attempts)</li>';
+        });
+        html += '</ul>';
+      } else {
+        html += '<p style="color:#065f46;font-size:0.9rem;">🎉 Great job! No weak topics detected.</p>';
+      }
+
+      html += '<button onclick="this.closest(\'div\').remove()" style="margin-top:16px;padding:8px 16px;border-radius:8px;border:1px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-size:0.85rem;">Close</button>';
+      html += '</div>';
+
+      var container = document.getElementById('segment-content');
+      if (container) {
+        var div = document.createElement('div');
+        div.id = 'analytics-modal';
+        div.innerHTML = html;
+        container.appendChild(div);
+        window.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+      } else {
+        alert('Overall Accuracy: ' + overallAccuracy + '%\nAvg Retries: ' + avgRetries + '\nAvg Time/Q: ' + (avgTime > 0 ? Math.round(avgTime / 1000) + 's' : 'N/A'));
       }
     },
 
@@ -120,6 +274,9 @@
 
       let html = `<div class="segment-header"><span class="seg-num">Segment ${idx+1} of ${this.totalSegments}</span><h2>${seg.title}</h2></div>`;
       html += `<div class="segment-body">${seg.content}</div>`;
+
+      // Analytics button
+      html += '<div style="text-align:right;margin:8px 0;"><button class="btn btn-outline" style="font-size:0.8rem;padding:6px 12px;" onclick="CourseEngine.showAnalytics()">📊 Analytics</button></div>';
 
       // Flashcards
       if (seg.flashcards && seg.flashcards.length > 0) {
@@ -194,7 +351,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
-    // Ensure text inherits proper color from theme
     forceReadableText() {
       const selectors = '.segment-body, .segment-body p, .segment-body li, .segment-body ol, .segment-body ul, .segment-body h2, .segment-body h3, .segment-body h4, .segment-body strong, .segment-body em, .segment-body b, .segment-body i, .segment-body span, .segment-body div, .segment-header h2';
       document.querySelectorAll(selectors).forEach(el => {
@@ -204,7 +360,6 @@
       });
     },
 
-    // NEW: Render assessment based on type
     renderAssessment(assessment, segIdx) {
       const type = assessment.type || 'mcq';
       switch (type) {
@@ -217,19 +372,14 @@
       }
     },
 
-    // MATCHING: Connect items on left to items on right
     renderMatching(assessment, segIdx) {
       const pairs = assessment.pairs || [];
       let html = `<div class="matching-section" id="matching-${segIdx}"><h4>🔗 Connect the Dots</h4><p>Click an item on the left, then click its match on the right.</p><div class="matching-grid">`;
-      
-      // Left column
       html += '<div class="matching-col">';
       pairs.forEach((p, i) => {
         html += `<div class="matching-item" data-key="${i}" onclick="CourseEngine.matchItem(this, ${segIdx})">${p.left}</div>`;
       });
       html += '</div>';
-      
-      // Right column (shuffled)
       const shuffled = [...pairs].map((p, i) => ({...p, originalIndex: i})).sort(() => Math.random() - 0.5);
       html += '<div class="matching-col">';
       shuffled.forEach((p) => {
@@ -286,7 +436,6 @@
       }
     },
 
-    // SEQUENCING: Drag items into correct order
     renderSequencing(assessment, segIdx) {
       const items = assessment.items || [];
       let html = `<div class="sequencing-section" id="sequencing-${segIdx}"><h4>📋 Put in Order</h4><p>Drag the steps into the correct sequence.</p>`;
@@ -347,7 +496,6 @@
       }
     },
 
-    // FILL IN THE BLANKS
     renderFillBlank(assessment, segIdx) {
       let text = assessment.text || '';
       const answers = assessment.answers || [];
@@ -393,7 +541,6 @@
       }
     },
 
-    // TRUE / FALSE
     renderTrueFalse(assessment, segIdx) {
       const statements = assessment.statements || [];
       let html = `<div class="tf-section" id="tf-${segIdx}"><h4>⚖️ True or False</h4><p>Click True or False for each statement, then submit.</p>`;
@@ -410,7 +557,7 @@
     tfSelect(segIdx, itemIdx, answer) {
       const item = document.getElementById(`tf-item-${segIdx}-${itemIdx}`);
       const buttons = item.querySelectorAll('.tf-btn');
-      if (buttons[0].disabled) return; // locked after pass
+      if (buttons[0].disabled) return;
       buttons.forEach(btn => btn.classList.remove('selected', 'correct', 'wrong'));
       buttons[answer ? 0 : 1].classList.add('selected');
       item.dataset.answer = answer;
@@ -463,7 +610,6 @@
       }
     },
 
-    // SCENARIO: Apply knowledge to a situation
     renderScenario(assessment, segIdx) {
       let html = `<div class="scenario-section" id="scenario-${segIdx}"><h4>🎯 Scenario Challenge</h4>`;
       html += `<div class="scenario-text">${assessment.scenario}</div>`;
@@ -498,13 +644,14 @@
       }
     },
 
-    // Legacy MCQ quiz renderer
+    // Legacy MCQ quiz renderer with analytics hooks
     renderLegacyQuiz(quiz, segIdx, passThreshold) {
       let html = '<div class="quiz-section"><h4>📝 Quiz</h4><p>Score at least 80% to unlock the next segment.</p>';
       quiz.forEach((q, i) => {
-        html += `<div class="quiz-q" id="qq-${i}"><p><strong>Q${i+1}:</strong> ${q.q}</p>`;
+        var qid = (this.courseId || 'q') + '_seg' + segIdx + '_q' + i;
+        html += `<div class="quiz-q" id="qq-${i}" data-qid="${qid}"><p><strong>Q${i+1}:</strong> ${q.q}</p>`;
         q.options.forEach((opt, j) => {
-          html += `<label class="quiz-opt"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+          html += `<label class="quiz-opt"><input type="radio" name="q${i}" value="${j}" onclick="CourseEngine._recordQuestionStart('${qid}')"> ${opt}</label>`;
         });
         html += '</div>';
       });
@@ -520,12 +667,15 @@
       seg.quiz.forEach((q, i) => {
         const selected = document.querySelector(`input[name="q${i}"]:checked`);
         const qDiv = document.getElementById(`qq-${i}`);
-        if (selected && parseInt(selected.value) === q.correct) {
+        var qid = qDiv ? (qDiv.dataset.qid || ((this.courseId || 'q') + '_seg' + segIdx + '_q' + i)) : ((this.courseId || 'q') + '_seg' + segIdx + '_q' + i);
+        const isCorrect = selected && parseInt(selected.value) === q.correct;
+        if (isCorrect) {
           score++;
           if (qDiv) qDiv.style.background = '#d1fae5';
         } else {
           if (qDiv) qDiv.style.background = '#fee2e2';
         }
+        this._recordQuestionEnd(qid, isCorrect);
       });
       const pct = (score / seg.quiz.length) * 100;
       const resultDiv = document.getElementById('quiz-result');

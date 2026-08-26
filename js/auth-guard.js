@@ -13,14 +13,12 @@
   }
 
   function checkAuth() {
-    // Auth module must be loaded
     if (typeof Auth === 'undefined') {
       if (DEBUG) console.warn('Auth guard: Auth module not loaded');
       return;
     }
     var user = Auth.getUser();
     if (!user && !isPublic(current)) {
-      // Redirect to sign-in with return URL
       var redirect = encodeURIComponent(current);
       window.location.replace('signin.html?redirect=' + redirect);
     }
